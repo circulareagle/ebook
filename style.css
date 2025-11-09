@@ -31,7 +31,7 @@ body {
 }
 
 /* ==============================
-   Top Banner / Rotating Image
+   Top Banner / Rotating Logo
 ============================== */
 .top-banner {
   text-align: center;
@@ -109,7 +109,7 @@ nav a:hover {
 }
 
 /* ==============================
-   Sections
+   Section Styling
 ============================== */
 section {
   background: var(--white);
@@ -121,10 +121,20 @@ section {
   text-align: center;
 }
 
+section img.section-image {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  border-radius: var(--radius);
+  margin: 0 auto 20px auto;
+  display: block;
+  box-shadow: 0 5px 20px var(--shadow-light);
+}
+
 section h2 {
   color: var(--primary);
   font-size: 1.8rem;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 }
 
 section p {
@@ -251,4 +261,4 @@ footer a:hover {
   .card-grid {
     gap: 20px;
   }
-}
+   }
