@@ -1,109 +1,191 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Circular Eagle | Digital Marketing Hub</title>
-  <style>
-    /* === GLOBAL STYLES === */
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-    body { line-height: 1.6; background: #fff; color: #222; scroll-behavior: smooth; }
-    a { text-decoration: none; }
-    .container { width: 90%; max-width: 1200px; margin: auto; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Circular Eagle | Digital Marketing Hub</title>
+<style>
+/* === GLOBAL STYLES === */
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+body { line-height: 1.6; background: #fff; color: #222; scroll-behavior: smooth; }
+a { text-decoration: none; }
+.container { width: 90%; max-width: 1200px; margin: auto; }
 
-    /* === HEADER === */
-    header { position: fixed; top: 0; width: 100%; background: #fff; box-shadow: 0 2px 6px rgba(0,0,0,0.1); z-index: 1000; }
-    .header-container { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; }
-    .logo { font-size: 1.6rem; font-weight: 700; background: linear-gradient(45deg, #ff7a00, #ff2d55); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    nav a { margin-left: 1rem; font-weight: 500; color: #333; transition: 0.3s; }
-    nav a:hover { color: #ff2d55; }
-    nav .btn { padding: 0.6rem 1rem; border-radius: 30px; background: linear-gradient(45deg, #ff7a00, #ff2d55); color: #fff; transition: 0.3s; }
-    nav .btn:hover { opacity: 0.85; }
+/* === HEADER === */
+header { position: fixed; top: 0; width: 100%; background: #fff; box-shadow: 0 2px 6px rgba(0,0,0,0.1); z-index: 1000; }
+.header-container { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; }
+.logo { font-size: 1.6rem; font-weight: 700; background: linear-gradient(45deg, #ff7a00, #ff2d55); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+nav a { margin-left: 1rem; font-weight: 500; color: #333; transition: 0.3s; }
+nav a:hover { color: #ff2d55; }
+nav .btn { padding: 0.6rem 1rem; border-radius: 30px; background: linear-gradient(45deg, #ff7a00, #ff2d55); color: #fff; transition: 0.3s; }
+nav .btn:hover { opacity: 0.85; }
 
-    /* === HERO SECTION === */
-    .hero { background: linear-gradient(135deg, #ff7a00, #ff2d55); color: #fff; text-align: center; padding: 10rem 1rem 8rem; margin-top: 70px; }
-    .hero h2 { font-size: 2.8rem; margin-bottom: 1rem; }
-    .hero p { font-size: 1.1rem; margin-bottom: 2rem; }
-    .btn-primary { background: #fff; color: #ff2d55; padding: 0.9rem 2rem; border-radius: 50px; font-weight: 600; transition: 0.3s; }
-    .btn-primary:hover { background: #ffe5e9; transform: translateY(-2px); }
+/* === HERO === */
+.hero { background: linear-gradient(135deg, #ff7a00, #ff2d55); color: #fff; text-align: center; padding: 10rem 1rem 8rem; margin-top: 70px; }
+.hero h2 { font-size: 2.8rem; margin-bottom: 1rem; }
+.hero p { font-size: 1.2rem; margin-bottom: 2rem; }
+.btn-primary { background: #fff; color: #ff2d55; padding: 0.9rem 2rem; border-radius: 50px; font-weight: 600; transition: 0.3s; }
+.btn-primary:hover { background: #ffe5e9; transform: translateY(-2px); }
 
-    /* === SECTIONS === */
-    section { padding: 5rem 0; }
-    section h3 { font-size: 2rem; margin-bottom: 2rem; text-align: center; color: #ff2d55; }
+/* === SECTIONS === */
+section { padding: 5rem 0; }
+section h3 { font-size: 2rem; margin-bottom: 2rem; text-align: center; color: #ff2d55; }
 
-    /* Shop */
-    .products { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; }
-    .product { background: #fff; padding: 1.5rem; border-radius: 15px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.1); width: 260px; transition: 0.3s; }
-    .product img { width: 100%; height: 180px; object-fit: cover; border-radius: 10px; margin-bottom: 1rem; }
-    .product h4 { margin-bottom: 0.5rem; }
-    .product p { font-size: 0.9rem; margin-bottom: 1rem; color: #555; }
-    .product a.btn { display: inline-block; margin-top: 0.5rem; padding: 0.6rem 1rem; background: linear-gradient(45deg, #ff7a00, #ff2d55); color: #fff; border-radius: 30px; transition: 0.3s; }
-    .product a.btn:hover { opacity: 0.85; }
+/* Shop */
+.products { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; }
+.product { background: #fff; padding: 1.5rem; border-radius: 15px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.1); width: 260px; transition: 0.3s; }
+.product img { width: 100%; height: 180px; object-fit: cover; border-radius: 10px; margin-bottom: 1rem; }
+.product h4 { margin-bottom: 0.5rem; }
+.product p { font-size: 0.9rem; margin-bottom: 1rem; color: #555; }
+.product a.btn { display: inline-block; margin-top: 0.5rem; padding: 0.6rem 1rem; background: linear-gradient(45deg, #ff7a00, #ff2d55); color: #fff; border-radius: 30px; transition: 0.3s; }
+.product a.btn:hover { opacity: 0.85; }
 
-    /* Footer */
-    footer { background: #111; color: #bbb; text-align: center; padding: 1.5rem 0; }
-    footer span { color: #ff7a00; }
+/* Articles */
+.articles { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; }
+.article { background: #fff; padding: 1.5rem; border-radius: 15px; width: 300px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+.article h4 { margin-bottom: 0.5rem; color: #ff2d55; }
+.article p { font-size: 0.9rem; color: #555; }
 
-    /* RESPONSIVE */
-    @media(max-width:768px){
-      .header-container { flex-direction: column; }
-      nav { margin-top: 0.5rem; display: flex; flex-wrap: wrap; justify-content: center; }
-      nav a { margin: 0.5rem; }
-      .hero h2 { font-size: 2rem; }
-      .hero p { font-size: 1rem; }
-      .products { flex-direction: column; align-items: center; }
-    }
-  </style>
+/* Courses */
+.courses-list { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; }
+.course { background: #fff; padding: 1.5rem; border-radius: 15px; text-align: center; width: 280px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+.course h4 { margin-bottom: 0.5rem; color: #ff2d55; }
+.course p { font-size: 0.9rem; color: #555; margin-bottom: 1rem; }
+
+/* Consultancy */
+.consultancy form { display: flex; flex-direction: column; gap: 1rem; max-width: 400px; margin: auto; }
+.consultancy input, .consultancy textarea, .consultancy button { padding: 0.8rem; border-radius: 10px; border: 1px solid #ccc; }
+.consultancy button { background: linear-gradient(45deg, #ff7a00, #ff2d55); color: #fff; font-weight: 600; border: none; cursor: pointer; transition: 0.3s; }
+.consultancy button:hover { opacity: 0.85; }
+
+/* News */
+#news-feed { max-width: 800px; margin: auto; text-align: center; }
+
+/* Footer */
+footer { background: #111; color: #bbb; text-align: center; padding: 2rem 0; }
+footer span { color: #ff7a00; }
+
+/* Responsive */
+@media(max-width:768px){
+  .header-container { flex-direction: column; }
+  nav { margin-top: 0.5rem; display: flex; flex-wrap: wrap; justify-content: center; }
+  nav a { margin: 0.5rem; }
+  .hero h2 { font-size: 2rem; }
+  .hero p { font-size: 1rem; }
+  .products, .articles, .courses-list { flex-direction: column; align-items: center; }
+}
+</style>
 </head>
 <body>
-  <!-- HEADER -->
-  <header>
-    <div class="header-container container">
-      <div class="logo">Circular Eagle</div>
-      <nav>
-        <a href="#home">Home</a>
-        <a href="#shop">Shop</a>
-        <a href="#articles">Articles</a>
-        <a href="#courses">Courses</a>
-        <a href="#consultancy">Consultancy</a>
-        <a href="#contact" class="btn">Contact</a>
-      </nav>
+
+<!-- HEADER -->
+<header>
+  <div class="header-container container">
+    <div class="logo">Circular Eagle</div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#shop">Shop</a>
+      <a href="#articles">Articles</a>
+      <a href="#courses">Courses</a>
+      <a href="#consultancy">Consultancy</a>
+      <a href="#news">News</a>
+      <a href="#contact" class="btn">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="home" class="hero">
+  <h2>Helping You Grow Your Online Business</h2>
+  <p>Marketing insights, eBooks, courses, and consultancy for entrepreneurs worldwide.</p>
+  <a href="#shop" class="btn-primary">Explore eBooks</a>
+</section>
+
+<!-- SHOP -->
+<section id="shop">
+  <h3>Our eBooks</h3>
+  <div class="products container">
+    <div class="product">
+      <img src="images/book1.jpg" alt="Finding the Right Customers">
+      <h4>Finding the Right Customers</h4>
+      <p>A practical guide for online business owners by Qoleed Alli.</p>
+      <a href="https://selar.co/rightcustomers" target="_blank" class="btn">Buy on Selar</a>
     </div>
-  </header>
-
-  <!-- HERO -->
-  <section id="home" class="hero">
-    <h2>Helping You Find the Right Customers</h2>
-    <p>Your trusted source for marketing eBooks, articles, and business growth strategies.</p>
-    <a href="#shop" class="btn-primary">Explore eBooks</a>
-  </section>
-
-  <!-- SHOP -->
-  <section id="shop">
-    <h3>Our eBooks</h3>
-    <div class="products container">
-      <div class="product">
-        <img src="images/book1.jpg" alt="Finding the Right Customers">
-        <h4>Finding the Right Customers</h4>
-        <p>A practical guide for online business owners by Qoleed Alli.</p>
-        <a href="https://selar.co/rightcustomers" target="_blank" class="btn">Buy on Selar</a>
-      </div>
-      <div class="product">
-        <img src="images/book2.jpg" alt="Digital Funnels 101">
-        <h4>Digital Funnels 101</h4>
-        <p>Learn how to convert clicks into loyal customers.</p>
-        <a href="#" class="btn">Coming Soon</a>
-      </div>
+    <div class="product">
+      <img src="images/book2.jpg" alt="Digital Funnels 101">
+      <h4>Digital Funnels 101</h4>
+      <p>Learn how to convert clicks into loyal customers.</p>
+      <a href="#" class="btn">Coming Soon</a>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- FOOTER -->
-  <footer>
-    <p>© <span id="year"></span> Circular Eagle. All rights reserved.</p>
-  </footer>
+<!-- ARTICLES -->
+<section id="articles">
+  <h3>Business & Marketing Articles</h3>
+  <div class="articles container">
+    <div class="article">
+      <h4>How to Find Your Target Customers</h4>
+      <p>Step-by-step guidance to identify and attract the right audience for your business.</p>
+    </div>
+    <div class="article">
+      <h4>Building Simple Funnels That Convert</h4>
+      <p>Learn how to structure marketing funnels that actually generate sales.</p>
+    </div>
+  </div>
+</section>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+<!-- COURSES -->
+<section id="courses">
+  <h3>Online Courses</h3>
+  <div class="courses-list container">
+    <div class="course">
+      <h4>Customer Acquisition Bootcamp</h4>
+      <p>4-week live coaching program to scale your digital business.</p>
+      <a href="#" class="btn">Enroll Now</a>
+    </div>
+    <div class="course">
+      <h4>Ads & Funnels Mini Course</h4>
+      <p>Learn to run low-cost ads that bring real buyers to your business.</p>
+      <a href="#" class="btn">Start Learning</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONSULTANCY -->
+<section id="consultancy">
+  <h3>Consultancy & Coaching</h3>
+  <p style="text-align:center;">Book one-on-one sessions with our experts to improve your marketing strategy.</p>
+  <form>
+    <input type="text" placeholder="Your Name" required>
+    <input type="email" placeholder="Your Email" required>
+    <textarea placeholder="Tell us about your business goals" required></textarea>
+    <button type="submit">Request a Call</button>
+  </form>
+</section>
+
+<!-- NEWS -->
+<section id="news">
+  <h3>Global News</h3>
+  <div id="news-feed">
+    <p>Latest business news and updates will appear here.</p>
+  </div>
+</section>
+
+<!-- CONTACT / FOOTER -->
+<section id="contact">
+  <h3>Contact Us</h3>
+  <p style="text-align:center;">Email: <a href="mailto:hello@circulareagle.com">hello@circulareagle.com</a></p>
+  <p style="text-align:center;">Follow us on <a href="#">Twitter</a>, <a href="#">LinkedIn</a>, <a href="#">Instagram</a></p>
+</section>
+
+<footer>
+  <p>© <span id="year"></span> Circular Eagle. All rights reserved.</p>
+</footer>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
 </body>
 </html>
