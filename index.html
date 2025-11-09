@@ -1,576 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Circular Eagle - Digital Innovator</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Circular Eagle | Digital Innovation & Creativity</title>
   <style>
-    /* Reset and basics */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Roboto', sans-serif;
+      font-family: "Poppins", sans-serif;
     }
 
     body {
-      background: linear-gradient(135deg, #0b0b0b, #1a1a1a);
+      background-color: #0d0d0d;
       color: #fff;
+      line-height: 1.6;
       scroll-behavior: smooth;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    /* Header */
     header {
-      background: rgba(0,0,0,0.9);
-      padding: 15px 50px;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+      text-align: center;
+      padding: 60px 20px 30px;
+      background: linear-gradient(120deg, #111, #1a1a1a);
+      box-shadow: 0 0 25px rgba(255, 215, 0, 0.2);
     }
 
     header h1 {
-      color: #FFD700;
-      font-size: 2rem;
+      font-size: 2.8rem;
+      color: gold;
       letter-spacing: 1px;
     }
 
-    nav a {
-      margin-left: 25px;
-      font-weight: 700;
-      transition: color 0.3s;
+    header p {
+      color: #ccc;
+      font-size: 1.1rem;
+      margin-top: 8px;
     }
 
-    nav a:hover {
-      color: #FFD700;
-    }
-
-    /* Hero Section */
     .hero {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
       text-align: center;
-      padding: 0 20px;
-      background: radial-gradient(circle at center, #111 0%, #000 100%);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .circular-eagle {
-      width: 250px;
-      height: 250px;
-      border: 5px solid #FFD700;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: radial-gradient(circle, #222 0%, #111 100%);
-      box-shadow: 0 0 50px rgba(255, 215, 0, 0.7);
-      margin-bottom: 30px;
-      position: relative;
-      overflow: hidden;
-      transition: transform 1s ease;
-    }
-
-    .circular-eagle:hover {
-      transform: scale(1.05) rotate(5deg);
+      padding: 40px 20px;
     }
 
     .circular-image {
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  object-fit: cover;
-  display: block;
-  margin: 30px auto;
-  border: 4px solid gold;
-  box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
-  animation: spin 10s linear infinite;
-}
-
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-
-    .hero h2 {
-      font-size: 2.4rem;
-      margin-bottom: 15px;
-      color: #FFD700;
-      animation: fadeInUp 1s ease forwards;
-      opacity: 0;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      margin: 30px auto;
+      border: 4px solid gold;
+      box-shadow: 0 0 25px rgba(255, 215, 0, 0.4);
+      animation: spin 10s linear infinite;
     }
 
-    .hero p {
-      font-size: 1.1rem;
-      max-width: 650px;
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .about, .portfolio, .contact {
+      padding: 60px 20px;
+      max-width: 900px;
+      margin: auto;
+      text-align: center;
+    }
+
+    h2 {
+      color: gold;
+      margin-bottom: 20px;
+      font-size: 2rem;
+      text-transform: uppercase;
+    }
+
+    p {
       color: #ccc;
-      line-height: 1.6;
-      animation: fadeInUp 1.2s ease forwards;
-      opacity: 0;
+      margin-bottom: 20px;
+      font-size: 1.05rem;
     }
 
-    @keyframes fadeInUp {
-      0% { opacity: 0; transform: translateY(20px);}
-      100% { opacity: 1; transform: translateY(0);}
-    }
-
-    /* Sections */
-    section {
-      padding: 80px 20px;
-      max-width: 1200px;
-      margin: 0 auto;
-      position: relative;
-    }
-
-    section h3 {
-      font-size: 2.2rem;
-      color: #FFD700;
-      margin-bottom: 25px;
-      text-align: center;
-    }
-
-    section p {
-      font-size: 1rem;
-      color: #ddd;
-      line-height: 1.6;
-      text-align: center;
-      max-width: 800px;
-      margin: 0 auto 40px auto;
-    }
-
-    /* Portfolio */
     .portfolio-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
+      gap: 25px;
+      margin-top: 25px;
     }
 
     .portfolio-item {
-      background: #111;
-      border: 2px solid #333;
-      border-radius: 15px;
-      overflow: hidden;
-      transition: transform 0.3s, border 0.3s, box-shadow 0.3s;
-      cursor: pointer;
-      position: relative;
+      background: #1a1a1a;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+      transition: transform 0.3s;
     }
 
     .portfolio-item:hover {
-      transform: translateY(-10px);
-      border-color: #FFD700;
-      box-shadow: 0 10px 20px rgba(255, 215, 0, 0.5);
+      transform: translateY(-5px);
     }
 
-    .portfolio-item img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      transition: transform 0.5s;
-    }
-
-    .portfolio-item:hover img {
-      transform: scale(1.05);
-    }
-
-    .portfolio-item h4 {
-      padding: 15px;
-      font-size: 1.2rem;
-      color: #FFD700;
-      text-align: center;
-    }
-
-    /* Contact */
-    .contact-form {
-      display: flex;
-      flex-direction: column;
-      max-width: 500px;
-      margin: 0 auto;
-    }
-
-    .contact-form input,
-    .contact-form textarea {
-      padding: 15px;
-      margin-bottom: 20px;
-      border-radius: 10px;
-      border: none;
-      outline: none;
-      font-size: 1rem;
-      background: #222;
-      color: #fff;
-    }
-
-    .contact-form input::placeholder,
-    .contact-form textarea::placeholder {
-      color: #aaa;
-    }
-
-    .contact-form button {
-      padding: 15px;
-      border: none;
-      border-radius: 10px;
-      background: #FFD700;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.3s, transform 0.3s;
-    }
-
-    .contact-form button:hover {
-      background: #e6c200;
-      transform: translateY(-3px);
-    }
-
-    /* Footer */
     footer {
       background: #111;
-      text-align: center;
       padding: 25px;
-      font-size: 0.9rem;
-      color: #888;
+      text-align: center;
+      color: #777;
+      border-top: 1px solid #222;
     }
 
-    /* Responsive */
-    @media(max-width: 768px){
-      header { padding: 15px 30px; }
-      .hero h2 { font-size: 2rem; }
-      .hero p { font-size: 1rem; }
-      .portfolio-item img { height: 180px; }
-    }
-
-    @media(max-width: 480px){
-      nav a { margin-left: 15px; font-size: 0.9rem; }
-      .circular-eagle { width: 180px; height: 180px; }
-      .circular-eagle img { width: 60%; height: 60%; }
+    @media (max-width: 600px) {
+      .circular-image {
+        width: 200px;
+        height: 200px;
+      }
     }
   </style>
 </head>
 <body>
   <header>
     <h1>Circular Eagle</h1>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#portfolio">Portfolio</a>
-      <a href="#contact">Contact</a>
-    </nav>
+    <p>Where Vision Meets Innovation — by a Digital Creator</p>
   </header>
 
-  <!-- Hero Section -->
-  <div class="hero">
-    <div class="circular-eagle">
-      <img src="Dofoto_20251109_080359334.png" alt="Circular Eagle Logo">
-    </div>
-    <h2>Digital Innovator & eBook Creator</h2>
-    <p>Welcome to Circular Eagle—where creativity meets technology. Explore my world of eBooks, digital projects, and unique designs that inspire learning, growth, and transformation.</p>
-  </div>
-
-  <!-- About Section -->
-  <section id="about">
-    <h3>About Me</h3>
-    <p>I am a digital innovator and eBook creator, blending creativity with technology to deliver unique digital experiences. Circular Eagle symbolizes vision, precision, and innovation—values at the core of every project I undertake. My mission is to empower readers and learners through transformative content and interactive digital creations.</p>
+  <section class="hero">
+    <img src="images/myphoto.jpg" alt="Circular Eagle Logo" class="circular-image">
+    <p>Creativity in motion. Empowering readers, thinkers, and innovators through digital literature and design.</p>
   </section>
 
-  <!-- Portfolio Section -->
-  <section id="portfolio">
-    <h3>Portfolio</h3>
-    <p>Discover some of my digital creations, eBooks, and innovative projects that showcase my skills and creativity.</p>
+  <section class="about" id="about">
+    <h2>About</h2>
+    <p><strong>Circular Eagle</strong> is the home of visionary storytelling and creative innovation. 
+      Founded by a digital innovator and eBook writer, it embodies purpose, clarity, and growth through the power of imagination.</p>
+    <p>From motivational books to digital projects, every creation reflects precision, insight, and spiritual elevation.</p>
+  </section>
+
+  <section class="portfolio" id="portfolio">
+    <h2>Projects</h2>
     <div class="portfolio-grid">
       <div class="portfolio-item">
-        <img src="ebook1.jpg" alt="eBook 1">
-        <h4>eBook Project 1</h4>
+        <h3>eBook Series</h3>
+        <p>Inspirational and thought-provoking digital works crafted for transformation.</p>
       </div>
       <div class="portfolio-item">
-        <img src="ebook2.jpg" alt="eBook 2">
-        <h4>eBook Project 2</h4>
+        <h3>Creative Design</h3>
+        <p>Visual art that merges modern minimalism with timeless truth.</p>
       </div>
       <div class="portfolio-item">
-        <img src="ebook3.jpg" alt="eBook 3">
-        <h4>eBook Project 3</h4>
-      </div>
-      <div class="portfolio-item">
-        <img src="ebook4.jpg" alt="eBook 4">
-        <h4>eBook Project 4</h4>
+        <h3>Video Innovations</h3>
+        <p>Motivational and Gospel-based visual content that moves hearts and minds.</p>
       </div>
     </div>
   </section>
 
-  <!-- Contact Section -->
-  <section id="contact">
-    <h3>Contact Me</h3>
-    <p>Reach out to collaborate, share ideas, or inquire about my digital projects and eBooks.</p>
-    <form class="contact-form">
-      <input type="text" placeholder="Your Name" required>
-      <input type="email" placeholder="Your Email" required>
-      <textarea rows="5" placeholder="Your Message" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
+  <section class="contact" id="contact">
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:circular.eagle@gmail.com" style="color:gold;">circular.eagle@gmail.com</a></p>
+    <p>Follow on YouTube, GitHub, or other digital platforms for updates.</p>
   </section>
 
   <footer>
-    &copy; 2025 Circular Eagle. All Rights Reserved.
+    <p>&copy; 2025 Circular Eagle. All Rights Reserved.</p>
   </footer>
-
-  <script>
-    // Scroll animation trigger
-    const sections = document.querySelectorAll('section, .hero h2, .hero p');
-
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting){
-          entry.target.style.animation = "fadeInUp 1s forwards";
-        }
-      });
-    }, { threshold: 0.2 });
-
-    sections.forEach(section => {
-      observer.observe(section);
-    });
-  </script>
-</body>
-</html>      font-size: 2.4rem;
-      margin-bottom: 15px;
-      color: #FFD700;
-      animation: fadeInUp 1s ease forwards;
-      opacity: 0;
-    }
-
-    .hero p {
-      font-size: 1.1rem;
-      max-width: 650px;
-      color: #ccc;
-      line-height: 1.6;
-      animation: fadeInUp 1.2s ease forwards;
-      opacity: 0;
-    }
-
-    @keyframes fadeInUp {
-      0% { opacity: 0; transform: translateY(20px);}
-      100% { opacity: 1; transform: translateY(0);}
-    }
-
-    /* Sections */
-    section {
-      padding: 80px 20px;
-      max-width: 1200px;
-      margin: 0 auto;
-      position: relative;
-    }
-
-    section h3 {
-      font-size: 2.2rem;
-      color: #FFD700;
-      margin-bottom: 25px;
-      text-align: center;
-    }
-
-    section p {
-      font-size: 1rem;
-      color: #ddd;
-      line-height: 1.6;
-      text-align: center;
-      max-width: 800px;
-      margin: 0 auto 40px auto;
-    }
-
-    /* Portfolio */
-    .portfolio-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
-    }
-
-    .portfolio-item {
-      background: #111;
-      border: 2px solid #333;
-      border-radius: 15px;
-      overflow: hidden;
-      transition: transform 0.3s, border 0.3s, box-shadow 0.3s;
-      cursor: pointer;
-      position: relative;
-    }
-
-    .portfolio-item:hover {
-      transform: translateY(-10px);
-      border-color: #FFD700;
-      box-shadow: 0 10px 20px rgba(255, 215, 0, 0.5);
-    }
-
-    .portfolio-item img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      transition: transform 0.5s;
-    }
-
-    .portfolio-item:hover img {
-      transform: scale(1.05);
-    }
-
-    .portfolio-item h4 {
-      padding: 15px;
-      font-size: 1.2rem;
-      color: #FFD700;
-      text-align: center;
-    }
-
-    /* Contact */
-    .contact-form {
-      display: flex;
-      flex-direction: column;
-      max-width: 500px;
-      margin: 0 auto;
-    }
-
-    .contact-form input,
-    .contact-form textarea {
-      padding: 15px;
-      margin-bottom: 20px;
-      border-radius: 10px;
-      border: none;
-      outline: none;
-      font-size: 1rem;
-      background: #222;
-      color: #fff;
-    }
-
-    .contact-form input::placeholder,
-    .contact-form textarea::placeholder {
-      color: #aaa;
-    }
-
-    .contact-form button {
-      padding: 15px;
-      border: none;
-      border-radius: 10px;
-      background: #FFD700;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.3s, transform 0.3s;
-    }
-
-    .contact-form button:hover {
-      background: #e6c200;
-      transform: translateY(-3px);
-    }
-
-    /* Footer */
-    footer {
-      background: #111;
-      text-align: center;
-      padding: 25px;
-      font-size: 0.9rem;
-      color: #888;
-    }
-
-    /* Responsive */
-    @media(max-width: 768px){
-      header { padding: 15px 30px; }
-      .hero h2 { font-size: 2rem; }
-      .hero p { font-size: 1rem; }
-      .portfolio-item img { height: 180px; }
-    }
-
-    @media(max-width: 480px){
-      nav a { margin-left: 15px; font-size: 0.9rem; }
-      .circular-eagle { width: 180px; height: 180px; }
-      .circular-eagle img { width: 60%; height: 60%; }
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <h1>Circular Eagle</h1>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#portfolio">Portfolio</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
-
-  <!-- Hero Section -->
-  <div class="hero">
-    <div class="circular-eagle">
-      <img src="file_0000000037746243ac59fde9f02cee80.png" alt="Circular Eagle Logo">
-    </div>
-    <h2>Digital Innovator & eBook Creator</h2>
-    <p>Welcome to Circular Eagle—where creativity meets technology. Explore my world of eBooks, digital projects, and unique designs that inspire learning, growth, and transformation.</p>
-  </div>
-
-  <!-- About Section -->
-  <section id="about">
-    <h3>About Me</h3>
-    <p>I am a digital innovator and eBook creator, blending creativity with technology to deliver unique digital experiences. Circular Eagle symbolizes vision, precision, and innovation—values at the core of every project I undertake. My mission is to empower readers and learners through transformative content and interactive digital creations.</p>
-  </section>
-
-  <!-- Portfolio Section -->
-  <section id="portfolio">
-    <h3>Portfolio</h3>
-    <p>Discover some of my digital creations, eBooks, and innovative projects that showcase my skills and creativity.</p>
-    <div class="portfolio-grid">
-      <div class="portfolio-item">
-        <img src="ebook1.jpg" alt="eBook 1">
-        <h4>eBook Project 1</h4>
-      </div>
-      <div class="portfolio-item">
-        <img src="ebook2.jpg" alt="eBook 2">
-        <h4>eBook Project 2</h4>
-      </div>
-      <div class="portfolio-item">
-        <img src="ebook3.jpg" alt="eBook 3">
-        <h4>eBook Project 3</h4>
-      </div>
-      <div class="portfolio-item">
-        <img src="ebook4.jpg" alt="eBook 4">
-        <h4>eBook Project 4</h4>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section id="contact">
-    <h3>Contact Me</h3>
-    <p>Reach out to collaborate, share ideas, or inquire about my digital projects and eBooks.</p>
-    <form class="contact-form">
-      <input type="text" placeholder="Your Name" required>
-      <input type="email" placeholder="Your Email" required>
-      <textarea rows="5" placeholder="Your Message" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
-  </section>
-
-  <footer>
-    &copy; 2025 Circular Eagle. All Rights Reserved.
-  </footer>
-
-  <script>
-    // Scroll animation trigger
-    const sections = document.querySelectorAll('section, .hero h2, .hero p');
-
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting){
-          entry.target.style.animation = "fadeInUp 1s forwards";
-        }
-      });
-    }, { threshold: 0.2 });
-
-    sections.forEach(section => {
-      observer.observe(section);
-    });
-  </script>
 </body>
 </html>
