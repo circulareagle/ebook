@@ -185,6 +185,10 @@ body{
   display:inline-block; padding:8px 12px; border-radius:10px; background: linear-gradient(90deg,var(--gold-500), #f3d86a); color:#111; text-decoration:none; font-weight:700;
 }
 
+/* Form / inputs */
+.input{ display:block; width:100%; padding:10px 12px; border-radius:8px; border:1px solid var(--silver-300); font-size:0.95rem; background:transparent; color:var(--black); }
+.input:focus{ outline:3px solid rgba(212,175,55,0.14); outline-offset:2px; }
+
 /* FOOTER */
 .site-footer{ margin-top:26px; padding:22px 20px; border-top:1px solid rgba(11,11,12,0.04); background:transparent; }
 .footer-inner{ display:flex; gap:12px; align-items:center; justify-content:space-between; max-width:var(--max-width); margin:0 auto; padding:0 var(--pad); flex-wrap:wrap; color:var(--muted); }
@@ -204,7 +208,7 @@ a:focus, button:focus, .card-cta:focus { outline: 3px solid rgba(212,175,55,0.18
   .header-inner{ height:64px; }
 }
 @media (max-width: 820px){
-  .nav-list{ display:none; position:absolute; right:12px; top:64px; flex-direction:column; background:#fff; padding:10px; gap:8px; border-radius:10px; box-shadow:var(--shadow-2); min-width:200px; z-index:999; }
+  .nav-list{ display:none; position:absolute; right:12px; top:64px; flex-direction:column; background:#fff; padding:10px; gap:8px; border-radius:10px; box-shadow:var(--shadow-2); min-width:200px; z-index:130; }
   .nav-list.open{ display:flex; }
   .menu-btn{ display:flex; }
   .header-inner{ gap:8px; padding:0 12px; }
@@ -224,12 +228,12 @@ a:focus, button:focus, .card-cta:focus { outline: 3px solid rgba(212,175,55,0.18
 
 <!-- HEADER -->
 <header class="site-header" role="banner">
-  <div class="header-inner container" role="navigation">
+  <div class="header-inner container">
     <div class="brand">
       <img src="Dofoto_20251109_080359334.png" alt="Circular Eagle logo" class="logo-small" />
       <div class="site-title">Circular Eagle</div>
     </div>
-    <nav class="nav" aria-label="Primary">
+    <nav class="nav" aria-label="Primary" role="navigation">
       <ul class="nav-list" id="navList">
         <li><a href="#hero">Home</a></li>
         <li><a href="#ebooks">eBooks</a></li>
@@ -239,7 +243,7 @@ a:focus, button:focus, .card-cta:focus { outline: 3px solid rgba(212,175,55,0.18
         <li><a href="#news">Global News</a></li>
         <li><a href="#footer">Contact</a></li>
       </ul>
-      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" title="Open menu">
         <span class="bar" aria-hidden="true"></span>
         <span class="bar" aria-hidden="true"></span>
         <span class="bar" aria-hidden="true"></span>
@@ -380,9 +384,18 @@ a:focus, button:focus, .card-cta:focus { outline: 3px solid rgba(212,175,55,0.18
 
         <div style="flex:1; min-width:320px;">
           <form id="contactForm" class="form" aria-label="Contact form">
-            <div style="margin-bottom:8px;"><label for="name">Name</label><input id="name" class="input" name="name" required placeholder="Your full name" /></div>
-            <div style="margin-bottom:8px;"><label for="email">Email</label><input id="email" type="email" class="input" name="email" required placeholder="you@example.com" /></div>
-            <div style="margin-bottom:8px;"><label for="message">Message</label><textarea id="message" class="input" name="message" required placeholder="Brief description of what you need"></textarea></div>
+            <div style="margin-bottom:8px;">
+              <label for="name">Name</label>
+              <input id="name" class="input" name="name" required placeholder="Your full name" />
+            </div>
+            <div style="margin-bottom:8px;">
+              <label for="email">Email</label>
+              <input id="email" type="email" class="input" name="email" required placeholder="you@example.com" />
+            </div>
+            <div style="margin-bottom:8px;">
+              <label for="message">Message</label>
+              <textarea id="message" class="input" name="message" required placeholder="Brief description of what you need" rows="5"></textarea>
+            </div>
             <div style="display:flex; gap:10px; align-items:center;">
               <button type="submit" class="btn primary">Send Request</button>
               <div id="formStatus" aria-live="polite" style="color:var(--muted); font-size:0.95rem;"></div>
@@ -409,17 +422,66 @@ a:focus, button:focus, .card-cta:focus { outline: 3px solid rgba(212,175,55,0.18
   const menuBtn = document.getElementById('menuBtn');
   const navList = document.getElementById('navList');
   if(!menuBtn || !navList) return;
+
   function toggleMenu(open){
-    const willOpen = typeof open==='boolean'?open:!navList.classList.contains('open');
+    const willOpen = typeof open === 'boolean' ? open : !navList.classList.contains('open');
     navList.classList.toggle('open', willOpen);
-    menuBtn.setAttribute('aria-expanded', willOpen?'true':'false');
+    menuBtn.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
   }
-  menuBtn.addEventListener('click', e=>{ e.stopPropagation(); toggleMenu(); });
-  document.addEventListener('click', e=>{ if(!navList.contains(e.target)&&!menuBtn.contains(e.target)) toggleMenu(false); });
-  document.addEventListener('keydown', e=>{ if(e.key==='Escape') toggleMenu(false); });
-  navList.addEventListener('click', e=>{ if(e.targelt.tagName.toLowerCase()==='a') toggleMenu(false); });
+
+  menuBtn.addEventListener('click', e => { e.stopPropagation(); toggleMenu(); });
+
+  // allow Enter / Space to toggle the menu for keyboard users
+  menuBtn.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      toggleMenu();
+    }
+  });
+
+  document.addEventListener('click', e => {
+    if (!navList.contains(e.target) && !menuBtn.contains(e.target)) toggleMenu(false);
+  });
+
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') toggleMenu(false); });
+
+  // close menu when a link inside is activated (handles clicks and keyboard activation)
+  navList.addEventListener('click', e => {
+    if (e.target.closest && e.target.closest('a')) toggleMenu(false);
+  });
+
+  // reveal cards on scroll using IntersectionObserver
+  const cards = document.querySelectorAll('.card');
+  if ('IntersectionObserver' in window && cards.length) {
+    const io = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    cards.forEach(card => io.observe(card));
+  } else {
+    // fallback: show all
+    cards.forEach(card => card.classList.add('revealed'));
+  }
+
+  // basic contact form handling (no backend here) - show friendly UX
+  const form = document.getElementById('contactForm');
+  const status = document.getElementById('formStatus');
+  if (form && status) {
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      status.textContent = 'Sending…';
+      // Simulate send; replace with fetch() to your API when available
+      setTimeout(() => {
+        status.textContent = 'Thanks — we will get back to you soon.';
+        form.reset();
+      }, 800);
+    });
+  }
 })();
 </script>
 </body>
-</html>
-}
+   </html>
