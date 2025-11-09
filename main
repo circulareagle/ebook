@@ -1,0 +1,248 @@
+import React, { useState, useEffect } from "react";
+
+// Circular Eagle - Starter React Single-File App // Usage: paste into a React project (Create React App / Vite / Next.js page) and // ensure TailwindCSS is configured. Replace placeholder API keys and endpoints.
+
+export default function CircularEagleApp() { const [cart, setCart] = useState([]); const [news, setNews] = useState([]); const [query, setQuery] = useState(""); const [showCheckout, setShowCheckout] = useState(false);
+
+// Mock products (eBooks) const products = [ { id: "fe1", title: "Finding the Right Customers", priceUSD: 2.5, description: "A practical guide for online business owners by Qoleed Alli.", fileUrl: "/downloads/finding-the-right-customers.pdf", // replace with real storage cover: "https://via.placeholder.com/300x180?text=Finding+the+Right+Customers", }, { id: "dm1", title: "Digital Funnels 101", priceUSD: 4.99, description: "Quick-start funnel blueprint for marketers.", fileUrl: "/downloads/digital-funnels-101.pdf", cover: "https://via.placeholder.com/300x180?text=Digital+Funnels+101", }, ];
+
+useEffect(() => { // Placeholder: fetch global news from a News API -> replace with your API key // Example: NewsAPI.org or other provider. Keep API key secret on server-side. async function fetchNews() { try { // NOTE: For security, do NOT put API keys in client-side code in production. // Implement a serverless / backend route to proxy requests and hide keys. // This sample uses a public demo endpoint or local mock. const res = await fetch("/api/news?limit=5"); if (res.ok) { const json = await res.json(); setNews(json.articles || []); } else { // fallback: mock news setNews([ { title: "Welcome to Circular Eagle News", source: { name: "Circular Eagle" }, url: "#", publishedAt: new Date().toISOString(), description: "Add a NewsAPI key to enable live global news." }, ]); } } catch (e) { setNews([ { title: "Welcome to Circular Eagle News", source: { name: "Circular Eagle" }, url: "#", publishedAt: new Date().toISOString(), description: "Add a NewsAPI key to enable live global news." }, ]); } } fetchNews(); }, []);
+
+function addToCart(product) { setCart((c) => { const found = c.find((p) => p.id === product.id); if (found) return c.map((p) => (p.id === product.id ? { ...p, qty: p.qty + 1 } : p)); return [...c, { ...product, qty: 1 }]; }); }
+
+function removeFromCart(productId) { setCart((c) => c.filter((p) => p.id !== productId)); }
+
+function cartTotal() { return cart.reduce((s, p) => s + p.priceUSD * p.qty, 0).toFixed(2); }
+
+async function checkout() { // TODO: Integrate Stripe Checkout or your preferred payments provider. // Recommended flow: // 1. Send cart items to your backend (/api/create-checkout-session) // 2. Backend creates a Stripe Checkout Session and returns the session URL // 3. Redirect user to session.url // For development, simply simulate success and provide download links after. setShowCheckout(true); }
+
+return ( <div className="min-h-screen bg-gray-50 text-gray-800"> <header className="bg-white shadow"> <div className="max-w-6xl mx-auto px-5 py-4 flex items-center justify-between"> <div className="flex items-center gap-3"> <div className="w-10 h-10 rounded-full bg-gradient-to-r from-indigo-600 to-cyan-500 flex items-center justify-center text-white font-bold">CE</div> <div> <h1 className="font-bold text-lg">Circular Eagle</h1> <p className="text-sm text-gray-500">Digital marketing ebooks & business resources</p> </div> </div>
+
+<nav className="flex items-center gap-4">
+        <a href="#shop" className="hover:underline">Shop</a>
+        <a href="#blog" className="hover:underline">Articles</a>
+        <a href="#courses" className="hover:underline">Courses</a>
+        <a href="#consultancy" className="hover:underline">Consultancy</a>
+        <a href="#news" className="hover:underline">Global News</a>
+        <button onClick={() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })} className="px-3 py-1 border rounded">Contact</button>
+        <div className="relative">
+          <button className="px-3 py-1 bg-indigo-600 text-white rounded" onClick={() => setShowCheckout(true)}>Cart ({cart.length})</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main className="max-w-6xl mx-auto p-5">
+    {/* Hero */}
+    <section className="grid md:grid-cols-2 gap-6 items-center mt-6">
+      <div>
+        <h2 className="text-3xl font-extrabold">Build customers who stick — not just clicks.</h2>
+        <p className="mt-3 text-gray-600">Practical guides, online courses, and consultancy to help online business owners find the right customers and scale responsibly.</p>
+        <div className="mt-4 flex gap-3">
+          <a href="#shop" className="px-4 py-2 bg-indigo-600 text-white rounded">Shop eBooks</a>
+          <a href="#courses" className="px-4 py-2 border rounded">Explore Courses</a>
+        </div>
+        <div className="mt-6">
+          <label className="block text-sm font-medium text-gray-700">Search articles & news</label>
+          <div className="mt-1 flex">
+            <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search..." className="flex-1 p-2 border rounded-l" />
+            <button onClick={() => window.alert('Use the search box to filter articles — to be implemented server-side for full-text search.')} className="px-3 border rounded-r">Search</button>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <img src="https://via.placeholder.com/640x360?text=Circular+Eagle" alt="Circular Eagle" className="rounded shadow" />
+      </div>
+    </section>
+
+    {/* Shop */}
+    <section id="shop" className="mt-12">
+      <h3 className="text-2xl font-bold">Shop — eBooks</h3>
+      <p className="text-gray-600 mt-1">Buy and instantly download practical guides.</p>
+
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+        {products.map((p) => (
+          <article key={p.id} className="bg-white rounded shadow p-4 flex flex-col">
+            <img src={p.cover} alt={p.title} className="h-40 object-cover rounded" />
+            <h4 className="mt-3 font-semibold">{p.title}</h4>
+            <p className="text-sm text-gray-600 mt-1 flex-1">{p.description}</p>
+            <div className="mt-3 flex items-center justify-between">
+              <div className="font-bold">${p.priceUSD}</div>
+              <div className="flex gap-2">
+                <button onClick={() => addToCart(p)} className="px-3 py-1 border rounded">Add to Cart</button>
+                <a href={p.fileUrl} download className="px-3 py-1 bg-gray-200 rounded text-sm">Preview</a>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    {/* Articles / Blog */}
+    <section id="blog" className="mt-12">
+      <h3 className="text-2xl font-bold">Articles & Insights</h3>
+      <p className="text-gray-600 mt-1">Short reads on customer acquisition, funnels, and growth.</p>
+
+      {/* In a production site, store posts in markdown and render via a CMS or static generation */}
+      <div className="mt-4 grid md:grid-cols-2 gap-4">
+        <article className="bg-white rounded shadow p-4">
+          <h4 className="font-semibold">How to Find Customers That Pay</h4>
+          <p className="text-sm text-gray-600 mt-1">A short primer on targeting and messaging. <a href="#" className="text-indigo-600">Read more →</a></p>
+        </article>
+        <article className="bg-white rounded shadow p-4">
+          <h4 className="font-semibold">Simple Funnels for Small Budgets</h4>
+          <p className="text-sm text-gray-600 mt-1">Practical ideas you can test this week. <a href="#" className="text-indigo-600">Read more →</a></p>
+        </article>
+      </div>
+    </section>
+
+    {/* Courses */}
+    <section id="courses" className="mt-12">
+      <h3 className="text-2xl font-bold">Courses</h3>
+      <p className="text-gray-600 mt-1">Self-paced courses and cohorts to level up your marketing.</p>
+
+      <div className="mt-4 grid md:grid-cols-2 gap-4">
+        <div className="bg-white rounded shadow p-4">
+          <h4 className="font-semibold">Customer Acquisition Bootcamp</h4>
+          <p className="text-sm text-gray-600 mt-1">4-week cohort with live Q&A. <a href="#" className="text-indigo-600">Enroll</a></p>
+        </div>
+        <div className="bg-white rounded shadow p-4">
+          <h4 className="font-semibold">Ads & Funnels Mini-Course</h4>
+          <p className="text-sm text-gray-600 mt-1">Self-paced lessons and templates. <a href="#" className="text-indigo-600">Start now</a></p>
+        </div>
+      </div>
+    </section>
+
+    {/* Consultancy */}
+    <section id="consultancy" className="mt-12">
+      <h3 className="text-2xl font-bold">Consultancy & Coaching</h3>
+      <p className="text-gray-600 mt-1">One-on-one strategy calls, audits, and retained advisory.</p>
+
+      <div className="mt-4 bg-white rounded shadow p-4">
+        <form onSubmit={(e) => { e.preventDefault(); window.alert('Thanks — your consultancy request was submitted (demo).'); }}>
+          <div className="grid md:grid-cols-2 gap-3">
+            <input required placeholder="Full name" className="p-2 border rounded" />
+            <input required type="email" placeholder="Email address" className="p-2 border rounded" />
+          </div>
+          <textarea required placeholder="Brief about your business & goals" className="w-full mt-3 p-2 border rounded" rows={4}></textarea>
+          <div className="mt-3 flex gap-3">
+            <button type="submit" className="px-4 py-2 bg-indigo-600 text-white rounded">Request a call</button>
+            <a href="mailto:hello@circulareagle.com" className="px-4 py-2 border rounded">Email us</a>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    {/* Global News */}
+    <section id="news" className="mt-12">
+      <h3 className="text-2xl font-bold">Global News</h3>
+      <p className="text-gray-600 mt-1">Curated headlines — powered by your chosen news API.</p>
+
+      <div className="mt-4 grid md:grid-cols-2 gap-4">
+        {news.map((n, i) => (
+          <article key={i} className="bg-white rounded shadow p-3">
+            <a href={n.url || '#'} target="_blank" rel="noreferrer" className="font-semibold hover:underline">{n.title}</a>
+            <div className="text-xs text-gray-500 mt-1">{n.source?.name} • {new Date(n.publishedAt).toLocaleString()}</div>
+            <p className="text-sm text-gray-600 mt-2">{n.description}</p>
+          </article>
+        ))}
+      </div>
+
+      <div className="mt-4 text-sm text-gray-500">Tip: Add server-side NewsAPI integration to avoid exposing API keys in client code.</div>
+    </section>
+
+    {/* Footer */}
+    <footer className="mt-12 border-t pt-6 pb-12 text-sm text-gray-600">
+      <div className="flex justify-between items-start max-w-6xl mx-auto px-5">
+        <div>
+          <div className="font-semibold">Circular Eagle</div>
+          <div className="mt-2">Digital marketing ebooks for online business owners.</div>
+        </div>
+        <div>
+          <div>© {new Date().getFullYear()} Circular Eagle</div>
+          <div className="mt-2">Built with ❤️ — replace with your socials</div>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  {/* Checkout Drawer / Modal (simple demo) */}
+  {showCheckout && (
+    <div className="fixed inset-0 bg-black/40 flex items-end md:items-center justify-center z-50">
+      <div className="bg-white w-full md:w-2/5 rounded-t-2xl md:rounded-xl p-6">
+        <div className="flex items-center justify-between">
+          <h4 className="font-bold">Cart ({cart.length})</h4>
+          <button onClick={() => setShowCheckout(false)} className="text-gray-500">Close</button>
+        </div>
+        <div className="mt-4">
+          {cart.length === 0 && <div className="text-gray-500">Your cart is empty.</div>}
+          {cart.map((p) => (
+            <div key={p.id} className="flex items-center gap-3 py-2 border-b">
+              <img src={p.cover} alt="cover" className="w-16 h-10 object-cover rounded" />
+              <div className="flex-1">
+                <div className="font-semibold">{p.title}</div>
+                <div className="text-sm text-gray-500">Qty: {p.qty}</div>
+              </div>
+              <div className="font-bold">${(p.priceUSD * p.qty).toFixed(2)}</div>
+              <button onClick={() => removeFromCart(p.id)} className="ml-3 text-sm text-red-500">Remove</button>
+            </div>
+          ))}
+        </div>
+        <div className="mt-4 flex items-center justify-between">
+          <div className="font-semibold">Total: ${cartTotal()}</div>
+          <div className="flex gap-2">
+            <button onClick={() => { setCart([]); window.alert('Cart cleared (demo).'); }} className="px-3 py-1 border rounded">Clear</button>
+            <button onClick={checkout} className="px-3 py-1 bg-indigo-600 text-white rounded">Checkout</button>
+          </div>
+        </div>
+
+        {/* After checkout in demo mode show download links */}
+        {showCheckout && cart.length > 0 && (
+          <div className="mt-4 bg-gray-50 p-3 rounded">
+            <div className="font-semibold">Demo post-checkout</div>
+            <div className="text-sm text-gray-600 mt-1">In production, redirect to payment provider. After successful payment the backend should email or provide secure download links.</div>
+            <div className="mt-2">
+              {cart.map((p) => (
+                <div key={p.id} className="flex items-center justify-between py-1">
+                  <div>{p.title}</div>
+                  <a href={p.fileUrl} download className="text-indigo-600">Download</a>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  )}
+</div>
+
+); }
+
+/* Recommended next steps (not in UI):
+
+1. Use Next.js for static generation and SEO. Put blog posts in /posts as markdown and use next-mdx or similar.
+
+
+2. Setup TailwindCSS and global layout. This single-file app uses Tailwind classes.
+
+
+3. Implement a backend (serverless function) to handle:
+
+Stripe checkout session creation (secrets kept server-side).
+
+NewsAPI proxy to fetch global headlines without exposing keys.
+
+Email/contact form handling (SendGrid, Mailgun, or SMTP).
+
+
+
+4. Store eBook files on a secure storage (S3, DigitalOcean Spaces, or Selar delivery links) and generate expiring download links after purchase.
+
+
+5. Add authentication if you want customer accounts and course access control (e.g., NextAuth.js).
+
+
+6. For production, add analytics, sitemap.xml, robots.txt, and proper SEO metadata. */
+
+
