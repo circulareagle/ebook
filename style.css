@@ -1,8 +1,11 @@
+/* ==============================
+   Root Variables
+============================== */
 :root {
-  --primary-gradient: linear-gradient(135deg, #6a11cb, #2575fc); /* purple-blue gradient */
-  --secondary-gradient: linear-gradient(135deg, #ff9966, #ff5e62); /* orange-red gradient */
-  --bg: #fefefe;        /* light overall background */
-  --card-bg: #ffffffcc;  /* slightly transparent white for cards */
+  --primary-gradient: linear-gradient(135deg, #6a11cb, #2575fc); /* Purple-Blue Gradient */
+  --secondary-gradient: linear-gradient(135deg, #ff9966, #ff5e62); /* Orange-Red Gradient */
+  --bg: #fefefe;        /* Light main background */
+  --card-bg: #ffffffcc;  /* Slightly transparent white for cards */
   --shadow-light: rgba(0,0,0,0.08);
   --shadow-medium: rgba(0,0,0,0.15);
   --radius: 16px;
@@ -11,84 +14,43 @@
 }
 
 /* ==============================
-   Body Background
+   Global Styles
 ============================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-  background: linear-gradient(to bottom right, #fefefe, #e6e6f0);
   font-family: var(--font-main);
+  background: linear-gradient(to bottom right, #fefefe, #e6e6f0);
   color: #222;
   line-height: 1.6;
+  scroll-behavior: smooth;
 }
 
 /* ==============================
-   Hero Section with Gradient
+   Top Rotating Logo
 ============================== */
-.hero {
+.top-banner {
   text-align: center;
-  padding: 80px 20px;
-  border-radius: var(--radius);
-  margin: 30px auto;
-  max-width: 1100px;
-  background: var(--primary-gradient);
-  color: #fff;
-  box-shadow: 0 10px 30px var(--shadow-light);
+  padding: 30px 0;
+  background: linear-gradient(to bottom, #fff8f0, #fff);
 }
 
-/* ==============================
-   Section Styling with Subtle Gradient
-============================== */
-section {
-  background: var(--card-bg);
-  padding: 70px 20px;
-  margin: 40px auto;
-  max-width: 1100px;
-  border-radius: var(--radius);
-  box-shadow: 0 10px 25px var(--shadow-light);
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.top-banner .circular-image {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  border: 5px solid #2575fc;
+  animation: spin 10s linear infinite;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
 }
 
-section:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 35px var(--shadow-medium);
-}
-
-/* Section image with subtle overlay effect */
-section img.section-image {
-  width: 100%;
-  max-width: 500px;
-  height: auto;
-  border-radius: var(--radius);
-  margin: 0 auto 25px auto;
-  display: block;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-  transition: transform 0.4s ease, filter 0.3s ease;
-}
-
-section img.section-image:hover {
-  transform: scale(1.05);
-  filter: brightness(1.05);
-}
-
-/* ==============================
-   Buttons with Gradient
-============================== */
-button {
-  background: var(--secondary-gradient);
-  color: #fff;
-  padding: 14px 28px;
-  font-size: 1.1rem;
-  font-weight: 600;
-  border: none;
-  border-radius: var(--radius);
-  cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 5px 15px var(--shadow-light);
-}
-
-button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 25px var(--shadow-medium);
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 /* ==============================
@@ -107,6 +69,182 @@ header {
 
 header h1 {
   font-family: var(--font-heading);
+  font-size: 2.8rem;
+  color: #6a11cb;
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+}
+
+nav a {
+  margin: 0 18px;
+  text-decoration: none;
+  font-weight: 600;
+  color: #222;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+nav a:hover {
+  background: var(--secondary-gradient);
+  color: #fff;
+}
+
+/* ==============================
+   Hero Section
+============================== */
+.hero {
+  text-align: center;
+  padding: 80px 20px;
+  border-radius: var(--radius);
+  margin: 30px auto;
+  max-width: 1100px;
+  background: var(--primary-gradient);
+  color: #fff;
+  box-shadow: 0 10px 30px var(--shadow-light);
+  transition: transform 0.3s ease;
+}
+
+.hero:hover {
+  transform: translateY(-5px);
+}
+
+.hero h2 {
+  font-family: var(--font-heading);
+  font-size: 2.4rem;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  max-width: 750px;
+  margin: 0 auto 25px auto;
+}
+
+/* ==============================
+   Section Styling (Cards)
+============================== */
+section {
+  background: var(--card-bg);
+  padding: 70px 20px;
+  margin: 40px auto;
+  max-width: 1100px;
+  border-radius: var(--radius);
+  box-shadow: 0 10px 25px var(--shadow-light);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px var(--shadow-medium);
+}
+
+.card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.card {
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: 0 8px 20px var(--shadow-light);
+  padding: 20px;
+  max-width: 300px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px var(--shadow-medium);
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  margin-bottom: 15px;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.card img:hover {
+  transform: scale(1.05);
+  filter: brightness(1.05);
+}
+
+.card h3 {
+  color: #2575fc;
+  margin-bottom: 10px;
+  font-size: 1.3rem;
+}
+
+.card p {
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+/* ==============================
+   Buttons
+============================== */
+button {
+  background: var(--secondary-gradient);
+  color: #fff;
+  padding: 12px 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 5px 15px var(--shadow-light);
+}
+
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px var(--shadow-medium);
+}
+
+/* ==============================
+   Footer
+============================== */
+footer {
+  background: #f0f0f5;
+  padding: 35px 20px;
+  text-align: center;
+  color: #555;
+  border-top: 1px solid #ccc;
+}
+
+footer a {
+  color: #2575fc;
+  text-decoration: none;
+  margin: 0 10px;
+  font-weight: 600;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* ==============================
+   Responsive Layout
+============================== */
+@media (max-width: 768px) {
+  .card-grid {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  nav a {
+    display: block;
+    margin: 10px 0;
+  }
+}  font-family: var(--font-heading);
   font-size: 2.8rem;
   color: var(--primary-gradient);
   margin-bottom: 12px;
