@@ -1,191 +1,314 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Circular Eagle | Digital Marketing Hub</title>
-<style>
-/* === GLOBAL STYLES === */
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-body { line-height: 1.6; background: #fff; color: #222; scroll-behavior: smooth; }
-a { text-decoration: none; }
-.container { width: 90%; max-width: 1200px; margin: auto; }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Bookstore — Circular Eagle (Business · Finance · Side‑Hustle)</title>
+  <meta name="description" content="Circular Eagle bookstore — a curated collection of practical ebooks for business, finance and side‑hustles. Click any listing to view purchase options on partner stores." />
+  <style>
+    /* Palette: White + Black + Gold */
+    :root{--bg:#ffffff;--text:#0b0b0b;--muted:#6b6b6b;--gold:#c59a2a;--accent:#0b0b0b;--card:#fff;--glass:rgba(11,11,11,0.06);--maxw:1200px}
+    *{box-sizing:border-box}
+    body{font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial; margin:0;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:var(--maxw);margin:28px auto;padding:0 20px}
 
-/* === HEADER === */
-header { position: fixed; top: 0; width: 100%; background: #fff; box-shadow: 0 2px 6px rgba(0,0,0,0.1); z-index: 1000; }
-.header-container { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; }
-.logo { font-size: 1.6rem; font-weight: 700; background: linear-gradient(45deg, #ff7a00, #ff2d55); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-nav a { margin-left: 1rem; font-weight: 500; color: #333; transition: 0.3s; }
-nav a:hover { color: #ff2d55; }
-nav .btn { padding: 0.6rem 1rem; border-radius: 30px; background: linear-gradient(45deg, #ff7a00, #ff2d55); color: #fff; transition: 0.3s; }
-nav .btn:hover { opacity: 0.85; }
+    /* Header */
+    header{display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,#111,#333);display:flex;align-items:center;justify-content:center;color:var(--gold);font-weight:800}
+    h1{font-size:20px;margin:0}
+    .tag{color:var(--muted);font-size:13px;margin-top:4px}
 
-/* === HERO === */
-.hero { background: linear-gradient(135deg, #ff7a00, #ff2d55); color: #fff; text-align: center; padding: 10rem 1rem 8rem; margin-top: 70px; }
-.hero h2 { font-size: 2.8rem; margin-bottom: 1rem; }
-.hero p { font-size: 1.2rem; margin-bottom: 2rem; }
-.btn-primary { background: #fff; color: #ff2d55; padding: 0.9rem 2rem; border-radius: 50px; font-weight: 600; transition: 0.3s; }
-.btn-primary:hover { background: #ffe5e9; transform: translateY(-2px); }
+    /* search & nav */
+    .controls{display:flex;gap:12px;align-items:center}
+    .search{display:flex;align-items:center;gap:8px;border:1px solid #eee;padding:8px 10px;border-radius:10px;min-width:320px}
+    .search input{border:0;outline:0;font-size:14px}
+    .btn{background:var(--text);color:white;padding:10px 14px;border-radius:10px;border:0;cursor:pointer;font-weight:600}
+    .btn.ghost{background:transparent;color:var(--text);border:1px solid #e8e8e8}
 
-/* === SECTIONS === */
-section { padding: 5rem 0; }
-section h3 { font-size: 2rem; margin-bottom: 2rem; text-align: center; color: #ff2d55; }
+    /* hero */
+    .hero{display:grid;grid-template-columns:1fr 360px;gap:20px;margin-top:18px;align-items:center}
+    .hero-card{background:#fff;border-radius:14px;padding:28px;box-shadow:0 8px 30px rgba(11,11,11,0.04)}
+    .hero h2{margin:0 0 8px;font-size:24px}
+    .hero p{margin:0 0 16px;color:var(--muted)}
 
-/* Shop */
-.products { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; }
-.product { background: #fff; padding: 1.5rem; border-radius: 15px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.1); width: 260px; transition: 0.3s; }
-.product img { width: 100%; height: 180px; object-fit: cover; border-radius: 10px; margin-bottom: 1rem; }
-.product h4 { margin-bottom: 0.5rem; }
-.product p { font-size: 0.9rem; margin-bottom: 1rem; color: #555; }
-.product a.btn { display: inline-block; margin-top: 0.5rem; padding: 0.6rem 1rem; background: linear-gradient(45deg, #ff7a00, #ff2d55); color: #fff; border-radius: 30px; transition: 0.3s; }
-.product a.btn:hover { opacity: 0.85; }
+    /* sidebar quick actions */
+    .store-actions{display:flex;gap:8px}
 
-/* Articles */
-.articles { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; }
-.article { background: #fff; padding: 1.5rem; border-radius: 15px; width: 300px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-.article h4 { margin-bottom: 0.5rem; color: #ff2d55; }
-.article p { font-size: 0.9rem; color: #555; }
+    /* layout */
+    .layout{display:grid;grid-template-columns:1fr 320px;gap:24px;margin-top:22px}
 
-/* Courses */
-.courses-list { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; }
-.course { background: #fff; padding: 1.5rem; border-radius: 15px; text-align: center; width: 280px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-.course h4 { margin-bottom: 0.5rem; color: #ff2d55; }
-.course p { font-size: 0.9rem; color: #555; margin-bottom: 1rem; }
+    /* filters */
+    .filters{display:flex;gap:8px;flex-wrap:wrap}
+    .select, .filter-btn{padding:8px 10px;border-radius:8px;border:1px solid #eee;background:#fff}
 
-/* Consultancy */
-.consultancy form { display: flex; flex-direction: column; gap: 1rem; max-width: 400px; margin: auto; }
-.consultancy input, .consultancy textarea, .consultancy button { padding: 0.8rem; border-radius: 10px; border: 1px solid #ccc; }
-.consultancy button { background: linear-gradient(45deg, #ff7a00, #ff2d55); color: #fff; font-weight: 600; border: none; cursor: pointer; transition: 0.3s; }
-.consultancy button:hover { opacity: 0.85; }
+    /* grid */
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
+    .book{background:var(--card);border-radius:12px;padding:14px;border:1px solid #f0f0f0;display:flex;flex-direction:column;gap:10px}
+    .cover{height:140px;border-radius:8px;background:linear-gradient(135deg,#f3f4f6,#e6e8ea);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:20px;color:#222}
+    .book h3{margin:0;font-size:15px}
+    .meta{font-size:13px;color:var(--muted)}
+    .price{font-weight:700}
+    .actions{display:flex;gap:8px;margin-top:auto}
+    .badge{background:var(--gold);color:#111;padding:6px 8px;border-radius:8px;font-weight:700;font-size:12px}
 
-/* News */
-#news-feed { max-width: 800px; margin: auto; text-align: center; }
+    /* sidebar */
+    aside{position:relative}
+    .panel{background:#fff;border-radius:12px;padding:14px;border:1px solid #f0f0f0}
+    .subscribe input{width:100%;padding:10px;border-radius:8px;border:1px solid #eee;margin-bottom:8px}
 
-/* Footer */
-footer { background: #111; color: #bbb; text-align: center; padding: 2rem 0; }
-footer span { color: #ff7a00; }
+    /* sections */
+    section h4{margin:0 0 8px}
+    .row{display:flex;gap:10px;align-items:center}
 
-/* Responsive */
-@media(max-width:768px){
-  .header-container { flex-direction: column; }
-  nav { margin-top: 0.5rem; display: flex; flex-wrap: wrap; justify-content: center; }
-  nav a { margin: 0.5rem; }
-  .hero h2 { font-size: 2rem; }
-  .hero p { font-size: 1rem; }
-  .products, .articles, .courses-list { flex-direction: column; align-items: center; }
-}
-</style>
+    /* testimonials */
+    .test{background:#f9f9f9;border-radius:10px;padding:12px;margin-bottom:8px}
+
+    /* faq */
+    .faq-item{border-bottom:1px solid #f2f2f2;padding:10px 0}
+
+    /* modal */
+    .modal{position:fixed;left:0;top:0;width:100%;height:100%;display:none;align-items:center;justify-content:center;background:rgba(11,11,11,0.5);padding:20px}
+    .modal.open{display:flex}
+    .modal .box{background:#fff;border-radius:12px;padding:18px;max-width:760px;width:100%;}
+
+    footer{margin:48px 0 80px;color:var(--muted);font-size:13px;text-align:center}
+
+    @media (max-width:980px){.hero{grid-template-columns:1fr}.layout{grid-template-columns:1fr}.search{min-width:200px}.controls{flex-direction:column;align-items:flex-end}}
+  </style>
 </head>
 <body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">CE</div>
+        <div>
+          <h1>Circular Eagle Bookstore</h1>
+          <div class="tag">Curated ebooks for business, finance, and side‑hustles</div>
+        </div>
+      </div>
 
-<!-- HEADER -->
-<header>
-  <div class="header-container container">
-    <div class="logo">Circular Eagle</div>
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#shop">Shop</a>
-      <a href="#articles">Articles</a>
-      <a href="#courses">Courses</a>
-      <a href="#consultancy">Consultancy</a>
-      <a href="#news">News</a>
-      <a href="#contact" class="btn">Contact</a>
-    </nav>
+      <div class="controls">
+        <div class="search" role="search">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M21 21l-4.35-4.35" stroke="#bbb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="11" cy="11" r="6" stroke="#bbb" stroke-width="2"/></svg>
+          <input id="q" placeholder="Search ebooks, authors, topics" aria-label="Search ebooks">
+        </div>
+        <button class="btn" onclick="scrollToSection('grid')">Browse</button>
+      </div>
+    </header>
+
+    <main>
+      <div class="hero">
+        <div class="hero-card">
+          <h2>Find practical ebooks that move you forward</h2>
+          <p>Curated selection of ebooks focused on business, finance and side‑hustles. Click any listing to view purchase options on partner stores.</p>
+          <div class="row" style="margin-top:12px">
+            <div class="select">Category: Business / Finance / Side‑Hustle</div>
+            <div style="flex:1"></div>
+            <div class="store-actions">
+              <button class="btn" onclick="scrollToSection('grid')">Explore ebooks</button>
+              <button class="btn ghost" onclick="openRequest()">Request a book</button>
+            </div>
+          </div>
+        </div>
+
+        <aside>
+          <div class="panel">
+            <h4>Filters</h4>
+            <div style="margin:8px 0" class="filters">
+              <select id="catFilter" class="select">
+                <option value="all">All categories</option>
+                <option value="business">Business</option>
+                <option value="finance">Finance</option>
+                <option value="sidehustle">Side‑Hustle</option>
+              </select>
+              <select id="ratingFilter" class="select">
+                <option value="any">Any rating</option>
+                <option value="4">4★ & up</option>
+                <option value="4.5">4.5★ & up</option>
+              </select>
+            </div>
+
+            <h4 style="margin-top:12px">Quick Links</h4>
+            <a href="#trending">Trending</a>
+            <a href="#new">New arrivals</a>
+            <a href="#faq">FAQ</a>
+
+            <hr style="margin:12px 0;border:none;border-top:1px solid #f3f3f3">
+            <div class="subscribe">
+              <h4>Newsletter</h4>
+              <p style="margin:6px 0;color:var(--muted)">Get new releases and curated picks.</p>
+              <form onsubmit="event.preventDefault();alert('Subscribed')">
+                <input type="email" placeholder="you@example.com" required>
+                <button class="btn" style="width:100%;margin-top:8px">Subscribe</button>
+              </form>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <div class="layout" style="margin-top:18px">
+        <section>
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <h4>Featured eBooks</h4>
+            <div style="color:var(--muted);font-size:13px">Showing curated picks for this category</div>
+          </div>
+
+          <div id="grid" class="grid" style="margin-top:12px">
+            <!-- book cards inserted here -->
+          </div>
+
+          <section id="trending" style="margin-top:22px">
+            <h4>Trending & New Arrivals</h4>
+            <div id="trendingRow" style="display:flex;gap:12px;overflow:auto;padding-top:8px">
+              <!-- small cards -->
+            </div>
+          </section>
+
+          <section id="reviews" style="margin-top:22px">
+            <h4>Ratings & Reviews</h4>
+            <div id="reviewsList">
+              <!-- reviews -->
+            </div>
+          </section>
+
+        </section>
+
+        <aside>
+          <div class="panel">
+            <h4>Testimonials</h4>
+            <div class="test">“These ebooks gave me clear steps to launch my side‑project.” — A. Nweke</div>
+            <div class="test">“Straight to the point and useful templates.” — F. Musa</div>
+
+            <h4 style="margin-top:12px">Request a Book</h4>
+            <p style="color:var(--muted);font-size:13px;margin:6px 0">Can't find a title? Suggest it and we'll list partner options.</p>
+            <button class="btn ghost" onclick="openRequest()">Request a book</button>
+
+            <h4 style="margin-top:12px">Cart</h4>
+            <p style="color:var(--muted);font-size:13px;margin:6px 0">Purchases happen on partner stores. Use the cart to collect links.</p>
+            <div id="cart" style="display:flex;flex-direction:column;gap:8px"></div>
+            <button class="btn" style="margin-top:8px" onclick="checkout()">Proceed to partner checkout</button>
+          </div>
+        </aside>
+      </div>
+
+      <section id="faq" style="margin-top:28px">
+        <h4>FAQ</h4>
+        <div class="faq-item"><strong>How do payments work?</strong><div style="color:var(--muted);margin-top:6px">Purchases are completed on partner stores. We link each ebook to its seller—click any listing to view purchase options.</div></div>
+        <div class="faq-item"><strong>Can I request a title?</strong><div style="color:var(--muted);margin-top:6px">Yes — use the request form and we'll try to add it to the catalogue with partner links.</div></div>
+        <div class="faq-item"><strong>Are these ebooks free?</strong><div style="color:var(--muted);margin-top:6px">Some partners offer free previews; pricing varies per seller.</div></div>
+      </section>
+
+    </main>
+
+    <footer>
+      © Circular Eagle — curated ebooks for practical growth. Links open partner stores for purchase.
+    </footer>
   </div>
-</header>
 
-<!-- HERO -->
-<section id="home" class="hero">
-  <h2>Helping You Grow Your Online Business</h2>
-  <p>Marketing insights, eBooks, courses, and consultancy for entrepreneurs worldwide.</p>
-  <a href="#shop" class="btn-primary">Explore eBooks</a>
-</section>
-
-<!-- SHOP -->
-<section id="shop">
-  <h3>Our eBooks</h3>
-  <div class="products container">
-    <div class="product">
-      <img src="images/book1.jpg" alt="Finding the Right Customers">
-      <h4>Finding the Right Customers</h4>
-      <p>A practical guide for online business owners by Qoleed Alli.</p>
-      <a href="https://selar.co/rightcustomers" target="_blank" class="btn">Buy on Selar</a>
-    </div>
-    <div class="product">
-      <img src="images/book2.jpg" alt="Digital Funnels 101">
-      <h4>Digital Funnels 101</h4>
-      <p>Learn how to convert clicks into loyal customers.</p>
-      <a href="#" class="btn">Coming Soon</a>
-    </div>
+  <!-- modal: view price / partner links -->
+  <div class="modal" id="modal">
+    <div class="box" id="modalBox"></div>
   </div>
-</section>
 
-<!-- ARTICLES -->
-<section id="articles">
-  <h3>Business & Marketing Articles</h3>
-  <div class="articles container">
-    <div class="article">
-      <h4>How to Find Your Target Customers</h4>
-      <p>Step-by-step guidance to identify and attract the right audience for your business.</p>
-    </div>
-    <div class="article">
-      <h4>Building Simple Funnels That Convert</h4>
-      <p>Learn how to structure marketing funnels that actually generate sales.</p>
-    </div>
-  </div>
-</section>
+  <script>
+    // Sample data — replace with your own or generate dynamically
+    const books = [
+      {id:1,title:'Finding the Right Customers',author:'Q. Alli',cat:'business',rating:4.6,excerpt:'Target customers who value your product. Templates included.',cover:'FR',badge:'Bestseller',links:[{store:'Selar',url:'https://selar.co/sample1'},{store:'Amazon',url:'https://amazon.example/sample1'}]},
+      {id:2,title:'Side‑Hustle Starter Kit',author:'A. Bello',cat:'sidehustle',rating:4.4,excerpt:'Turn small ideas into steady side income.',cover:'SH',badge:'New',links:[{store:'Selar',url:'https://selar.co/sample2'}]},
+      {id:3,title:'Budget to Grow',author:'L. Okoye',cat:'finance',rating:4.7,excerpt:'Budgeting and investing habits that move you forward.',cover:'BG',badge:'Editor\'s Pick',links:[{store:'Vendor',url:'https://vendor.example/sample3'}]},
+      {id:4,title:'Sell Without Ads',author:'M. Yusuf',cat:'business',rating:4.2,excerpt:'Low‑cost marketing strategies based on relationships.',cover:'SA',badge:'Popular',links:[{store:'Selar',url:'https://selar.co/sample4'}]},
+      {id:5,title:'Micro Business Tactics',author:'I. Ade',cat:'business',rating:4.1,excerpt:'Practical tactics for small ventures.',cover:'MB',badge:'',links:[{store:'Selar',url:'https://selar.co/sample5'}]}
+    ];
 
-<!-- COURSES -->
-<section id="courses">
-  <h3>Online Courses</h3>
-  <div class="courses-list container">
-    <div class="course">
-      <h4>Customer Acquisition Bootcamp</h4>
-      <p>4-week live coaching program to scale your digital business.</p>
-      <a href="#" class="btn">Enroll Now</a>
-    </div>
-    <div class="course">
-      <h4>Ads & Funnels Mini Course</h4>
-      <p>Learn to run low-cost ads that bring real buyers to your business.</p>
-      <a href="#" class="btn">Start Learning</a>
-    </div>
-  </div>
-</section>
+    const grid = document.getElementById('grid');
+    const trendingRow = document.getElementById('trendingRow');
+    const reviewsList = document.getElementById('reviewsList');
+    const cartEl = document.getElementById('cart');
 
-<!-- CONSULTANCY -->
-<section id="consultancy">
-  <h3>Consultancy & Coaching</h3>
-  <p style="text-align:center;">Book one-on-one sessions with our experts to improve your marketing strategy.</p>
-  <form>
-    <input type="text" placeholder="Your Name" required>
-    <input type="email" placeholder="Your Email" required>
-    <textarea placeholder="Tell us about your business goals" required></textarea>
-    <button type="submit">Request a Call</button>
-  </form>
-</section>
+    function renderBooks(list){
+      grid.innerHTML='';
+      list.forEach(b=>{
+        const el = document.createElement('article');
+        el.className='book';
+        el.innerHTML = `
+          <div class="cover">${b.cover}</div>
+          <h3>${b.title}</h3>
+          <div class="meta">${b.author} • <span class="rating">${b.rating}★</span></div>
+          <p class="meta">${b.excerpt}</p>
+          <div style="display:flex;gap:8px;align-items:center">
+            ${b.badge?`<span class="badge">${b.badge}</span>`:''}
+            <div style="flex:1"></div>
+            <button class="btn ghost" onclick="viewLinks(${b.id})">View options</button>
+            <button class="btn" onclick="addToCart(${b.id})">Add</button>
+          </div>
+        `;
+        grid.appendChild(el);
+      });
+    }
 
-<!-- NEWS -->
-<section id="news">
-  <h3>Global News</h3>
-  <div id="news-feed">
-    <p>Latest business news and updates will appear here.</p>
-  </div>
-</section>
+    function renderTrending(){
+      trendingRow.innerHTML='';
+      books.slice(0,4).forEach(b=>{
+        const el = document.createElement('div');
+        el.style.minWidth='220px';
+        el.style.background='#fff';
+        el.style.padding='10px';
+        el.style.borderRadius='10px';
+        el.style.border='1px solid #f2f2f2';
+        el.innerHTML = `<strong>${b.title}</strong><div style="color:var(--muted);font-size:13px">${b.author}</div>`;
+        trendingRow.appendChild(el);
+      });
+    }
 
-<!-- CONTACT / FOOTER -->
-<section id="contact">
-  <h3>Contact Us</h3>
-  <p style="text-align:center;">Email: <a href="mailto:hello@circulareagle.com">hello@circulareagle.com</a></p>
-  <p style="text-align:center;">Follow us on <a href="#">Twitter</a>, <a href="#">LinkedIn</a>, <a href="#">Instagram</a></p>
-</section>
+    function renderReviews(){
+      reviewsList.innerHTML='';
+      const sample = [
+        {user:'Chiamaka',text:'Clear templates and steps — helped me land clients.'},
+        {user:'Emeka',text:'Concise and practical. Worth the read.'}
+      ];
+      sample.forEach(r=>{
+        const d = document.createElement('div'); d.className='test'; d.innerHTML = `<strong>${r.user}</strong><div style="color:var(--muted);margin-top:6px">${r.text}</div>`; reviewsList.appendChild(d);
+      });
+    }
 
-<footer>
-  <p>© <span id="year"></span> Circular Eagle. All rights reserved.</p>
-</footer>
+    function viewLinks(id){
+      const b = books.find(x=>x.id===id);
+      const html = [`<h3 style="margin:0 0 8px">${b.title}</h3>`,`<div style="color:var(--muted);margin-bottom:12px">${b.author} • Rating: ${b.rating}★</div>`,`<p style="margin:0 0 12px">${b.excerpt}</p>`,`<div style="display:flex;flex-direction:column;gap:8px">`];
+      b.links.forEach(l=>{ html.push(`<a class="btn" style="display:inline-block;width:100%;text-align:left" href="${l.url}" target="_blank">Buy on ${l.store}</a>`); });
+      html.push(`<button class="btn ghost" onclick="closeModal()">Close</button>`);
+      document.getElementById('modalBox').innerHTML = html.join('');
+      document.getElementById('modal').classList.add('open');
+    }
 
-<script>
-document.getElementById('year').textContent = new Date().getFullYear();
-</script>
+    function closeModal(){ document.getElementById('modal').classList.remove('open'); }
+    document.getElementById('modal').addEventListener('click', (e)=>{ if(e.target.id==='modal') closeModal(); });
 
+    // cart collects partner links
+    let cart = [];
+    function addToCart(id){ const b = books.find(x=>x.id===id); if(!cart.find(x=>x.id===id)) cart.push(b); renderCart(); }
+    function renderCart(){ cartEl.innerHTML=''; cart.forEach(item=>{ const d = document.createElement('div'); d.style.display='flex'; d.style.justifyContent='space-between'; d.style.alignItems='center'; d.innerHTML = `<div style="font-size:13px">${item.title}</div><div><button class="btn ghost" onclick="removeFromCart(${item.id})">Remove</button></div>`; cartEl.appendChild(d); }); }
+    function removeFromCart(id){ cart = cart.filter(x=>x.id!==id); renderCart(); }
+    function checkout(){ if(cart.length===0){ alert('Your cart is empty'); return } const links = cart.map(c=>c.links[0].url); // open first partner links in new tabs
+      links.forEach(u=>window.open(u,'_blank')); }
+
+    // search & filters
+    document.getElementById('q').addEventListener('input', (e)=>{ const val = e.target.value.toLowerCase(); renderBooks(books.filter(b=> b.title.toLowerCase().includes(val) || b.author.toLowerCase().includes(val))); });
+    document.getElementById('catFilter').addEventListener('change', (e)=>{ const v=e.target.value; let list = books; if(v!=='all') list = books.filter(b=>b.cat===v); renderBooks(list);} );
+    document.getElementById('ratingFilter').addEventListener('change', (e)=>{ const v=parseFloat(e.target.value); let list = books; if(!isNaN(v)) list = books.filter(b=>b.rating>=v); renderBooks(list);} );
+
+    // request form modal
+    function openRequest(){ document.getElementById('modalBox').innerHTML = `<h3>Request a book</h3><form onsubmit="event.preventDefault();alert('Request sent')"><input name="title" placeholder="Book title" required style="width:100%;padding:10px;border:1px solid #eee;border-radius:8px;margin-bottom:8px"><input name="author" placeholder="Author (optional)" style="width:100%;padding:10px;border:1px solid #eee;border-radius:8px;margin-bottom:8px"><button class="btn" type="submit">Send request</button><button class="btn ghost" type="button" style="margin-left:8px" onclick="closeModal()">Cancel</button></form>`; document.getElementById('modal').classList.add('open'); }
+
+    function scrollToSection(id){ document.getElementById(id).scrollIntoView({behavior:'smooth'}); }
+
+    // initial render
+    renderBooks(books);
+    renderTrending();
+    renderReviews();
+  </script>
 </body>
 </html>
+
+
