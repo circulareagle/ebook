@@ -263,3 +263,173 @@ a:focus, button:focus, .card-cta:focus { outline: 3px solid rgba(212,175,55,0.18
     </div>
   </div>
 </section>
+
+
+   <!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Business · Finance · Side‑Hustle — Circular Eagle</title>
+  <meta name="description" content="Grow your income, make smarter financial decisions, and turn your side projects into real opportunities. Featured eBooks and courses for practical business growth." />
+  <style>
+    :root{
+      --bg:#0f1724; --card:#ffffff; --muted:#6b7280; --accent:#0ea5a4; --maxw:1100px;
+      --radius:12px; --container-pad:20px;
+    }
+    *{box-sizing:border-box}
+    body{font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial; margin:0; background:#f7fafc; color:#0f1724}
+    .wrap{max-width:var(--maxw); margin:28px auto; padding:0 var(--container-pad)}header{display:flex;align-items:center;justify-content:space-between; margin-bottom:22px}
+.brand{display:flex;gap:12px;align-items:center}
+.logo{width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,#0369a1,#06b6d4);display:flex;align-items:center;justify-content:center;color:white;font-weight:700}
+h1{font-size:20px;margin:0}
+p.lead{margin:6px 0 0;color:var(--muted);font-size:14px}
+
+.hero{background:linear-gradient(90deg, rgba(14,165,164,0.06), rgba(3,105,161,0.03)); border-radius:14px; padding:22px; display:grid; grid-template-columns:1fr 320px; gap:18px; align-items:center}
+.hero .caption{font-size:16px; margin:0 0 12px}
+.hero .cta{display:flex; gap:10px}
+.btn{background:var(--accent); border:none; color:white;padding:10px 14px;border-radius:10px; cursor:pointer;font-weight:600}
+.btn.ghost{background:transparent;color:var(--accent);border:1px solid rgba(14,165,164,0.12)}
+
+/* featured ebooks */
+.section{margin-top:22px}
+.section h2{font-size:18px;margin:0 0 8px}
+.section p.desc{color:var(--muted);margin:0 0 16px}
+
+.grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:14px}
+.card{background:var(--card); border-radius:12px; padding:14px; box-shadow:0 6px 18px rgba(12,18,28,0.06); display:flex; flex-direction:column; gap:10px}
+.card .meta{display:flex;align-items:center;gap:10px}
+.thumb{width:56px;height:72px;border-radius:6px;background:linear-gradient(135deg,#fde68a,#fb923c);display:flex;align-items:center;justify-content:center;font-weight:700;color:#1f2937}
+.title{font-weight:700;font-size:15px;margin:0}
+.excerpt{font-size:13px;color:var(--muted);margin:0}
+.card .actions{margin-top:auto;display:flex;gap:8px}
+.small{font-size:13px;padding:8px 10px;border-radius:8px}
+
+/* sidebar */
+.sidebar{background:linear-gradient(180deg,#fff, #fbfbfb);border-radius:12px;padding:14px}
+.sidebar h3{margin:0 0 8px;font-size:15px}
+.sidebar a{display:block;padding:8px 0;color:var(--accent);text-decoration:none}
+
+footer{margin:28px 0 60px;color:var(--muted);font-size:13px}
+
+/* modal */
+.modal{position:fixed;left:0;top:0;width:100%;height:100%;display:none;align-items:center;justify-content:center;background:rgba(6,8,12,0.45);padding:20px}
+.modal.open{display:flex}
+.modal .panel{background:white;border-radius:12px;max-width:760px;width:100%;padding:18px;max-height:90vh;overflow:auto}
+
+@media (max-width:820px){
+  .hero{grid-template-columns:1fr}
+  .hero .caption{order:2}
+  .hero .aside{order:1}
+}
+
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo">CE</div>
+        <div>
+          <h1>Circular Eagle — Business · Finance · Side‑Hustle</h1>
+          <p class="lead">Grow your income, make smarter financial decisions, and turn your side projects into real opportunities.</p>
+        </div>
+      </div>
+      <nav>
+        <button class="btn" onclick="location.href='#featured'">Explore eBooks</button>
+      </nav>
+    </header><section class="hero">
+  <div>
+    <h2 style="margin:0 0 8px">Featured eBooks</h2>
+    <p class="caption">Download guides that help you take real steps toward your goals.</p>
+
+    <div class="section" id="featured">
+      <div class="grid" id="ebookGrid">
+        <!-- cards injected by JS -->
+      </div>
+    </div>
+  </div>
+
+  <aside class="aside sidebar">
+    <h3>Quick Picks</h3>
+    <a href="#">Top sellers this month</a>
+    <a href="#">Free chapters</a>
+    <a href="#">How to choose an ebook</a>
+    <hr style="border:none;border-top:1px solid #eef2f7;margin:10px 0">
+    <h3>Subscribe</h3>
+    <p style="margin:6px 0;color:var(--muted);font-size:13px">Get new guides and updates in your inbox.</p>
+    <form id="subscribeForm" onsubmit="event.preventDefault();alert('Subscribed')">
+      <input name="email" type="email" placeholder="you@example.com" required style="width:100%;padding:10px;border-radius:8px;border:1px solid #e6eef6;margin-bottom:8px">
+      <button class="btn" style="width:100%">Subscribe</button>
+    </form>
+  </aside>
+</section>
+
+<section class="section">
+  <h2>Why these ebooks?</h2>
+  <p class="desc">Each ebook focuses on practical steps you can apply right away — strategies, templates, and checklists to support income growth and better money decisions.</p>
+</section>
+
+<footer>
+  © Circular Eagle — Content for business, finance, and side‑hustle growth.
+</footer>
+
+  </div>  <div class="modal" id="modal">
+    <div class="panel" id="modalPanel"></div>
+  </div>  <script>
+    const ebooks = [
+      {id:1,title:'Finding the Right Customers',author:'Q. Alli',excerpt:'Target customers who value your product — practical steps and templates.',pages:78,cta:'Download sample',color:'#fde68a'},
+      {id:2,title:'Side‑Hustle Starter Kit',author:'A. Bello',excerpt:'Turn small ideas into steady side income with this step‑by‑step guide.',pages:102,cta:'Get chapter',color:'#bfdbfe'},
+      {id:3,title:'Budget to Grow',author:'L. Okoye',excerpt:'Simple budgeting and investing habits that move you forward.',pages:64,cta:'Preview',color:'#bbf7d0'},
+      {id:4,title:'Sell Without Ads',author:'M. Yusuf',excerpt:'Low‑cost marketing strategies that rely on relationship and value.',pages:88,cta:'Read excerpt',color:'#ffd6e0'},
+    ];
+
+    const grid = document.getElementById('ebookGrid');
+    const modal = document.getElementById('modal');
+    const modalPanel = document.getElementById('modalPanel');
+
+    function makeCard(book){
+      const el = document.createElement('article');
+      el.className = 'card';
+      el.innerHTML = `
+        <div class="meta">
+          <div class="thumb" style="background:${book.color}">${book.title.split(' ').slice(0,2).map(w=>w[0]).join('')}</div>
+          <div>
+            <h3 class="title">${book.title}</h3>
+            <p class="excerpt">${book.author} • ${book.pages} pages</p>
+          </div>
+        </div>
+        <p class="excerpt">${book.excerpt}</p>
+        <div class="actions">
+          <button class="small btn" onclick="openPreview(${book.id})">${book.cta}</button>
+          <button class="small ghost" onclick="download(${book.id})">Buy eBook</button>
+        </div>
+      `;
+      return el;
+    }
+
+    function render(){
+      grid.innerHTML='';
+      ebooks.forEach(b=>grid.appendChild(makeCard(b)));
+    }
+
+    function openPreview(id){
+      const b = ebooks.find(x=>x.id===id);
+      modalPanel.innerHTML = `
+        <h2 style="margin:0 0 8px">${b.title}</h2>
+        <p style="color:${'var(--muted)'};margin:0 0 12px">${b.author} • ${b.pages} pages</p>
+        <p style="margin:0 0 12px">${b.excerpt} <br><br> This preview demonstrates the style and immediate value you can expect from the full ebook.</p>
+        <div style="display:flex;gap:8px;margin-top:12px"><button class="btn" onclick="download(${b.id})">Buy eBook</button><button class="btn ghost" onclick="closeModal()">Close</button></div>
+      `;
+      modal.classList.add('open');
+    }
+
+    function closeModal(){ modal.classList.remove('open'); }
+    modal.addEventListener('click', (e)=>{ if(e.target===modal) closeModal(); });
+
+    function download(id){ alert('This would start the purchase or download flow for ebook id: '+id); }
+
+    render();
+  </script></body>
+</html>
