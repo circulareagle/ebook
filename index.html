@@ -112,9 +112,21 @@ body{
 }
 .menu-btn .bar{
   display:block; width:22px; height:2px; background:var(--black); border-radius:2px;
-  transition: background 200ms ease, transform 200ms ease;
+  transition: all 200ms ease; 
 }
 .menu-btn[aria-expanded="true"] .bar{ background:var(--gold-500); }
+
+/* Mobile Menu X transition - FIX */
+.menu-btn[aria-expanded="true"] .bar:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+.menu-btn[aria-expanded="true"] .bar:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+.menu-btn[aria-expanded="true"] .bar:nth-child(2) {
+  opacity: 0;
+}
+
 
 /* HERO */
 .hero{
@@ -126,7 +138,8 @@ body{
 }
 .hero::before{
   content:""; position:absolute; inset:0;
-  background-image: url('images/hero-abstract.jpg');
+  /* NOTE: Using a placeholder image */
+  background-image: url('https://via.placeholder.com/1200x400/eeeeee/cccccc?text=Hero+Abstract+BG'); 
   background-size:cover; background-position:center;
   opacity:0.12; mix-blend-mode:overlay;
   filter: blur(0.6px) saturate(1.05);
@@ -169,6 +182,8 @@ body{
 .section .section-header{ display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:14px; }
 .section h2{ font-family:var(--ff-head); font-size:1.15rem; margin:0; color:var(--gold-700); }
 .section .lede{ color:var(--muted); margin-top:6px; font-size:0.96rem; }
+
+/* Cards Layout */
 .cards{ display:flex; gap:18px; flex-wrap:wrap; align-items:flex-start; }
 .card{
   background:var(--card); width:320px; border-radius:12px; padding:14px; box-shadow: var(--shadow-1);
@@ -177,25 +192,56 @@ body{
 }
 .card.revealed{ opacity:1; transform:translateY(0); }
 .card:hover{ transform: translateY(-9px); box-shadow: var(--shadow-2); }
-.card-img{ width:100%; height:180px; object-fit:cover; border-radius:10px; display:block; margin-bottom:12px; }
+.card-img{ width:100%; height:180px; object-fit:cover; border-radius:10px; display:block; margin-bottom:12px; background-color: #eee; }
 .card h3{ margin:0 0 8px; font-size:1.05rem; color:var(--gold-700); }
+.card .price{ font-weight:700; color:var(--black); margin:0 0 8px; } /* New Price Style */
 .card p{ margin:0 0 12px; color:var(--muted); font-size:0.95rem; }
 .card .card-actions{ display:flex; gap:10px; }
 .card .card-cta{
   display:inline-block; padding:8px 12px; border-radius:10px; background: linear-gradient(90deg,var(--gold-500), #f3d86a); color:#111; text-decoration:none; font-weight:700;
 }
 
+/* New Consultancy/Form Layout - CLEANED INLINE STYLES */
+.consultancy-grid {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+.consultancy-grid > div {
+  flex: 1; 
+  min-width: 260px;
+}
+.form-group {
+  margin-bottom: 8px;
+}
+.form-group label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.form-actions {
+  display: flex; 
+  gap: 10px; 
+  align-items: center;
+  margin-top: 12px;
+}
+
 /* Form / inputs */
 .input{ display:block; width:100%; padding:10px 12px; border-radius:8px; border:1px solid var(--silver-300); font-size:0.95rem; background:transparent; color:var(--black); }
 .input:focus{ outline:3px solid rgba(212,175,55,0.14); outline-offset:2px; }
+textarea.input { font-family: var(--ff-base); }
+
 
 /* FOOTER */
 .site-footer{ margin-top:26px; padding:22px 20px; border-top:1px solid rgba(11,11,12,0.04); background:transparent; }
-.footer-inner{ display:flex; gap:12px; align-items:center; justify-content:space-between; max-width:var(--max-width); margin:0 auto; padding:0 var(--pad); flex-wrap:wrap; color:var(--muted); }
+.footer-inner{ display:flex; gap:12px; align-items:center; justify-content:space-between; max-width:var(--max-width); margin:0 auto; padding:0 var(--pad); flex-wrap:wrap; color:var(--muted); font-size: 0.9rem; }
 .footer-inner a{ color:var(--gold-700); text-decoration:none; font-weight:700; }
 
 /* Accessibility */
-a:focus, button:focus, .card-cta:focus { outline: 3px solid rgba(212,175,55,0.18); outline-offset:3px; }
+a:focus, button:focus, .card-cta:focus, .input:focus { outline: 3px solid rgba(212,175,55,0.18); outline-offset:3px; }
 @keyframes logo-spin{ from{transform:rotate(0)} to{transform:rotate(360deg)} }
 
 /* Responsive */
@@ -206,9 +252,23 @@ a:focus, button:focus, .card-cta:focus { outline: 3px solid rgba(212,175,55,0.18
   .cards{ justify-content:center; }
   .card{ width:100%; max-width:520px; }
   .header-inner{ height:64px; }
+  .consultancy-grid > div { min-width: 100%; } /* Stack elements on smaller screens */
 }
 @media (max-width: 820px){
-  .nav-list{ display:none; position:absolute; right:12px; top:64px; flex-direction:column; background:#fff; padding:10px; gap:8px; border-radius:10px; box-shadow:var(--shadow-2); min-width:200px; z-index:130; }
+  .nav-list{ 
+    display:none; 
+    position:absolute; 
+    right:12px; 
+    top:64px; 
+    flex-direction:column; 
+    background:#fff; 
+    padding:10px; 
+    gap:8px; 
+    border-radius:10px; 
+    box-shadow:var(--shadow-2); 
+    min-width:200px; 
+    z-index:130; 
+  }
   .nav-list.open{ display:flex; }
   .menu-btn{ display:flex; }
   .header-inner{ gap:8px; padding:0 12px; }
@@ -226,21 +286,20 @@ a:focus, button:focus, .card-cta:focus { outline: 3px solid rgba(212,175,55,0.18
 </head>
 <body>
 
-<!-- HEADER -->
 <header class="site-header" role="banner">
   <div class="header-inner container">
     <div class="brand">
-      <img src="Dofoto_20251109_080359334.png" alt="Circular Eagle logo" class="logo-small" />
+      <img src="https://via.placeholder.com/100/d4af37/8b6b00?text=CE" alt="Circular Eagle logo" class="logo-small" />
       <div class="site-title">Circular Eagle</div>
     </div>
     <nav class="nav" aria-label="Primary" role="navigation">
       <ul class="nav-list" id="navList">
         <li><a href="#hero">Home</a></li>
         <li><a href="#ebooks">eBooks</a></li>
+        <li><a href="#latest-releases">New</a></li>
         <li><a href="#courses">Courses</a></li>
         <li><a href="#articles">Articles</a></li>
         <li><a href="#services">Consultancy</a></li>
-        <li><a href="#news">Global News</a></li>
         <li><a href="#footer">Contact</a></li>
       </ul>
       <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" title="Open menu">
@@ -252,7 +311,6 @@ a:focus, button:focus, .card-cta:focus { outline: 3px solid rgba(212,175,55,0.18
   </div>
 </header>
 
-<!-- HERO -->
 <section id="hero" class="hero" role="region" aria-label="Intro">
   <div class="hero-inner container">
     <div class="hero-copy">
@@ -264,224 +322,174 @@ a:focus, button:focus, .card-cta:focus { outline: 3px solid rgba(212,175,55,0.18
       </div>
     </div>
     <div class="hero-art" aria-hidden="true">
-      <img src="Dofoto_20251109_080359334.png" alt="Circular Eagle emblem" class="hero-emblem" />
+      <img src="https://via.placeholder.com/220/d4af37/8b6b00?text=CE" alt="Circular Eagle emblem" class="hero-emblem" />
     </div>
   </div>
 </section>
 
 <main>
-  <!-- EBOOKS -->
   <section id="ebooks" class="section section--light" aria-labelledby="ebooks-heading">
     <div class="section-inner container">
       <div class="section-header">
         <div>
-          <h2 id="ebooks-heading">Featured eBooks</h2>
+          <h2 id="ebooks-heading">eBook Categories</h2>
           <div class="lede">Explore and download eBooks that help you take real steps toward your goals.</div>
         </div>
-        <div><!-- optional control or link area --></div>
+        <div>
+          <a href="shop.html" class="btn secondary">View All eBooks</a>
+        </div>
       </div>
 
       <div class="cards" role="list">
-        <!-- card 1 -->
         <article class="card" role="listitem" aria-labelledby="ebook-1">
-          <img src="Dofoto_20251110_130733261.jpg" alt=Business/ Finance / Side-hustle cover" class="card-img" />
-          <h3 id="ebook-1">Business / Finance / Side-hustle</h3>
-    <p class="card-desc">Resources that help you increase income, stay financially smart and develop side-hustle success.</p>
+          <img src="https://via.placeholder.com/320x180/eee/aaa?text=Business+eBook" alt="Business, Finance, and Side-hustle book cover" class="card-img" />
+          <h3 id="ebook-1">Business & Finance</h3>
+          <p class="card-desc">Resources that help you increase income, stay financially smart and develop side-hustle success.</p>
           <div class="card-actions">
-            <a class="card-cta" href="https://circulareagle.com/Business">Read More</a>
+            <a class="card-cta" href="#">Explore Category</a>
           </div>
         </article>
 
-        <!-- card 2 -->
         <article class="card" role="listitem" aria-labelledby="ebook-2">
-          <img src="Dofoto_20251111_121833390~2.jpg" alt="Personal Development / Growth cover" class="card-img" />
-          <h3 id="ebook-2">Personal Development / Growth</h3>
+          <img src="https://via.placeholder.com/320x180/eee/aaa?text=Growth+eBook" alt="Personal Development and Growth book cover" class="card-img" />
+          <h3 id="ebook-2">Personal Growth</h3>
           <p class="card-desc">Ebooks focused on mindset, improvement and personal progress.</p>
           <div class="card-actions">
-            <a class="card-cta" href="shop.html">Read More</a>
+            <a class="card-cta" href="#">Explore Category</a>
           </div>
         </article>
 
-        <!-- card 3 -->
         <article class="card" role="listitem" aria-labelledby="ebook-3">
-          <img src="Dofoto_20251111_204314449.jpg" alt="Health & Wellness cover" class="card-img" />
+          <img src="https://via.placeholder.com/320x180/eee/aaa?text=Health+eBook" alt="Health and Wellness book cover" class="card-img" />
           <h3 id="ebook-3">Health & Wellness</h3>
           <p class="card-desc">Fitness, nutrition and daily wellbeing.</p>
           <div class="card-actions">
-            <a class="card-cta" href="shop.html">Read More</a>
+            <a class="card-cta" href="#">Explore Category</a>
           </div>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- COURSES -->
-  <section id="courses" class="section section--accent" aria-labelledby="courses-heading">
+  <section id="latest-releases" class="section section--accent" aria-labelledby="releases-heading">
+    <div class="section-inner container">
+      <div class="section-header">
+        <div>
+          <h2 id="releases-heading">Latest Releases</h2>
+          <div class="lede">Don't miss our newest and most popular digital products.</div>
+        </div>
+        <div>
+          <a href="#" class="btn secondary">Shop All</a>
+        </div>
+      </div>
+
+      <div class="cards" role="list">
+        <article class="card" role="listitem" aria-labelledby="product-1">
+          <img src="https://via.placeholder.com/320x180/eee/aaa?text=Product%3A+Focus" alt="Ebook cover: The Art of Deep Focus" class="card-img" />
+          <h3 id="product-1">The Art of Deep Focus</h3>
+          <div class="price">$19.99</div>
+          <p class="card-desc">Master your concentration with proven techniques for creators and professionals.</p>
+          <div class="card-actions">
+            <a class="card-cta" href="#">Buy Now</a>
+          </div>
+        </article>
+
+        <article class="card" role="listitem" aria-labelledby="product-2">
+          <img src="https://via.placeholder.com/320x180/eee/aaa?text=Template%3A+Finance" alt="Spreadsheet image for financial planning" class="card-img" />
+          <h3 id="product-2">Financial Planning Template</h3>
+          <div class="price">$9.99</div>
+          <p class="card-desc">The ultimate simple spreadsheet for tracking monthly and yearly financial goals.</p>
+          <div class="card-actions">
+            <a class="card-cta" href="#">Download</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="courses" class="section section--light" aria-labelledby="courses-heading">
     <div class="section-inner container">
       <div class="section-header">
         <div>
           <h2 id="courses-heading">Featured Courses</h2>
           <div class="lede">Guided programs with exercises, video lessons and feedback.</div>
         </div>
-        <div></div>
+        <div>
+          <a href="#" class="btn secondary">View All Courses</a>
+        </div>
       </div>
 
       <div class="cards" role="list">
         <article class="card" role="listitem" aria-labelledby="course-1">
-          <img src="Dofoto_20251112_173547355~3.jpg" alt="Digital Skills & Online Business cover" class="card-img" />
+          <img src="https://via.placeholder.com/320x180/eee/aaa?text=Course%3A+Digital+Business" alt="Digital Skills & Online Business course cover" class="card-img" />
           <h3 id="course-1">Digital Skills & Online Business</h3>
           <p class="card-desc">Step-by-step training for digital skills, online earning and building successful internet-based projects.</p>
-          <div class="card-actions"><a class="card-cta" href="courses.html">Enroll Now</a></div>
+          <div class="card-actions"><a class="card-cta" href="#">Enroll Now</a></div>
         </article>
 
         <article class="card" role="listitem" aria-labelledby="course-2">
-          <img src="20251112_175426-COLLAGE~2.jpg" alt="Creative & Tech Skills cover" class="card-img" />
+          <img src="https://via.placeholder.com/320x180/eee/aaa?text=Course%3A+Creative+Tech" alt="Creative and Tech Skills course cover" class="card-img" />
           <h3 id="course-2">Creative & Tech Skills</h3>
           <p class="card-desc">Courses that help you create, design and build using modern creative and technical tools.</p>
-          <div class="card-actions"><a class="card-cta" href="courses.html">Enroll Now</a></div>
+          <div class="card-actions"><a class="card-cta" href="#">Enroll Now</a></div>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- ARTICLES -->
-  <section id="articles" class="section section--light" aria-labelledby="articles-heading">
+  <section id="articles" class="section section--accent" aria-labelledby="articles-heading">
     <div class="section-inner container">
       <div class="section-header">
         <div>
           <h2 id="articles-heading">Latest Articles</h2>
           <div class="lede">Short, evidence-backed pieces to inform your practice.</div>
         </div>
+        <div>
+          <a href="#" class="btn secondary">Read All Articles</a>
+        </div>
       </div>
 
       <div class="cards" role="list">
         <article class="card" role="listitem" aria-labelledby="article-1">
-          <img src="images/article1.jpg" alt="Staying Focused article image" class="card-img" />
+          <img src="https://via.placeholder.com/320x180/eee/aaa?text=Article%3A+Focus" alt="Staying Focused article image" class="card-img" />
           <h3 id="article-1">Staying Focused in a Noisy World</h3>
           <p class="card-desc">How to design an environment that preserves attention.</p>
-          <div class="card-actions"><a class="card-cta" href="articles.html">Read Article</a></div>
+          <div class="card-actions"><a class="card-cta" href="#">Read Article</a></div>
         </article>
 
         <article class="card" role="listitem" aria-labelledby="article-2">
-          <img src="images/article2.jpg" alt="Daily Inspiration article image" class="card-img" />
+          <img src="https://via.placeholder.com/320x180/eee/aaa?text=Article%3A+Inspiration" alt="Daily Inspiration article image" class="card-img" />
           <h3 id="article-2">Daily Inspiration Practices</h3>
           <p class="card-desc">Tiny routines that compound into bigger spiritual and creative gains.</p>
-          <div class="card-actions"><a class="card-cta" href="articles.html">Read Article</a></div>
+          <div class="card-actions"><a class="card-cta" href="#">Read Article</a></div>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- CONSULTANCY -->
   <section id="services" class="section section--dark" aria-labelledby="services-heading">
     <div class="section-inner container">
-      <div style="display:flex; justify-content:space-between; gap:18px; flex-wrap:wrap; align-items:flex-start;">
-        <div style="flex:1; min-width:260px;">
+      <div class="consultancy-grid">
+        <div>
           <h2 id="services-heading">Consultancy & Services</h2>
           <div class="lede">One-on-one coaching, content strategy, and bespoke learning pathways.</div>
-          <p style="color:var(--muted)">Book a discovery call or request a bespoke program tailored to your goals.</p>
+          <p class="muted-text">Book a discovery call or request a bespoke program tailored to your goals.</p>
         </div>
 
-        <div style="flex:1; min-width:320px;">
+        <div>
           <form id="contactForm" class="form" aria-label="Contact form">
-            <div style="margin-bottom:8px;">
+            <div class="form-group">
               <label for="name">Name</label>
               <input id="name" class="input" name="name" required placeholder="Your full name" />
             </div>
-            <div style="margin-bottom:8px;">
+            <div class="form-group">
               <label for="email">Email</label>
               <input id="email" type="email" class="input" name="email" required placeholder="you@example.com" />
             </div>
-            <div style="margin-bottom:8px;">
+            <div class="form-group">
               <label for="message">Message</label>
               <textarea id="message" class="input" name="message" required placeholder="Brief description of what you need" rows="5"></textarea>
             </div>
-            <div style="display:flex; gap:10px; align-items:center;">
+            <div class="form-actions">
               <button type="submit" class="btn primary">Send Request</button>
-              <div id="formStatus" aria-live="polite" style="color:var(--muted); font-size:0.95rem;"></div>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-   </section>
-
-</main>
-
-<!-- FOOTER -->
-<footer id="footer" class="site-footer" role="contentinfo">
-  <div class="footer-inner">
-    <div>Contact: <a href="mailto:circular.eagle@gmail.com">circular.eagle@gmail.com</a></div>
-    <div>Social: <a href="#" aria-label="YouTube">YouTube</a> • <a href="#" aria-label="Twitter">Twitter</a> • <a href="#" aria-label="LinkedIn">LinkedIn</a></div>
-    <div>&copy; 2025 Circular Eagle</div>
-  </div>
-</footer>
-
-<script>
-(function(){
-  const menuBtn = document.getElementById('menuBtn');
-  const navList = document.getElementById('navList');
-  if(!menuBtn || !navList) return;
-
-  function toggleMenu(open){
-    const willOpen = typeof open === 'boolean' ? open : !navList.classList.contains('open');
-    navList.classList.toggle('open', willOpen);
-    menuBtn.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
-  }
-
-  menuBtn.addEventListener('click', e => { e.stopPropagation(); toggleMenu(); });
-
-  // allow Enter / Space to toggle the menu for keyboard users
-  menuBtn.addEventListener('keydown', e => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      toggleMenu();
-    }
-  });
-
-  document.addEventListener('click', e => {
-    if (!navList.contains(e.target) && !menuBtn.contains(e.target)) toggleMenu(false);
-  });
-
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') toggleMenu(false); });
-
-  // close menu when a link inside is activated (handles clicks and keyboard activation)
-  navList.addEventListener('click', e => {
-    if (e.target.closest && e.target.closest('a')) toggleMenu(false);
-  });
-
-  // reveal cards on scroll using IntersectionObserver
-  const cards = document.querySelectorAll('.card');
-  if ('IntersectionObserver' in window && cards.length) {
-    const io = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('revealed');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.08 });
-    cards.forEach(card => io.observe(card));
-  } else {
-    // fallback: show all
-    cards.forEach(card => card.classList.add('revealed'));
-  }
-
-  // basic contact form handling (no backend here) - show friendly UX
-  const form = document.getElementById('contactForm');
-  const status = document.getElementById('formStatus');
-  if (form && status) {
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      status.textContent = 'Sending…';
-      // Simulate send; replace with fetch() to your API when available
-      setTimeout(() => {
-        status.textContent = 'Thanks — we will get back to you soon.';
-        form.reset();
-      }, 800);
-    });
-  }
-})();
-</script>
-</body>
-   </html>
+              <div id="
