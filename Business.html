@@ -427,62 +427,296 @@ a:focus, button:focus, .card-cta:focus { outline: 3px solid rgba(212,175,55,0.18
     <p>Discover practical business insights, smart money strategies, and proven side-hustle opportunities built for real-life application.</p>
 </section>
 
-<section class="search-filter">
-    <input type="text" placeholder="Search ebooks...">
-    <button class="filter-btn">Filter & Sort</button>
-</section>
-
-<section>
-    <h2 class="section-title">Featured Ebooks</h2>
-    <div class="books-grid">
-        
-        <div class="book-card">
-            <img src="ebook-cover-01.jpg" alt="ebook cover">
-            <h3>Finding The Right Customers</h3>
-            <p>A practical guide on identifying profitable customers for sustainable business growth.</p>
-            <button class="buy-btn">View & Buy</button>
-        </div>
-
-        <div class="book-card">
-            <img src="ebook-cover-02.jpg" alt="ebook cover">
-            <h3>Smart Money Habits</h3>
-            <p>Proven personal finance habits to improve earning, saving, and spending wisely.</p>
-            <button class="buy-btn">View & Buy</button>
-        </div>
-
-        <div class="book-card">
-            <img src="ebook-cover-03.jpg" alt="ebook cover">
-            <h3>Side-Hustle Playbook</h3>
-            <p>Realistic extra-income ideas with step-by-step execution frameworks.</p>
-            <button class="buy-btn">View & Buy</button>
-        </div>
-
+<<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bookstore — Circular Eagle (Business · Finance · Side‑Hustle)</title>
+<meta name="description" content="Circular Eagle bookstore — a curated collection of practical ebooks for business, finance and side‑hustles. Click any listing to view purchase options on partner stores.">
+<style>
+:root{
+  --bg:#ffffff;--text:#0b0b0b;--muted:#6b6b6b;--gold:#c59a2a;--accent:#0b0b0b;--card:#fff;--glass:rgba(11,11,11,0.06);--maxw:1200px
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial; background:var(--bg); color:var(--text);}
+a{text-decoration:none;color:inherit}
+.container{max-width:var(--maxw);margin:0 auto;padding:20px}
+header{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;margin-bottom:20px;gap:12px}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,#111,#333);display:flex;align-items:center;justify-content:center;color:var(--gold);font-weight:800}
+h1{font-size:20px}
+.tag{font-size:13px;color:var(--muted)}
+.controls{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.search{display:flex;align-items:center;gap:8px;border:1px solid #eee;padding:8px 10px;border-radius:10px;min-width:200px;flex:1}
+.search input{border:0;outline:none;font-size:14px;width:100%}
+.btn{background:var(--text);color:#fff;padding:10px 14px;border-radius:10px;border:0;cursor:pointer;font-weight:600}
+.btn.ghost{background:transparent;color:var(--text);border:1px solid #e8e8e8}
+main{display:grid;grid-template-columns:1fr 300px;gap:20px}
+.hero{background:#fff;padding:24px;border-radius:12px;box-shadow:0 8px 30px rgba(11,11,11,0.04);margin-bottom:20px}
+.hero h2{font-size:24px;margin-bottom:8px}
+.hero p{color:var(--muted);margin-bottom:12px}
+.hero .store-actions{display:flex;gap:8px;flex-wrap:wrap}
+aside{position:sticky;top:20px;align-self:start}
+.panel{background:#fff;border-radius:12px;padding:14px;border:1px solid #f0f0f0;margin-bottom:20px}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.select{padding:8px 10px;border-radius:8px;border:1px solid #eee;background:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
+.book{background:var(--card);border-radius:12px;padding:14px;border:1px solid #f0f0f0;display:flex;flex-direction:column;gap:8px}
+.cover{height:140px;border-radius:8px;background:linear-gradient(135deg,#f3f4f6,#e6e8ea);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:20px;color:#222}
+.book h3{font-size:15px}
+.meta{font-size:13px;color:var(--muted)}
+.badge{background:var(--gold);color:#111;padding:6px 8px;border-radius:8px;font-weight:700;font-size:12px}
+.row{display:flex;gap:10px;align-items:center;margin-top:12px}
+.test{background:#f9f9f9;border-radius:10px;padding:12px;margin-bottom:8px}
+.faq-item{border-bottom:1px solid #f2f2f2;padding:10px 0}
+.modal{position:fixed;left:0;top:0;width:100%;height:100%;display:none;align-items:center;justify-content:center;background:rgba(11,11,11,0.5);padding:20px;z-index:100}
+.modal.open{display:flex}
+.modal .box{background:#fff;border-radius:12px;padding:18px;max-width:760px;width:100%}
+footer{margin:48px 0 80px;color:var(--muted);font-size:13px;text-align:center}
+@media(max-width:980px){
+  main{grid-template-columns:1fr;gap:20px}
+  .controls{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+  <div class="brand">
+    <div class="logo">CE</div>
+    <div>
+      <h1>Circular Eagle Bookstore</h1>
+      <div class="tag">Curated ebooks for business, finance, and side‑hustles</div>
     </div>
-</section>
+  </div>
+  <div class="controls">
+    <div class="search">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M21 21l-4.35-4.35" stroke="#bbb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="11" cy="11" r="6" stroke="#bbb" stroke-width="2"/></svg>
+      <input id="q" placeholder="Search ebooks, authors, topics">
+    </div>
+    <button class="btn" onclick="scrollToSection('grid')">Browse</button>
+  </div>
+</header>
 
-<section>
-    <h2 class="section-title">Testimonials</h2>
-    <div class="testimonial">This platform helped me choose the right ebook for my business. Very practical.</div>
-    <div class="testimonial">Clear, valuable resources. No hype — just useful content.</div>
-</section>
+<main>
+  <div>
+    <div class="hero">
+      <h2>Find practical ebooks that move you forward</h2>
+      <p>Curated selection of ebooks focused on business, finance and side‑hustles.</p>
+      <div class="row">
+        <div class="store-actions">
+          <button class="btn" onclick="scrollToSection('grid')">Explore ebooks</button>
+          <button class="btn ghost" onclick="openRequest()">Request a book</button>
+        </div>
+      </div>
+    </div>
 
-<section class="newsletter">
-    <h2 class="section-title">Stay Updated</h2>
-    <input type="email" placeholder="Enter your email">
-    <button class="btn-primary" style="width:100%;">Subscribe</button>
-</section>
+    <div class="panel">
+      <h4>Featured eBooks</h4>
+      <div class="filters">
+        <select id="catFilter" class="select">
+          <option value="all">All categories</option>
+          <option value="business">Business</option>
+          <option value="finance">Finance</option>
+          <option value="sidehustle">Side‑Hustle</option>
+        </select>
+        <select id="ratingFilter" class="select">
+          <option value="any">Any rating</option>
+          <option value="4">4★ & up</option>
+          <option value="4.5">4.5★ & up</option>
+        </select>
+      </div>
 
-<section class="request-form">
-    <h2 class="section-title">Request a Book</h2>
-    <input type="text" placeholder="Your Name">
-    <input type="email" placeholder="Your Email">
-    <textarea rows="4" placeholder="Which ebook are you looking for?"></textarea>
-    <button class="btn-primary" style="width:100%;">Submit Request</button>
-</section>
-   
+      <div id="grid" class="grid"></div>
+    </div>
+
+    <div class="panel" id="trending">
+      <h4>Trending & New Arrivals</h4>
+      <div id="trendingRow" style="display:flex;gap:12px;overflow:auto;padding-top:8px"></div>
+    </div>
+
+    <div class="panel" id="reviews">
+      <h4>Ratings & Reviews</h4>
+      <div id="reviewsList"></div>
+    </div>
+
+    <div class="panel" id="faq">
+      <h4>FAQ</h4>
+      <div class="faq-item"><strong>How do payments work?</strong><div style="color:var(--muted);margin-top:6px">Purchases happen on partner stores.</div></div>
+      <div class="faq-item"><strong>Can I request a title?</strong><div style="color:var(--muted);margin-top:6px">Yes — submit a request.</div></div>
+      <div class="faq-item"><strong>Are these ebooks free?</strong><div style="color:var(--muted);margin-top:6px">Some previews are free, prices vary.</div></div>
+    </div>
+  </div>
+
+  <aside>
+    <div class="panel">
+      <h4>Quick Links</h4>
+      <a href="#trending">Trending</a><br>
+      <a href="#reviews">Reviews</a><br>
+      <a href="#faq">FAQ</a>
+    </div>
+
+    <div class="panel">
+      <h4>Newsletter</h4>
+      <form onsubmit="event.preventDefault();alert('Subscribed')">
+        <input type="email" placeholder="you@example.com" required class="select">
+        <button class="btn" style="width:100%;margin-top:8px">Subscribe</button>
+      </form>
+    </div>
+
+    <div class="panel">
+      <h4>Cart</h4>
+      <div id="cart" style="display:flex;flex-direction:column;gap:8px;margin-bottom:8px"></div>
+      <button class="btn" onclick="checkout()">Checkout</button>
+    </div>
+  </aside>
+</main>
+
 <footer>
-    © Circular Eagle. All rights reserved.
+© Circular Eagle — curated ebooks for practical growth. Links open partner stores for purchase.
 </footer>
 
+<div class="modal" id="modal">
+  <div class="box" id="modalBox"></div>
+</div>
+
+<script>
+const books=[
+{id:1,title:'Finding the Right Customers',author:'Q. Alli',cat:'business',rating:4.6,excerpt:'Target customers who value your product.',cover:'FR',badge:'Bestseller',links:[{store:'Selar',url:'https://selar.co/sample1'}]},
+{id:2,title:'Side‑Hustle Starter Kit',author:'A. Bello',cat:'sidehustle',rating:4.4,excerpt:'Turn small ideas into steady side income.',cover:'SH',badge:'New',links:[{store:'Selar',url:'https://selar.co/sample2'}]},
+{id:3,title:'Budget to Grow',author:'L. Okoye',cat:'finance',rating:4.7,excerpt:'Budgeting and investing habits.',cover:'BG',badge:'Editor\'s Pick',links:[{store:'Vendor',url:'https://vendor.example/sample3'}]},
+{id:4,title:'Sell Without Ads',author:'M. Yusuf',cat:'business',rating:4.2,excerpt:'Low‑cost marketing strategies.',cover:'SA',badge:'Popular',links:[{store:'Selar',url:'https://selar.co/sample4'}]},
+{id:5,title:'Micro Business Tactics',author:'I. Ade',cat:'business',rating:4.1,excerpt:'Practical tactics for small ventures.',cover:'MB',badge:'',links:[{store:'Selar',url:'https://selar.co/sample5'}]}
+];
+
+const grid=document.getElementById('grid');
+const trendingRow=document.getElementById('trendingRow');
+const reviewsList=document.getElementById('reviewsList');
+const cartEl=document.getElementById('cart');
+
+let cart=[];
+
+function renderBooks(list){
+  grid.innerHTML='';
+  list.forEach(b=>{
+    const el=document.createElement('div');
+    el.className='book';
+    el.innerHTML=`<div class="cover">${b.cover}</div>
+<h3>${b.title}</h3>
+<div class="meta">${b.author} • ${b.rating}★</div>
+<p class="meta">${b.excerpt}</p>
+<div style="display:flex;gap:8px;align-items:center">
+${b.badge?`<span class="badge">${b.badge}</span>`:''}
+<div style="flex:1"></div>
+<button class="btn ghost" onclick="viewLinks(${b.id})">View</button>
+<button class="btn" onclick="addToCart(${b.id})">Add</button>
+</div>`;
+    grid.appendChild(el);
+  });
+}
+
+function renderTrending(){
+  trendingRow.innerHTML='';
+  books.slice(0,4).forEach(b=>{
+    const el=document.createElement('div');
+    el.style.minWidth='180px';
+    el.style.background='#fff';
+    el.style.padding='10px';
+    el.style.borderRadius='10px';
+    el.style.border='1px solid #f2f2f2';
+    el.innerHTML=`<strong>${b.title}</strong><div style="color:var(--muted);font-size:13px">${b.author}</div>`;
+    trendingRow.appendChild(el);
+  });
+}
+
+function renderReviews(){
+  reviewsList.innerHTML='';
+  const sample=[
+    {user:'Chiamaka',text:'Clear templates — helped land clients.'},
+    {user:'Emeka',text:'Concise and practical.'}
+  ];
+  sample.forEach(r=>{
+    const d=document.createElement('div');
+    d.className='test';
+    d.innerHTML=`<strong>${r.user}</strong><div style="color:var(--muted);margin-top:6px">${r.text}</div>`;
+    reviewsList.appendChild(d);
+  });
+}
+
+function addToCart(id){
+  const b=books.find(x=>x.id===id);
+  if(!cart.find(x=>x.id===id)) cart.push(b);
+  renderCart();
+}
+
+function removeFromCart(id){ cart=cart.filter(x=>x.id!==id); renderCart(); }
+
+function renderCart(){
+  cartEl.innerHTML='';
+  cart.forEach(item=>{
+    const d=document.createElement('div');
+    d.style.display='flex';
+    d.style.justifyContent='space-between';
+    d.style.alignItems='center';
+    d.innerHTML=`<div style="font-size:13px">${item.title}</div><button class="btn ghost" onclick="removeFromCart(${item.id})">Remove</button>`;
+    cartEl.appendChild(d);
+  });
+}
+
+function checkout(){
+  if(cart.length===0){ alert('Cart empty'); return; }
+  cart.forEach(b=>window.open(b.links[0].url,'_blank'));
+}
+
+function viewLinks(id){
+  const b=books.find(x=>x.id===id);
+  let html=`<h3>${b.title}</h3><div style="color:var(--muted)">${b.author}</div><p>${b.excerpt}</p>`;
+  b.links.forEach(l=>{
+    html+=`<a class="btn" href="${l.url}" target="_blank" style="display:block;margin:4px 0">${l.store}</a>`;
+  });
+  html+=`<button class="btn ghost" onclick="closeModal()">Close</button>`;
+  document.getElementById('modalBox').innerHTML=html;
+  document.getElementById('modal').classList.add('open');
+}
+
+function closeModal(){ document.getElementById('modal').classList.remove('open'); }
+document.getElementById('modal').addEventListener('click',e=>{ if(e.target.id==='modal') closeModal(); });
+
+document.getElementById('q').addEventListener('input',e=>{
+  const val=e.target.value.toLowerCase();
+  renderBooks(books.filter(b=>b.title.toLowerCase().includes(val)||b.author.toLowerCase().includes(val)));
+});
+
+document.getElementById('catFilter').addEventListener('change',e=>{
+  const v=e.target.value;
+  let list=v==='all'?books:books.filter(b=>b.cat===v);
+  renderBooks(list);
+});
+
+document.getElementById('ratingFilter').addEventListener('change',e=>{
+  const v=parseFloat(e.target.value);
+  let list=isNaN(v)?books:books.filter(b=>b.rating>=v);
+  renderBooks(list);
+});
+
+function openRequest(){
+  document.getElementById('modalBox').innerHTML=`<h3>Request a book</h3>
+<form onsubmit="event.preventDefault();alert('Request sent')">
+<input name="title" placeholder="Book title" required style="width:100%;padding:10px;border:1px solid #eee;border-radius:8px;margin-bottom:8px">
+<input name="author" placeholder="Author (optional)" style="width:100%;padding:10px;border:1px solid #eee;border-radius:8px;margin-bottom:8px">
+<button class="btn" type="submit">Send request</button>
+<button class="btn ghost" type="button" style="margin-left:8px" onclick="closeModal()">Cancel</button>
+</form>`;
+  document.getElementById('modal').classList.add('open');
+}
+
+function scrollToSection(id){ document.getElementById(id).scrollIntoView({behavior:'smooth'}); }
+
+// initial render
+renderBooks(books);
+renderTrending();
+renderReviews();
+</script>
 </body>
-</html>
+   </html>
