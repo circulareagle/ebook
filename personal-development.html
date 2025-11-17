@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mindset Mastery | Circular Eagle Ebooks</title>
+    <meta name="description" content="Premium eBooks focused on personal development, productivity hacks, emotional intelligence, and cognitive restructuring for success." />
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configure Tailwind with Gold/Black/White Palette -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'ce-white': '#FFFFFF',
+                        'ce-gold': '#D4AF37', // Classic Gold
+                        'ce-gold-dark': '#8B6B00', // Darker gold for text/hover
+                        'ce-black': '#0B0B0C',
+                        'ce-muted': '#6B6F76',
+                        'ce-silver-light': '#F9FAFB', // Near-white subtle background
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        serif: ['Georgia', 'Merriweather', 'serif'], // For premium titles
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        /* General smooth transition for hover effects */
+        .transition-default {
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Subtle ring effect on gold elements */
+        .btn-gold-effect {
+            box-shadow: 0 10px 20px -5px rgba(212, 175, 55, 0.2);
+        }
+        .btn-gold-effect:hover {
+            box-shadow: 0 15px 30px -8px rgba(212, 175, 55, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        /* Card hover lift */
+        .card-lift:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Ebook cover shadow for depth */
+        .ebook-cover {
+            box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Modal Backdrop */
+        .modal-backdrop {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+    </style>
+</head>
+<body class="bg-ce-silver-light text-ce-black font-sans min-h-screen">
+
+    <!-- Message Box Container (Replaces alert()) -->
+    <div id="message-container" class="fixed bottom-4 right-4 z-[100] space-y-2"></div>
+
+    <!-- HEADER: Floating, High Contrast (Copied from Financial Architecture) -->
+    <header class="sticky top-0 z-50 bg-ce-white/95 backdrop-blur-md shadow-sm border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4 md:py-5">
+                <!-- Logo & Back to Home Link -->
+                <a href="index.html" class="flex items-center space-x-2">
+                    <div class="w-8 h-8 rounded-full border-2 border-ce-gold-dark flex items-center justify-center text-sm font-bold text-ce-gold-dark">
+                        CE
+                    </div>
+                    <span class="text-xl font-extrabold tracking-tight text-ce-black">Circular<span class="text-ce-gold">Eagle</span></span>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="index.html#ebooks" class="text-base font-medium text-ce-gold-dark hover:text-ce-black transition-default">eBooks Hub</a>
+                    <a href="index.html#courses" class="text-base font-medium text-ce-muted hover:text-ce-gold-dark transition-default">Courses</a>
+                    <a href="index.html#consultancy" class="text-base font-medium text-ce-muted hover:text-ce-gold-dark transition-default">Consultancy</a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <button id="menu-button" class="md:hidden text-ce-black hover:text-ce-gold transition-default p-2 rounded-lg" onclick="toggleMenu()">
+                    <!-- Menu Icon (Hamburger) -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-ce-white border-t border-gray-100 absolute w-full shadow-lg">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html#ebooks" onclick="toggleMenu()" class="block px-3 py-2 rounded-md text-base font-medium text-ce-black hover:bg-gray-50 hover:text-ce-gold-dark transition-default">eBooks Hub</a>
+                <a href="index.html#courses" onclick="toggleMenu()" class="block px-3 py-2 rounded-md text-base font-medium text-ce-black hover:bg-gray-50 hover:text-ce-gold-dark transition-default">Courses</a>
+                <a href="index.html#consultancy" onclick="toggleMenu()" class="block px-3 py-2 rounded-md text-base font-medium text-ce-black hover:bg-gray-50 hover:text-ce-gold-dark transition-default">Consultancy</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto">
+        <div class="px-4 sm:px-6 lg:px-8">
+
+            <!-- 1. HERO / CATEGORY HEADER -->
+            <section class="w-full overflow-hidden pt-12 pb-16 md:pt-20 md:pb-28 text-center bg-ce-white rounded-b-2xl shadow-xl border-b-4 border-ce-gold">
+                <p class="text-lg font-semibold text-ce-gold-dark mb-3">eBook Collection</p>
+                <h1 class="font-serif text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tighter mb-4 leading-none text-ce-black">
+                    Mindset <span class="text-ce-gold">Mastery</span>
+                </h1>
+                <p class="text-xl sm:text-2xl text-ce-muted max-w-3xl mx-auto">
+                    Transform your inner world to create unstoppable external success. Explore cognitive, emotional, and productivity blueprints.
+                </p>
+            </section>
+
+            <!-- 2. EBOOK LISTING GRID -->
+            <section id="ebook-list" class="py-16">
+                <h2 class="font-serif text-3xl font-bold text-center mb-12">
+                    Titles for <span class="text-ce-gold-dark">Personal Development</span>
+                </h2>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                    <!-- Ebook Card 1: The High-Leverage Habit Loop -->
+                    <article class="ebook-card bg-ce-white rounded-xl card-lift transition-default shadow-lg overflow-hidden flex flex-col">
+                        <!-- Cover Image Placeholder -->
+                        <div class="flex-shrink-0 relative">
+                            <img src="https://placehold.co/600x400/3A3A3A/D4AF37?text=Habit+Loop" alt="Cover for The High-Leverage Habit Loop" class="w-full h-48 object-cover ebook-cover">
+                        </div>
+                        <div class="p-6 flex-grow flex flex-col">
+                            <span class="text-sm font-semibold text-ce-gold-dark uppercase mb-1">Productivity</span>
+                            <h3 class="text-2xl font-bold text-ce-black mb-2">The High-Leverage Habit Loop</h3>
+                            <p class="text-ce-muted text-base flex-grow mb-4">A definitive guide to building powerful, automated habits that deliver maximum results with minimum willpower.</p>
+                            <div class="flex justify-between items-center pt-3 border-t border-gray-100">
+                                <span class="text-2xl font-extrabold text-ce-gold-dark" id="price-7">$18.50</span>
+                                <button 
+                                    class="view-details-button py-2 px-5 text-sm font-bold rounded-full bg-ce-black text-ce-white hover:bg-ce-gold-dark transition-default" 
+                                    data-ebook-title="The High-Leverage Habit Loop"
+                                    data-ebook-price="$18.50"
+                                    data-ebook-desc="Learn the science behind habit formation and use the 'Cue-Routine-Reward' loop to hardwire success. Focuses on identity-based habits for guaranteed long-term change."
+                                    data-partner-url="https://selar.co/high-leverage-habit-loop"
+                                    data-image-url="https://placehold.co/600x400/3A3A3A/D4AF37?text=Habit+Loop"
+                                >
+                                    View
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Ebook Card 2: Emotional Intelligence for Entrepreneurs -->
+                    <article class="ebook-card bg-ce-white rounded-xl card-lift transition-default shadow-lg overflow-hidden flex flex-col">
+                        <!-- Cover Image Placeholder -->
+                        <div class="flex-shrink-0 relative">
+                            <img src="https://placehold.co/600x400/D4AF37/0B0B0C?text=Emotional+IQ" alt="Cover for Emotional Intelligence for Entrepreneurs" class="w-full h-48 object-cover ebook-cover">
+                        </div>
+                        <div class="p-6 flex-grow flex flex-col">
+                            <span class="text-sm font-semibold text-ce-gold-dark uppercase mb-1">Leadership</span>
+                            <h3 class="text-2xl font-bold text-ce-black mb-2">Emotional Intelligence for Entrepreneurs</h3>
+                            <p class="text-ce-muted text-base flex-grow mb-4">Strategies for mastering self-regulation and improving team cohesion through empathetic communication.</p>
+                            <div class="flex justify-between items-center pt-3 border-t border-gray-100">
+                                <span class="text-2xl font-extrabold text-ce-gold-dark" id="price-8">$24.99</span>
+                                <button 
+                                    class="view-details-button py-2 px-5 text-sm font-bold rounded-full bg-ce-black text-ce-white hover:bg-ce-gold-dark transition-default" 
+                                    data-ebook-title="Emotional Intelligence for Entrepreneurs"
+                                    data-ebook-price="$24.99"
+                                    data-ebook-desc="A practical guide to leveraging emotional intelligence (EQ) to enhance decision-making, manage stress, and build high-performing, resilient teams. Essential for founders and leaders."
+                                    data-partner-url="https://selar.co/eq-for-entrepreneurs"
+                                    data-image-url="https://placehold.co/600x400/D4AF37/0B0B0C?text=Emotional+IQ"
+                                >
+                                    View
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Ebook Card 3: Cognitive Restructuring Playbook -->
+                    <article class="ebook-card bg-ce-white rounded-xl card-lift transition-default shadow-lg overflow-hidden flex flex-col">
+                        <!-- Cover Image Placeholder -->
+                        <div class="flex-shrink-0 relative">
+                            <img src="https://placehold.co/600x400/8B6B00/FFFFFF?text=Cognitive+Shift" alt="Cover for Cognitive Restructuring Playbook" class="w-full h-48 object-cover ebook-cover">
+                        </div>
+                        <div class="p-6 flex-grow flex flex-col">
+                            <span class="text-sm font-semibold text-ce-gold-dark uppercase mb-1">Mental Health</span>
+                            <h3 class="text-2xl font-bold text-ce-black mb-2">Cognitive Restructuring Playbook</h3>
+                            <p class="text-ce-muted text-base flex-grow mb-4">Step-by-step techniques to identify and dismantle limiting beliefs and self-sabotaging thought patterns.</p>
+                            <div class="flex justify-between items-center pt-3 border-t border-gray-100">
+                                <span class="text-2xl font-extrabold text-ce-gold-dark" id="price-9">$16.99</span>
+                                <button 
+                                    class="view-details-button py-2 px-5 text-sm font-bold rounded-full bg-ce-black text-ce-white hover:bg-ce-gold-dark transition-default" 
+                                    data-ebook-title="Cognitive Restructuring Playbook"
+                                    data-ebook-price="$16.99"
+                                    data-ebook-desc="A practical workbook using principles of CBT to help you identify, challenge, and replace negative core beliefs with empowering thoughts. Essential for overcoming imposter syndrome and procrastination."
+                                    data-partner-url="https://selar.co/cognitive-playbook"
+                                    data-image-url="https://placehold.co/600x400/8B6B00/FFFFFF?text=Cognitive+Shift"
+                                >
+                                    View
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Ebook Card 4: Deep Work & Flow States -->
+                    <article class="ebook-card bg-ce-white rounded-xl card-lift transition-default shadow-lg overflow-hidden flex flex-col">
+                        <!-- Cover Image Placeholder -->
+                        <div class="flex-shrink-0 relative">
+                            <img src="https://placehold.co/600x400/0B0B0C/D4AF37?text=Flow+State" alt="Cover for Deep Work & Flow States" class="w-full h-48 object-cover ebook-cover">
+                        </div>
+                        <div class="p-6 flex-grow flex flex-col">
+                            <span class="text-sm font-semibold text-ce-gold-dark uppercase mb-1">Focus</span>
+                            <h3 class="text-2xl font-bold text-ce-black mb-2">Deep Work & Flow States</h3>
+                            <p class="text-ce-muted text-base flex-grow mb-4">Learn to eliminate distraction and consistently enter the flow state to achieve elite levels of output and quality.</p>
+                            <div class="flex justify-between items-center pt-3 border-t border-gray-100">
+                                <span class="text-2xl font-extrabold text-ce-gold-dark" id="price-10">$19.99</span>
+                                <button 
+                                    class="view-details-button py-2 px-5 text-sm font-bold rounded-full bg-ce-black text-ce-white hover:bg-ce-gold-dark transition-default" 
+                                    data-ebook-title="Deep Work & Flow States"
+                                    data-ebook-price="$19.99"
+                                    data-ebook-desc="A systematic approach to scheduling, environment control, and mental conditioning necessary to achieve deep focus. Stop multitasking and start producing breakthrough work."
+                                    data-partner-url="https://selar.co/deep-work-flow"
+                                    data-image-url="https://placehold.co/600x400/0B0B0C/D4AF37?text=Flow+State"
+                                >
+                                    View
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Ebook Card 5: The Anti-Burnout Protocol -->
+                    <article class="ebook-card bg-ce-white rounded-xl card-lift transition-default shadow-lg overflow-hidden flex flex-col">
+                        <!-- Cover Image Placeholder -->
+                        <div class="flex-shrink-0 relative">
+                            <img src="https://placehold.co/600x400/F9FAFB/8B6B00?text=Anti+Burnout" alt="Cover for The Anti-Burnout Protocol" class="w-full h-48 object-cover ebook-cover">
+                        </div>
+                        <div class="p-6 flex-grow flex flex-col">
+                            <span class="text-sm font-semibold text-ce-gold-dark uppercase mb-1">Sustainability</span>
+                            <h3 class="text-2xl font-bold text-ce-black mb-2">The Anti-Burnout Protocol</h3>
+                            <p class="text-ce-muted text-base flex-grow mb-4">Practical, evidence-based methods for sustained high-performance without sacrificing your mental or physical health.</p>
+                            <div class="flex justify-between items-center pt-3 border-t border-gray-100">
+                                <span class="text-2xl font-extrabold text-ce-gold-dark" id="price-11">$14.00</span>
+                                <button 
+                                    class="view-details-button py-2 px-5 text-sm font-bold rounded-full bg-ce-black text-ce-white hover:bg-ce-gold-dark transition-default" 
+                                    data-ebook-title="The Anti-Burnout Protocol"
+                                    data-ebook-price="$14.00"
+                                    data-ebook-desc="Learn to identify the early warning signs of chronic stress and implement micro-rest strategies, boundary setting techniques, and recovery plans essential for sustained high-output careers."
+                                    data-partner-url="https://selar.co/anti-burnout-protocol"
+                                    data-image-url="https://placehold.co/600x400/F9FAFB/8B6B00?text=Anti+Burnout"
+                                >
+                                    View
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <!-- Ebook Card 6: Time Dilation: The Art of Slowing Down -->
+                    <article class="ebook-card bg-ce-white rounded-xl card-lift transition-default shadow-lg overflow-hidden flex flex-col">
+                        <!-- Cover Image Placeholder -->
+                        <div class="flex-shrink-0 relative">
+                            <img src="https://placehold.co/600x400/3498DB/FFFFFF?text=Time+Dilation" alt="Cover for Time Dilation: The Art of Slowing Down" class="w-full h-48 object-cover ebook-cover">
+                        </div>
+                        <div class="p-6 flex-grow flex flex-col">
+                            <span class="text-sm font-semibold text-ce-gold-dark uppercase mb-1">Mindfulness</span>
+                            <h3 class="text-2xl font-bold text-ce-black mb-2">Time Dilation: The Art of Slowing Down</h3>
+                            <p class="text-ce-muted text-base flex-grow mb-4">Techniques rooted in neuroscience to enhance presence and perception, making time feel abundant and controllable.</p>
+                            <div class="flex justify-between items-center pt-3 border-t border-gray-100">
+                                <span class="text-2xl font-extrabold text-ce-gold-dark" id="price-12">$15.99</span>
+                                <button 
+                                    class="view-details-button py-2 px-5 text-sm font-bold rounded-full bg-ce-black text-ce-white hover:bg-ce-gold-dark transition-default" 
+                                    data-ebook-title="Time Dilation: The Art of Slowing Down"
+                                    data-ebook-price="$15.99"
+                                    data-ebook-desc="Techniques rooted in neuroscience and mindfulness to slow down subjective time perception. Enhance presence, memory retention, and the ability to make measured decisions under pressure."
+                                    data-partner-url="https://selar.co/time-dilation-art"
+                                    data-image-url="https://placehold.co/600x400/3498DB/FFFFFF?text=Time+Dilation"
+                                >
+                                    View
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+            </section>
+
+ <!-- 3. SECONDARY CTA: Courses & Support (Copied from Financial Architecture) -->
+            <section class="py-12 my-12 bg-ce-black rounded-xl p-8 text-center shadow-2xl">
+                <h2 class="text-3xl font-bold text-ce-white mb-3">Ready to Unlock Your Potential?</h2>
+                <p class="text-gray-400 text-lg mb-6 max-w-2xl mx-auto">
+                    Take the next step with our immersive, structured courses or discuss your unique personal challenges directly with a consultant.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+                    <a href="index.html#courses" class="btn-gold-effect inline-flex items-center justify-center px-8 py-3 border border-ce-gold-dark text-base font-bold rounded-full text-ce-black bg-ce-gold hover:bg-ce-gold-dark hover:text-white transition-default">
+                        Explore Courses
+                    </a>
+                    <a href="index.html#consultancy" class="inline-flex items-center justify-center px-8 py-3 border-2 border-gray-500 text-base font-medium rounded-full text-white hover:border-ce-gold hover:text-ce-gold transition-default">
+                        Book Consultancy &rarr;
+                    </a>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- 4. FOOTER (Copied from Financial Architecture) -->
+    <footer id="footer" class="bg-ce-white border-t border-gray-100 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
+                <!-- Brand Info -->
+                <div class="col-span-2 lg:col-span-2">
+                    <h3 class="text-2xl font-extrabold tracking-tight text-ce-black mb-3">Circular<span class="text-ce-gold">Eagle</span></h3>
+                    <p class="text-sm text-ce-muted">Knowledge for the next generation of innovators and seekers.</p>
+                </div>
+
+                <!-- Links 1 -->
+                <div>
+                    <h4 class="text-lg font-semibold text-ce-black mb-3">Resources</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="index.html#ebooks" class="text-ce-muted hover:text-ce-gold-dark transition-default">eBook Formats</a></li>
+                        <li><a href="index.html#courses" class="text-ce-muted hover:text-ce-gold-dark transition-default">Course Index</a></li>
+                        <li><a href="index.html#articles" class="text-ce-muted hover:text-ce-gold-dark transition-default">Latest Insights</a></li>
+                    </ul>
+                </div>
+
+  <!-- Links 2 -->
+                <div>
+                    <h4 class="text-lg font-semibold text-ce-black mb-3">Company</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="text-ce-muted hover:text-ce-gold-dark transition-default">About Us</a></li>
+                        <li><a href="#" class="text-ce-muted hover:text-ce-gold-dark transition-default">Terms & Policy</a></li>
+                        <li><a href="#" class="text-ce-muted hover:text-ce-gold-dark transition-default">Careers</a></li>
+                    </ul>
+                </div>
+
+                 <!-- Contact -->
+                <div class="col-span-2 md:col-span-1">
+                    <h4 class="text-lg font-semibold text-ce-black mb-3">Connect</h4>
+                    <p class="text-sm text-ce-muted hover:text-ce-gold-dark mb-2">support@circulareagle.com</p>
+                    <div class="flex space-x-4">
+                        <a href="#" aria-label="Twitter" class="text-ce-muted hover:text-ce-gold-dark transition-default">Twitter</a>
+                        <a href="#" aria-label="LinkedIn" class="text-ce-muted hover:text-ce-gold-dark transition-default">LinkedIn</a>
+                        <a href="#" aria-label="YouTube" class="text-ce-muted hover:text-ce-gold-dark transition-default">YouTube</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10 pt-6 border-t border-gray-100 text-center">
+                <p class="text-sm text-ce-muted">
+                    &copy; 2025 Circular Eagle. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- EBOOK DETAIL MODAL (Hidden by default) -->
+    <div id="ebook-modal" class="fixed inset-0 z-[60] hidden flex items-center justify-center modal-backdrop p-4 transition-opacity duration-300 opacity-0" onclick="closeModal(event)">
+        <div class="bg-ce-white rounded-xl shadow-2xl w-full max-w-lg md:max-w-xl lg:max-w-2xl overflow-hidden transform transition-transform duration-300 scale-95" onclick="event.stopPropagation()">
+            
+            <!-- Modal Header -->
+            <div class="flex justify-between items-center p-6 border-b border-gray-100 bg-ce-silver-light">
+                <h2 id="modal-title" class="text-2xl font-bold text-ce-black font-serif">Ebook Title</h2>
+                <button onclick="closeModal()" class="text-ce-black hover:text-red-500 p-1 rounded-full transition-default">
+                    <!-- Close Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+
+<!-- Description -->
+                <p id="modal-description" class="text-ce-muted text-base mb-6 leading-relaxed">
+                    This is the full detailed description of the ebook, explaining its core benefits, modules, and target audience.
+                </p>
+
+                <!-- Purchase Details -->
+                <div class="flex justify-between items-center py-4 border-y border-gray-100 mb-6">
+                    <p class="text-lg font-semibold text-ce-black">Price:</p>
+                    <span id="modal-price" class="text-3xl font-extrabold text-ce-gold-dark"></span>
+                </div>
+
+                <!-- Final Purchase Button -->
+                <button 
+                    id="modal-purchase-link"
+                    class="w-full py-3 px-6 text-lg font-bold rounded-full bg-ce-gold text-ce-black hover:bg-ce-gold-dark hover:text-white transition-default btn-gold-effect"
+                >
+                    Purchase Now &rarr;
+                </button>
+                <p class="text-xs text-center text-ce-muted mt-3">You will be redirected to the secure Selar checkout page.</p>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        /**
+         * Toggles the visibility of the mobile menu.
+         */
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+        
+        /**
+         * Displays a temporary, dismissible message (replaces alert() or console logs UX changes).
+         * @param {string} message - The message content.
+         * @param {string} bgColor - Tailwind background color class.
+         */
+        function showMessage(message, bgColor = 'bg-ce-black') {
+            const container = document.getElementById('message-container');
+            const messageElement = document.createElement('div');
+            const id = 'msg-' + Date.now();
+
+            messageElement.id = id;
+            messageElement.className = `${bgColor} text-white p-4 rounded-lg shadow-xl max-w-xs transition-opacity duration-300 opacity-0 transform translate-y-2`;
+            messageElement.innerHTML = `
+                <div class="flex items-center justify-between">
+                    <span class="text-sm font-medium">${message}</span>
+                    <button class="text-white ml-4 opacity-75 hover:opacity-100" onclick="document.getElementById('${id}').remove()">
+                        <!-- Close Icon -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                    </button>
+                </div>
+            `;
+            container.appendChild(messageElement);
+
+            // Animate in
+            setTimeout(() => {
+                messageElement.classList.remove('opacity-0', 'translate-y-2');
+            }, 10);
+
+            // Auto-remove after 4 seconds
+            setTimeout(() => {
+                messageElement.classList.add('opacity-0', 'translate-y-2');
+                // Remove from DOM after transition
+                messageElement.addEventListener('transitionend', () => messageElement.remove());
+            }, 4000);
+        }
+
+        /**
+         * Shows the Ebook detail modal with populated data.
+         * @param {string} title - Ebook title.
+         * @param {string} description - Ebook description.
+         * @param {string} price - Ebook price string.
+         * @param {string} url - Affiliate partner URL.
+         * @param {string} imageUrl - Placeholder image URL.
+         */
+        function showEbookModal(title, description, price, url, imageUrl) {
+            const modal = document.getElementById('ebook-modal');
+            const modalContent = modal.querySelector('div:not(.modal-backdrop)');
+
+            document.getElementById('modal-title').textContent = title;
+            document.getElementById('modal-description').textContent = description;
+            document.getElementById('modal-price').textContent = price;
+            document.getElementById('modal-image').src = imageUrl;
+
+            const purchaseLink = document.getElementById('modal-purchase-link');
+            purchaseLink.onclick = () => {
+                // Display quick redirection message
+                showMessage(`Redirecting for purchase of: ${title}`, 'bg-ce-gold-dark');
+                
+                // Simulate redirection (in a real browser this would be window.open(url, '_blank');)
+                console.log(`Simulating affiliate redirection to: ${url}`);
+                closeModal(); // Close the modal after triggering the action
+            };
+            
+            // Show modal with transition effects
+            modal.classList.remove('hidden');
+            document.body.classList.add('overflow-hidden'); // Prevent background scrolling
+            
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modalContent.classList.remove('scale-95');
+            }, 10);
+        }
+
+        /**
+         * Closes the modal with transition effects.
+         * @param {Event} event - Optional click event to check if click was on the backdrop.
+         */
+        function closeModal(event) {
+            const modal = document.getElementById('ebook-modal');
+            
+            // Check if the click was on the backdrop itself to close
+            if (event && event.target !== modal) return;
+
+            const modalContent = modal.querySelector('div:not(.modal-backdrop)');
+
+            modal.classList.add('opacity-0');
+            modalContent.classList.add('scale-95');
+            document.body.classList.remove('overflow-hidden');
+
+            // Hide after transition
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        /**
+         * Attaches click handlers to "View" buttons.
+         */
+        document.addEventListener('DOMContentLoaded', () => {
+            const buttons = document.querySelectorAll('.view-details-button');
+            buttons.forEach(button => {
+                button.addEventListener('click', (event) => {
+                    const title = event.target.getAttribute('data-ebook-title');
+                    const desc = event.target.getAttribute('data-ebook-desc');
+                    const price = event.target.getAttribute('data-ebook-price');
+                    const url = event.target.getAttribute('data-partner-url');
+                    const imageUrl = event.target.getAttribute('data-image-url');
+                    
+                    showEbookModal(title, desc, price, url, imageUrl);
+                });
+            });
+
+            // Allow closing modal with ESC key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && !document.getElementById('ebook-modal').classList.contains('hidden')) {
+                    closeModal();
+                }
+            });
+        });
+    </script>
+</body>
+</html> 
