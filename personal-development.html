@@ -269,11 +269,11 @@
                                 <span class="text-2xl font-extrabold text-ce-gold-dark" id="price-12">$15.99</span>
                                 <button 
                                     class="view-details-button py-2 px-5 text-sm font-bold rounded-full bg-ce-black text-ce-white hover:bg-ce-gold-dark transition-default" 
-                                    data-ebook-title="The Debt Decimator"
-                                    data-ebook-price="$19.99"
-                                    data-ebook-desc="A practical, aggressive plan to eliminate high-interest debt using strategic payoff methods. Learn to systematically boost your credit score and accelerate your journey to financial freedom."
-                                    data-partner-url="https://selar.co/debt-decimator"
-                                    data-image-url="https://placehold.co/600x400/CECECE/8B6B00?text=Debt+Decimator"
+                                    data-ebook-title="Time Dilation: The Art of Slowing Down"
+                                    data-ebook-price="$15.99"
+                                    data-ebook-desc="Techniques rooted in neuroscience to enhance presence and perception, making time feel abundant and controllable. Learn to manipulate your subjective experience of time through mindfulness."
+                                    data-partner-url="https://selar.co/time-dilation"
+                                    data-image-url="https://placehold.co/600x400/3498DB/FFFFFF?text=Time+Dilation"
                                 >
                                     View
                                 </button>
@@ -367,7 +367,14 @@
                 </button>
             </div>
 
-<!-- Description -->
+            <!-- Modal Body Content -->
+            <div class="p-6">
+                <!-- Ebook Cover Image (FIX: Added missing ID) -->
+                <div class="mb-6 relative h-56 rounded-lg overflow-hidden border-2 border-ce-gold/50">
+                    <img id="modal-image" src="https://placehold.co/600x400/CECECE/8B6B00?text=Cover" alt="Ebook Cover" class="w-full h-full object-cover">
+                </div>
+                
+                <!-- Description -->
                 <p id="modal-description" class="text-ce-muted text-base mb-6 leading-relaxed">
                     This is the full detailed description of the ebook, explaining its core benefits, modules, and target audience.
                 </p>
@@ -451,6 +458,7 @@
             document.getElementById('modal-title').textContent = title;
             document.getElementById('modal-description').textContent = description;
             document.getElementById('modal-price').textContent = price;
+            // FIX: The modal-image element now exists in the HTML, so this line runs correctly.
             document.getElementById('modal-image').src = imageUrl;
 
             const purchaseLink = document.getElementById('modal-purchase-link');
@@ -502,11 +510,13 @@
             const buttons = document.querySelectorAll('.view-details-button');
             buttons.forEach(button => {
                 button.addEventListener('click', (event) => {
-                    const title = event.target.getAttribute('data-ebook-title');
-                    const desc = event.target.getAttribute('data-ebook-desc');
-                    const price = event.target.getAttribute('data-ebook-price');
-                    const url = event.target.getAttribute('data-partner-url');
-                    const imageUrl = event.target.getAttribute('data-image-url');
+                    // Use currentTarget to ensure we get the button element, even if the click lands on a child element
+                    const targetButton = event.currentTarget; 
+                    const title = targetButton.getAttribute('data-ebook-title');
+                    const desc = targetButton.getAttribute('data-ebook-desc');
+                    const price = targetButton.getAttribute('data-ebook-price');
+                    const url = targetButton.getAttribute('data-partner-url');
+                    const imageUrl = targetButton.getAttribute('data-image-url');
                     
                     showEbookModal(title, desc, price, url, imageUrl);
                 });
@@ -521,4 +531,5 @@
         });
     </script>
 </body>
-</html> 
+</html>
+
