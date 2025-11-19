@@ -325,8 +325,8 @@
                 <!-- Contact Form (Embedded) -->
                 <div class="mt-16 bg-gray-900 p-8 rounded-xl max-w-lg mx-auto" id="contactFormContainer">
                     <h3 class="text-2xl font-bold text-ce-gold mb-6 text-center">Request a Discovery Call</h3>
-                    <!-- FORM: Updated action to point to FormSubmit and method to POST -->
-                    <form id="contactForm" action="https://formsubmit.co/circulareagle@gmail.com" method="POST" aria-label="Consultancy Contact Form">
+                    <!-- FORM: Removed action/method for AJAX submission -->
+                    <form id="contactForm" aria-label="Consultancy Contact Form">
                         <!-- Hidden field for email subject line (Optional, but recommended for clean emails) -->
                         <input type="hidden" name="_subject" value="Circular Eagle: New Consultancy Inquiry">
                         
@@ -342,7 +342,7 @@
                             <label for="message" class="block text-sm font-medium text-gray-300 mb-1">Project Summary</label>
                             <textarea id="message" class="w-full px-4 py-2 border border-gray-700 rounded-lg bg-gray-800 text-white focus:ring-ce-gold focus:border-ce-gold transition-default" name="message" required placeholder="Brief description of your needs and goals" rows="4"></textarea>
                         </div>
-                        <button type="submit" class="w-full btn-gold-effect py-3 text-lg font-bold rounded-lg bg-ce-gold text-ce-black hover:bg-ce-gold-dark hover:text-white transition-default">
+                        <button type="submit" id="submitButton" class="w-full btn-gold-effect py-3 text-lg font-bold rounded-lg bg-ce-gold text-ce-black hover:bg-ce-gold-dark hover:text-white transition-default">
                             Submit Inquiry
                         </button>
                         <div id="formStatus" aria-live="polite" class="text-center mt-3 text-sm text-gray-400"></div>
@@ -436,7 +436,11 @@
             const id = 'msg-' + Date.now();
 
             messageElement.id = id;
-            messageElement.className = `${bgColor} text-white p-4 rounded-lg shadow-xl max-w-xs transition-opacity duration-300 opacity-0 transform translate-y-2`;
+            // Removed transform properties for cleaner animation handling
+            messageElement.className = `${bgColor} text-white p-4 rounded-lg shadow-xl max-w-xs transition-all duration-300 opacity-0 fixed bottom-4 right-4`; 
+            messageElement.style.opacity = '0';
+            messageElement.style.transform = 'translateY(20px)'; // Start off-screen
+
             messageElement.innerHTML = `
                 <div class="flex items-center justify-between">
                     <span class="text-sm font-medium">${message}</span>
@@ -446,75 +450,82 @@
                     </button>
                 </div>
             `;
+            // Append and then immediately transition
             container.appendChild(messageElement);
 
             // Animate in
             setTimeout(() => {
-                messageElement.classList.remove('opacity-0', 'translate-y-2');
+                messageElement.style.opacity = '1';
+                messageElement.style.transform = 'translateY(0)';
             }, 10);
 
             // Auto-remove after 4 seconds
             setTimeout(() => {
-                messageElement.classList.add('opacity-0', 'translate-y-2');
+                // Animate out
+                messageElement.style.opacity = '0';
+                messageElement.style.transform = 'translateY(20px)';
+                
                 // Remove from DOM after transition
                 messageElement.addEventListener('transitionend', () => messageElement.remove());
             }, 4000);
         }
 
-        <!-- Corrected contact form with FormSubmit integration and JS handling --><form id="contact-form" method="POST">
-  <div class="form-group">
-    <label for="email">Your Email</label>
-    <input type="email" id="email" name="email" required />
-  </div>  <div class="form-group">
-    <label for="message">Message</label>
-    <textarea id="message" name="message" required></textarea>
-  </div><button type="submit">Send Message</button>
+        /**
+         * Handles the AJAX submission for the contact form.
+         * FormSubmit requires the target email in the AJAX endpoint URL.
+         */
+        document.getElementById('contactForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const form = e.target;
+            const submitButton = document.getElementById('submitButton');
+            const formStatus = document.getElementById('formStatus');
 
-</form><script>
-// Prevent redirect by using AJAX
-const form = document.getElementById('contact-form');
+            // Set loading state
+            submitButton.disabled = true;
+            submitButton.textContent = 'Sending...';
+            submitButton.classList.add('opacity-70');
+            formStatus.textContent = 'Please wait...';
 
-form.addEventListener('submit', async (e) => {
-  e.preventDefault();
+            const formData = new FormData(form);
+            const formObject = {};
+            formData.forEach((value, key) => {
+                formObject[key] = value;
+            });
+            
+            // NOTE: Use FormSubmit's AJAX endpoint with a placeholder email
+            const formSubmitUrl = 'https://formsubmit.co/ajax/circulareagle@gmail.com'; 
+            
+            try {
+                const response = await fetch(formSubmitUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(formObject)
+                });
 
-  const formData = new FormData(form);
-
-  // Send to FormSubmit without redirect
-  await fetch('https://formsubmit.co/ajax/9dc38ba02179ee6d69b91b9b1b0337a1', {
-    method: 'POST',
-    body: formData
-  });
-
-  alert('Message sent successfully');
-  form.reset();
-});
-</script><div id="formMessage" style="margin-top: 1rem; display: none;"></div><script>
-function showMessage(text) {
-    const msg = document.getElementById("formMessage");
-    msg.textContent = text;
-    msg.style.display = "block";
-}
-
-document.getElementById("contactForm").addEventListener("submit", async function(e) {
-    e.preventDefault();
-
-    const form = e.target;
-    const formData = new FormData(form);
-
-    const response = await fetch(form.action, {
-        method: "POST",
-        body: formData
-    });
-
-    if (response.ok) {
-        showMessage("Your message has been sent successfully.");
-        form.reset();
-    } else {
-        showMessage("There was an error. Please try again.");
-    }
-});
-</script>
+                if (response.ok || response.status === 200) {
+                    showMessage('Inquiry submitted successfully! We will contact you soon.', 'bg-ce-gold-dark');
+                    formStatus.textContent = 'Success! We will contact you soon.';
+                    form.reset();
+                } else {
+                    showMessage('Submission failed. Please check your network or try again later.', 'bg-red-700');
+                    formStatus.textContent = 'Submission error. Please try again.';
+                }
+            } catch (error) {
+                console.error('Submission error:', error);
+                showMessage('An unexpected error occurred. Check console for details.', 'bg-red-700');
+                formStatus.textContent = 'An unexpected error occurred.';
+            } finally {
+                // Reset button state
+                submitButton.disabled = false;
+                submitButton.textContent = 'Submit Inquiry';
+                submitButton.classList.remove('opacity-70');
+            }
+        });
+    </script>
     
 </body>
 </html>
-
