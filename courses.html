@@ -135,11 +135,12 @@
                 </p>
 
                 <div class="flex justify-center">
-                    <a href="#course-catalog" 
+                    <button 
+                        onclick="openWaitlistModal()" 
                         class="btn-gold-effect inline-flex items-center justify-center px-10 py-3 border border-ce-gold-dark text-lg font-bold rounded-full text-ce-black bg-ce-gold hover:bg-ce-gold-dark hover:text-white transition-default"
                     >
                         View All 25 Courses &rarr;
-                    </a>
+                    </button>
                 </div>
             </section>
             
@@ -477,10 +478,15 @@
                 <p class="text-ce-black text-lg mb-6 max-w-2xl mx-auto opacity-80">
                     Join the waitlist for the upcoming cohort and receive exclusive early access and pricing announcements.
                 </p>
-                <!-- This button now opens the modal configured for the general waitlist -->
+                
+                <!-- The hidden form element for the general waitlist is removed as the new modal provides the UI -->
+
+                <!-- This button now triggers the custom waitlist modal via JS -->
                 <button 
-                    onclick="openGeneralWaitlistModal()"
+                    type="button" 
+                    id="waitlist-button"
                     class="btn-gold-effect inline-flex items-center justify-center px-10 py-3 border border-ce-black text-lg font-bold rounded-full text-ce-white bg-ce-black hover:bg-ce-gold-dark hover:text-white transition-default"
+                    onclick="openWaitlistModal()"
                 >
                     Secure My Early Access
                 </button>
@@ -544,8 +550,8 @@
     <div id="course-info-modal" class="fixed inset-0 z-[60] hidden flex items-center justify-center modal-backdrop p-4 transition-opacity duration-300 opacity-0" onclick="closeCourseModal(event)">
         <div id="modal-content-container" class="bg-ce-white rounded-xl shadow-2xl w-full max-w-2xl overflow-y-auto transform transition-transform duration-300 scale-95" onclick="event.stopPropagation()">
             
-            <!-- Modal Header -->
-            <div class="sticky top-0 flex justify-between items-center p-5 border-b border-gray-100 bg-ce-gold-dark shadow-md z-10">
+            <!-- Modal Header: Changed bg-ce-gold-dark to bg-ce-black for better contrast -->
+            <div class="sticky top-0 flex justify-between items-center p-5 border-b border-gray-100 bg-ce-black shadow-md z-10">
                 <h2 id="modal-course-name" class="text-xl font-bold text-ce-white font-serif"></h2>
                 <button onclick="closeCourseModal()" class="text-ce-white hover:text-ce-gold p-1 rounded-full transition-default">
                     <!-- Close Icon -->
@@ -589,14 +595,15 @@
                         Enter your email below to receive the **full course syllabus**, including module breakdowns, pricing, and launch dates.
                     </p>
                     
-                    <!-- FORM WRAPPER: Now a genuine FormSubmit form -->
-                    <form id="syllabus-form" action="https://formsubmit.co/circulareagle@gmail.com" method="POST">
+                    <form id="syllabus-form">
                         
-                        <!-- FormSubmit Hidden Fields -->
-                        <!-- The _next field redirects the user back to the current URL plus a success parameter -->
-                        <input type="hidden" name="_next" id="_next_url" value="" />
+                        <!-- HIDDEN FIELD FOR FORM SUBJECT/CONTEXT (CRITICAL FIX) -->
+                        <input type="hidden" name="Course Name" id="form-course-name" value="N/A" />
+                        
                         <!-- The _subject field is dynamically set via JS when the modal opens -->
                         <input type="hidden" name="_subject" id="_form_subject" value="Syllabus Request from Circular Eagle" />
+                        <!-- The _next field redirects the user back to the current URL plus a success parameter (FormSubmit requires this or an AJAX call) -->
+                        <input type="hidden" name="_next" value="?success=true" />
                         <!-- Optional: Anti-spam honeypot field. Leave the value empty. -->
                         <input type="hidden" name="_honeypot" value="" /> 
 
@@ -613,6 +620,46 @@
                     </form>
                 </div>
 
+            </div>
+        </div>
+    </div>
+    
+    <!-- NEW: GENERAL WAITLIST MODAL (Custom UI replacement for prompt()) -->
+    <div id="general-waitlist-modal" class="fixed inset-0 z-[60] hidden flex items-center justify-center modal-backdrop p-4 transition-opacity duration-300 opacity-0" onclick="closeWaitlistModal(event)">
+        <div class="bg-ce-white rounded-xl shadow-2xl w-full max-w-sm overflow-hidden transform transition-transform duration-300 scale-95" onclick="event.stopPropagation()">
+            
+            <!-- Modal Header -->
+            <div class="flex justify-between items-center p-5 border-b border-gray-100 bg-ce-gold shadow-md z-10">
+                <h2 class="text-xl font-bold text-ce-black font-serif">Secure Early Access</h2>
+                <button onclick="closeWaitlistModal()" class="text-ce-black hover:opacity-75 p-1 rounded-full transition-default">
+                    <!-- Close Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+
+            <div class="p-6">
+                <p class="text-ce-muted text-base mb-4">
+                    Join the exclusive waitlist to be notified first about the official launch, early bird pricing, and pre-course bonuses.
+                </p>
+                
+                <form id="general-waitlist-form-ui">
+                    <!-- Formsubmit fields -->
+                    <input type="hidden" name="_subject" value="General Waitlist Signup" />
+                    <input type="hidden" name="_next" value="?success=true" />
+                    <input type="hidden" name="_honeypot" value="" />
+                    <input type="hidden" name="Course Name" value="GENERAL WAITLIST" />
+
+                    <!-- Email Input -->
+                    <input type="email" name="email" required placeholder="Your Best Email Address" class="w-full p-3 mb-4 border-2 border-gray-200 rounded-lg focus:border-ce-gold-dark focus:ring-0 transition-default" />
+
+                    <button 
+                        type="submit"
+                        class="w-full py-3 px-6 text-base font-bold rounded-full bg-ce-black text-ce-white hover:bg-ce-gold-dark hover:text-white transition-default btn-gold-effect"
+                        data-original-text="Join Waitlist Now"
+                    >
+                        Join Waitlist Now
+                    </button>
+                </form>
             </div>
         </div>
     </div>
@@ -875,16 +922,20 @@
         
         /**
          * Handles AJAX submission for all forms using Formsubmit.co, preventing redirect.
+         * Note: This function is now attached via an event listener on DOMContentLoaded.
          * @param {Event} event - The form submission event.
-         * @param {string} subjectPrefix - The prefix for the email subject (e.g., 'Syllabus Request').
          */
-        async function handleSubmission(event, subjectPrefix) {
+        async function handleSubmission(event) {
             event.preventDefault(); // Stop native form submission (redirect)
 
             const form = event.target;
+            const isSyllabusForm = form.id === 'syllabus-form';
+            const subjectPrefix = isSyllabusForm ? 'Syllabus Request' : 'General Waitlist Signup';
+
+            // Determine the submit button and inputs
+            const submitButton = form.querySelector('button[type="submit"]');
             const emailInput = form.querySelector('input[name="email"]');
             const courseNameInput = form.querySelector('input[name="Course Name"]');
-            const submitButton = form.querySelector('button[type="submit"]');
 
             if (!emailInput || !emailInput.value || !emailInput.value.includes('@')) {
                 showMessage('Please enter a valid email address.', 'bg-ce-error');
@@ -892,8 +943,9 @@
             }
 
             const courseName = courseNameInput ? courseNameInput.value : 'N/A';
+            const originalButtonText = submitButton.getAttribute('data-original-text');
             
-            submitButton.textContent = 'Submitting...';
+            submitButton.textContent = 'Sending...';
             submitButton.disabled = true;
 
             try {
@@ -908,12 +960,19 @@
                 });
                 
                 if (response.ok) {
-                    showMessage(`Success! Your request for "${courseName}" has been received.`, 'bg-ce-success');
+                    const successMessage = isSyllabusForm 
+                        ? `Success! Syllabus for "${courseName}" sent to your inbox.`
+                        : `Got it! You've been added to the early access waitlist.`;
+                    
+                    showMessage(successMessage, 'bg-ce-success');
                     
                     // Clear form and close modal if in modal
                     form.reset();
-                    if (form.id === 'syllabus-form') {
+                    if (isSyllabusForm) {
                         closeCourseModal();
+                    } else {
+                        // If it's the general waitlist form, close its modal
+                        closeWaitlistModal();
                     }
                 } else {
                     // Formsubmit returns a JSON error response on failure
@@ -925,10 +984,57 @@
                 console.error("Submission error:", error);
                 showMessage('Network error. Check your connection.', 'bg-ce-error');
             } finally {
-                submitButton.textContent = submitButton.getAttribute('data-original-text') || (form.id === 'syllabus-form' ? 'Send Me the Full Syllabus' : 'Secure My Spot Now');
+                if (originalButtonText) {
+                    submitButton.textContent = originalButtonText;
+                } else {
+                     // Fallback for waitlist button if original text isn't set (should be set on DOMContentLoaded)
+                    submitButton.textContent = isSyllabusForm ? 'Send Me the Full Syllabus' : 'Join Waitlist Now';
+                }
                 submitButton.disabled = false;
             }
         }
+
+        /**
+         * Opens the dedicated modal for the General Waitlist. (Replaces prompt())
+         */
+        function openWaitlistModal() {
+            const modal = document.getElementById('general-waitlist-modal');
+            const form = document.getElementById('general-waitlist-form-ui');
+            
+            // Reset the form in case it was previously submitted
+            form.reset();
+
+            // Show modal with transition effects
+            modal.classList.remove('hidden');
+            document.body.classList.add('overflow-hidden'); // Prevent background scrolling
+            
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modal.querySelector('.scale-95').classList.remove('scale-95');
+            }, 10);
+        }
+
+        /**
+         * Closes the General Waitlist modal with transition effects.
+         */
+        function closeWaitlistModal(event) {
+            const modal = document.getElementById('general-waitlist-modal');
+            
+            // Check if the click was on the backdrop itself to close
+            if (event && event.target !== modal) return;
+
+            const modalContent = modal.querySelector('.max-w-sm');
+
+            modal.classList.add('opacity-0');
+            modalContent.classList.add('scale-95');
+            document.body.classList.remove('overflow-hidden');
+
+            // Hide after transition
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
 
         /**
          * Opens the dynamic course modal and populates it with data.
@@ -958,6 +1064,7 @@
             // Cache original button text
             const submitButton = document.querySelector('#syllabus-form button[type="submit"]');
             submitButton.setAttribute('data-original-text', 'Send Me the Full Syllabus');
+            submitButton.textContent = 'Send Me the Full Syllabus'; // Reset text if it was 'Sending...'
 
 
             // Show modal with transition effects
@@ -991,18 +1098,49 @@
             }, 300);
         }
 
-        // Allow closing modal with ESC key
+        // Allow closing modals with ESC key
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && !document.getElementById('course-info-modal').classList.contains('hidden')) {
-                closeCourseModal();
+            const courseModal = document.getElementById('course-info-modal');
+            const waitlistModal = document.getElementById('general-waitlist-modal');
+
+            if (e.key === 'Escape') {
+                if (!courseModal.classList.contains('hidden')) {
+                    closeCourseModal();
+                } else if (!waitlistModal.classList.contains('hidden')) {
+                    closeWaitlistModal();
+                }
             }
         });
 
-        // Initialize button text on load
+        // --- DOM CONTENT LOADED: ATTACH EVENT LISTENERS (CRITICAL FIX) ---
         document.addEventListener('DOMContentLoaded', () => {
-             const waitlistButton = document.querySelector('#waitlist-form button[type="submit"]');
-             waitlistButton.setAttribute('data-original-text', 'Secure My Spot Now');
+             // 1. Attach AJAX submission logic to the Syllabus Form
+             const syllabusForm = document.getElementById('syllabus-form');
+             if (syllabusForm) {
+                 syllabusForm.addEventListener('submit', handleSubmission);
+             }
+
+             // 2. Attach AJAX submission logic to the General Waitlist Form UI
+             const waitlistFormUI = document.getElementById('general-waitlist-form-ui');
+             if (waitlistFormUI) {
+                 waitlistFormUI.addEventListener('submit', handleSubmission);
+             }
+
+             // 3. Cache original button text for the waitlist button outside the modal (since it triggers the modal)
+             const waitlistButton = document.getElementById('waitlist-button');
+             if (waitlistButton) {
+                 waitlistButton.setAttribute('data-original-text', 'Secure My Early Access');
+             }
+
+             // 4. Check for a success parameter in the URL (for potential traditional form redirects)
+             const urlParams = new URLSearchParams(window.location.search);
+             if (urlParams.get('success')) {
+                showMessage('Thank you for your interest! We received your request.', 'bg-ce-success');
+                // Clean the URL to remove the success parameter after displaying the message
+                history.replaceState(null, '', window.location.pathname);
+             }
         });
 
     </script>
 </body>
+
