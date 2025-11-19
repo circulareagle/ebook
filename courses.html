@@ -1004,17 +1004,7 @@
             modal.classList.remove('hidden');
             document.body.classList.add('overflow-hidden'); 
             
-            setTimeout(() => {
-                modal.classList.remove('opacity-0');
-                modalContent.classList.remove('scale-95');
-            }, 10);
-        }
-
-        // Allow closing modal with ESC key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && !document.getElementById('course-info-modal').classList.contains('hidden')) {
-                closeCourseModal();
-            }
+            
         });
     </script>
 </body>
