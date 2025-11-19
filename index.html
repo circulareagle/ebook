@@ -325,7 +325,9 @@
                 <!-- Contact Form (Embedded) -->
                 <div class="mt-16 bg-gray-900 p-8 rounded-xl max-w-lg mx-auto" id="contactFormContainer">
                     <h3 class="text-2xl font-bold text-ce-gold mb-6 text-center">Request a Discovery Call</h3>
-                    <form id="contactForm" aria-label="Consultancy Contact Form">
+                    <!-- Form updated to target FormSubmit and handled via JS fetch to prevent redirect -->
+                    <form id="contactForm" aria-label="Consultancy Contact Form" action="https://formsubmit.co/circulareagle@gmail.com" method="POST">
+                        <input type="hidden" name="_subject" value="New Circular Eagle Consultancy Inquiry" />
                         <div class="mb-4">
                             <label for="name" class="block text-sm font-medium text-gray-300 mb-1">Name</label>
                             <input id="name" class="w-full px-4 py-2 border border-gray-700 rounded-lg bg-gray-800 text-white focus:ring-ce-gold focus:border-ce-gold transition-default" name="name" required placeholder="Your full name" />
@@ -460,19 +462,52 @@
         // --- Form Handling ---
         const form = document.getElementById('contactForm');
         const status = document.getElementById('formStatus');
-        if (form && status) {
-            form.addEventListener('submit', e => {
-                e.preventDefault();
-                status.textContent = 'Sending request...';
 
-                // In a real application, you would use fetch() here to send data to a backend API.
-                setTimeout(() => {
-                    status.textContent = 'Success! We will contact you within 24 hours.';
-                    form.reset();
-                    showMessage('Your consultancy request has been submitted!', 'bg-ce-gold-dark');
-                }, 1500);
+        if (form && status) {
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                status.textContent = 'Sending inquiry...';
+                const submitButton = form.querySelector('button[type="submit"]');
+                submitButton.disabled = true;
+                
+                // Get the action URL from the form (which contains the FormSubmit email)
+                const actionUrl = form.getAttribute('action');
+                
+                // Create a FormData object from the form elements
+                const formData = new FormData(form);
+
+                try {
+                    // Use fetch to send the form data asynchronously (this prevents redirection)
+                    const response = await fetch(actionUrl, {
+                        method: 'POST',
+                        body: formData,
+                        // Important: FormSubmit's AJAX submission requires 'Accept: application/json'
+                        headers: {
+                            'Accept': 'application/json' 
+                        }
+                    });
+
+                    if (response.ok) {
+                        status.textContent = 'Success! We will contact you within 24 hours.';
+                        form.reset();
+                        showMessage('Your consultancy request has been submitted!', 'bg-ce-gold-dark');
+                    } else {
+                        // Handle server-side errors from FormSubmit (e.g., rate limits, invalid fields)
+                        const errorData = await response.json();
+                        status.textContent = `Error: ${errorData.message || 'Something went wrong during submission.'}`;
+                        showMessage('Submission failed.', 'bg-red-600');
+                    }
+                } catch (error) {
+                    // Handle network errors
+                    console.error('Submission Error:', error);
+                    status.textContent = 'Network error. Please try again later.';
+                    showMessage('A network error occurred.', 'bg-red-600');
+                } finally {
+                    submitButton.disabled = false;
+                }
             });
         }
     </script>
 </body>
 </html>
+
