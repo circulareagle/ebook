@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Future-Proof Creation Hub | Circular Eagle</title>
+    <meta name="description" content="Explore the top 13 profitable technical skills courses in AI, Cloud, Cybersecurity, and Software Development." />
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configure Tailwind with Gold/Black/White Palette -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'ce-white': '#FFFFFF',
+                        'ce-gold': '#D4AF37', // Classic Gold
+                        'ce-gold-dark': '#8B6B00', // Darker gold for text/hover
+                        'ce-black': '#0B0B0C',
+                        'ce-muted': '#6B6F76',
+                        'ce-silver-light': '#F9FAFB', // Near-white subtle background
+                        'ce-success': '#10B981', // Green for success
+                        'ce-error': '#EF4444', // Red for errors
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        serif: ['Georgia', 'Merriweather', 'serif'], // For premium titles
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        /* General smooth transition for hover effects */
+        .transition-default {
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Subtle ring effect on gold elements */
+        .btn-gold-effect {
+            box-shadow: 0 10px 20px -5px rgba(212, 175, 55, 0.2);
+        }
+        .btn-gold-effect:hover {
+            box-shadow: 0 15px 30px -8px rgba(212, 175, 55, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        /* Modal Backdrop */
+        .modal-backdrop {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+        
+        /* Course Card Hover Effect (subtle lift) */
+        .course-item {
+            display: block; /* Ensure button acts as a block */
+            transition: all 0.2s ease-in-out;
+        }
+        .course-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+            border-color: theme('colors.ce-gold-dark');
+        }
+        .course-icon {
+            width: 24px;
+            height: 24px;
+            min-width: 24px; /* Fix size */
+        }
+        
+        /* Modal-specific styling for scrollable content */
+        #modal-content-container {
+            max-height: 80vh; /* Ensures modal fits on smaller screens */
+        }
+
+        /* Responsive Modal adjustments */
+        @media (max-width: 640px) {
+            #modal-content-container {
+                max-height: 90vh; 
+            }
+        }
+    </style>
+</head>
+<body class="bg-ce-silver-light text-ce-black font-sans min-h-screen">
+
+    <!-- Message Box Container -->
+    <div id="message-container" class="fixed bottom-4 right-4 z-[100] space-y-2"></div>
+
+    <!-- HEADER: Floating, High Contrast -->
+    <header class="sticky top-0 z-50 bg-ce-white/95 backdrop-blur-md shadow-sm border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4 md:py-5">
+                <!-- Logo & Back to Home Link -->
+                <a href="#" class="flex items-center space-x-2">
+                    <div class="w-8 h-8 rounded-full border-2 border-ce-gold-dark flex items-center justify-center text-sm font-bold text-ce-gold-dark">
+                        CE
+                    </div>
+                    <span class="text-xl font-extrabold tracking-tight text-ce-black">Circular<span class="text-ce-gold">Eagle</span></span>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#" class="text-base font-medium text-ce-muted hover:text-ce-gold-dark transition-default">eBooks Hub</a>
+                    <a href="#course-catalog" class="text-base font-medium text-ce-gold-dark hover:text-ce-black transition-default">Technical Courses</a>
+                    <a href="#" class="text-base font-medium text-ce-muted hover:text-ce-gold-dark transition-default">Consultancy</a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <button id="menu-button" class="md:hidden text-ce-black hover:text-ce-gold transition-default p-2 rounded-lg" onclick="toggleMenu()">
+                    <!-- Menu Icon (Hamburger) -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-ce-white border-t border-gray-100 absolute w-full shadow-lg">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#" onclick="toggleMenu()" class="block px-3 py-2 rounded-md text-base font-medium text-ce-black hover:bg-gray-50 hover:text-ce-gold-dark transition-default">eBooks Hub</a>
+                <a href="#course-catalog" onclick="toggleMenu()" class="block px-3 py-2 rounded-md text-base font-medium text-ce-black hover:bg-gray-50 hover:text-ce-gold-dark transition-default">Technical Courses</a>
+                <a href="#" onclick="toggleMenu()" class="block px-3 py-2 rounded-md text-base font-medium text-ce-black hover:bg-gray-50 hover:text-ce-gold-dark transition-default">Consultancy</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto">
+        <div class="px-4 sm:px-6 lg:px-8">
+
+            <!-- 1. HERO / CATEGORY OVERVIEW -->
+            <section class="w-full overflow-hidden pt-12 pb-16 md:pt-20 md:pb-20 text-center bg-ce-black text-ce-white rounded-b-2xl shadow-xl border-b-4 border-ce-gold mb-12">
+                <p class="text-lg font-semibold text-ce-gold mb-3 uppercase tracking-wider">Circular Eagle Tech Academy</p>
+                <h1 class="font-serif text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tighter mb-4 leading-none">
+                    Future-Proof <span class="text-ce-gold">Creation Hub</span>
+                </h1>
+                <p class="text-xl sm:text-2xl text-gray-400 max-w-4xl mx-auto mb-10">
+                    Master the **13 most profitable and in-demand technical skills** across AI, Cloud, Software Engineering, and Cybersecurity.
+                </p>
+
+                <div class="flex justify-center">
+                    <a href="#course-catalog" 
+                        class="btn-gold-effect inline-flex items-center justify-center px-10 py-3 border border-ce-gold-dark text-lg font-bold rounded-full text-ce-black bg-ce-gold hover:bg-ce-gold-dark hover:text-white transition-default"
+                    >
+                        View All Technical Tracks &rarr;
+                    </a>
+                </div>
+            </section>
+            
+            <!-- 2. COURSE CATALOG LISTING -->
+            <section id="course-catalog" class="py-12 md:py-16">
+                <h2 class="font-serif text-4xl font-bold text-center mb-12">
+                    Top Profitable Technical Courses
+                </h2>
+
+                <!-- Category I: AI, Data & Robotics -->
+                <div class="mb-16">
+                    <h3 class="text-3xl font-bold font-serif text-ce-gold-dark mb-6 border-b-2 border-ce-gold/50 pb-2">I. AI, Data & Robotics</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        
+                        <!-- 1. Machine Learning -->
+                        <button onclick="openCourseModal('machine-learning')" class="course-item p-4 bg-ce-white rounded-lg shadow-md border border-gray-100 text-left transition-default">
+                            <div class="flex items-start space-x-3">
+                                <!-- Icon: Brain -->
+                                <svg class="course-icon text-ce-gold-dark" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg>
+                                <div>
+                                    <h4 class="font-semibold text-lg text-ce-black">Machine Learning</h4>
+                                    <p class="text-sm text-ce-muted">Supervised/unsupervised learning, model training, and evaluation.</p>
+                                </div>
+                            </div>
+                        </button>
+                        
+                        <!-- 2. Artificial Intelligence (AI Engineering) -->
+                        <button onclick="openCourseModal('ai-engineering')" class="course-item p-4 bg-ce-white rounded-lg shadow-md border border-gray-100 text-left transition-default">
+                            <div class="flex items-start space-x-3">
+                                <!-- Icon: Cpu -->
+                                <svg class="course-icon text-ce-gold-dark" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9" rx="1"/><path d="M15 2v2"/><path d="M15 20v2"/><path d="M20 15h2"/><path d="M2 9h2"/><path d="M20 9h2"/><path d="M4 15H2"/><path d="M4 9H2"/><path d="M15 2h-2"/><path d="M15 22h-2"/><path d="M9 22h-2"/><path d="M9 2v2"/></svg>
+                                <div>
+                                    <h4 class="font-semibold text-lg text-ce-black">Artificial Intelligence (AI Engineering)</h4>
+                                    <p class="text-sm text-ce-muted">Deploying, fine-tuning, and managing Large Language Models (LLMs).</p>
+                                </div>
+                            </div>
+                        </button>
+                        
+                        <!-- 3. Data Science -->
+                        <button onclick="openCourseModal('data-science')" class="course-item p-4 bg-ce-white rounded-lg shadow-md border border-gray-100 text-left transition-default">
+                            <div class="flex items-start space-x-3">
+                                <!-- Icon: Database -->
+                                <svg class="course-icon text-ce-gold-dark" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 12a9 3 0 0 0 18 0"/><path d="M3 19a9 3 0 0 0 18 0"/><path d="M3 5v14"/></svg>
+                                <div>
+                                    <h4 class="font-semibold text-lg text-ce-black">Data Science</h4>
+                                    <p class="text-sm text-ce-muted">Statistical analysis, visualization, and manipulation using Python.</p>
+                                </div>
+                            </div>
+                        </button>
+                        
+                        <!-- 8. Big Data Engineering -->
+                        <button onclick="openCourseModal('big-data-engineering')" class="course-item p-4 bg-ce-white rounded-lg shadow-md border border-gray-100 text-left transition-default">
+                            <div class="flex items-start space-x-3">
+                                <!-- Icon: Layout Grid -->
+                                <svg class="course-icon text-ce-gold-dark" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg>
+                                <div>
+                                    <h4 class="font-semibold text-lg text-ce-black">Big Data Engineering</h4>
+                                    <p class="text-sm text-ce-muted">Distributed computing, ingestion, and warehousing with Hadoop & Spark.</p>
+                                </div>
+                            </div>
+                        </button>
+                        
+                        <!-- 12. Automation & RPA -->
+                        <button onclick="openCourseModal('automation-rpa')" class="course-item p-4 bg-ce-white rounded-lg shadow-md border border-gray-100 text-left transition-default">
+                            <div class="flex items-start space-x-3">
+                                <!-- Icon: Bot -->
+                                <svg class="course-icon text-ce-gold-dark" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4"/><path d="M15.5 13H8.5"/><path d="M19 19H5a2 2 0 0 1-2-2V7a2 2 0 0 0 2-2h14a2 2 0 0 0 2 2v10a2 2 0 0 1-2 2z"/></svg>
+                                <div>
+                                    <h4 class="font-semibold text-lg text-ce-black">Automation & RPA</h4>
+                                    <p class="text-sm text-ce-muted">Implementing software robots (UiPath/AA) for business process automation.</p>
+                                </div>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Category II: Infrastructure & Security -->
+                <div class="mb-16">
+                    <h3 class="text-3xl font-bold font-serif text-ce-gold-dark mb-6 border-b-2 border-ce-gold/50 pb-2">II. Infrastructure & Security</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                        <!-- 4. Cloud Computing -->
+                        <button onclick="openCourseModal('cloud-computing')" class="course-item p-4 bg-ce-white rounded-lg shadow-md border border-gray-100 text-left transition-default">
+                            <div class="flex items-start space-x-3">
+                                <!-- Icon: Cloud -->
+                                <svg class="course-icon text-ce-gold-dark" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14.5a.5.5 0 0 0-.5.5v3.5a.5.5 0 0 0 .5.5h16a.5.5 0 0 0 .5-.5V15"/><path d="M10 21v-3.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5V21"/><path d="M12 21v-3.5a.5.5 0 0 0-.5-.5h-1"/><path d="M12 21v-3.5a.5.5 0 0 1 .5-.5h1"/><path d="M16 10a4 4 0 0 0-3.44-4"/><path d="M10 7.5a4 4 0 0 0-3.44 4"/><path d="M12 12a.5.5 0 0 0 .5.5h-1"/><path d="M12 12a.5.5 0 0 1 .5.5h-1"/></svg>
+                                <div>
+                                    <h4 class="font-semibold text-lg text-ce-black">Cloud Computing</h4>
+                                    <p class="text-sm text-ce-muted">Designing scalable, secure, and resilient infrastructure (AWS/Azure).</p>
+                                </div>
+                            </div>
+                        </button>
+                        
+                        <!-- 5. Cybersecurity -->
+                        <button onclick="openCourseModal('cybersecurity')" class="course-item p-4 bg-ce-white rounded-lg shadow-md border border-gray-100 text-left transition-default">
+                            <div class="flex items-start space-x-3">
+                                <!-- Icon: Shield -->
+                                <svg class="course-icon text-ce-gold-dark" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-12V5l-8-3-8 3v5c0 8 8 12 8 12z"/></svg>
+                                <div>
+                                    <h4 class="font-semibold text-lg text-ce-black">Cybersecurity</h4>
+                                    <p class="text-sm text-ce-muted">Ethical hacking, identifying, exploiting, and mitigating vulnerabilities.</p>
+                                </div>
+                            </div>
+                        </button>
+                        
+                        <!-- 6. DevOps & Cloud DevOps -->
+                        <button onclick="openCourseModal('devops-cloud')" class="course-item p-4 bg-ce-white rounded-lg shadow-md border border-gray-100 text-left transition-default">
+                            <div class="flex items-start space-x-3">
+                                <!-- Icon: Settings -->
+                                <svg class="course-icon text-ce-gold-dark" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-12V5l-8-3-8 3v5c0 8 8 12 8 12z"/><path d="M12 22s8-4 8-12V5l-8-3-8 3v5c0 8 8 12 8 12z"/></svg>
+                                <div>
+                                    <h4 class="font-semibold text-lg text-ce-black">DevOps & Cloud DevOps</h4>
+                                    <p class="text-sm text-ce-muted">Containerization (Docker/K8s) and automating deployments (CI/CD).</p>
+                                </div>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Category III: Software & Product Development -->
+                <div class="mb-16">
+                    <h3 class="text-3xl font-bold font-serif text-ce-gold-dark mb-6 border-b-2 border-ce-gold/50 pb-2">III. Software & Product Development</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                        <!-- 9. Software Engineering (Full Stack) -->
+                        <button onclick="openCourseModal('software-engineering')" class="course-item p-4 bg-ce-white rounded-lg shadow-md border border-gray-100 text-left transition-default">
+                            <div class="flex items-start space-x-3">
+                                <!-- Icon: Code -->
+                                <svg class="course-icon text-ce-gold-dark" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                                <div>
+                                    <h4 class="font-semibold text-lg text-ce-black">Software Engineering (Full Stack)</h4>
+                                    <p class="text-sm text-ce-muted">Building complete web applications (MERN/MEAN) from end-to-end.</p>
+                                </div>
+                            </div>
+                        </button>
+                        
+                        <!-- 7. Blockchain Development -->
+                        <button onclick="openCourseModal('blockchain-dev')" class="course-item p-4 bg-ce-white rounded-lg shadow-md border border-gray-100 text-left transition-default">
+                            <div class="flex items-start space-x-3">
+                                <!-- Icon: Link 45 degrees -->
+                                <svg class="course-icon text-ce-gold-dark" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h4a2 2 0 0 1 2 2v1"/><path d="M21 15v-4a2 2 0 0 0-2-2h-4"/><path d="M3 9v4a2 2 0 0 0 2 2h4"/><path d="M9 17h4a2 2 0 0 0 2-2v-4"/><path d="M7 7h4"/><path d="M13 17h4"/></svg>
+                                <div>
+                                    <h4 class="font-semibold text-lg text-ce-black">Blockchain Development</h4>
+                                    <p class="text-sm text-ce-muted">Building dApps and smart contracts on Ethereum using Solidity.</p>
+                                </div>
+                            </div>
+                        </button>
+
+                        <!-- 11. Mobile App Development -->
+                        <button onclick="openCourseModal('mobile-app-dev')" class="course-item p-4 bg-ce-white rounded-lg shadow-md border border-gray-100 text-left transition-default">
+                            <div class="flex items-start space-x-3">
+                                <!-- Icon: Smartphone -->
+                                <svg class="course-icon text-ce-gold-dark" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
+                                <div>
+                                    <h4 class="font-semibold text-lg text-ce-black">Mobile App Development</h4>
+                                    <p class="text-sm text-ce-muted">Cross-platform development for iOS and Android using Flutter/Kotlin.</p>
+                                </div>
+                            </div>
+                        </button>
+                        
+                        <!-- 10. Product Management (Technical Track) -->
+                        <button onclick="openCourseModal('product-management-tech')" class="course-item p-4 bg-ce-white rounded-lg shadow-md border border-gray-100 text-left transition-default">
+                            <div class="flex items-start space-x-3">
+                                <!-- Icon: Box -->
+                                <svg class="course-icon text-ce-gold-dark" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2z"/><path d="M10 8v8"/><path d="M17 8v8"/><path d="M14 8v8"/></svg>
+                                <div>
+                                    <h4 class="font-semibold text-lg text-ce-black">Product Management (Technical Track)</h4>
+                                    <p class="text-sm text-ce-muted">Defining technical roadmaps, managing sprints, and mastering Agile/Scrum.</p>
+                                </div>
+                            </div>
+                        </button>
+
+                        <!-- 13. UI/UX Design (Tech-Focused) -->
+                        <button onclick="openCourseModal('ui-ux-design-tech')" class="course-item p-4 bg-ce-white rounded-lg shadow-md border border-gray-100 text-left transition-default">
+                            <div class="flex items-start space-x-3">
+                                <!-- Icon: Layers -->
+                                <svg class="course-icon text-ce-gold-dark" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l9 2-9-18-9 18 9-2z"/><path d="M12 19v-13"/></svg>
+                                <div>
+                                    <h4 class="font-semibold text-lg text-ce-black">UI/UX Design (Tech-Focused)</h4>
+                                    <p class="text-sm text-ce-muted">Advanced Figma prototyping, user research, and developer handoff.</p>
+                                </div>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 3. FINAL CTA STRIP -->
+            <section class="py-12 my-12 bg-ce-gold rounded-xl p-8 text-center shadow-2xl">
+                <h2 class="text-3xl font-bold text-ce-black mb-3">Ready to Build Your Future-Proof Career?</h2>
+                <p class="text-ce-black text-lg mb-6 max-w-2xl mx-auto opacity-80">
+                    Join the exclusive waiting list for our next technical cohort and receive an introductory skills assessment.
+                </p>
+                <button 
+                    onclick="openInfoModal('Technical Skills Waitlist')"
+                    class="btn-gold-effect inline-flex items-center justify-center px-10 py-3 border border-ce-black text-lg font-bold rounded-full text-ce-white bg-ce-black hover:bg-ce-gold-dark hover:text-white transition-default"
+                >
+                    Secure My Spot Now
+                </button>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- 4. FOOTER (Standard Style) -->
+    <footer id="footer" class="bg-ce-white border-t border-gray-100 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
+                <!-- Brand Info -->
+                <div class="col-span-2 lg:col-span-2">
+                    <h3 class="text-2xl font-extrabold tracking-tight text-ce-black mb-3">Circular<span class="text-ce-gold">Eagle</span></h3>
+                    <p class="text-sm text-ce-muted">Knowledge for the next generation of innovators and seekers.</p>
+                </div>
+
+                <!-- Links 1 -->
+                <div>
+                    <h4 class="text-lg font-semibold text-ce-black mb-3">Resources</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="text-ce-muted hover:text-ce-gold-dark transition-default">eBook Formats</a></li>
+                        <li><a href="#course-catalog" class="text-ce-muted hover:text-ce-gold-dark transition-default">Course Index</a></li>
+                        <li><a href="#" class="text-ce-muted hover:text-ce-gold-dark transition-default">Latest Insights</a></li>
+                    </ul>
+                </div>
+
+                <!-- Links 2 -->
+                <div>
+                    <h4 class="text-lg font-semibold text-ce-black mb-3">Company</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="text-ce-muted hover:text-ce-gold-dark transition-default">About Us</a></li>
+                        <li><a href="#" class="text-ce-muted hover:text-ce-gold-dark transition-default">Terms & Policy</a></li>
+                        <li><a href="#" class="text-ce-muted hover:text-ce-gold-dark transition-default">Careers</a></li>
+                    </ul>
+                </div>
+
+                 <!-- Contact -->
+                <div class="col-span-2 md:col-span-1">
+                    <h4 class="text-lg font-semibold text-ce-black mb-3">Connect</h4>
+                    <p class="text-sm text-ce-muted hover:text-ce-gold-dark mb-2">support@circulareagle.com</p>
+                    <div class="flex space-x-4">
+                        <a href="#" aria-label="Twitter" class="text-ce-muted hover:text-ce-gold-dark transition-default">Twitter</a>
+                        <a href="#" aria-label="LinkedIn" class="text-ce-muted hover:text-ce-gold-dark transition-default">LinkedIn</a>
+                        <a href="#" aria-label="YouTube" class="text-ce-muted hover:text-ce-gold-dark transition-default">YouTube</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10 pt-6 border-t border-gray-100 text-center">
+                <p class="text-sm text-ce-muted">
+                    &copy; 2025 Circular Eagle. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- COURSE INFO MODAL (Dynamic Content) -->
+    <div id="course-info-modal" class="fixed inset-0 z-[60] hidden flex items-center justify-center modal-backdrop p-4 transition-opacity duration-300 opacity-0" onclick="closeCourseModal(event)">
+        <div id="modal-content-container" class="bg-ce-white rounded-xl shadow-2xl w-full max-w-2xl overflow-y-auto transform transition-transform duration-300 scale-95" onclick="event.stopPropagation()">
+            
+            <!-- Modal Header -->
+            <div class="sticky top-0 flex justify-between items-center p-5 border-b border-gray-100 bg-ce-gold-dark shadow-md z-10">
+                <h2 id="modal-course-name" class="text-xl font-bold text-ce-white font-serif"></h2>
+                <button onclick="closeCourseModal()" class="text-ce-white hover:text-ce-gold p-1 rounded-full transition-default">
+                    <!-- Close Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+
+            <div class="p-6 sm:p-8">
+                <!-- 2. Description -->
+                <h3 class="text-xl font-bold text-ce-black mb-2">What You'll Learn</h3>
+                <p id="modal-description" class="text-ce-black text-base mb-6 leading-relaxed border-b pb-4"></p>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6 mb-6">
+                    <!-- 3. Target Audience -->
+                    <div>
+                        <h4 class="font-bold text-ce-gold-dark text-sm uppercase tracking-wider mb-1">Target Audience</h4>
+                        <p id="modal-audience" class="text-ce-black text-base"></p>
+                    </div>
+
+                    <!-- 4. Instructor/Team -->
+                    <div>
+                        <h4 class="font-bold text-ce-gold-dark text-sm uppercase tracking-wider mb-1">Instructor / Team</h4>
+                        <p id="modal-instructor" class="text-ce-black text-base"></p>
+                    </div>
+                    
+                    <!-- 5. Delivery Method -->
+                    <div>
+                        <h4 class="font-bold text-ce-gold-dark text-sm uppercase tracking-wider mb-1">Delivery Method</h4>
+                        <p id="modal-delivery" class="text-ce-black text-base"></p>
+                    </div>
+
+                    <!-- 6. Duration -->
+                    <div>
+                        <h4 class="font-bold text-ce-gold-dark text-sm uppercase tracking-wider mb-1">Duration / Commitment</h4>
+                        <p id="modal-duration" class="text-ce-black text-base"></p>
+                    </div>
+                </div>
+
+                <div class="pt-6 border-t mt-4">
+                    <p class="text-ce-muted text-sm italic mb-4">
+                        Enter your email below to receive the **full course syllabus**, including module breakdowns, prerequisites, and pricing.
+                    </p>
+                    <!-- Email Input -->
+                    <input type="email" id="modal-email-input" placeholder="Enter your email address..." class="w-full p-3 mb-4 border-2 border-gray-200 rounded-lg focus:border-ce-gold-dark focus:ring-0 transition-default" />
+
+                    <!-- Final CTA Button -->
+                    <button 
+                        onclick="handleSyllabusRequest()"
+                        class="w-full py-3 px-6 text-base font-bold rounded-full bg-ce-gold text-ce-black hover:bg-ce-gold-dark hover:text-white transition-default btn-gold-effect"
+                    >
+                        Send Me the Full Syllabus
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        // --- COURSE DATA STRUCTURE (Simulated Backend Data) ---
+        const courseData = {
+            'machine-learning': {
+                name: 'Machine Learning Foundations',
+                description: 'Core concepts of supervised/unsupervised learning, model training, and evaluation, inspired by Andrew Ng\'s methods.',
+                audience: 'Developers, Analysts, and technical professionals transitioning to AI/ML.',
+                instructor: 'Dr. Elena V. (ML Engineer)',
+                delivery: '12 hours Recorded Video, Weekly Project Labs.',
+                duration: '8 Weeks (10-12 hours commitment)',
+            },
+            'ai-engineering': {
+                name: 'Generative AI Engineering',
+                description: 'Focuses on deploying, fine-tuning, and managing large language models (LLMs) and generative models in production environments.',
+                audience: 'Software Engineers, Data Scientists, and AI architects.',
+                instructor: 'Kai Chen (AI Architect)',
+                delivery: '15 hours Recorded Video, Dedicated GPU Lab Access.',
+                duration: '10 Weeks (15 hours commitment)',
+            },
+            'data-science': {
+                name: 'Applied Data Science with Python',
+                description: 'Practical data manipulation, statistical analysis, and visualization using Python libraries like Pandas and Matplotlib.',
+                audience: 'Anyone starting a career in data analysis or research.',
+                instructor: 'IBM Certified Instructors',
+                delivery: '9 hours Video, Code Notebooks, Capstone Project.',
+                duration: '6 Weeks (8-10 hours commitment)',
+            },
+            'cloud-computing': {
+                name: 'Cloud Solutions Architecture (AWS/Azure)',
+                description: 'Principles of designing scalable, resilient, and secure cloud infrastructure across leading providers (AWS, Azure).',
+                audience: 'IT Professionals, Solution Architects, and DevOps Engineers.',
+                instructor: 'Alex B. (Certified Cloud Expert)',
+                delivery: '14 hours Recorded Video, Sandbox Environment Access.',
+                duration: '12 Weeks (18 hours commitment)',
+            },
+            'cybersecurity': {
+                name: 'Ethical Hacking & Penetration Testing',
+                description: 'Practical steps for identifying, exploiting, and mitigating vulnerabilities in networks and applications (CompTIA Security+ aligned).',
+                audience: 'System Administrators, Security Analysts, and aspiring ethical hackers.',
+                instructor: 'CompTIA Certified Team',
+                delivery: '16 hours Video, Virtual Hacking Labs, Exam Prep.',
+                duration: '10 Weeks (15 hours commitment)',
+            },
+            'devops-cloud': {
+                name: 'Docker, Kubernetes & CI/CD Pipelines',
+                description: 'Infrastructure as Code (IaC), containerization with Docker, orchestration with Kubernetes, and automating deployments with CI/CD tools.',
+                audience: 'Backend Developers and Infrastructure Engineers.',
+                instructor: 'Ben L. (DevOps Consultant)',
+                delivery: '18 hours Recorded Video, Hands-on Deployment Projects.',
+                duration: '14 Weeks (20 hours commitment)',
+            },
+            'blockchain-dev': {
+                name: 'Solidity & Smart Contract Engineering',
+                description: 'Building and deploying decentralized applications (dApps) and smart contracts on the Ethereum blockchain using Solidity (Web3).',
+                audience: 'Software Developers interested in Web3.',
+                instructor: 'Dr. Nika R. (Web3 Developer)',
+                delivery: '10 hours Recorded Video, Interactive Coding Challenges.',
+                duration: '8 Weeks (12 hours commitment)',
+            },
+            'big-data-engineering': {
+                name: 'Apache Ecosystem: Hadoop & Spark',
+                description: 'Handling massive datasets, data ingestion, processing, and warehousing using tools like Apache Hadoop and Spark for distributed computing.',
+                audience: 'Data Architects and Senior Data Analysts.',
+                instructor: 'CE Senior Engineer Team',
+                delivery: '13 hours Recorded Video, Cloud Cluster Access.',
+                duration: '9 Weeks (14 hours commitment)',
+            },
+            'software-engineering': {
+                name: 'Full-Stack Development (MERN/MEAN)',
+                description: 'Building complete web applications from front-end (React/Angular) to back-end (Node.js/Express) and database (MongoDB).',
+                audience: 'Aspiring Full-Stack Developers and Computer Science graduates.',
+                instructor: 'Jason M. (Senior Software Engineer)',
+                delivery: '20 hours Video, 3 Major Portfolio Projects.',
+                duration: '16 Weeks (25 hours commitment)',
+            },
+            'product-management-tech': {
+                name: 'Technical Product Management & Agile',
+                description: 'Bridging the gap between engineering and business, defining technical roadmaps, managing sprints, and mastering Agile methodologies.',
+                audience: 'Project Managers, Analysts, and Senior Engineers moving into PM.',
+                instructor: 'Sarah A. (VP of Product)',
+                delivery: '8 hours Recorded Video, Product Case Studies.',
+                duration: '5 Weeks (8 hours commitment)',
+            },
+            'mobile-app-dev': {
+                name: 'Cross-Platform Mobile Development (Flutter)',
+                description: 'Developing beautiful, native applications for iOS and Android simultaneously using the Google Flutter framework.',
+                audience: 'Developers focused on cross-platform deployment.',
+                instructor: 'Dev Team Lead (Flutter Expert)',
+                delivery: '15 hours Video, Portfolio App Project.',
+                duration: '10 Weeks (15 hours commitment)',
+            },
+            'automation-rpa': {
+                name: 'Robotic Process Automation (UiPath/AA)',
+                description: 'Designing and implementing software robots to automate repetitive, rules-based business processes (RPA).',
+                audience: 'Business Analysts, IT Ops Specialists, and Automation Engineers.',
+                instructor: 'UiPath Certified Trainer',
+                delivery: '12 hours Video, Free Trial Software Licenses.',
+                duration: '8 Weeks (10 hours commitment)',
+            },
+            'ui-ux-design-tech': {
+                name: 'UI/UX Design & Interaction Prototyping',
+                description: 'Human-centered design principles, advanced Figma prototyping, user research synthesis, and developer handoff best practices.',
+                audience: 'Graphic Designers, Front-end Engineers, and Product Designers.',
+                instructor: 'Mia L. (Head of UX)',
+                delivery: '10 hours Recorded Video, Live Critique Sessions.',
+                duration: '6 Weeks (9 hours commitment)',
+            },
+        };
+
+        // --- GENERAL JS FUNCTIONS ---
+
+        /**
+         * Toggles the visibility of the mobile menu.
+         */
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+        
+        /**
+         * Displays a temporary, dismissible message (replaces alert() or console logs UX changes).
+         * @param {string} message - The message content.
+         * @param {string} bgColor - Tailwind background color class.
+         */
+        function showMessage(message, bgColor = 'bg-ce-black') {
+            const container = document.getElementById('message-container');
+            const messageElement = document.createElement('div');
+            const id = 'msg-' + Date.now();
+
+            messageElement.id = id;
+            messageElement.className = `${bgColor} text-white p-4 rounded-lg shadow-xl max-w-xs transition-opacity duration-300 opacity-0 transform translate-y-2`;
+            messageElement.innerHTML = `
+                <div class="flex items-center justify-between">
+                    <span class="text-sm font-medium">${message}</span>
+                    <button class="text-white ml-4 opacity-75 hover:opacity-100" onclick="document.getElementById('${id}').remove()">
+                        <!-- Close Icon -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                    </button>
+                </div>
+            `;
+            container.appendChild(messageElement);
+
+            // Animate in
+            setTimeout(() => {
+                messageElement.classList.remove('opacity-0', 'translate-y-2');
+            }, 10);
+
+            // Auto-remove after 4 seconds
+            setTimeout(() => {
+                messageElement.classList.add('opacity-0', 'translate-y-2');
+                // Remove from DOM after transition
+                messageElement.addEventListener('transitionend', () => messageElement.remove());
+            }, 4000);
+        }
+        
+        /**
+         * Opens the dynamic course modal and populates it with data.
+         * @param {string} courseId - The unique ID key for the course in the courseData object.
+         */
+        function openCourseModal(courseId) {
+            const course = courseData[courseId];
+            if (!course) {
+                showMessage(`Error: Course data not found for ID: ${courseId}`, 'bg-ce-error');
+                return;
+            }
+
+            const modal = document.getElementById('course-info-modal');
+            const modalContent = modal.querySelector('#modal-content-container');
+
+            // 1. Populate the fields
+            document.getElementById('modal-course-name').textContent = course.name;
+            document.getElementById('modal-description').textContent = course.description;
+            document.getElementById('modal-audience').textContent = course.audience;
+            document.getElementById('modal-instructor').textContent = course.instructor;
+            document.getElementById('modal-delivery').textContent = course.delivery;
+            document.getElementById('modal-duration').textContent = course.duration;
+            
+            // Store the course name for the success message
+            modal.setAttribute('data-course-name', course.name);
+
+            // Show modal with transition effects
+            modal.classList.remove('hidden');
+            document.body.classList.add('overflow-hidden'); // Prevent background scrolling
+            
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modalContent.classList.remove('scale-95');
+            }, 10);
+        }
+
+        /**
+         * Closes the course modal with transition effects.
+         */
+        function closeCourseModal(event) {
+            const modal = document.getElementById('course-info-modal');
+            
+            // Check if the click was on the backdrop itself to close
+            if (event && event.target !== modal) return;
+
+            const modalContent = modal.querySelector('#modal-content-container');
+
+            modal.classList.add('opacity-0');
+            modalContent.classList.add('scale-95');
+            document.body.classList.remove('overflow-hidden');
+
+            // Hide after transition
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        /**
+         * Handles the final syllabus request CTA inside the modal.
+         */
+        function handleSyllabusRequest() {
+            const emailInput = document.getElementById('modal-email-input').value.trim();
+            const courseName = document.getElementById('course-info-modal').getAttribute('data-course-name');
+            
+            if (!emailInput || !emailInput.includes('@') || !emailInput.includes('.')) {
+                showMessage('Please enter a valid email address.', 'bg-ce-error');
+                return;
+            }
+
+            // Mock submission success
+            showMessage(`Success! Syllabus for "${courseName}" sent to ${emailInput}.`, 'bg-ce-success');
+            
+            // Clear input and close modal
+            document.getElementById('modal-email-input').value = '';
+            closeCourseModal();
+        }
+
+        // Dummy function for the general CTA button (reusing the logic structure for simplicity)
+        function openInfoModal(actionText) {
+            const modal = document.getElementById('course-info-modal');
+            const modalContent = modal.querySelector('#modal-content-container');
+
+            // Set generic waitlist content
+            document.getElementById('modal-course-name').textContent = actionText;
+            document.getElementById('modal-description').textContent = "This is the general waitlist for all upcoming technical courses. By signing up, you’ll be the first to hear about launch dates and receive a free skills assessment.";
+            document.getElementById('modal-audience').textContent = 'Everyone interested in high-demand technical careers.';
+            document.getElementById('modal-instructor').textContent = 'Circular Eagle Tech Team';
+            document.getElementById('modal-delivery').textContent = 'Email updates and downloadable assessment PDF.';
+            document.getElementById('modal-duration').textContent = 'Ongoing (until launch)';
+
+            modal.setAttribute('data-course-name', 'General Waitlist (Technical)');
+
+            modal.classList.remove('hidden');
+            document.body.classList.add('overflow-hidden'); 
+            
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modalContent.classList.remove('scale-95');
+            }, 10);
+        }
+
+        // Allow closing modal with ESC key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !document.getElementById('course-info-modal').classList.contains('hidden')) {
+                closeCourseModal();
+            }
+        });
+    </script>
+</body>
+</html>
