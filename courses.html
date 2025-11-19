@@ -835,7 +835,15 @@
             const menu = document.getElementById('mobile-menu');
             menu.classList.toggle('hidden');
         }
-        
+
+        /**
+         * Handles AJAX submission for all forms using Formsubmit.co, preventing redirect.
+         * @param {Event} event - The form submission event.
+         * @param {string} subjectPrefix - The prefix for the email subject (e.g., 'Syllabus Request').
+         */
+        async function handleSubmission(event, subjectPrefix) {
+            event.preventDefault(); // Stop native form submission (redirect)
+            
         /**
          * Displays a temporary, dismissible message (replaces alert() or console logs UX changes).
          * @param {string} message - The message content.
