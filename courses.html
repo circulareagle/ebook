@@ -826,6 +826,7 @@
         // --- FORM SUBMISSION CONSTANTS ---
         const FORM_SUBMIT_EMAIL = "circulareagle@gmail.com";
 
+
         // --- GENERAL JS FUNCTIONS ---
 
         /**
@@ -835,8 +836,7 @@
             const menu = document.getElementById('mobile-menu');
             menu.classList.toggle('hidden');
         }
-
-            
+        
         /**
          * Displays a temporary, dismissible message (replaces alert() or console logs UX changes).
          * @param {string} message - The message content.
@@ -874,6 +874,63 @@
         }
         
         /**
+         * Handles AJAX submission for all forms using Formsubmit.co, preventing redirect.
+         * @param {Event} event - The form submission event.
+         * @param {string} subjectPrefix - The prefix for the email subject (e.g., 'Syllabus Request').
+         */
+        async function handleSubmission(event, subjectPrefix) {
+            event.preventDefault(); // Stop native form submission (redirect)
+
+            const form = event.target;
+            const emailInput = form.querySelector('input[name="email"]');
+            const courseNameInput = form.querySelector('input[name="Course Name"]');
+            const submitButton = form.querySelector('button[type="submit"]');
+
+            if (!emailInput || !emailInput.value || !emailInput.value.includes('@')) {
+                showMessage('Please enter a valid email address.', 'bg-ce-error');
+                return;
+            }
+
+            const courseName = courseNameInput ? courseNameInput.value : 'N/A';
+            
+            submitButton.textContent = 'Submitting...';
+            submitButton.disabled = true;
+
+            try {
+                // Prepare the data for Formsubmit (using FormData object)
+                const formData = new FormData(form);
+                formData.set('_subject', `${subjectPrefix}: ${courseName}`);
+                
+                // Formsubmit AJAX endpoint (note: using /ajax/ before the email address)
+                const response = await fetch(`https://formsubmit.co/ajax/${FORM_SUBMIT_EMAIL}`, {
+                    method: "POST",
+                    body: formData
+                });
+                
+                if (response.ok) {
+                    showMessage(`Success! Your request for "${courseName}" has been received.`, 'bg-ce-success');
+                    
+                    // Clear form and close modal if in modal
+                    form.reset();
+                    if (form.id === 'syllabus-form') {
+                        closeCourseModal();
+                    }
+                } else {
+                    // Formsubmit returns a JSON error response on failure
+                    const result = await response.json();
+                    showMessage(result.message || 'Submission failed. Please try again.', 'bg-ce-error');
+                }
+
+            } catch (error) {
+                console.error("Submission error:", error);
+                showMessage('Network error. Check your connection.', 'bg-ce-error');
+            } finally {
+                submitButton.textContent = submitButton.getAttribute('data-original-text') || (form.id === 'syllabus-form' ? 'Send Me the Full Syllabus' : 'Secure My Spot Now');
+                submitButton.disabled = false;
+            }
+        }
+
+        /**
          * Opens the dynamic course modal and populates it with data.
          * @param {string} courseId - The unique ID key for the course in the courseData object.
          */
@@ -887,32 +944,21 @@
             const modal = document.getElementById('course-info-modal');
             const modalContent = modal.querySelector('#modal-content-container');
 
-            // 1. Populate the fields
+            // 1. Populate the static fields
             document.getElementById('modal-course-name').textContent = course.name;
             document.getElementById('modal-description').textContent = course.description;
             document.getElementById('modal-audience').textContent = course.audience;
             document.getElementById('modal-instructor').textContent = course.instructor;
             document.getElementById('modal-delivery').textContent = course.delivery;
             document.getElementById('modal-duration').textContent = course.duration;
-
-       
-            // 2. Set hidden fields for FormSubmit
-            const subjectInput = document.getElementById('_form_subject');
-            subjectInput.value = `Syllabus Request for: ${course.name}`;
-
-            /**
-         * Handles AJAX submission for all forms using Formsubmit.co, preventing redirect.
-         * @param {Event} event - The form submission event.
-         * @param {string} subjectPrefix - The prefix for the email subject (e.g., 'Syllabus Request').
-         */
-        async function handleSubmission(event, subjectPrefix) {
-            event.preventDefault(); // Stop native form submission (redirect)
             
-            // Set the return URL after submission. Removes existing query string and adds success status.
-            document.getElementById('_next_url').value = window.location.href.split('?')[0] + '?status=success&course=' + encodeURIComponent(course.name);
+            // 2. Populate the hidden form field with the course name
+            document.getElementById('form-course-name').value = course.name;
 
-            // Clear email input if modal is reused
-            document.getElementById('modal-email-input').value = '';
+            // Cache original button text
+            const submitButton = document.querySelector('#syllabus-form button[type="submit"]');
+            submitButton.setAttribute('data-original-text', 'Send Me the Full Syllabus');
+
 
             // Show modal with transition effects
             modal.classList.remove('hidden');
@@ -945,62 +991,18 @@
             }, 300);
         }
 
-        /**
-         * Handles the general waitlist sign-up triggered by the final CTA button.
-         * Reuses the modal structure but populates with general info.
-         */
-        function openGeneralWaitlistModal() {
-            const actionText = 'General Waitlist Sign-up';
-            const modal = document.getElementById('course-info-modal');
-            const modalContent = modal.querySelector('#modal-content-container');
-
-            // Set generic waitlist content
-            document.getElementById('modal-course-name').textContent = actionText;
-            document.getElementById('modal-description').textContent = "This is the general waitlist for all upcoming courses. By signing up, you’ll be the first to hear about launch dates and special bundles.";
-            document.getElementById('modal-audience').textContent = 'Everyone interested in Circular Eagle Academy.';
-            document.getElementById('modal-instructor').textContent = 'Circular Eagle Team';
-            document.getElementById('modal-delivery').textContent = 'Email updates only.';
-            document.getElementById('modal-duration').textContent = 'Ongoing (until launch)';
-
-            // Set hidden fields for FormSubmit
-            document.getElementById('_form_subject').value = actionText; 
-            document.getElementById('_next_url').value = window.location.href.split('?')[0] + '?status=success&course=General%20Waitlist';
-
-            // Clear email input if modal is reused
-            document.getElementById('modal-email-input').value = '';
-
-            modal.classList.remove('hidden');
-            document.body.classList.add('overflow-hidden'); 
-            
-            setTimeout(() => {
-                modal.classList.remove('opacity-0');
-                modalContent.classList.remove('scale-95');
-            }, 10);
-        }
-
-
-        // --- URL PARAMETER HANDLER ---
-        /**
-         * Checks the URL on page load for a success status from FormSubmit's redirect.
-         * Shows a message and cleans the URL.
-         */
-        window.addEventListener('DOMContentLoaded', () => {
-            const urlParams = new URLSearchParams(window.location.search);
-            if (urlParams.get('status') === 'success') {
-                const courseName = urlParams.get('course') || 'a course';
-                showMessage(`Thank you! Your request for "${decodeURIComponent(courseName)}" has been successfully sent.`, 'bg-ce-success');
-                
-                // Clean the URL history state to remove parameters
-                history.replaceState({}, document.title, window.location.pathname);
-            }
-        });
-
         // Allow closing modal with ESC key
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && !document.getElementById('course-info-modal').classList.contains('hidden')) {
                 closeCourseModal();
             }
         });
+
+        // Initialize button text on load
+        document.addEventListener('DOMContentLoaded', () => {
+             const waitlistButton = document.querySelector('#waitlist-form button[type="submit"]');
+             waitlistButton.setAttribute('data-original-text', 'Secure My Spot Now');
+        });
+
     </script>
 </body>
-                                                                                                                                                                                                                                                                                                                                                                                                              </html>
