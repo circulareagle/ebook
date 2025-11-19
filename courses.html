@@ -836,13 +836,6 @@
             menu.classList.toggle('hidden');
         }
 
-        /**
-         * Handles AJAX submission for all forms using Formsubmit.co, preventing redirect.
-         * @param {Event} event - The form submission event.
-         * @param {string} subjectPrefix - The prefix for the email subject (e.g., 'Syllabus Request').
-         */
-        async function handleSubmission(event, subjectPrefix) {
-            event.preventDefault(); // Stop native form submission (redirect)
             
         /**
          * Displays a temporary, dismissible message (replaces alert() or console logs UX changes).
@@ -901,11 +894,20 @@
             document.getElementById('modal-instructor').textContent = course.instructor;
             document.getElementById('modal-delivery').textContent = course.delivery;
             document.getElementById('modal-duration').textContent = course.duration;
-            
+
+       
             // 2. Set hidden fields for FormSubmit
             const subjectInput = document.getElementById('_form_subject');
             subjectInput.value = `Syllabus Request for: ${course.name}`;
 
+            /**
+         * Handles AJAX submission for all forms using Formsubmit.co, preventing redirect.
+         * @param {Event} event - The form submission event.
+         * @param {string} subjectPrefix - The prefix for the email subject (e.g., 'Syllabus Request').
+         */
+        async function handleSubmission(event, subjectPrefix) {
+            event.preventDefault(); // Stop native form submission (redirect)
+            
             // Set the return URL after submission. Removes existing query string and adds success status.
             document.getElementById('_next_url').value = window.location.href.split('?')[0] + '?status=success&course=' + encodeURIComponent(course.name);
 
