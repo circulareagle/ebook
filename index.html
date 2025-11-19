@@ -325,12 +325,10 @@
                 <!-- Contact Form (Embedded) -->
                 <div class="mt-16 bg-gray-900 p-8 rounded-xl max-w-lg mx-auto" id="contactFormContainer">
                     <h3 class="text-2xl font-bold text-ce-gold mb-6 text-center">Request a Discovery Call</h3>
-                    <!-- Updated form action to include the correct email -->
-                    <form id="contactForm" aria-label="Consultancy Contact Form" action="https://formsubmit.co/circulareagle@gmail.com" method="POST">
-                        <!-- FormSubmit required hidden fields for custom subject and preventing redirect -->
-                        <input type="hidden" name="_subject" value="New Circular Eagle Consultancy Inquiry" />
-                        <!-- Using _next with a value of '' prevents the redirect to formsubmit's thank you page -->
-                        <input type="hidden" name="_next" value="" /> 
+                    <!-- FORM: Updated action to point to FormSubmit and method to POST -->
+                    <form id="contactForm" action="https://formsubmit.co/circulareagle@gmail.com" method="POST" aria-label="Consultancy Contact Form">
+                        <!-- Hidden field for email subject line (Optional, but recommended for clean emails) -->
+                        <input type="hidden" name="_subject" value="Circular Eagle: New Consultancy Inquiry">
                         
                         <div class="mb-4">
                             <label for="name" class="block text-sm font-medium text-gray-300 mb-1">Name</label>
@@ -463,67 +461,62 @@
             }, 4000);
         }
 
-        // --- Form Handling ---
+        // --- Form Handling: Refactored to use FormSubmit with AJAX (fetch) to prevent redirection ---
         const form = document.getElementById('contactForm');
         const status = document.getElementById('formStatus');
+        // Get the actual action URL from the form element
+        const formUrl = form ? form.getAttribute('action') : null;
 
-        if (form && status) {
+        if (form && status && formUrl) {
             form.addEventListener('submit', async (e) => {
                 e.preventDefault();
-                status.textContent = 'Sending inquiry...';
+                status.textContent = 'Sending request...';
                 const submitButton = form.querySelector('button[type="submit"]');
-                submitButton.disabled = true;
-                
-                const actionUrl = form.getAttribute('action');
-                
-                // Create a FormData object from the form elements
+                submitButton.disabled = true; // Disable button to prevent double submission
+
                 const formData = new FormData(form);
-                
-                // CRITICAL FIX: Convert FormData to URLSearchParams to force application/x-www-form-urlencoded
-                // This is the most reliable way to send non-JSON data via AJAX that FormSubmit expects.
-                const params = new URLSearchParams(formData);
+                let retries = 0;
+                const maxRetries = 3;
 
-                try {
-                    const response = await fetch(actionUrl, {
-                        method: 'POST',
-                        body: params, // Send as URLSearchParams
-                        headers: {
-                            // Explicitly set Content-Type for URL-encoded data
-                            'Content-Type': 'application/x-www-form-urlencoded', 
-                            // This header is still required for FormSubmit to suppress redirection
-                            'Accept': 'application/json' 
-                        }
-                    });
+                // Exponential backoff logic for retries
+                while (retries < maxRetries) {
+                    try {
+                        // FormSubmit endpoint accepts standard form data (FormData) via POST
+                        const response = await fetch(formUrl, {
+                            method: 'POST',
+                            // IMPORTANT: Do not set Content-Type header when using FormData;
+                            // the browser sets it automatically with the correct boundary.
+                            body: formData
+                        });
 
-                    if (response.ok) {
-                        status.textContent = 'Success! We will contact you within 24 hours.';
-                        form.reset();
-                        showMessage('Your consultancy request has been submitted successfully!', 'bg-ce-gold-dark');
-                    } else {
-                        // Attempt to parse FormSubmit's error response (for debugging)
-                        let errorMessage = 'Something went wrong during submission.';
-                        try {
-                            const errorData = await response.json();
-                            if (errorData.message) {
-                                errorMessage = errorData.message;
-                            } else if (errorData.errors && errorData.errors.length > 0) {
-                                errorMessage = errorData.errors[0].message;
-                            }
-                        } catch (e) {
-                            // If JSON parsing fails, use generic error
-                            console.error("Failed to parse error response:", e);
+                        // FormSubmit returns a 200 OK response on successful AJAX submission
+                        if (response.ok) {
+                            status.textContent = 'Success! We will contact you within 24 hours.';
+                            form.reset();
+                            showMessage('Your consultancy request has been submitted!', 'bg-ce-gold-dark');
+                            break; // Exit loop on success
+                        } else {
+                            // Non-OK status usually indicates a FormSubmit configuration issue (e.g., email not confirmed)
+                            status.textContent = 'Error: The submission failed. Please check the email in the action URL is confirmed.';
+                            showMessage('Form submission failed. Please try again.', 'bg-red-600');
+                            break; // Exit loop on failure
                         }
-                        status.textContent = `Error: ${errorMessage}`;
-                        showMessage('Submission failed. Please check the form fields.', 'bg-red-600');
+                    } catch (error) {
+                        console.error('Submission error:', error);
+                        retries++;
+                        if (retries >= maxRetries) {
+                            // Last retry failed
+                            status.textContent = 'Network Error: Could not reach the server.';
+                            showMessage('Network error. Please check your connection.', 'bg-red-600');
+                        } else {
+                            // Wait exponentially before next retry
+                            const delay = Math.pow(2, retries) * 1000;
+                            await new Promise(resolve => setTimeout(resolve, delay));
+                        }
                     }
-                } catch (error) {
-                    // Handle network or script errors
-                    console.error('Submission Error:', error);
-                    status.textContent = 'Network error. Please try again later.';
-                    showMessage('A network error occurred.', 'bg-red-600');
-                } finally {
-                    submitButton.disabled = false;
                 }
+
+                submitButton.disabled = false; // Re-enable button
             });
         }
     </script>
