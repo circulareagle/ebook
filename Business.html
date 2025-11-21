@@ -415,12 +415,10 @@
                     Get weekly premium insights on financial strategy and business growth delivered directly to your inbox.
                 </p>
                 
-                <form id="newsletter-form" action="https://formsubmit.co/circulareagle@gmail.com" method="POST" class="space-y-4">
-                    <!-- Hidden fields for Formsubmit configuration -->
+                <form id="newsletter-form" action="https://formsubmit.co/ajax/circulareagle@gmail.com" method="POST" class="space-y-4">
+                    <!-- Hidden fields for Formsubmit configuration - Only required fields are left for AJAX -->
                     <input type="hidden" name="_subject" value="New CircularEagle Newsletter Subscriber">
-                    <!-- Use _next value '#' to prevent full redirection after successful submission -->
-                    <input type="hidden" name="_next" value="#">
-                    <input type="hidden" name="_template" value="box">
+                    <!-- The _next field is not necessary for AJAX submission, but we'll leave it out for cleanliness. -->
 
                     <input 
                         type="email" 
@@ -547,7 +545,7 @@
             }, 300);
         }
 
-        // --- NEW NEWSLETTER FUNCTIONS ---
+        // --- NEWSLETTER FUNCTIONS ---
 
         /**
          * Shows the newsletter subscription modal.
@@ -610,7 +608,7 @@
                 }, 5000);
             }
 
-            // 2. Handle Formsubmit submission (to prevent full page load and provide feedback)
+            // 2. Handle Formsubmit submission via AJAX (to prevent full page load)
             const form = document.getElementById('newsletter-form');
             if (form) {
                 form.addEventListener('submit', async function(e) {
@@ -622,29 +620,29 @@
                          return;
                     }
 
-                    // Simple Fetch API post to Formsubmit
+                    // Simple Fetch API post to Formsubmit AJAX endpoint
                     try {
-                        // Formsubmit requires the data to be posted as FormData
                         const formData = new FormData(form);
 
                         const response = await fetch(form.action, {
                             method: 'POST',
                             body: formData,
-                            // Content-Type header is omitted when using FormData in fetch, allowing the browser to set it correctly
                         });
                         
-                        // Formsubmit generally returns a successful response code (200) on success
-                        if (response.ok) {
+                        // Formsubmit AJAX endpoint returns a JSON response: { success: 'true' }
+                        const result = await response.json();
+                        
+                        if (result && result.success === 'true') {
                             showMessage("Subscription successful! Check your email for confirmation.", 'bg-ce-gold-dark');
                             sessionStorage.setItem('ce_newsletter_subscribed', 'true'); // Set flag
                             hideNewsletterModal();
                         } else {
-                            // This catches server-side issues or non-200 responses
-                            showMessage("Subscription failed. Please try again.", 'bg-red-600');
+                            // This catches server-side issues or non-successful JSON responses
+                            showMessage("Subscription failed. Please check your email format.", 'bg-red-600');
                         }
                     } catch (error) {
                         console.error('Submission Error:', error);
-                        showMessage("Network error. Check your connection.", 'bg-red-600');
+                        showMessage("Network error. Check your connection or console.", 'bg-red-600');
                     }
                 });
             }
