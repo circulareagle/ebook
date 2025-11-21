@@ -22,7 +22,6 @@
       "sameAs": [
         "https://twitter.com/circulareagle", 
         "https://www.linkedin.com/company/circular-eagle"
-        /* Add other social profiles here */
       ]
     }
     </script>
@@ -384,7 +383,7 @@
                 </div>
             </section>
             
-            <!-- 4.5. LEAD MAGNET / NEWSLETTER SIGNUP SECTION (FormSubmit AJAX) -->
+            <!-- 4.5. LEAD MAGNET / NEWSLETTER SIGNUP SECTION (Standard FormSubmit POST) -->
             <section id="lead-magnet" class="py-24 my-20 bg-ce-black rounded-3xl p-8 md:p-16 text-center shadow-2xl border border-ce-gold-dark/50">
                 <div class="max-w-4xl mx-auto">
                     <!-- Eagle Icon Placeholder for visual flair -->
@@ -399,13 +398,19 @@
                         Join our exclusive newsletter and immediately receive the <strong>"5-Step Blueprint for 10x Productivity."</strong>
                     </p>
                     
-                    <form id="newsletterForm" class="max-w-xl mx-auto form-responsive" aria-label="Newsletter Signup Form">
+                    <!-- FORM FIX: Reverted to standard POST method for reliability -->
+                    <form 
+                        action="https://formsubmit.co/circulareagle@gmail.com" 
+                        method="POST" 
+                        class="max-w-xl mx-auto form-responsive" 
+                        aria-label="Newsletter Signup Form">
+                        
                         <!-- FormSubmit Hidden Field: Subject -->
                         <input type="hidden" name="_subject" value="New Circular Eagle Newsletter Subscription">
-                        <!-- FormSubmit Hidden Field: Email Reply-to - UPDATED -->
+                        <!-- FormSubmit Hidden Field: Email Reply-to -->
                         <input type="hidden" name="_replyto" value="circulareagle@gmail.com"> 
-                        <!-- FormSubmit Hidden Field: Disable Captcha for AJAX submissions -->
-                        <input type="hidden" name="_captcha" value="false">
+                        <!-- FormSubmit Hidden Field: Redirect to success hash tag -->
+                        <input type="hidden" name="_next" value="#success-subscription">
 
                         <input id="newsletterEmail" type="email" name="email" class="w-full px-6 py-4 border-2 border-ce-gold/50 rounded-xl bg-gray-900 text-white placeholder-gray-500 focus:ring-ce-gold focus:border-ce-gold transition-default text-lg" required placeholder="Enter your high-leverage email" />
                         
@@ -413,7 +418,7 @@
                             Get Instant Access
                         </button>
                     </form>
-                    <div id="newsletterStatus" aria-live="polite" class="text-center mt-4 text-sm text-gray-500">Zero spam. Pure signal.</div>
+                    <div class="text-center mt-4 text-sm text-gray-500">Zero spam. Pure signal.</div>
                 </div>
             </section>
             <!-- END LEAD MAGNET SECTION -->
@@ -555,16 +560,22 @@
                     </div>
                 </div>
 
-                <!-- Contact Form (Embedded - FormSubmit AJAX) -->
+                <!-- Contact Form (Embedded - Standard FormSubmit POST) -->
                 <div class="mt-20 bg-gray-900 p-8 md:p-10 rounded-xl max-w-xl mx-auto border border-ce-gold/30" id="contactFormContainer">
                     <h3 class="font-serif text-3xl font-bold text-ce-gold mb-6 text-center">Request a Discovery Call</h3>
-                    <form id="contactForm" aria-label="Consultancy Contact Form">
+                    
+                    <!-- FORM FIX: Reverted to standard POST method for reliability -->
+                    <form 
+                        action="https://formsubmit.co/circulareagle@gmail.com" 
+                        method="POST" 
+                        aria-label="Consultancy Contact Form">
+                        
                         <!-- FormSubmit Hidden Field: Subject -->
                         <input type="hidden" name="_subject" value="Circular Eagle: New Consultancy Inquiry">
-                        <!-- FormSubmit Hidden Field: Email Reply-to - UPDATED -->
+                        <!-- FormSubmit Hidden Field: Email Reply-to -->
                         <input type="hidden" name="_replyto" value="circulareagle@gmail.com"> 
-                        <!-- FormSubmit Hidden Field: Disable Captcha for AJAX submissions -->
-                        <input type="hidden" name="_captcha" value="false">
+                         <!-- FormSubmit Hidden Field: Redirect to success hash tag -->
+                        <input type="hidden" name="_next" value="#success-consultancy">
 
                         <div class="mb-5">
                             <label for="name" class="block text-sm font-medium text-gray-300 mb-2">Name</label>
@@ -581,7 +592,6 @@
                         <button type="submit" id="submitButton" class="w-full btn-gold-effect py-4 text-lg font-bold rounded-xl bg-ce-gold text-ce-black hover:bg-ce-gold-dark hover:text-white transition-default">
                             Submit Inquiry
                         </button>
-                        <div id="formStatus" aria-live="polite" class="text-center mt-4 text-sm text-gray-400"></div>
                     </form>
                 </div>
             </section>
@@ -649,7 +659,7 @@
     </footer>
 
     <script>
-        // --- GLOBAL UTILITIES (Exposed to window for HTML attributes) ---
+        // --- GLOBAL UTILITIES ---
         window.showMessage = function(message, bgColor = 'bg-ce-black') {
             const container = document.getElementById('message-container');
             const messageElement = document.createElement('div');
@@ -706,103 +716,20 @@
             menu.classList.toggle('hidden');
         }
 
-        // --- FORM SUBMISSION LOGIC (AJAX FormSubmit) ---
-        
-        const FORM_SUBMIT_ENDPOINT_BASE = 'https://formsubmit.co/ajax/';
-        // !!! UPDATED: YOUR REGISTERED FORM SUBMIT EMAIL !!!
-        const USER_EMAIL = 'circulareagle@gmail.com'; 
-        const formSubmitEndpoint = FORM_SUBMIT_ENDPOINT_BASE + USER_EMAIL;
-
-        /**
-         * Generic function to handle FormSubmit AJAX requests.
-         * @param {HTMLFormElement} form The form element.
-         * @param {HTMLElement} submitButton The submit button element.
-         * @param {HTMLElement} statusDiv The status message element.
-         * @param {string} successMessage Message to show on successful submission.
-         * @param {string} failureMessage Message to show on failed submission.
-         */
-        async function handleFormSubmit(form, submitButton, statusDiv, successMessage, failureMessage) {
-            submitButton.disabled = true;
-            submitButton.textContent = 'Sending...';
-            submitButton.classList.add('opacity-70');
-            statusDiv.textContent = 'Submitting form via FormSubmit...';
-
-            try {
-                // Convert form data to JSON object for FormSubmit AJAX
-                const formData = new FormData(form);
-                const data = Object.fromEntries(formData.entries());
-
-                // Note: The hidden fields for _replyto are also set via the form HTML attributes
-                // which match the USER_EMAIL constant used to construct the endpoint.
-
-                const response = await fetch(formSubmitEndpoint, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    body: JSON.stringify(data)
-                });
-                
-                const result = await response.json();
-
-                if (response.ok && result.success) {
-                    window.showMessage(successMessage, 'bg-ce-gold-dark');
-                    statusDiv.textContent = 'Success! Check your email for confirmation.';
-                    form.reset();
-                } else {
-                    // FormSubmit returns 200 even on failure if basic checks pass, 
-                    // but the JSON usually contains an error structure if something went wrong server-side.
-                    console.error('FormSubmit processing error:', result);
-                    window.showMessage(failureMessage + ' Check console for details.', 'bg-red-700');
-                    statusDiv.textContent = failureMessage + ' Status: ' + (result.message || 'Unknown error.');
-                }
-            } catch (error) {
-                console.error('Network or CORS submission error:', error);
-                window.showMessage(failureMessage + ' (Network/Security Error).', 'bg-red-700');
-                statusDiv.textContent = failureMessage + ' (Check console for CORS/Network error details).';
-            } finally {
-                submitButton.disabled = false;
-                submitButton.textContent = form.id === 'contactForm' ? 'Submit Inquiry' : 'Get Instant Access';
-                submitButton.classList.remove('opacity-70');
-            }
-        }
-
+        // Check for success hash in URL after redirect
         document.addEventListener('DOMContentLoaded', () => {
-            // 1. Consultancy Form Submission Handler
-            document.getElementById('contactForm').addEventListener('submit', async function(e) {
-                e.preventDefault();
-                const form = e.target;
-                const submitButton = document.getElementById('submitButton');
-                const formStatus = document.getElementById('formStatus');
-
-                await handleFormSubmit(
-                    form,
-                    submitButton,
-                    formStatus,
-                    'Inquiry submitted successfully! We will contact you soon.',
-                    'Consultancy Submission failed.'
-                );
-            });
-
-            // 2. Newsletter Form Submission Handler
-            document.getElementById('newsletterForm').addEventListener('submit', async function(e) {
-                e.preventDefault();
-                const form = e.target;
-                const submitButton = document.getElementById('newsletterSubmitButton');
-                const statusDiv = document.getElementById('newsletterStatus');
-                
-                await handleFormSubmit(
-                    form,
-                    submitButton,
-                    statusDiv,
-                    'Success! Check your email for the blueprint.',
-                    'Subscription failed.'
-                );
-            });
+            if (window.location.hash === '#success-consultancy') {
+                window.showMessage('Inquiry submitted successfully! We will contact you soon.', 'bg-ce-gold-dark');
+                // Clean the hash from the URL
+                history.replaceState(null, null, ' ');
+            } else if (window.location.hash === '#success-subscription') {
+                window.showMessage('Subscription successful! Check your email for the blueprint.', 'bg-ce-gold-dark');
+                // Clean the hash from the URL
+                history.replaceState(null, null, ' ');
+            }
         });
-
+        // Removed all previous AJAX form submission logic.
     </script>
     
 </body>
-                    </html>
+                                                                                                                                                                                                                        </html>
