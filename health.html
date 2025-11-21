@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- UPDATED Title and Description for Bio-Optimization Page -->
     <title>Biological Optimization | Circular Eagle Ebooks</title>
     <meta name="description" content="Leverage cutting-edge science in nutrition, endocrinology, and recovery to maximize human performance and extend healthspan with Circular Eagle eBooks." />
     <!-- Load Tailwind CSS -->
@@ -415,13 +414,13 @@
                     Get weekly premium insights on bio-optimization, longevity, and cutting-edge health strategies delivered to your inbox.
                 </p>
                 
-                <form id="newsletter-form" action="https://formsubmit.co/ajax/circulareagle@gmail.com" method="POST" class="space-y-4">
-                    <!-- Hidden fields for Formsubmit configuration -->
-                    <input type="hidden" name="_subject" value="New CircularEagle Bio-Optimization Subscriber">
-
+                <!-- Form is set up to use FormSubmit.co via AJAX -->
+                <form id="newsletter-form" class="space-y-4">
+                    <!-- The only required field is the email input -->
                     <input 
                         type="email" 
-                        name="Email" 
+                        id="newsletter-email"
+                        name="email" 
                         placeholder="Your best email address" 
                         required 
                         class="w-full p-3 border-2 border-gray-300 rounded-lg focus:border-ce-gold-dark focus:ring-ce-gold-dark transition-default"
@@ -429,9 +428,14 @@
                     
                     <button 
                         type="submit"
-                        class="w-full py-3 px-6 text-base font-bold rounded-lg bg-ce-gold text-ce-black hover:bg-ce-gold-dark hover:text-white transition-default btn-gold-effect"
+                        id="newsletter-submit-btn"
+                        class="w-full py-3 px-6 text-base font-bold rounded-lg bg-ce-gold text-ce-black hover:bg-ce-gold-dark hover:text-white transition-default btn-gold-effect flex items-center justify-center"
                     >
-                        Join the Bio-Elite
+                        <span id="newsletter-btn-text">Join the Bio-Elite</span>
+                         <svg id="newsletter-spinner" class="animate-spin -ml-1 mr-3 h-5 w-5 text-ce-black hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
                     </button>
                 </form>
                 <p class="text-xs text-center text-ce-muted mt-4">We respect your privacy. Unsubscribe anytime.</p>
@@ -440,7 +444,14 @@
     </div>
 
 
+    <!-- JAVASCRIPT LOGIC -->
     <script>
+        // FormSubmit.co Endpoint for AJAX submission (no redirect)
+        // Set to the email address provided by the user: circulareagle@gmail.com
+        const FORMSUBMIT_ENDPOINT = 'https://formsubmit.co/ajax/circulareagle@gmail.com';
+
+        // --- GENERAL UI FUNCTIONS ---
+        
         /**
          * Toggles the visibility of the mobile menu.
          */
@@ -450,7 +461,7 @@
         }
         
         /**
-         * Displays a temporary, dismissible message (replaces alert() or console logs UX changes).
+         * Displays a temporary, dismissible message (replaces alert()).
          * @param {string} message - The message content.
          * @param {string} bgColor - Tailwind background color class.
          */
@@ -487,11 +498,6 @@
 
         /**
          * Shows the Ebook detail modal with populated data.
-         * @param {string} title - Ebook title.
-         * @param {string} description - Ebook description.
-         * @param {string} price - Ebook price string.
-         * @param {string} url - Affiliate partner URL.
-         * @param {string} imageUrl - Placeholder image URL.
          */
         function showEbookModal(title, description, price, url, imageUrl) {
             const modal = document.getElementById('ebook-modal');
@@ -504,17 +510,13 @@
 
             const purchaseLink = document.getElementById('modal-purchase-link');
             purchaseLink.onclick = () => {
-                // Display quick redirection message
                 showMessage(`Redirecting for purchase of: ${title}`, 'bg-ce-gold-dark');
-                
-                // Simulate redirection (in a real browser this would be window.open(url, '_blank');)
                 console.log(`Simulating affiliate redirection to: ${url}`);
-                closeModal(); // Close the modal after triggering the action
+                closeModal();
             };
             
-            // Show modal with transition effects
             modal.classList.remove('hidden');
-            document.body.classList.add('overflow-hidden'); // Prevent background scrolling
+            document.body.classList.add('overflow-hidden');
             
             setTimeout(() => {
                 modal.classList.remove('opacity-0');
@@ -524,12 +526,9 @@
 
         /**
          * Closes the ebook modal with transition effects.
-         * @param {Event} event - Optional click event to check if click was on the backdrop.
          */
         function closeModal(event) {
             const modal = document.getElementById('ebook-modal');
-            
-            // Check if the click was on the backdrop itself to close
             if (event && event.target !== modal) return;
 
             const modalContent = modal.querySelector('div:not(.modal-backdrop)');
@@ -538,13 +537,12 @@
             modalContent.classList.add('scale-95');
             document.body.classList.remove('overflow-hidden');
 
-            // Hide after transition
             setTimeout(() => {
                 modal.classList.add('hidden');
             }, 300);
         }
 
-        // --- NEWSLETTER FUNCTIONS ---
+        // --- NEWSLETTER FUNCTIONS (UPDATED FOR FORMSUBMIT AJAX) ---
 
         /**
          * Shows the newsletter subscription modal.
@@ -553,14 +551,13 @@
             const modal = document.getElementById('newsletter-modal');
             const modalContent = modal.querySelector('div:not(.modal-backdrop)');
 
-            // Check if it was already shown this session
             if (sessionStorage.getItem('ce_newsletter_subscribed') === 'true') {
                 return;
             }
 
             modal.classList.remove('hidden');
-            modal.classList.add('flex'); // Use flex to center the modal
-            document.body.classList.add('overflow-hidden'); // Prevent background scrolling
+            modal.classList.add('flex');
+            document.body.classList.add('overflow-hidden');
             
             setTimeout(() => {
                 modal.classList.remove('opacity-0');
@@ -570,12 +567,9 @@
 
         /**
          * Hides the newsletter subscription modal.
-         * @param {Event} event - Optional click event to check if click was on the backdrop.
          */
         function hideNewsletterModal(event) {
             const modal = document.getElementById('newsletter-modal');
-            
-            // Check if the click was on the backdrop itself to close
             if (event && event.target !== modal) return;
 
             const modalContent = modal.querySelector('div:not(.modal-backdrop)');
@@ -584,20 +578,18 @@
             modalContent.classList.add('scale-95');
             document.body.classList.remove('overflow-hidden');
 
-            // Hide after transition
             setTimeout(() => {
                 modal.classList.add('hidden');
                 modal.classList.remove('flex');
             }, 300);
             
-            // Set a flag so it doesn't pop up again this session if closed manually
             if (sessionStorage.getItem('ce_newsletter_subscribed') !== 'true') {
                  sessionStorage.setItem('ce_newsletter_subscribed', 'false'); 
             }
         }
         
         /**
-         * Attaches event listeners for newsletter form submission and auto-popup.
+         * Handles the AJAX submission to FormSubmit.co.
          */
         function setupNewsletter() {
             // 1. Auto-show popup after 5 seconds (5000ms)
@@ -607,45 +599,71 @@
                 }, 5000);
             }
 
-            // 2. Handle Formsubmit submission via AJAX (to prevent full page load)
+            // 2. Handle FormSubmit AJAX submission
             const form = document.getElementById('newsletter-form');
             if (form) {
                 form.addEventListener('submit', async function(e) {
                     e.preventDefault();
                     
-                    const emailInput = form.querySelector('input[name="Email"]');
-                    if (!emailInput.value) {
+                    const emailInput = document.getElementById('newsletter-email');
+                    const submitButton = document.getElementById('newsletter-submit-btn');
+                    const buttonText = document.getElementById('newsletter-btn-text');
+                    const spinner = document.getElementById('newsletter-spinner');
+                    const email = emailInput.value.trim();
+                    
+                    if (!email) {
                          showMessage("Please enter a valid email.", 'bg-red-600');
                          return;
                     }
 
-                    // Simple Fetch API post to Formsubmit AJAX endpoint
-                    try {
-                        const formData = new FormData(form);
+                    // Set loading state
+                    submitButton.disabled = true;
+                    buttonText.textContent = 'Subscribing...';
+                    spinner.classList.remove('hidden');
 
-                        // Since this is a self-contained environment, we just simulate the fetch success
-                        // In a live environment, this would actually send data.
-                        
-                        // const response = await fetch(form.action, {
-                        //     method: 'POST',
-                        //     body: formData,
-                        // });
-                        // const result = await response.json();
-                        
-                        // Simulate success
-                        const result = { success: 'true' };
-                        
-                        if (result && result.success === 'true') {
-                            showMessage("Subscription successful! Check your email for confirmation.", 'bg-ce-gold-dark');
-                            sessionStorage.setItem('ce_newsletter_subscribed', 'true'); // Set flag
+                    // Prepare form data
+                    const formData = new FormData();
+                    formData.append('email', email);
+                    // Add a default subject field for better organization in your email
+                    formData.append('_subject', 'New Newsletter Subscriber');
+
+                    try {
+                        // IMPORTANT NOTE: Due to cross-site request limitations in sandboxed environments (like this one), 
+                        // this fetch call to an external service might be blocked by the browser's security policy (CORS/CSP).
+                        // If the submission fails silently, this is the reason.
+                        const response = await fetch(FORMSUBMIT_ENDPOINT, {
+                            method: 'POST',
+                            body: formData,
+                            // FormSubmit requires a 'Accept: application/json' header for AJAX mode
+                            headers: {
+                                'Accept': 'application/json'
+                            }
+                        });
+
+                        const result = await response.json();
+
+                        if (response.ok && result.success) {
+                            // Submission successful
+                            showMessage("Subscription successful! Check your email for premium insights.", 'bg-ce-gold-dark');
+                            sessionStorage.setItem('ce_newsletter_subscribed', 'true');
                             hideNewsletterModal();
+                            emailInput.value = ''; // Clear input
                         } else {
-                            // Catch simulation failure/server-side issues
-                            showMessage("Subscription failed. Please check your email format.", 'bg-red-600');
+                            // FormSubmit returned an error or the request failed
+                            const errorMsg = result.message || 'An unexpected error occurred during submission.';
+                            showMessage(`Subscription failed: ${errorMsg}`, 'bg-red-600');
+                            console.error('FormSubmit Error:', result);
                         }
+
                     } catch (error) {
-                        console.error('Submission Error:', error);
-                        showMessage("Network error. Check your connection or console.", 'bg-red-600');
+                        console.error('Network or Submission Error:', error);
+                        // Display a generic error message if the network request fails
+                        showMessage("Submission failed. This may be due to browser security restrictions (CORS/CSP) blocking external form services.", 'bg-red-600');
+                    } finally {
+                        // Reset loading state
+                        submitButton.disabled = false;
+                        buttonText.textContent = 'Join the Bio-Elite';
+                        spinner.classList.add('hidden');
                     }
                 });
             }
@@ -656,16 +674,15 @@
          * Attaches all click handlers and sets up the newsletter auto-popup.
          */
         document.addEventListener('DOMContentLoaded', () => {
+            // 1. Setup Ebook Detail Modal handlers
             const buttons = document.querySelectorAll('.view-details-button');
             buttons.forEach(button => {
                 button.addEventListener('click', (event) => {
-                    // Traverse up to find the button if the click target is the text content
                     let target = event.target;
                     while (target && !target.classList.contains('view-details-button')) {
                         target = target.parentElement;
                     }
-                    
-                    if (!target) return; // Should not happen
+                    if (!target) return;
 
                     const title = target.getAttribute('data-ebook-title');
                     const desc = target.getAttribute('data-ebook-desc');
@@ -677,7 +694,7 @@
                 });
             });
 
-            // Allow closing modal with ESC key
+            // 2. Allow closing modal with ESC key
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape') {
                     if (!document.getElementById('ebook-modal').classList.contains('hidden')) {
@@ -689,10 +706,9 @@
                 }
             });
             
-            // Initialize the newsletter logic
+            // 3. Initialize the newsletter FormSubmit logic
             setupNewsletter();
         });
     </script>
 </body>
-</html>
-
+                                    </html>
