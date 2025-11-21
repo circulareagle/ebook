@@ -3,112 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- UPDATED TITLE: Clear, branded, and keyword-rich -->
-    <title>Circular Eagle: Ebooks, Courses, & Consultancy for Personal & Business Mastery</title>
+    <title>Circular Eagle: Financial, Personal & Business Mastery Courses and Consultancy</title>
     
-    <!-- UPDATED SEO DESCRIPTION: Benefit-driven and action-oriented -->
-    <meta name="description" content="Stop searching, start mastering. Circular Eagle provides expert eBooks, immersive courses, and personalized consultancy to accelerate your financial and personal growth. Achieve mastery faster." />
+    <!-- SEO Description -->
+    <meta name="description" content="Access precision-engineered courses, expert eBooks, and bespoke consultancy services from Circular Eagle to accelerate your financial independence and personal mastery. Zero filler, maximum results." />
 
-    <!-- MANDATORY: Canonical URL (Replace with your live domain) -->
+    <!-- Canonical URL -->
     <link rel="canonical" href="https://circulareagle.com/" />
-
-    <!-- JSON-LD Structured Data for Organization (Helps control brand name on SERP) -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Circular Eagle",
-      "url": "https://circulareagle.com/",
-      "logo": "https://circulareagle.com/Untitled design_20251120_121850_0000.png",
-      "sameAs": [
-        "https://twitter.com/circulareagle", 
-        "https://www.linkedin.com/company/circular-eagle"
-        /* Add other social profiles here */
-      ]
-    }
-    </script>
     
     <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Configure Tailwind with Gold/Black/White Palette -->
+    <!-- Configure Tailwind with Custom Luxury Palette -->
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
                         'ce-white': '#FFFFFF',
-                        'ce-gold': '#D4AF37', // Classic Gold
-                        'ce-gold-dark': '#8B6B00', // Darker gold for text/hover
-                        'ce-black': '#0B0B0C',
-                        'ce-muted': '#6B6F76',
-                        'ce-silver-light': '#F9FAFB', // Near-white subtle background
+                        'ce-gold': '#DAA520', // Richer Gold Accent
+                        'ce-gold-dark': '#B8860B', // Dark Gold for Text/Hover
+                        'ce-black': '#141414', // Deep Charcoal/Black
+                        'ce-muted': '#777777',
+                        'ce-background': '#F8F8F8', // Soft Off-White Background
+                        'ce-card-bg': '#FFFFFF', // Clean White Card Background
                     },
                     fontFamily: {
                         sans: ['Inter', 'system-ui', 'sans-serif'],
-                        serif: ['Georgia', 'Merriweather', 'serif'], // For premium titles
+                        serif: ['Georgia', 'Times New Roman', 'serif'], // Premium feel for titles
                     },
                 }
             }
         }
     </script>
     <style>
-        /* General smooth transition for hover effects */
+        /* General smooth transition for all interactive elements */
         .transition-default {
-            transition: all 0.3s ease-in-out;
+            transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smoother curve */
         }
 
-        /* Subtle ring effect on gold elements */
+        /* Premium Gold Button Effect */
         .btn-gold-effect {
-            box-shadow: 0 10px 20px -5px rgba(212, 175, 55, 0.2);
+            box-shadow: 0 8px 15px -5px rgba(218, 165, 32, 0.4);
         }
         .btn-gold-effect:hover {
-            box-shadow: 0 15px 30px -8px rgba(212, 175, 55, 0.3);
+            box-shadow: 0 12px 20px -7px rgba(218, 165, 32, 0.5);
             transform: translateY(-2px);
+            filter: brightness(1.1);
         }
         
-        /* Card hover lift */
+        /* Premium Card Lift/Shadow */
+        .card-lift {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+        }
         .card-lift:hover {
             transform: translateY(-6px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Section Separator Line - Central to the Minimalist Aesthetic */
+        .section-separator {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, #DAA520, #B8860B);
+            margin: 0 auto 2.5rem auto; /* Centered with bottom margin */
+            border-radius: 2px;
         }
 
-        /* Responsive Hero Art Placeholder (SVG) */
-        .hero-art-svg {
-            width: 100%;
-            height: auto;
-            max-width: 240px;
-        }
-
-        @media (max-width: 768px) {
-            .hero-art-svg {
-                max-width: 180px;
-            }
-        }
     </style>
 </head>
-<body class="bg-ce-silver-light text-ce-black font-sans min-h-screen">
+<body class="bg-ce-background text-ce-black font-sans min-h-screen antialiased">
 
-    <!-- Message Box Container (Replaces alert()) -->
+    <!-- Message Box Container (Notification system) -->
     <div id="message-container" class="fixed bottom-4 right-4 z-50 space-y-2"></div>
 
-    <!-- HEADER: Floating, High Contrast -->
-    <header class="sticky top-0 z-50 bg-ce-white/95 backdrop-blur-md shadow-sm border-b border-gray-100">
+    <!-- HEADER: Fixed/Sticky, High Contrast, Minimalist -->
+    <header class="sticky top-0 z-50 bg-ce-white/98 backdrop-blur-md shadow-lg border-b border-gray-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center py-4 md:py-5">
-                <!-- Logo: Ensure the text uses the capitalized brand name -->
+                <!-- Logo & Brand Name -->
                 <a href="#" class="flex items-center space-x-2">
-                    <!-- Placeholder for the compressed_1763620845844.png logo -->
+                    <!-- Placeholder for the logo (Ensures visual stability) -->
                     <img 
                         src="Untitled design_20251120_121850_0000.png" 
                         alt="Circular Eagle Logo" 
-                        class="w-10 h-10 rounded-full object-cover border-2 border-ce-gold-dark"
-                        onerror="this.onerror=null; this.src='https://placehold.co/32x32/D4AF37/0B0B0C?text=CE'"
+                        class="w-8 h-8 rounded-full object-cover border border-ce-gold-dark"
+                        onerror="this.onerror=null; this.src='https://placehold.co/32x32/DAA520/141414?text=CE'"
                     >
-                    <span class="text-xl font-extrabold tracking-tight text-ce-black">Circular<span class="text-ce-gold">Eagle</span></span>
+                    <span class="text-xl font-extrabold tracking-tight text-ce-black">Circular<span class="text-ce-gold-dark">Eagle</span></span>
                 </a>
 
- <!-- Desktop Navigation - Essential for UX and SEO. -->
-                <nav class="hidden md:flex space-x-8">
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-10">
                     <a href="#ebooks" class="text-base font-medium text-ce-muted hover:text-ce-gold-dark transition-default">eBooks</a>
                     <a href="#courses" class="text-base font-medium text-ce-muted hover:text-ce-gold-dark transition-default">Courses</a>
                     <a href="#testimonials" class="text-base font-medium text-ce-muted hover:text-ce-gold-dark transition-default">Testimonials</a>
@@ -117,7 +104,7 @@
                 </nav>
 
                 <!-- Mobile Menu Button -->
-                <button id="menu-button" class="md:hidden text-ce-black hover:text-ce-gold transition-default p-2 rounded-lg" onclick="toggleMenu()">
+                <button id="menu-button" class="md:hidden text-ce-black hover:text-ce-gold-dark transition-default p-2 rounded-lg" onclick="toggleMenu()" aria-label="Toggle navigation menu">
                     <!-- Menu Icon (Hamburger) -->
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
                 </button>
@@ -125,103 +112,167 @@
         </div>
 
         <!-- Mobile Menu (Hidden by default) -->
-        <div id="mobile-menu" class="hidden md:hidden bg-ce-white border-t border-gray-100 absolute w-full shadow-lg">
+        <div id="mobile-menu" class="hidden md:hidden bg-ce-white border-t border-gray-100 absolute w-full shadow-xl">
             <div class="px-2 pt-2 pb-3 space-y-1">
-                <a href="#ebooks" onclick="toggleMenu()" class="block px-3 py-2 rounded-md text-base font-medium text-ce-black hover:bg-gray-50 hover:text-ce-gold-dark transition-default">eBooks</a>
-                <a href="#courses" onclick="toggleMenu()" class="block px-3 py-2 rounded-md text-base font-medium text-ce-black hover:bg-gray-50 hover:text-ce-gold-dark transition-default">Courses</a>
-                <a href="#testimonials" onclick="toggleMenu()" class="block px-3 py-2 rounded-md text-base font-medium text-ce-black hover:bg-gray-50 hover:text-ce-gold-dark transition-default">Testimonials</a>
-                <a href="#articles" onclick="toggleMenu()" class="block px-3 py-2 rounded-md text-base font-medium text-ce-black hover:bg-gray-50 hover:text-ce-gold-dark transition-default">Insights</a>
-                <a href="#consultancy" onclick="toggleMenu()" class="block px-3 py-2 rounded-md text-base font-medium text-ce-black hover:bg-gray-50 hover:text-ce-gold-dark transition-default">Consultancy</a>
+                <a href="#ebooks" onclick="toggleMenu()" class="block px-3 py-3 rounded-md text-base font-medium text-ce-black hover:bg-gray-50 hover:text-ce-gold-dark transition-default">eBooks</a>
+                <a href="#courses" onclick="toggleMenu()" class="block px-3 py-3 rounded-md text-base font-medium text-ce-black hover:bg-gray-50 hover:text-ce-gold-dark transition-default">Courses</a>
+                <a href="#testimonials" onclick="toggleMenu()" class="block px-3 py-3 rounded-md text-base font-medium text-ce-black hover:bg-gray-50 hover:text-ce-gold-dark transition-default">Testimonials</a>
+                <a href="#articles" onclick="toggleMenu()" class="block px-3 py-3 rounded-md text-base font-medium text-ce-black hover:bg-gray-50 hover:text-ce-gold-dark transition-default">Insights</a>
+                <a href="#consultancy" onclick="toggleMenu()" class="block px-3 py-3 rounded-md text-base font-medium text-ce-black hover:bg-gray-50 hover:text-ce-gold-dark transition-default">Consultancy</a>
             </div>
         </div>
     </header>
 
-    <main class="max-w-7xl mx-auto">
+    <main>
 
-           <!-- 1. HERO / VALUE PROPOSITION: Full Width (Improved CTA focus) -->
-        <section class="relative w-full overflow-hidden pt-12 pb-16 md:pt-24 md:pb-32 px-4 sm:px-6 lg:px-8 bg-ce-white/80 border-b border-gray-100">
-            <!-- Subtle Gold Background Detail -->
-            <div class="absolute inset-0 bg-gradient-to-tr from-ce-gold/5 to-transparent opacity-50 pointer-events-none"></div>
+        <!-- 1. HERO / VALUE PROPOSITION: High Impact -->
+        <section class="relative w-full overflow-hidden pt-20 pb-24 md:pt-32 md:pb-40 px-4 sm:px-6 lg:px-8 bg-ce-white border-b border-gray-200">
+            <!-- Subtle Gold Gradient for Background Texture -->
+            <div class="absolute inset-0 bg-gradient-to-br from-ce-background/50 to-ce-white/90 opacity-80 pointer-events-none"></div>
 
-            <div class="relative flex flex-col md:flex-row items-center justify-between mx-auto max-w-6xl">
-                <!-- Copy -->
-                <div class="md:max-w-2xl text-center md:text-left mb-10 md:mb-0">
-                    <!-- H1 uses keywords and benefit -->
-                    <h1 class="font-serif text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight mb-4 leading-tight text-ce-black">
-                        Accelerate Your <span class="text-ce-gold-dark">Financial & Personal Mastery.</span>
+            <div class="relative flex flex-col items-center justify-center mx-auto max-w-6xl">
+                <div class="md:max-w-4xl text-center">
+                    <!-- H1 uses serif font and bold contrast -->
+                    <h1 class="font-serif text-5xl sm:text-7xl lg:text-8xl font-extrabold tracking-tighter mb-6 leading-none text-ce-black">
+                        Achieve <span class="text-ce-gold-dark">Definitive Mastery</span>, Faster.
                     </h1>
-                    <!-- Bolded keywords for emphasis -->
-                    <p class="text-xl sm:text-2xl text-ce-muted mb-8">
-                        Stop searching for answers. Access precision-engineered eBooks, immersive courses, and bespoke consultancy designed for <strong class="text-ce-gold-dark">real, sustained growth and mastery</strong>.
+                    
+                    <!-- Sub-heading with strong focus -->
+                    <p class="text-xl sm:text-2xl text-ce-muted mb-10 max-w-3xl mx-auto">
+                        Circular Eagle provides <strong class="text-ce-black">precision-engineered blueprints</strong> for accelerating financial, professional, and personal growth. Zero ambiguity.
                     </p>
-                    <div class="flex justify-center md:justify-start space-x-4">
-                        <!-- Primary CTA -->
-                        <a href="#courses" class="btn-gold-effect inline-flex items-center justify-center px-8 py-3 border border-ce-gold-dark text-base font-bold rounded-full text-ce-black bg-ce-gold hover:bg-ce-gold-dark hover:text-white transition-default">
-                            Start a Course Today
+                    
+                    <div class="flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-6 justify-center">
+                        <!-- Primary CTA: Stronger Gold Button -->
+                        <a href="#courses" class="btn-gold-effect w-full md:w-auto inline-flex items-center justify-center px-10 py-4 text-lg font-bold rounded-xl text-ce-black bg-ce-gold hover:bg-ce-gold-dark hover:text-white transition-default">
+                            Start Your Mastery Path
                         </a>
-                        <!-- Secondary CTA -->
-                        <a href="#ebooks" class="inline-flex items-center justify-center px-8 py-3 border-2 border-ce-muted text-base font-medium rounded-full text-ce-black hover:border-ce-gold-dark hover:text-ce-gold-dark transition-default">
-                            Download Free Ebook &rarr;
+                        <!-- Secondary CTA: High Contrast Outline -->
+                        <a href="#consultancy" class="w-full md:w-auto inline-flex items-center justify-center px-10 py-4 text-lg font-medium rounded-xl text-ce-black border-2 border-ce-muted hover:border-ce-black hover:text-ce-black transition-default">
+                            Book Consultancy &rarr;
                         </a>
                     </div>
                 </div>
+            </div>
+        </section>
 
-                <!-- Art/Emblem Placeholder (More professional SVG style) -->
-                <div class="flex-shrink-0 md:w-1/3 flex justify-center">
-                    <svg class="hero-art-svg text-ce-gold-dark opacity-80" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" stroke-width="1.5">
-                        <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2z"/>
-                        <path d="M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" fill="currentColor" stroke-width="0"/>
-                        <path d="M14.5 12.5l-3 1.5v-3l3-1.5z" stroke-width="0" fill="white"/>
-                        <path d="M12 4v2m0 14v-2m-8-8H6m12 0h2m-5.464-5.464l-1.414 1.414m2.828 2.828l1.414 1.414m-7.07-2.828l-1.414 1.414m2.828-2.828l1.414 1.414"/>
-                    </svg>
+        <!-- 2. THE CIRCULAR EAGLE ADVANTAGE: Value Pillars -->
+        <section class="bg-ce-background py-20 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="font-serif text-4xl font-bold text-center mb-2 text-ce-black">
+                    The <span class="text-ce-gold-dark">Circular Eagle</span> Difference
+                </h2>
+                <div class="section-separator"></div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    
+                    <!-- Pillar 1: Precision -->
+                    <div class="bg-ce-card-bg p-8 rounded-xl card-lift transition-default border-t-4 border-ce-gold-dark text-center">
+                        <!-- Icon with Gold Circle Background -->
+                        <div class="w-16 h-16 rounded-full bg-ce-gold/10 text-ce-gold-dark mx-auto mb-4 flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 0 0 0 20M12 2v20"/><path d="M5.5 8.5L8.5 5.5M15.5 5.5L18.5 8.5M5.5 15.5L8.5 18.5M15.5 18.5L18.5 15.5"/></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-ce-black mb-2">Focused Precision</h3>
+                        <p class="text-sm text-ce-muted">Content is distilled to actionable steps, eliminating research fatigue and wasted time.</p>
+                    </div>
+
+                    <!-- Pillar 2: Currency -->
+                    <div class="bg-ce-card-bg p-8 rounded-xl card-lift transition-default border-t-4 border-ce-gold-dark text-center">
+                        <div class="w-16 h-16 rounded-full bg-ce-gold/10 text-ce-gold-dark mx-auto mb-4 flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2C17.5 5 12 5 12 5V2L7 7l5 5V9c3.9 0 7.9 0 11.5 3"/></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-ce-black mb-2">Real-Time Currency</h3>
+                        <p class="text-sm text-ce-muted">All materials are continuously audited by experts to ensure they reflect current market dynamics.</p>
+                    </div>
+
+                    <!-- Pillar 3: Application -->
+                    <div class="bg-ce-card-bg p-8 rounded-xl card-lift transition-default border-t-4 border-ce-gold-dark text-center">
+                        <div class="w-16 h-16 rounded-full bg-ce-gold/10 text-ce-gold-dark mx-auto mb-4 flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a63 63 0 0 1-5.46-5.59z"/><path d="M16 11l-3 3l-3 3l-3 3l-3 3"/></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-ce-black mb-2">Actionable Blueprint</h3>
+                        <p class="text-sm text-ce-muted">From theory to practice: implementable frameworks designed for immediate, visible outcomes.</p>
+                    </div>
+
+                    <!-- Pillar 4: Outcomes -->
+                    <div class="bg-ce-card-bg p-8 rounded-xl card-lift transition-default border-t-4 border-ce-gold-dark text-center">
+                        <div class="w-16 h-16 rounded-full bg-ce-gold/10 text-ce-gold-dark mx-auto mb-4 flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01L12 2z" fill="none"/></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-ce-black mb-2">Definitive Results</h3>
+                        <p class="text-sm text-ce-muted">Focus on long-term competence and skill transfer, leading to permanent professional elevation.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
 
-        <div class="px-4 sm:px-6 lg:px-8 py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
 
-            <!-- 2. EBOOKS SECTION: 3-Column Layout -->
-            <section id="ebooks" class="py-12">
-                <h2 class="font-serif text-3xl font-bold text-center mb-4">
+            <!-- 3. EBOOKS SECTION: Curated Library -->
+            <section id="ebooks" class="py-16">
+                <h2 class="font-serif text-4xl font-bold text-center mb-2">
                     The <span class="text-ce-gold-dark">Curated</span> Ebook Library
                 </h2>
-                <!-- Bolded keywords for benefit focus -->
-                <p class="text-center text-ce-muted mb-12 max-w-2xl mx-auto">
-                    Download actionable guides on <span class="font-bold">Online Business</span>, <span class="font-bold">Cognitive Resilience</span>, and <span class="font-bold">Peak Performance</span>. Take real steps toward your goals across essential life domains.
+                <div class="section-separator"></div>
+                <!-- Cleaned up bolding for semantic HTML -->
+                <p class="text-center text-ce-muted mb-16 max-w-2xl mx-auto">
+                    Download actionable, high-density guides on <strong>Online Business</strong>, <strong>Cognitive Resilience</strong>, and <strong>Peak Performance</strong>.
                 </p>
+
+                <!-- Ebook Trust Block - Simplified and stronger text -->
+                <div class="max-w-4xl mx-auto mb-20 p-6 md:p-8 bg-ce-gold/5 rounded-xl border border-ce-gold/30 shadow-inner">
+                    <h3 class="text-2xl font-bold text-center text-ce-black mb-6">Immediate Access. Proven Authority.</h3>
+                    <div class="flex flex-col sm:flex-row justify-around items-center space-y-6 sm:space-y-0 text-center">
+                        <div class="flex flex-col items-center">
+                            <span class="text-4xl font-extrabold text-ce-gold-dark">15,000+</span>
+                            <span class="text-sm text-ce-muted mt-1">Global Readers</span>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <span class="text-4xl font-extrabold text-ce-gold-dark">99%</span>
+                            <span class="text-sm text-ce-muted mt-1">Positive Feedback</span>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <span class="text-4xl font-extrabold text-ce-gold-dark">PDF / EPUB</span>
+                            <span class="text-sm text-ce-muted mt-1">Multi-Format Delivery</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Ebook Trust Block -->
+
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <!-- Ebook Card 1: Business / Finance -->
-                    <article class="bg-ce-white rounded-xl card-lift transition-default shadow-lg overflow-hidden border-t-4 border-ce-gold">
-                        <img src="compressed_1763643161912.jpg" alt="Finance and Business cover" class="w-full h-40 object-cover rounded-t-xl mb-4">
-                        <div class="p-6 pt-0">
-                            <h3 class="text-xl font-bold text-ce-gold-dark mb-1">Online Business & Finance Ebooks</h3>
-                            <p class="text-sm text-ce-muted mb-4">Strategies for side-hustle success, capital growth, and future-proofing your business model.</p>
-                            <a class="inline-block py-2 px-4 text-sm font-semibold rounded-full bg-ce-gold text-ce-black hover:bg-ce-gold-dark hover:text-white transition-default" href="https://circulareagle.com/Business" onclick="showMessage('Navigating to Business Ebooks.')">
+                    <article class="bg-ce-card-bg rounded-xl card-lift transition-default shadow-lg overflow-hidden border border-gray-100">
+                        <!-- Placeholder Image URL -->
+                        <img src="https://placehold.co/700x300/DAA520/141414?text=Business+Finance" alt="Finance and Business cover" class="w-full h-48 object-cover rounded-t-xl">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-ce-gold-dark mb-1">Financial Strategy & Business</h3>
+                            <p class="text-sm text-ce-muted mb-4">Master side-hustle scaling, capital allocation, and building profitable online assets.</p>
+                            <a class="inline-block py-2 px-4 text-sm font-semibold rounded-full bg-ce-black text-white hover:bg-ce-gold-dark transition-default" href="https://circulareagle.com/Business" onclick="showMessage('Navigating to Business Ebooks.')">
                                 Explore Titles
                             </a>
                         </div>
                     </article>
   <!-- Ebook Card 2: Personal Development -->
-                    <article class="bg-ce-white rounded-xl card-lift transition-default shadow-lg overflow-hidden border-t-4 border-ce-gold">
-                        <img src="compressed_1763650094550.jpg" alt="Personal Development cover" class="w-full h-40 object-cover rounded-t-xl mb-4">
-                        <div class="p-6 pt-0">
-                            <h3 class="text-xl font-bold text-ce-gold-dark mb-1">Self-Mastery Ebooks</h3>
-                            <p class="text-sm text-ce-muted mb-4">Focused resources on cognitive resilience, habit formation, and accelerating personal transformation.</p>
-                            <a class="inline-block py-2 px-4 text-sm font-semibold rounded-full bg-ce-gold text-ce-black hover:bg-ce-gold-dark hover:text-white transition-default" href="personal-development.html" onclick="showMessage('Navigating to Personal Development Ebooks.')">
+                    <article class="bg-ce-card-bg rounded-xl card-lift transition-default shadow-lg overflow-hidden border border-gray-100">
+                        <img src="https://placehold.co/700x300/141414/DAA520?text=Self+Mastery" alt="Personal Development cover" class="w-full h-48 object-cover rounded-t-xl">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-ce-gold-dark mb-1">Cognitive Self-Mastery</h3>
+                            <p class="text-sm text-ce-muted mb-4">Focused resources on resilience, deep focus techniques, and accelerating personal transformation.</p>
+                            <a class="inline-block py-2 px-4 text-sm font-semibold rounded-full bg-ce-black text-white hover:bg-ce-gold-dark transition-default" href="personal-development.html" onclick="showMessage('Navigating to Personal Development Ebooks.')">
                                 Explore Titles
                             </a>
                         </div>
                     </article>
 
                     <!-- Ebook Card 3: Health & Wellness -->
-                    <article class="bg-ce-white rounded-xl card-lift transition-default shadow-lg overflow-hidden border-t-4 border-ce-gold">
-                        <img src="compressed_1763651168423.jpg" alt="Health & Wellness cover" class="w-full h-40 object-cover rounded-t-xl mb-4">
-                        <div class="p-6 pt-0">
-                            <h3 class="text-xl font-bold text-ce-gold-dark mb-1">Health & Peak Performance Ebooks</h3>
-                            <p class="text-sm text-ce-muted mb-4">Optimize physical health, nutrition, and daily routines for peak energy and sustained focus.</p>
-                            <a class="inline-block py-2 px-4 text-sm font-semibold rounded-full bg-ce-gold text-ce-black hover:bg-ce-gold-dark hover:text-white transition-default" href="health.html" onclick="showMessage('Navigating to Health Ebooks.')">
+                    <article class="bg-ce-card-bg rounded-xl card-lift transition-default shadow-lg overflow-hidden border border-gray-100">
+                        <img src="https://placehold.co/700x300/DAA520/141414?text=Peak+Performance" alt="Health & Wellness cover" class="w-full h-48 object-cover rounded-t-xl">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-ce-gold-dark mb-1">Bio-Optimization & Health</h3>
+                            <p class="text-sm text-ce-muted mb-4">Optimize nutrition, energy cycles, and daily routines for peak physical and mental output.</p>
+                            <a class="inline-block py-2 px-4 text-sm font-semibold rounded-full bg-ce-black text-white hover:bg-ce-gold-dark transition-default" href="health.html" onclick="showMessage('Navigating to Health Ebooks.')">
                                 Explore Titles
                             </a>
                         </div>
@@ -229,37 +280,68 @@
                 </div>
             </section>
 
-            <!-- 3. COURSES SECTION: 2-Column Layout -->
-            <section id="courses" class="py-12 bg-ce-white rounded-xl shadow-inner my-16 p-8 border border-gray-100">
-                <h2 class="font-serif text-3xl font-bold text-center mb-4">
-                    Immersive Training <span class="text-ce-black">Courses</span>
+            <!-- 4. COURSES SECTION: Immersive Training -->
+            <section id="courses" class="py-16 bg-ce-card-bg rounded-2xl shadow-xl my-20 p-8 md:p-12 border border-gray-200">
+                <h2 class="font-serif text-4xl font-bold text-center mb-2 text-ce-black">
+                    Immersive Training <span class="text-ce-gold-dark">Courses</span>
                 </h2>
-                <p class="text-center text-ce-muted mb-12 max-w-2xl mx-auto">
-                    Guided programs with video lessons, practical exercises, and peer feedback for immediate skill application in **business and technology**.
+                <div class="section-separator"></div>
+                <p class="text-center text-ce-muted mb-16 max-w-2xl mx-auto">
+                    Project-based programs with video, code, and community feedback designed for **immediate and proven** skill acquisition.
                 </p>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <!-- Course Card 1: Digital Skills & Online Business (Image Added) -->
-                    <article class="bg-ce-silver-light rounded-xl card-lift transition-default shadow-md overflow-hidden border-l-4 border-ce-gold">
-                        <img src="compressed_1763651251171.jpg" alt="Digital Skills & Online Business course image" class="w-full h-48 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-2xl font-bold text-ce-black mb-1">Online Business & Scaling Mastery</h3>
-                            <p class="text-sm text-ce-muted mb-3">Build & Monetize an Online Presence</p>
-                            <p class="text-ce-muted text-base mb-4">Comprehensive, project-based training to build, monetize, and scale online businesses from scratch.</p>
-                            <a class="py-3 px-6 text-sm font-semibold rounded-full bg-ce-black text-white hover:bg-ce-muted transition-default" href="courses.html" onclick="showMessage('Navigating to Courses.')">
+                <!-- Course Trust Block - Simplified Metrics -->
+                <div class="max-w-4xl mx-auto mb-20 p-6 md:p-8 bg-ce-gold/5 rounded-xl border border-ce-gold/30 shadow-inner">
+                    <h3 class="text-2xl font-bold text-center text-ce-black mb-6">Guaranteed Learning Quality</h3>
+                    <div class="flex flex-col sm:flex-row justify-around items-center space-y-6 sm:space-y-0 text-center">
+                        <div class="flex flex-col items-center">
+                             <!-- Star Icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-ce-gold-dark mb-2 fill-ce-gold-dark" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01L12 2z"/>
+                            </svg>
+                            <span class="text-3xl font-extrabold text-ce-gold-dark">4.9/5.0</span>
+                            <span class="text-sm text-ce-muted mt-1">Student Satisfaction</span>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <!-- Clock Icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-ce-gold-dark mb-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                            <span class="text-3xl font-extrabold text-ce-gold-dark">50+</span>
+                            <span class="text-sm text-ce-muted mt-1">Hours of Content</span>
+                        </div>
+                        <div class="flex flex-col items-center">
+                             <!-- Trophy Icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-ce-gold-dark mb-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 15h2l-2 5h-2l2-5zm-5 0l4 5h-4l-4-5zm12 0l-4 5h4l4-5z"/><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2z" fill="none"/></svg>
+                            <span class="text-3xl font-extrabold text-ce-gold-dark">Project</span>
+                            <span class="text-sm text-ce-muted mt-1">Portfolio Building</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Course Trust Block -->
+
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    <!-- Course Card 1: Digital Skills Mastery (SEO Focus) -->
+                    <article class="bg-ce-background rounded-xl card-lift transition-default shadow-lg overflow-hidden border border-ce-gold/30">
+                        <!-- Placeholder Image URL -->
+                        <img src="https://placehold.co/800x400/141414/DAA520?text=Digital+Marketing+and+Business+Strategy" alt="Digital Skills & Online Business course image" class="w-full h-56 object-cover">
+                        <div class="p-8">
+                            <h3 class="text-3xl font-serif font-bold text-ce-black mb-1">Digital Skills Mastery</h3>
+                            <p class="text-base font-semibold text-ce-gold-dark mb-4">Focus: Digital Marketing & Business Scaling</p>
+                            <p class="text-ce-muted text-base mb-6">The comprehensive blueprint to build, monetize, and scale online businesses from scratch, mastering all core digital disciplines.</p>
+                            <a class="py-3 px-8 text-md font-bold rounded-xl bg-ce-gold btn-gold-effect text-ce-black hover:bg-ce-gold-dark hover:text-white transition-default" href="courses.html" onclick="showMessage('Navigating to Digital Skills Course.')">
                                 Enroll Now &rarr;
                             </a>
                         </div>
                     </article>
 
-                    <!-- Course Card 2: Creative & Technical Skills (Image Added) -->
-                    <article class="bg-ce-silver-light rounded-xl card-lift transition-default shadow-md overflow-hidden border-l-4 border-ce-gold">
-                        <img src="compressed_1763651302237.jpg" alt="Creative & Technical Skills course image" class="w-full h-48 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-2xl font-bold text-ce-black mb-1">Future-Proof Creation & Tech</h3>
-                            <p class="text-sm text-ce-muted mb-3">Creative & Technical Skills</p>
-                            <p class="text-ce-muted text-base mb-4">Master essential design tools, technical frameworks, and creative software for next-level output.</p>
-                            <a class="py-3 px-6 text-sm font-semibold rounded-full bg-ce-black text-white hover:bg-ce-muted transition-default" href="tech-courses.html" onclick="showMessage('Navigating to Courses.')">
+                    <!-- Course Card 2: Technical Skills -->
+                    <article class="bg-ce-background rounded-xl card-lift transition-default shadow-lg overflow-hidden border border-ce-gold/30">
+                        <img src="https://placehold.co/800x400/DAA520/141414?text=Software+and+Creative+Tech" alt="Creative & Technical Skills course image" class="w-full h-56 object-cover">
+                        <div class="p-8">
+                            <h3 class="text-3xl font-serif font-bold text-ce-black mb-1">Software & Creative Tech</h3>
+                            <p class="text-base font-semibold text-ce-gold-dark mb-4">Focus: Full-Stack Development & Advanced Design</p>
+                            <p class="text-ce-muted text-base mb-6">Master technical frameworks, modern software architecture, and advanced creative tools for next-level professional output.</p>
+                            <a class="py-3 px-8 text-md font-bold rounded-xl bg-ce-gold btn-gold-effect text-ce-black hover:bg-ce-gold-dark hover:text-white transition-default" href="tech-courses.html" onclick="showMessage('Navigating to Tech Skills Course.')">
                                 Enroll Now &rarr;
                             </a>
                         </div>
@@ -267,46 +349,47 @@
                 </div>
             </section>
             
-            <!-- 4. TESTIMONIALS SECTION: Social Proof (NEW SECTION) -->
-            <section id="testimonials" class="py-12 bg-ce-white rounded-xl shadow-md my-16 p-8 border border-gray-100">
-                <h2 class="font-serif text-3xl font-bold text-center mb-4">
+            <!-- 5. TESTIMONIALS SECTION: Social Proof -->
+            <section id="testimonials" class="py-16">
+                <h2 class="font-serif text-4xl font-bold text-center mb-2">
                     What Our <span class="text-ce-gold-dark">Clients Say</span>
                 </h2>
-                <p class="text-center text-ce-muted mb-12 max-w-2xl mx-auto">
-                    Read real stories of accelerated growth and definitive skill acquisition from the Circular Eagle community.
+                <div class="section-separator"></div>
+                <p class="text-center text-ce-muted mb-16 max-w-2xl mx-auto">
+                    Real-world success stories from professionals who chose the Circular Eagle path for definitive growth.
                 </p>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <!-- Testimonial 1 -->
-                    <div class="bg-ce-silver-light p-6 rounded-xl shadow-inner border-t-4 border-ce-gold">
-                        <p class="text-lg text-ce-black italic mb-4">"The Online Business course was a game-changer. I launched my first profitable side-hustle in three weeks, following their roadmap step-by-step."</p>
-                        <div class="flex items-center">
-                            <div class="w-10 h-10 rounded-full bg-ce-gold-dark flex items-center justify-center text-white font-bold mr-3 text-sm">A.K.</div>
+                    <div class="bg-ce-card-bg p-8 rounded-xl shadow-lg border-l-4 border-ce-gold-dark">
+                        <p class="text-xl text-ce-black italic mb-4 leading-relaxed">"The frameworks are pure gold. I executed my new strategy within 48 hours and saw immediate revenue increase. This isn't just learning; it's application."</p>
+                        <div class="flex items-center mt-6">
+                            <div class="w-12 h-12 rounded-full bg-ce-gold flex items-center justify-center text-ce-black font-extrabold mr-3 text-lg border-2 border-ce-gold-dark">A.K.</div>
                             <div>
-                                <p class="font-semibold text-ce-black">Alex K.</p>
-                                <p class="text-xs text-ce-muted">Ebook Buyer & Course Member</p>
+                                <p class="font-bold text-ce-black">Alex K.</p>
+                                <p class="text-sm text-ce-muted">Ebook Buyer & Course Member</p>
                             </div>
                         </div>
                     </div>
                     <!-- Testimonial 2 -->
-                    <div class="bg-ce-silver-light p-6 rounded-xl shadow-inner border-t-4 border-ce-gold">
-                        <p class="text-lg text-ce-black italic mb-4">"The 1-on-1 consultancy session provided the technical audit I desperately needed. Saved me months of wasted development time."</p>
-                        <div class="flex items-center">
-                            <div class="w-10 h-10 rounded-full bg-ce-gold-dark flex items-center justify-center text-white font-bold mr-3 text-sm">L.M.</div>
+                    <div class="bg-ce-card-bg p-8 rounded-xl shadow-lg border-l-4 border-ce-gold-dark">
+                        <p class="text-xl text-ce-black italic mb-4 leading-relaxed">"The 1-on-1 consultancy session provided the technical audit I desperately needed. It saved our startup months of wasted development time and resources."</p>
+                        <div class="flex items-center mt-6">
+                            <div class="w-12 h-12 rounded-full bg-ce-gold flex items-center justify-center text-ce-black font-extrabold mr-3 text-lg border-2 border-ce-gold-dark">L.M.</div>
                             <div>
-                                <p class="font-semibold text-ce-black">Laura M.</p>
-                                <p class="text-xs text-ce-muted">Consultancy Client</p>
+                                <p class="font-bold text-ce-black">Laura M.</p>
+                                <p class="text-sm text-ce-muted">Consultancy Client</p>
                             </div>
                         </div>
                     </div>
                     <!-- Testimonial 3 -->
-                    <div class="bg-ce-silver-light p-6 rounded-xl shadow-inner border-t-4 border-ce-gold">
-                        <p class="text-lg text-ce-black italic mb-4">"Finally, practical advice that cuts through the noise. The resources on habit formation have fundamentally improved my daily focus and output."</p>
-                        <div class="flex items-center">
-                            <div class="w-10 h-10 rounded-full bg-ce-gold-dark flex items-center justify-center text-white font-bold mr-3 text-sm">J.T.</div>
+                    <div class="bg-ce-card-bg p-8 rounded-xl shadow-lg border-l-4 border-ce-gold-dark">
+                        <p class="text-xl text-ce-black italic mb-4 leading-relaxed">"Their self-mastery blueprints are fundamental. I've broken years-old limiting habits and now maintain focus for significantly longer periods every day."</p>
+                        <div class="flex items-center mt-6">
+                            <div class="w-12 h-12 rounded-full bg-ce-gold flex items-center justify-center text-ce-black font-extrabold mr-3 text-lg border-2 border-ce-gold-dark">J.T.</div>
                             <div>
-                                <p class="font-semibold text-ce-black">James T.</p>
-                                <p class="text-xs text-ce-muted">Self-Mastery Ebook Reader</p>
+                                <p class="font-bold text-ce-black">James T.</p>
+                                <p class="text-sm text-ce-muted">Self-Mastery Ebook Reader</p>
                             </div>
                         </div>
                     </div>
@@ -314,35 +397,36 @@
             </section>
 
 
-            <!-- 5. ARTICLES / BLOG SECTION: Two prominent cards -->
-            <section id="articles" class="py-12">
-                <h2 class="font-serif text-3xl font-bold text-center mb-4">
+            <!-- 6. ARTICLES / BLOG SECTION: Two prominent cards -->
+            <section id="articles" class="py-16">
+                <h2 class="font-serif text-4xl font-bold text-center mb-2">
                     Cutting-Edge <span class="text-ce-gold-dark">Insights</span>
                 </h2>
-                <p class="text-center text-ce-muted mb-12 max-w-2xl mx-auto">
-                    Short, evidence-backed pieces to inform your practice and accelerate your thinking on business, tech, and productivity.
+                <div class="section-separator"></div>
+                <p class="text-center text-ce-muted mb-16 max-w-2xl mx-auto">
+                    Short, evidence-backed articles designed to refine your mindset and inform your tactical approach to business and productivity.
                 </p>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
                     <!-- Article 1 -->
-                    <article class="bg-ce-white rounded-xl card-lift transition-default shadow-md overflow-hidden border border-gray-100">
-                        <img src="https://placehold.co/700x300/F9FAFB/0B0B0C?text=Deep+Work+Focus" alt="Staying Focused article image" class="w-full h-48 object-cover">
+                    <article class="bg-ce-card-bg rounded-xl card-lift transition-default shadow-lg overflow-hidden border border-gray-100">
+                        <img src="https://placehold.co/700x350/141414/DAA520?text=The+Attention+Protocol" alt="Deep Focus article image" class="w-full h-56 object-cover">
                         <div class="p-6">
-                            <h3 class="text-xl font-bold text-ce-black mb-2">The Attention Protocol</h3>
-                            <p class="text-ce-muted text-sm mb-4">Engineering your environment and mind to preserve focus and achieve deep work in the digital age.</p>
-                            <a class="text-sm font-semibold text-ce-gold-dark hover:text-ce-black transition-default flex items-center" href="articles.html" onclick="showMessage('Reading Article: The Attention Protocol.')">
+                            <h3 class="text-2xl font-bold text-ce-black mb-2">The Attention Protocol</h3>
+                            <p class="text-ce-muted text-base mb-4">Engineering your environment and cognitive cycles to achieve deep, uninterrupted work states daily.</p>
+                            <a class="text-base font-semibold text-ce-gold-dark hover:text-ce-black transition-default flex items-center" href="articles.html" onclick="showMessage('Reading Article: The Attention Protocol.')">
                                 Read Article &rarr;
                             </a>
                         </div>
                     </article>
 
                      <!-- Article 2 -->
-                    <article class="bg-ce-white rounded-xl card-lift transition-default shadow-md overflow-hidden border border-gray-100">
-                        <img src="https://placehold.co/700x300/D4AF37/0B0B0C?text=Creative+Routines" alt="Daily Inspiration article image" class="w-full h-48 object-cover">
+                    <article class="bg-ce-card-bg rounded-xl card-lift transition-default shadow-lg overflow-hidden border border-gray-100">
+                        <img src="https://placehold.co/700x350/DAA520/141414?text=Compound+Creativity" alt="Creative Routines article image" class="w-full h-56 object-cover">
                         <div class="p-6">
-                            <h3 class="text-xl font-bold text-ce-black mb-2">Compound Creativity</h3>
-                            <p class="text-ce-muted text-sm mb-4">Tiny daily routines that build spiritual clarity and unlock significant creative breakthroughs over time.</p>
-                            <a class="text-sm font-semibold text-ce-gold-dark hover:text-ce-black transition-default flex items-center" href="articles.html" onclick="showMessage('Reading Article: Compound Creativity.')">
+                            <h3 class="text-2xl font-bold text-ce-black mb-2">Compound Creativity</h3>
+                            <p class="text-ce-muted text-base mb-4">How tiny, daily creative routines build spiritual clarity and unlock significant breakthroughs over time.</p>
+                            <a class="text-base font-semibold text-ce-gold-dark hover:text-ce-black transition-default flex items-center" href="articles.html" onclick="showMessage('Reading Article: Compound Creativity.')">
                                 Read Article &rarr;
                             </a>
                         </div>
@@ -350,100 +434,99 @@
                 </div>
             </section>
 
-            <!-- 6. SERVICES / CONSULTANCY SECTION: Card-based + Integrated Form CTA -->
-            <section id="consultancy" class="py-12 bg-ce-black rounded-2xl p-8 md:p-12 my-16 shadow-2xl">
-                <h2 class="font-serif text-3xl font-bold text-center mb-4 text-ce-white">
+            <!-- 7. SERVICES / CONSULTANCY SECTION: Deep Luxury Dark Mode -->
+            <section id="consultancy" class="py-16 bg-ce-black rounded-3xl p-8 md:p-16 my-20 shadow-2xl">
+                <h2 class="font-serif text-4xl font-bold text-center mb-2 text-ce-white">
                     Bespoke <span class="text-ce-gold">Consultancy</span>
                 </h2>
-                <p class="text-center text-gray-400 mb-10 max-w-3xl mx-auto">
-                    One-on-one coaching, content strategy, and bespoke learning pathways for accelerated business or personal development.
+                <div class="section-separator" style="background: linear-gradient(to right, #DAA520, #F8F8F8);"></div>
+                <p class="text-center text-gray-400 mb-16 max-w-3xl mx-auto">
+                    Access direct, one-on-one expert guidance, technical audits, and personalized strategy sessions tailored to your ultimate professional goals.
                 </p>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
                     <!-- Service Card 1: Strategy -->
-                    <div class="bg-gray-800 rounded-xl p-6 text-center shadow-lg transition-default border-t-4 border-ce-gold">
+                    <div class="bg-gray-900 rounded-xl p-8 text-center shadow-2xl transition-default border-t-4 border-ce-gold-dark hover:border-ce-gold">
                         <div class="text-ce-gold mx-auto mb-4">
                             <!-- Target Icon -->
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 mx-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12H19M12 5l-4 4M12 5l4 4"/></svg>
                         </div>
-                        <h3 class="text-xl font-bold text-ce-white mb-2">Strategic Roadmap</h3>
-                        <p class="text-gray-400 text-sm mb-4">Develop a clear, executable plan for the next 12-24 months in your creative or business endeavors.</p>
-                        <button class="px-6 py-2 text-sm font-semibold rounded-full bg-ce-gold text-ce-black hover:bg-ce-gold-dark hover:text-white transition-default" onclick="scrollToForm()">
+                        <h3 class="text-xl font-bold text-ce-white mb-3">Strategic Roadmap</h3>
+                        <p class="text-gray-400 text-sm mb-6">Develop a precise, actionable 12-month blueprint for creative and financial acceleration.</p>
+                        <button class="px-8 py-3 text-md font-semibold rounded-xl bg-ce-gold btn-gold-effect text-ce-black hover:bg-ce-gold-dark hover:text-white transition-default" onclick="scrollToForm()">
                             Inquire Now
                         </button>
                     </div>
 
                      <!-- Service Card 2: Technical -->
-                    <div class="bg-gray-800 rounded-xl p-6 text-center shadow-lg transition-default border-t-4 border-ce-gold">
+                    <div class="bg-gray-900 rounded-xl p-8 text-center shadow-2xl transition-default border-t-4 border-ce-gold-dark hover:border-ce-gold">
                         <div class="text-ce-gold mx-auto mb-4">
                             <!-- Code Icon -->
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 mx-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
                         </div>
-                        <h3 class="text-xl font-bold text-ce-white mb-2">Technical Audit</h3>
-                        <p class="text-gray-400 text-sm mb-4">Expert review of your architecture, tech stack, and digital infrastructure for maximum efficiency.</p>
-                        <button class="px-6 py-2 text-sm font-semibold rounded-full bg-ce-gold text-ce-black hover:bg-ce-gold-dark hover:text-white transition-default" onclick="scrollToForm()">
+                        <h3 class="text-xl font-bold text-ce-white mb-3">Technical Audit</h3>
+                        <p class="text-gray-400 text-sm mb-6">Expert technical review of your architecture, SEO, and digital stack for peak efficiency.</p>
+                        <button class="px-8 py-3 text-md font-semibold rounded-xl bg-ce-gold btn-gold-effect text-ce-black hover:bg-ce-gold-dark hover:text-white transition-default" onclick="scrollToForm()">
                             Inquire Now
                         </button>
                     </div>
 
                     <!-- Service Card 3: Coaching -->
-                    <div class="bg-gray-800 rounded-xl p-6 text-center shadow-lg transition-default border-t-4 border-ce-gold">
+                    <div class="bg-gray-900 rounded-xl p-8 text-center shadow-2xl transition-default border-t-4 border-ce-gold-dark hover:border-ce-gold">
                         <div class="text-ce-gold mx-auto mb-4">
                             <!-- User Icon -->
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 mx-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                         </div>
-                        <h3 class="text-xl font-bold text-ce-white mb-2">Personal Coaching</h3>
-                        <p class="text-gray-400 text-sm mb-4">Dedicated 1-on-1 sessions to break through mental blocks and refine your self-development trajectory.</p>
-                        <button class="px-6 py-2 text-sm font-semibold rounded-full bg-ce-gold text-ce-black hover:bg-ce-gold-dark hover:text-white transition-default" onclick="scrollToForm()">
+                        <h3 class="text-xl font-bold text-ce-white mb-3">Personal Breakthroughs</h3>
+                        <p class="text-gray-400 text-sm mb-6">Dedicated 1-on-1 sessions to eliminate mental blocks and refine your self-development curve.</p>
+                        <button class="px-8 py-3 text-md font-semibold rounded-xl bg-ce-gold btn-gold-effect text-ce-black hover:bg-ce-gold-dark hover:text-white transition-default" onclick="scrollToForm()">
                             Inquire Now
                         </button>
                     </div>
                 </div>
 
                 <!-- Contact Form (Embedded) -->
-                <div class="mt-16 bg-gray-900 p-8 rounded-xl max-w-lg mx-auto" id="contactFormContainer">
-                    <h3 class="text-2xl font-bold text-ce-gold mb-6 text-center">Request a Discovery Call</h3>
-                    <!-- FORM: Removed action/method for AJAX submission -->
+                <div class="mt-20 bg-gray-900 p-8 md:p-10 rounded-xl max-w-xl mx-auto border border-ce-gold/30" id="contactFormContainer">
+                    <h3 class="font-serif text-3xl font-bold text-ce-gold mb-6 text-center">Request a Discovery Call</h3>
                     <form id="contactForm" aria-label="Consultancy Contact Form">
-                        <!-- Hidden field for email subject line (Optional, but recommended for clean emails) -->
                         <input type="hidden" name="_subject" value="Circular Eagle: New Consultancy Inquiry">
                         
-                        <div class="mb-4">
-                            <label for="name" class="block text-sm font-medium text-gray-300 mb-1">Name</label>
-                            <input id="name" class="w-full px-4 py-2 border border-gray-700 rounded-lg bg-gray-800 text-white focus:ring-ce-gold focus:border-ce-gold transition-default" name="name" required placeholder="Your full name" />
+                        <div class="mb-5">
+                            <label for="name" class="block text-sm font-medium text-gray-300 mb-2">Name</label>
+                            <input id="name" class="w-full px-4 py-3 border border-gray-700 rounded-lg bg-gray-800 text-white focus:ring-ce-gold focus:border-ce-gold transition-default" name="name" required placeholder="Your full name" />
                         </div>
-                        <div class="mb-4">
-                            <label for="email" class="block text-sm font-medium text-gray-300 mb-1">Email</label>
-                            <input id="email" type="email" class="w-full px-4 py-2 border border-gray-700 rounded-lg bg-gray-800 text-white focus:ring-ce-gold focus:border-ce-gold transition-default" name="email" required placeholder="you@example.com" />
+                        <div class="mb-5">
+                            <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Email</label>
+                            <input id="email" type="email" class="w-full px-4 py-3 border border-gray-700 rounded-lg bg-gray-800 text-white focus:ring-ce-gold focus:border-ce-gold transition-default" name="email" required placeholder="you@example.com" />
                         </div>
-                        <div class="mb-6">
-                            <label for="message" class="block text-sm font-medium text-gray-300 mb-1">Project Summary</label>
-                            <textarea id="message" class="w-full px-4 py-2 border border-gray-700 rounded-lg bg-gray-800 text-white focus:ring-ce-gold focus:border-ce-gold transition-default" name="message" required placeholder="Brief description of your needs and goals" rows="4"></textarea>
+                        <div class="mb-7">
+                            <label for="message" class="block text-sm font-medium text-gray-300 mb-2">Project Summary</label>
+                            <textarea id="message" class="w-full px-4 py-3 border border-gray-700 rounded-lg bg-gray-800 text-white focus:ring-ce-gold focus:border-ce-gold transition-default" name="message" required placeholder="Brief description of your needs and ultimate goals" rows="4"></textarea>
                         </div>
-                        <button type="submit" id="submitButton" class="w-full btn-gold-effect py-3 text-lg font-bold rounded-lg bg-ce-gold text-ce-black hover:bg-ce-gold-dark hover:text-white transition-default">
+                        <button type="submit" id="submitButton" class="w-full btn-gold-effect py-4 text-lg font-bold rounded-xl bg-ce-gold text-ce-black hover:bg-ce-gold-dark hover:text-white transition-default">
                             Submit Inquiry
                         </button>
-                        <div id="formStatus" aria-live="polite" class="text-center mt-3 text-sm text-gray-400"></div>
+                        <div id="formStatus" aria-live="polite" class="text-center mt-4 text-sm text-gray-400"></div>
                     </form>
                 </div>
             </section>
         </div>
     </main>
 
-    <!-- 7. FOOTER -->
-    <footer id="footer" class="bg-ce-white border-t border-gray-100 mt-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <!-- 8. FOOTER: Clean and Professional -->
+    <footer id="footer" class="bg-ce-white border-t border-gray-200 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
                 <!-- Brand Info -->
                 <div class="col-span-2 lg:col-span-2">
-                    <h3 class="text-2xl font-extrabold tracking-tight text-ce-black mb-3">Circular<span class="text-ce-gold">Eagle</span></h3>
-                    <p class="text-sm text-ce-muted">Knowledge for the next generation of innovators and seekers.</p>
+                    <h3 class="text-2xl font-extrabold tracking-tight text-ce-black mb-3">Circular<span class="text-ce-gold-dark">Eagle</span></h3>
+                    <p class="text-sm text-ce-muted max-w-xs">Precision knowledge for the next generation of focused innovators and leaders.</p>
                 </div>
 
                 <!-- Links 1 -->
                 <div>
-                    <h4 class="text-lg font-semibold text-ce-black mb-3">Resources</h4>
-                    <ul class="space-y-2 text-sm">
+                    <h4 class="text-lg font-semibold text-ce-black mb-4">Resources</h4>
+                    <ul class="space-y-3 text-base">
                         <li><a href="#ebooks" class="text-ce-muted hover:text-ce-gold-dark transition-default">eBook Library</a></li>
                         <li><a href="#courses" class="text-ce-muted hover:text-ce-gold-dark transition-default">Course Index</a></li>
                         <li><a href="#articles" class="text-ce-muted hover:text-ce-gold-dark transition-default">Latest Insights</a></li>
@@ -452,29 +535,38 @@
 
                 <!-- Links 2 -->
                 <div>
-                    <h4 class="text-lg font-semibold text-ce-black mb-3">Company</h4>
-                    <ul class="space-y-2 text-sm">
+                    <h4 class="text-lg font-semibold text-ce-black mb-4">Company</h4>
+                    <ul class="space-y-3 text-base">
                         <li><a href="#" class="text-ce-muted hover:text-ce-gold-dark transition-default">About Us</a></li>
                         <li><a href="#" class="text-ce-muted hover:text-ce-gold-dark transition-default">Terms & Policy</a></li>
-                        <li><a href="#" class="text-ce-muted hover:text-ce-gold-dark transition-default">Careers</a></li>
+                        <li><a href="#" class="text-ce-muted hover:text-ce-gold-dark transition-default">Support</a></li>
                     </ul>
                 </div>
 
-                <!-- Contact -->
+                <!-- Connect -->
                 <div class="col-span-2 md:col-span-1">
-                    <h4 class="text-lg font-semibold text-ce-black mb-3">Connect</h4>
-                    <p class="text-sm text-ce-muted hover:text-ce-gold-dark mb-2">support@circulareagle.com</p>
-                    <div class="flex space-x-4">
-                        <a href="Business.html" aria-label="Twitter" class="text-ce-muted hover:text-ce-gold-dark transition-default">Twitter</a>
-                        <a href="#" aria-label="LinkedIn" class="text-ce-muted hover:text-ce-gold-dark transition-default">LinkedIn</a>
-                        <a href="#" aria-label="YouTube" class="text-ce-muted hover:text-ce-gold-dark transition-default">YouTube</a>
+                    <h4 class="text-lg font-semibold text-ce-black mb-4">Connect</h4>
+                    <p class="text-base text-ce-muted hover:text-ce-gold-dark mb-4">support@circulareagle.com</p>
+                    <div class="flex space-x-6">
+                        <a href="Business.html" aria-label="Twitter" class="text-ce-muted hover:text-ce-gold-dark transition-default">
+                             <!-- Twitter Icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.8 12.8 2 10.5c1.4 1.1 3.2 1.9 5.2 2.1l-.1-1.3c-2.7-.9-4.8-3.7-4.8-7.3 0-1.7.7-3.3 1.8-4.5C8 10 12 14 19 14h1c.6 0 1.2-.1 1.7-.3-1.6-1.5-2.7-3.5-3.1-5.6 1.7-.3 3.3-1 4.5-2"/></svg>
+                        </a>
+                        <a href="#" aria-label="LinkedIn" class="text-ce-muted hover:text-ce-gold-dark transition-default">
+                             <!-- LinkedIn Icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                        </a>
+                        <a href="#" aria-label="YouTube" class="text-ce-muted hover:text-ce-gold-dark transition-default">
+                            <!-- YouTube Icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 17.5l5-2.5 5 2.5 5-2.5 5 2.5V8.5L17 11l-5-2.5-5 2.5-5-2.5z"/><path d="M2.5 7.5L7.5 5l5 2.5 5-2.5 5 2.5"/></svg>
+                        </a>
                     </div>
                 </div>
             </div>
 
-            <div class="mt-10 pt-6 border-t border-gray-100 text-center">
+            <div class="mt-10 pt-8 border-t border-gray-100 text-center">
                 <p class="text-sm text-ce-muted">
-                    &copy; 2025 Circular Eagle. All rights reserved.
+                    &copy; 2025 Circular Eagle. All rights reserved. Precision is everything.
                 </p>
             </div>
         </div>
@@ -504,9 +596,7 @@
         }
 
         /**
-         * Displays a temporary, dismissible message (replaces alert() or console logs UX changes).
-         * @param {string} message - The message content.
-         * @param {string} bgColor - Tailwind background color class.
+         * Displays a temporary, dismissible message (replaces alert()).
          */
         function showMessage(message, bgColor = 'bg-ce-black') {
             const container = document.getElementById('message-container');
@@ -514,21 +604,19 @@
             const id = 'msg-' + Date.now();
 
             messageElement.id = id;
-            // Removed transform properties for cleaner animation handling
             messageElement.className = `${bgColor} text-white p-4 rounded-lg shadow-xl max-w-xs transition-all duration-300 opacity-0 fixed bottom-4 right-4`; 
             messageElement.style.opacity = '0';
-            messageElement.style.transform = 'translateY(20px)'; // Start off-screen
+            messageElement.style.transform = 'translateY(20px)'; 
 
             messageElement.innerHTML = `
                 <div class="flex items-center justify-between">
                     <span class="text-sm font-medium">${message}</span>
-                    <button class="text-white ml-4 opacity-75 hover:opacity-100" onclick="document.getElementById('${id}').remove()">
+                    <button class="text-white ml-4 opacity-75 hover:opacity-100" onclick="document.getElementById('${id}').remove()" aria-label="Close notification">
                         <!-- Close Icon -->
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
                     </button>
                 </div>
             `;
-            // Append and then immediately transition
             container.appendChild(messageElement);
 
             // Animate in
@@ -549,8 +637,7 @@
         }
 
         /**
-         * Handles the AJAX submission for the contact form.
-         * FormSubmit requires the target email in the AJAX endpoint URL.
+         * Handles the AJAX submission for the contact form using FormSubmit.
          */
         document.getElementById('contactForm').addEventListener('submit', async function(e) {
             e.preventDefault();
@@ -571,30 +658,50 @@
                 formObject[key] = value;
             });
             
-            // NOTE: Use FormSubmit's AJAX endpoint with a placeholder email
+            // NOTE: Using FormSubmit's AJAX endpoint with a placeholder email
             const formSubmitUrl = 'https://formsubmit.co/ajax/circulareagle@gmail.com'; 
             
             try {
-                const response = await fetch(formSubmitUrl, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    body: JSON.stringify(formObject)
-                });
+                // Implementing simple exponential backoff for robustness
+                const MAX_RETRIES = 3;
+                let response = null;
 
-                if (response.ok || response.status === 200) {
+                for (let i = 0; i < MAX_RETRIES; i++) {
+                    try {
+                        response = await fetch(formSubmitUrl, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Accept': 'application/json'
+                            },
+                            body: JSON.stringify(formObject)
+                        });
+
+                        if (response.ok || response.status === 200) {
+                            break; // Success
+                        }
+                    } catch (fetchError) {
+                         // Wait 2^i seconds before retrying
+                        if (i < MAX_RETRIES - 1) {
+                            await new Promise(resolve => setTimeout(resolve, Math.pow(2, i) * 1000));
+                            continue;
+                        }
+                        throw fetchError; // Re-throw last error if max retries reached
+                    }
+                }
+
+                if (response && (response.ok || response.status === 200)) {
                     showMessage('Inquiry submitted successfully! We will contact you soon.', 'bg-ce-gold-dark');
-                    formStatus.textContent = 'Success! We will contact you soon.';
+                    formStatus.textContent = 'Success! We will contact you within 24 hours.';
                     form.reset();
                 } else {
                     showMessage('Submission failed. Please check your network or try again later.', 'bg-red-700');
                     formStatus.textContent = 'Submission error. Please try again.';
                 }
+
             } catch (error) {
                 console.error('Submission error:', error);
-                showMessage('An unexpected error occurred. Check console for details.', 'bg-red-700');
+                showMessage('An unexpected network error occurred. Please try again.', 'bg-red-700');
                 formStatus.textContent = 'An unexpected error occurred.';
             } finally {
                 // Reset button state
@@ -606,4 +713,4 @@
     </script>
     
 </body>
-    </html>
+                                                                                                                                                           </html>
