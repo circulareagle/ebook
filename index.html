@@ -4,10 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Circular Eagle: Financial, Personal & Business Mastery Courses and Consultancy</title>
+    
+    <!-- FIX 1: FAVICON - Changed to rel="icon" and recommended root path -->
+    <!-- Google prefers rel="icon" and the file to be directly accessible from the root domain. 
+         We are using a relative path from the root (/) to signal the highest priority location. 
+         Ensure your favicon.png is in the root folder of your web host. -->
+    <link rel="icon" type="image/png" sizes="any" href="/favicon.png"> 
+    
+    <!-- SEO & Social Meta Tags -->
     <meta property="og:site_name" content="Circular Eagle" />
     <meta property="og:title" content="Circular Eagle: Financial, Personal & Business Mastery" />
-    
-    <link rel="shortcut icon" type="image/png" href="img/favicon.png">
     
     <!-- SEO Description -->
     <meta name="description" content="Access precision-engineered courses, expert eBooks, and bespoke consultancy services from Circular Eagle to accelerate your financial independence and personal mastery. Zero filler, maximum results." />
@@ -15,19 +21,22 @@
     <!-- Canonical URL -->
     <link rel="canonical" href="https://www.circulareagle.com/" />
     
-    <!-- JSON-LD Structured Data for Organization (Helps control brand name on SERP) -->
+    <!-- FIX 2: JSON-LD Structured Data for Organization (Helps control brand name on SERP) -->
+    <!-- Changed type to 'Organization' for stronger branding signal and ensured 'name' is primary. 
+         Google often uses this 'name' field for the site name display. -->
     <script type="application/ld+json">
         {
         "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "Circular Eagle",
-        "alternateName": ["CircularEagle", "Circular Eagle Consultancy"],
+        "@type": "Organization", 
+        "name": "Circular Eagle", 
+        "alternateName": "Circular Eagle Consultancy", 
         "url": "https://www.circulareagle.com",
+        "logo": "https://www.circulareagle.com/favicon.png", 
         "potentialAction": {
-        "@type": "SearchAction",
-        "target": "https://www.circulareagle.com/?s={search_term_string}",
-        "query-input": "required name=search_term_string"
-        }
+            "@type": "SearchAction",
+            "target": "https://www.circulareagle.com/?s={search_term_string}",
+            "query-input": "required name=search_term_string"
+            }
         }
     </script>
 
@@ -805,3 +814,4 @@
     
 </body>
                                 </html>
+
