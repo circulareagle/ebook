@@ -3,9 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Updated Title and Description for the new page -->
+    <meta property="og:site_name" content="Circular Eagle" />
     <title>Financial Strategy & Business | Circular Eagle Ebooks</title>
     <meta name="description" content="Discover premium eBooks on advanced business strategy, corporate finance, operational scaling, and market growth from Circular Eagle." />
+    
+    <!-- Google prefers rel="icon" and the file to be directly accessible from the root domain. 
+         We are using a relative path from the root (/) to signal the highest priority location. 
+         Ensure your favicon.png is in the root folder of your web host. -->
+    <link rel="icon" type="image/png" sizes="any" href="/favicon.png"> 
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.circulareagle.com/" />
+    
+    <!-- FIX 2: JSON-LD Structured Data for Organization (Helps control brand name on SERP) -->
+    <!-- Changed type to 'Organization' for stronger branding signal and ensured 'name' is primary. 
+         Google often uses this 'name' field for the site name display. -->
+    <script type="application/ld+json">
+        {
+        "@context": "https://schema.org",
+        "@type": "Organization", 
+        "name": "Circular Eagle", 
+        "url": "https://www.circulareagle.com",
+        "logo": "https://www.circulareagle.com/favicon.png", 
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://www.circulareagle.com/?s={search_term_string}",
+            "query-input": "required name=search_term_string"
+            }
+        }
+    </script>
+    
     <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Configure Tailwind with Gold/Black/White Palette (Copied from base) -->
