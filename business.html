@@ -535,12 +535,15 @@
             document.getElementById('modal-image').src = imageUrl;
 
             const purchaseLink = document.getElementById('modal-purchase-link');
+            
+            // FIX: Use window.open for actual redirection instead of console.log simulation.
             purchaseLink.onclick = () => {
                 // Display quick redirection message
-                showMessage(`Redirecting for purchase of: ${title}`, 'bg-ce-gold-dark');
+                showMessage(`Redirecting to secure checkout for: ${title}`, 'bg-ce-gold-dark');
                 
-                // Simulate redirection (in a real browser this would be window.open(url, '_blank');)
-                console.log(`Simulating affiliate redirection to: ${url}`);
+                // Perform the actual external redirection in a new tab.
+                window.open(url, '_blank'); 
+                
                 closeModal(); // Close the modal after triggering the action
             };
             
