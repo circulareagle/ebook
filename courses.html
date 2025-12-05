@@ -7,11 +7,11 @@
     <meta property="og:title" content="Circular Eagle: Immersive Training Courses Hub"/>
     <title>Immersive Training Courses Hub | Circular Eagle</title>
     <meta name="description" content="Explore a comprehensive catalog of high-demand non-technical digital skills courses covering content creation, digital marketing, freelancing, and business operations." />
-    
-    <!-- Google prefers rel="icon" and the file to be directly accessible from the root domain. 
-         We are using a relative path from the root (/) to signal the highest priority location. 
-         Ensure your favicon.png is in the root folder of your web host. -->
+   
     <link rel="icon" type="image/png" sizes="any" href="/favicon.png"> 
+    
+       <!-- FIX 3: ADDING OG:IMAGE for Social Sharing/SERP previews -->
+    <meta property="og:image" content="https://www.circulareagle.com/social-share-image.jpg" />
     
     <!-- Canonical URL -->
     <link rel="canonical" href="https://www.circulareagle.com/" />
@@ -119,9 +119,12 @@
             <div class="flex justify-between items-center py-4 md:py-5">
                 <!-- Logo & Back to Home Link -->
                 <a href="index.html" class="flex items-center space-x-2">
-                    <div class="w-8 h-8 rounded-full border-2 border-ce-gold-dark flex items-center justify-center text-sm font-bold text-ce-gold-dark">
-                        CE
-                    </div>
+                    <img 
+                        src="https://www.circulareagle.com/circular-eagle-logo.png" 
+                        alt="Circular Eagle Logo" 
+                        class="w-8 h-8 rounded-full border-2 border-ce-gold-dark object-cover"
+                    >
+                    
                     <span class="text-xl font-extrabold tracking-tight text-ce-black">Circular<span class="text-ce-gold">Eagle</span></span>
                 </a>
 
