@@ -382,44 +382,57 @@
     </footer>
 
 
-    <!-- EBOOK DETAIL MODAL -->
+    <!-- EBOOK DETAIL MODAL (MODIFIED FOR MOBILE COMPACTNESS) -->
     <div id="ebook-modal" class="fixed inset-0 z-[60] hidden flex items-center justify-center modal-backdrop p-4 transition-opacity duration-300 opacity-0" onclick="closeModal(event)">
+        <!-- Modal Content Container -->
         <div class="bg-ce-white rounded-xl shadow-2xl w-full max-w-lg md:max-w-xl lg:max-w-2xl overflow-hidden transform transition-transform duration-300 scale-95" onclick="event.stopPropagation()">
             
             <!-- Modal Header -->
             <div class="flex justify-between items-center p-6 border-b border-gray-100 bg-ce-silver-light">
-                <h2 id="modal-title" class="text-2xl font-bold text-ce-black font-serif">Ebook Title</h2>
-                <button onclick="closeModal()" class="text-ce-black hover:text-red-500 p-1 rounded-full transition-default">
+                <h2 id="modal-title" class="text-xl md:text-2xl font-bold text-ce-black font-serif truncate">Ebook Title</h2>
+                <button onclick="closeModal()" class="text-ce-black hover:text-red-500 p-1 rounded-full transition-default flex-shrink-0">
                     <!-- Close Icon -->
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
                 </button>
             </div>
 
             <div class="p-6">
-                <!-- Ebook Image/Placeholder -->
-                <div class="mb-4">
-                    <img id="modal-image" src="" alt="Ebook Cover" class="w-full max-h-48 object-cover rounded-lg ebook-cover mx-auto">
-                </div>
-                
-                <!-- Description -->
-                <p id="modal-description" class="text-ce-muted text-base mb-6 leading-relaxed">
-                    This is the full detailed description of the ebook, explaining its core benefits, modules, and target audience.
-                </p>
+                <!-- Image and Price/CTA Area (Always visible) -->
+                <div class="flex flex-col md:flex-row md:space-x-6 mb-4">
+                    <!-- Ebook Image/Placeholder (Reduced size for mobile) -->
+                    <div class="flex-shrink-0 w-full md:w-1/3 mb-4 md:mb-0 flex justify-center">
+                        <!-- Reduced image height from max-h-48 to max-h-40 on mobile -->
+                        <img id="modal-image" src="" alt="Ebook Cover" class="w-2/3 md:w-full max-h-40 object-cover rounded-lg ebook-cover">
+                    </div>
+                    
+                    <!-- Price and Purchase Button Area -->
+                    <div class="md:w-2/3 flex flex-col justify-center">
+                        
+                        <!-- Purchase Details -->
+                        <div class="flex justify-between items-center py-2 md:py-4 border-y border-gray-100 mb-4 md:mb-6">
+                            <p class="text-lg font-semibold text-ce-black">Price:</p>
+                            <span id="modal-price" class="text-3xl font-extrabold text-ce-gold-dark"></span>
+                        </div>
 
-                <!-- Purchase Details -->
-                <div class="flex justify-between items-center py-4 border-y border-gray-100 mb-6">
-                    <p class="text-lg font-semibold text-ce-black">Price:</p>
-                    <span id="modal-price" class="text-3xl font-extrabold text-ce-gold-dark"></span>
+                        <!-- Final Purchase Button -->
+                        <button 
+                            id="modal-purchase-link"
+                            class="w-full py-3 px-6 text-lg font-bold rounded-full bg-ce-gold text-ce-black hover:bg-ce-gold-dark hover:text-white transition-default btn-gold-effect"
+                        >
+                            Purchase Now &rarr;
+                        </button>
+                        <p class="text-xs text-center text-ce-muted mt-2">You will be redirected to the secure Selar checkout page.</p>
+                    </div>
                 </div>
 
-                <!-- Final Purchase Button -->
-                <button 
-                    id="modal-purchase-link"
-                    class="w-full py-3 px-6 text-lg font-bold rounded-full bg-ce-gold text-ce-black hover:bg-ce-gold-dark hover:text-white transition-default btn-gold-effect"
-                >
-                    Purchase Now &rarr;
-                </button>
-                <p class="text-xs text-center text-ce-muted mt-3">You will be redirected to the secure Selar checkout page.</p>
+                <!-- Description (Now with internal scrolling) -->
+                <!-- The key fix: max-h-40 (approx 10 lines of text) and overflow-y-auto ensures the text scrolls, 
+                     while the price and button stay anchored below. -->
+                <div id="modal-description-container" class="max-h-40 md:max-h-60 overflow-y-auto pr-2">
+                    <p id="modal-description" class="text-ce-muted text-base leading-relaxed">
+                        This is the full detailed description of the ebook, explaining its core benefits, modules, and target audience.
+                    </p>
+                </div>
             </div>
         </div>
     </div>
@@ -527,7 +540,7 @@
         /**
          * Shows the Ebook detail modal with populated data.
          */
-        function showEbookModal(title, description, price, url, imageUrl) {
+        function showEbookModal(title, description, price, partnerUrl, imageUrl) {
             const modal = document.getElementById('ebook-modal');
             const modalContent = modal.querySelector('div:not(.modal-backdrop)');
 
@@ -537,9 +550,13 @@
             document.getElementById('modal-image').src = imageUrl;
 
             const purchaseLink = document.getElementById('modal-purchase-link');
+            
+            // FIX: The original code only logged the redirection. 
+            // This update actually performs the redirection in a new tab.
             purchaseLink.onclick = () => {
-                showMessage(`Redirecting for purchase of: ${title}`, 'bg-ce-gold-dark');
-                console.log(`Simulating affiliate redirection to: ${url}`);
+                showMessage(`Redirecting to purchase ${title}...`, 'bg-ce-gold-dark');
+                // Use window.open to avoid breaking the immersive iframe environment
+                window.open(partnerUrl, '_blank'); 
                 closeModal();
             };
             
@@ -557,6 +574,7 @@
          */
         function closeModal(event) {
             const modal = document.getElementById('ebook-modal');
+            // If the click target is inside the modal content, don't close.
             if (event && event.target !== modal) return;
 
             const modalContent = modal.querySelector('div:not(.modal-backdrop)');
@@ -740,3 +758,4 @@
     </script>
 </body>
                                     </html>
+
