@@ -9,15 +9,13 @@
  
     <link rel="icon" type="image/png" sizes="any" href="/favicon.png"> 
 
-       <!-- FIX 3: ADDING OG:IMAGE for Social Sharing/SERP previews -->
+       <!-- OG:IMAGE for Social Sharing/SERP previews -->
     <meta property="og:image" content="https://www.circulareagle.com/social-share-image.jpg" />
     
     <!-- Canonical URL -->
     <link rel="canonical" href="https://www.circulareagle.com/" />
     
-    <!-- FIX 2: JSON-LD Structured Data for Organization (Helps control brand name on SERP) -->
-    <!-- Changed type to 'Organization' for stronger branding signal and ensured 'name' is primary. 
-         Google often uses this 'name' field for the site name display. -->
+    <!-- JSON-LD Structured Data for Organization -->
     <script type="application/ld+json">
         {
         "@context": "https://schema.org",
@@ -432,9 +430,9 @@
     </footer>
 
 
-    <!-- COURSE INFO MODAL (Dynamic Content & Formsubmit Integration) -->
+    <!-- COURSE INFO MODAL (Simplified for Coming Soon) -->
     <div id="course-info-modal" class="fixed inset-0 z-[60] hidden flex items-center justify-center modal-backdrop p-4 transition-opacity duration-300 opacity-0" onclick="closeCourseModal(event)">
-        <div id="modal-content-container" class="bg-ce-white rounded-xl shadow-2xl w-full max-w-2xl overflow-y-auto transform transition-transform duration-300 scale-95" onclick="event.stopPropagation()">
+        <div id="modal-content-container" class="bg-ce-white rounded-xl shadow-2xl w-full max-w-lg overflow-y-auto transform transition-transform duration-300 scale-95" onclick="event.stopPropagation()">
             
             <!-- Modal Header -->
             <div class="sticky top-0 flex justify-between items-center p-5 border-b border-gray-100 bg-ce-gold-dark shadow-md z-10">
@@ -445,172 +443,57 @@
                 </button>
             </div>
 
-            <div class="p-6 sm:p-8">
-                <!-- 2. Description -->
-                <h3 class="text-xl font-bold text-ce-black mb-2">What You'll Learn</h3>
-                <p id="modal-description" class="text-ce-black text-base mb-6 leading-relaxed border-b pb-4"></p>
-                
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6 mb-6">
-                    <!-- 3. Target Audience -->
-                    <div>
-                        <h4 class="font-bold text-ce-gold-dark text-sm uppercase tracking-wider mb-1">Target Audience</h4>
-                        <p id="modal-audience" class="text-ce-black text-base"></p>
-                    </div>
-
-                    <!-- 4. Instructor/Team -->
-                    <div>
-                        <h4 class="font-bold text-ce-gold-dark text-sm uppercase tracking-wider mb-1">Instructor / Team</h4>
-                        <p id="modal-instructor" class="text-ce-black text-base"></p>
-                    </div>
-                    
-                    <!-- 5. Delivery Method -->
-                    <div>
-                        <h4 class="font-bold text-ce-gold-dark text-sm uppercase tracking-wider mb-1">Delivery Method</h4>
-                        <p id="modal-delivery" class="text-ce-black text-base"></p>
-                    </div>
-
-                    <!-- 6. Duration -->
-                    <div>
-                        <h4 class="font-bold text-ce-gold-dark text-sm uppercase tracking-wider mb-1">Duration / Commitment</h4>
-                        <p id="modal-duration" class="text-ce-black text-base"></p>
-                    </div>
-                </div>
-
-                <div class="pt-6 border-t mt-4">
-                    <p class="text-ce-muted text-sm italic mb-4">
-                        Enter your email below to receive the **full course syllabus**, including module breakdowns, prerequisites, and pricing.
+            <!-- MODAL BODY: COMING SOON / EMAIL CAPTURE -->
+            <div class="p-8 sm:p-10 text-center">
+                <div class="mb-8">
+                    <p class="text-3xl font-bold text-ce-gold-dark mb-4">Course Coming Soon!</p>
+                    <p class="text-ce-black text-lg max-w-md mx-auto">
+                        This highly-requested course will be launched shortly.
                     </p>
-                    
-                    <!-- FORM SUBMISSION SECTION -->
-                    <form id="syllabus-form" onsubmit="handleSubmission(event, 'Syllabus Request')">
-                        <!-- Hidden field to dynamically store the course name for the email subject/body -->
-                        <input type="hidden" name="Course Name" id="form-course-name" value="">
-
-                        <!-- Email Input -->
-                        <input type="email" name="email" id="modal-email-input" placeholder="Enter your email address..." required 
-                               class="w-full p-3 mb-4 border-2 border-gray-200 rounded-lg focus:border-ce-gold-dark focus:ring-0 transition-default text-ce-black" />
-
-                        <!-- Final CTA Button -->
-                        <button type="submit"
-                            class="w-full py-3 px-6 text-base font-bold rounded-full bg-ce-gold text-ce-black hover:bg-ce-gold-dark hover:text-white transition-default btn-gold-effect disabled:opacity-50 disabled:cursor-not-allowed"
-                        >
-                            Send Me the Full Syllabus
-                        </button>
-                    </form>
+                    <p class="text-ce-muted text-base mt-2">
+                        Enter your email to be the first to receive the **full syllabus, launch date**, and an exclusive early-bird discount.
+                    </p>
                 </div>
+                
+                <!-- FORM SUBMISSION SECTION -->
+                <form id="syllabus-form" onsubmit="handleSubmission(event, 'Coming Soon Waitlist')">
+                    <!-- Hidden field to dynamically store the course name for the email subject/body -->
+                    <input type="hidden" name="Course Name" id="form-course-name" value="">
 
+                    <!-- Email Input -->
+                    <input type="email" name="email" id="modal-email-input" placeholder="Enter your email address..." required 
+                           class="w-full max-w-sm mx-auto p-3 mb-4 border-2 border-gray-200 rounded-lg focus:border-ce-gold-dark focus:ring-0 transition-default text-ce-black block" />
+
+                    <!-- Final CTA Button -->
+                    <button type="submit"
+                        class="w-full max-w-sm mx-auto py-3 px-6 text-base font-bold rounded-full bg-ce-gold text-ce-black hover:bg-ce-gold-dark hover:text-white transition-default btn-gold-effect disabled:opacity-50 disabled:cursor-not-allowed"
+                        data-original-text="Notify Me on Launch"
+                    >
+                        Notify Me on Launch
+                    </button>
+                </form>
             </div>
+
         </div>
     </div>
 
 
     <script>
-        // --- COURSE DATA STRUCTURE (Simulated Backend Data) ---
+        // --- COURSE DATA STRUCTURE (Only need names for the pop-up title and form field) ---
         const courseData = {
-            'machine-learning': {
-                name: 'Machine Learning Foundations',
-                description: 'Core concepts of supervised/unsupervised learning, model training, and evaluation, inspired by Andrew Ng\'s methods.',
-                audience: 'Developers, Analysts, and technical professionals transitioning to AI/ML.',
-                instructor: 'Dr. Elena V. (ML Engineer)',
-                delivery: '12 hours Recorded Video, Weekly Project Labs.',
-                duration: '8 Weeks (10-12 hours commitment)',
-            },
-            'ai-engineering': {
-                name: 'Generative AI Engineering',
-                description: 'Focuses on deploying, fine-tuning, and managing large language models (LLMs) and generative models in production environments.',
-                audience: 'Software Engineers, Data Scientists, and AI architects.',
-                instructor: 'Kai Chen (AI Architect)',
-                delivery: '15 hours Recorded Video, Dedicated GPU Lab Access.',
-                duration: '10 Weeks (15 hours commitment)',
-            },
-            'data-science': {
-                name: 'Applied Data Science with Python',
-                description: 'Practical data manipulation, statistical analysis, and visualization using Python libraries like Pandas and Matplotlib.',
-                audience: 'Anyone starting a career in data analysis or research.',
-                instructor: 'IBM Certified Instructors',
-                delivery: '9 hours Video, Code Notebooks, Capstone Project.',
-                duration: '6 Weeks (8-10 hours commitment)',
-            },
-            'cloud-computing': {
-                name: 'Cloud Solutions Architecture (AWS/Azure)',
-                description: 'Principles of designing scalable, resilient, and secure cloud infrastructure across leading providers (AWS, Azure).',
-                audience: 'IT Professionals, Solution Architects, and DevOps Engineers.',
-                instructor: 'Alex B. (Certified Cloud Expert)',
-                delivery: '14 hours Recorded Video, Sandbox Environment Access.',
-                duration: '12 Weeks (18 hours commitment)',
-            },
-            'cybersecurity': {
-                name: 'Ethical Hacking & Penetration Testing',
-                description: 'Practical steps for identifying, exploiting, and mitigating vulnerabilities in networks and applications (CompTIA Security+ aligned).',
-                audience: 'System Administrators, Security Analysts, and aspiring ethical hackers.',
-                instructor: 'CompTIA Certified Team',
-                delivery: '16 hours Video, Virtual Hacking Labs, Exam Prep.',
-                duration: '10 Weeks (15 hours commitment)',
-            },
-            'devops-cloud': {
-                name: 'Docker, Kubernetes & CI/CD Pipelines',
-                description: 'Infrastructure as Code (IaC), containerization with Docker, orchestration with Kubernetes, and automating deployments with CI/CD tools.',
-                audience: 'Backend Developers and Infrastructure Engineers.',
-                instructor: 'Ben L. (DevOps Consultant)',
-                delivery: '18 hours Recorded Video, Hands-on Deployment Projects.',
-                duration: '14 Weeks (20 hours commitment)',
-            },
-            'blockchain-dev': {
-                name: 'Solidity & Smart Contract Engineering',
-                description: 'Building and deploying decentralized applications (dApps) and smart contracts on the Ethereum blockchain using Solidity (Web3).',
-                audience: 'Software Developers interested in Web3.',
-                instructor: 'Dr. Nika R. (Web3 Developer)',
-                delivery: '10 hours Recorded Video, Interactive Coding Challenges.',
-                duration: '8 Weeks (12 hours commitment)',
-            },
-            'big-data-engineering': {
-                name: 'Apache Ecosystem: Hadoop & Spark',
-                description: 'Handling massive datasets, data ingestion, processing, and warehousing using tools like Apache Hadoop and Spark for distributed computing.',
-                audience: 'Data Architects and Senior Data Analysts.',
-                instructor: 'CE Senior Engineer Team',
-                delivery: '13 hours Recorded Video, Cloud Cluster Access.',
-                duration: '9 Weeks (14 hours commitment)',
-            },
-            'software-engineering': {
-                name: 'Full-Stack Development (MERN/MEAN)',
-                description: 'Building complete web applications from front-end (React/Angular) to back-end (Node.js/Express) and database (MongoDB).',
-                audience: 'Aspiring Full-Stack Developers and Computer Science graduates.',
-                instructor: 'Jason M. (Senior Software Engineer)',
-                delivery: '20 hours Video, 3 Major Portfolio Projects.',
-                duration: '16 Weeks (25 hours commitment)',
-            },
-            'product-management-tech': {
-                name: 'Technical Product Management & Agile',
-                description: 'Bridging the gap between engineering and business, defining technical roadmaps, managing sprints, and mastering Agile methodologies.',
-                audience: 'Project Managers, Analysts, and Senior Engineers moving into PM.',
-                instructor: 'Sarah A. (VP of Product)',
-                delivery: '8 hours Recorded Video, Product Case Studies.',
-                duration: '5 Weeks (8 hours commitment)',
-            },
-            'mobile-app-dev': {
-                name: 'Cross-Platform Mobile Development (Flutter)',
-                description: 'Developing beautiful, native applications for iOS and Android simultaneously using the Google Flutter framework.',
-                audience: 'Developers focused on cross-platform deployment.',
-                instructor: 'Dev Team Lead (Flutter Expert)',
-                delivery: '15 hours Video, Portfolio App Project.',
-                duration: '10 Weeks (15 hours commitment)',
-            },
-            'automation-rpa': {
-                name: 'Robotic Process Automation (UiPath/AA)',
-                description: 'Designing and implementing software robots to automate repetitive, rules-based business processes (RPA).',
-                audience: 'Business Analysts, IT Ops Specialists, and Automation Engineers.',
-                instructor: 'UiPath Certified Trainer',
-                delivery: '12 hours Video, Free Trial Software Licenses.',
-                duration: '8 Weeks (10 hours commitment)',
-            },
-            'ui-ux-design-tech': {
-                name: 'UI/UX Design & Interaction Prototyping',
-                description: 'Human-centered design principles, advanced Figma prototyping, user research synthesis, and developer handoff best practices.',
-                audience: 'Graphic Designers, Front-end Engineers, and Product Designers.',
-                instructor: 'Mia L. (Head of UX)',
-                delivery: '10 hours Recorded Video, Live Critique Sessions.',
-                duration: '6 Weeks (9 hours commitment)',
-            },
+            'machine-learning': { name: 'Machine Learning Foundations' },
+            'ai-engineering': { name: 'Generative AI Engineering' },
+            'data-science': { name: 'Applied Data Science with Python' },
+            'cloud-computing': { name: 'Cloud Solutions Architecture (AWS/Azure)' },
+            'cybersecurity': { name: 'Ethical Hacking & Penetration Testing' },
+            'devops-cloud': { name: 'Docker, Kubernetes & CI/CD Pipelines' },
+            'blockchain-dev': { name: 'Solidity & Smart Contract Engineering' },
+            'big-data-engineering': { name: 'Apache Ecosystem: Hadoop & Spark' },
+            'software-engineering': { name: 'Full-Stack Development (MERN/MEAN)' },
+            'product-management-tech': { name: 'Technical Product Management & Agile' },
+            'mobile-app-dev': { name: 'Cross-Platform Mobile Development (Flutter)' },
+            'automation-rpa': { name: 'Robotic Process Automation (UiPath/AA)' },
+            'ui-ux-design-tech': { name: 'UI/UX Design & Interaction Prototyping' },
         };
 
         // --- FORM SUBMISSION CONSTANTS ---
@@ -666,7 +549,7 @@
         /**
          * Handles AJAX submission for all forms using Formsubmit.co, preventing redirect.
          * @param {Event} event - The form submission event.
-         * @param {string} subjectPrefix - The prefix for the email subject (e.g., 'Syllabus Request').
+         * @param {string} subjectPrefix - The prefix for the email subject (e.g., 'Coming Soon Waitlist').
          */
         async function handleSubmission(event, subjectPrefix) {
             event.preventDefault(); // Stop native form submission (redirect)
@@ -682,6 +565,7 @@
             }
 
             const courseName = courseNameInput ? courseNameInput.value : 'N/A';
+            const originalText = submitButton.getAttribute('data-original-text');
             
             submitButton.textContent = 'Submitting...';
             submitButton.disabled = true;
@@ -698,7 +582,7 @@
                 });
                 
                 if (response.ok) {
-                    showMessage(`Success! Your request for "${courseName}" has been received.`, 'bg-ce-success');
+                    showMessage(`Success! You will be notified when "${courseName}" launches.`, 'bg-ce-success');
                     
                     // Clear form and close modal if in modal
                     form.reset();
@@ -715,7 +599,7 @@
                 console.error("Submission error:", error);
                 showMessage('Network error. Check your connection.', 'bg-ce-error');
             } finally {
-                submitButton.textContent = submitButton.getAttribute('data-original-text') || (form.id === 'syllabus-form' ? 'Send Me the Full Syllabus' : 'Secure My Spot Now');
+                submitButton.textContent = originalText;
                 submitButton.disabled = false;
             }
         }
@@ -734,20 +618,17 @@
             const modal = document.getElementById('course-info-modal');
             const modalContent = modal.querySelector('#modal-content-container');
 
-            // 1. Populate the static fields
+            // 1. Populate the course name in the header
             document.getElementById('modal-course-name').textContent = course.name;
-            document.getElementById('modal-description').textContent = course.description;
-            document.getElementById('modal-audience').textContent = course.audience;
-            document.getElementById('modal-instructor').textContent = course.instructor;
-            document.getElementById('modal-delivery').textContent = course.delivery;
-            document.getElementById('modal-duration').textContent = course.duration;
             
             // 2. Populate the hidden form field with the course name
             document.getElementById('form-course-name').value = course.name;
 
-            // Cache original button text
+            // Cache original button text for the modal form
             const submitButton = document.querySelector('#syllabus-form button[type="submit"]');
-            submitButton.setAttribute('data-original-text', 'Send Me the Full Syllabus');
+            if (!submitButton.hasAttribute('data-original-text')) {
+                submitButton.setAttribute('data-original-text', 'Notify Me on Launch');
+            }
 
 
             // Show modal with transition effects
@@ -796,4 +677,5 @@
 
     </script>
 </body>
-                                                                                                                                                                                                                                                               </html>
+</html>
+
