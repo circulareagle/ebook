@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Support | Circular Eagle</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'ce-bg-dark': '#1A1A1A',
+                        'ce-card-dark': '#252525',
+                        'ce-text-light': '#F0F0F0',
+                        'ce-gold-bright': '#FFD700',
+                        'ce-gold-muted': '#C0A04C',
+                        'ce-muted-gray': '#A0A0A0',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        serif: ['Georgia', 'Merriweather', 'serif'],
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-ce-bg-dark text-ce-text-light font-sans min-h-screen">
+
+    <!-- HEADER -->
+    <header class="sticky top-0 z-50 bg-ce-bg-dark/95 backdrop-blur-sm border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-2">
+                <span class="text-xl font-extrabold tracking-tight">Circular<span class="text-ce-gold-bright">Eagle</span></span>
+            </a>
+            <a href="index.html" class="text-sm font-bold text-ce-gold-bright hover:underline transition-all">Back to Home</a>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-4 py-16">
+        <div class="text-center mb-16">
+            <h1 class="font-serif text-4xl md:text-5xl font-bold mb-4 text-ce-gold-bright">How can we help?</h1>
+            <p class="text-ce-muted-gray text-lg max-w-2xl mx-auto">Whether you have a question about our strategy guides or need help with a transaction, we're here to guide you.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            
+            <!-- Technical & Content Support (You) -->
+            <div class="bg-ce-card-dark p-8 rounded-2xl border border-gray-800 flex flex-col h-full">
+                <div class="w-12 h-12 bg-ce-gold-bright/10 rounded-full flex items-center justify-center mb-6">
+                    <svg class="w-6 h-6 text-ce-gold-bright" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                </div>
+                <h2 class="text-2xl font-bold mb-4">Content & Strategy Support</h2>
+                <p class="text-ce-muted-gray mb-6 flex-grow">Contact our internal team for inquiries regarding eBook contents, coaching sessions, corporate partnerships, or technical issues with the PDF files themselves.</p>
+                
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-3 text-ce-gold-bright font-bold">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                        <a href="mailto:mail@circulareagle.com">mail@circulareagle.com</a>
+                    </div>
+                    <p class="text-xs text-ce-muted-gray">Response time: Typically 24-48 hours.</p>
+                </div>
+            </div>
+
+            <!-- Payment & Delivery Support (Selar) -->
+            <div class="bg-ce-card-dark p-8 rounded-2xl border border-ce-gold-muted/30 flex flex-col h-full shadow-lg relative overflow-hidden">
+                <!-- Affiliate Badge -->
+                <div class="absolute top-0 right-0 bg-ce-gold-bright text-ce-bg-dark text-[10px] font-bold px-3 py-1 rounded-bl-lg uppercase tracking-widest">Platform Support</div>
+                
+                <div class="w-12 h-12 bg-ce-gold-bright/10 rounded-full flex items-center justify-center mb-6">
+                    <svg class="w-6 h-6 text-ce-gold-bright" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a2 2 0 002-2V5a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                </div>
+                <h2 class="text-2xl font-bold mb-4">Billing & Transaction Support</h2>
+                <p class="text-ce-muted-gray mb-6 flex-grow">Since most of our digital products are hosted and processed by <span class="text-ce-text-light font-bold">Selar</span>, please contact them directly for payment failures, download link issues, or refund requests.</p>
+                
+                <div class="space-y-4">
+                    <a href="https://selar.co/contact" target="_blank" class="block w-full text-center py-3 bg-ce-gold-bright text-ce-bg-dark font-bold rounded-xl hover:bg-ce-gold-muted transition-default">
+                        Contact Selar Support
+                    </a>
+                    <p class="text-xs text-ce-muted-gray text-center italic">Fastest way to resolve payment & download errors.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- FAQ Mini Section -->
+        <section class="mt-24 border-t border-gray-800 pt-16">
+            <h3 class="font-serif text-3xl font-bold mb-10 text-center">Frequently Asked Questions</h3>
+            <div class="max-w-3xl mx-auto space-y-6">
+                <div class="p-6 bg-ce-card-dark rounded-xl border border-gray-800">
+                    <h4 class="font-bold text-ce-gold-bright mb-2 text-lg">I didn't receive my download link. What should I do?</h4>
+                    <p class="text-ce-muted-gray">Check your spam folder first. If it's not there, visit Selar's contact page with your email address used during purchase. They can resend the receipt instantly.</p>
+                </div>
+                <div class="p-6 bg-ce-card-dark rounded-xl border border-gray-800">
+                    <h4 class="font-bold text-ce-gold-bright mb-2 text-lg">Can I pay in my local currency?</h4>
+                    <p class="text-ce-muted-gray">Yes, Selar supports multiple currencies including NGN, GHS, KES, ZAR, USD, and GBP. The conversion happens automatically at checkout.</p>
+                </div>
+                <div class="p-6 bg-ce-card-dark rounded-xl border border-gray-800">
+                    <h4 class="font-bold text-ce-gold-bright mb-2 text-lg">Do you offer 1-on-1 consultations?</h4>
+                    <p class="text-ce-muted-gray">We periodically offer strategy sessions to our premium eBook buyers. Please email our content support team for current availability.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-ce-bg-dark border-t border-gray-800 py-8 text-center text-xs text-ce-muted-gray">
+        &copy; 2025 Circular Eagle. All rights reserved.
+    </footer>
+
+</body>
+</html>
+
