@@ -4,32 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="og:site_name" content="Circular Eagle" />
-    <title>Circular Eagle: Financial, Personal & Business Mastery Courses and Consultancy</title>
+    <title>Financial Strategy & Business | Circular Eagle Ebooks & Courses</title>
+    <meta name="description" content="Discover premium eBooks and courses on advanced business strategy, corporate finance, operational scaling and market growth from Circular Eagle." />
     
-    <!-- FIX 1: FAVICON - Correct path and usage -->
     <link rel="icon" type="image/png" sizes="any" href="/favicon.png"> 
     
-    <!-- SEO & Social Meta Tags -->
-    
-    <meta property="og:title" content="Circular Eagle: Financial, Personal & Business Mastery" />
-    
-    <!-- FIX 3: ADDING OG:IMAGE for Social Sharing/SERP previews -->
     <meta property="og:image" content="https://www.circulareagle.com/social-share-image.jpg" />
-    
-    <!-- SEO Description -->
-    <meta name="description" content="Access precision-engineered courses, expert eBooks, and bespoke consultancy services from Circular Eagle to accelerate your financial independence and personal mastery. Zero filler, maximum results." />
-    
-    <!-- Canonical URL -->
     <link rel="canonical" href="https://www.circulareagle.com/" />
     
-    <!-- JSON-LD Structured Data for Organization (Helps control brand name on SERP) -->
     <script type="application/ld+json">
         {
         "@context": "https://schema.org",
         "@type": "Organization", 
         "name": "Circular Eagle", 
         "url": "https://www.circulareagle.com",
-        "logo": "https://www.circulareagle.com/favicon.png", 
+        "logo": "favicon.png", 
         "potentialAction": {
             "@type": "SearchAction",
             "target": "https://www.circulareagle.com/?s={search_term_string}",
@@ -37,810 +26,508 @@
             }
         }
     </script>
-
-
+    
     <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Configure Tailwind with Custom Luxury Palette -->
+    <!-- Configure Tailwind for Dark Theme (Deep Charcoal & Bright Gold) -->
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        'ce-white': '#FFFFFF',
-                        'ce-gold': '#DAA520', // Richer Gold Accent
-                        'ce-gold-dark': '#B8860B', // Dark Gold for Text/Hover
-                        'ce-black': '#141414', // Deep Charcoal/Black
-                        'ce-muted': '#777777',
-                        'ce-background': '#F8F8F8', // Soft Off-White Background
-                        'ce-card-bg': '#FFFFFF', // Clean White Card Background
+                        'ce-bg-dark': '#1A1A1A', // Deep Charcoal Background
+                        'ce-card-dark': '#252525', // Dark Card Background
+                        'ce-text-light': '#F0F0F0', // Light Text
+                        'ce-gold-bright': '#FFD700', // Bright Gold Accent
+                        'ce-gold-muted': '#C0A04C', // Muted Gold for secondary elements
+                        'ce-muted-gray': '#A0A0A0', // Muted Gray for descriptions
                     },
                     fontFamily: {
                         sans: ['Inter', 'system-ui', 'sans-serif'],
-                        serif: ['Georgia', 'Times New Roman', 'serif'], // Premium feel for titles
+                        serif: ['Georgia', 'Merriweather', 'serif'], // For premium titles
                     },
                 }
             }
         }
     </script>
     <style>
-        /* General smooth transition for all interactive elements */
+        /* General smooth transition for hover effects */
         .transition-default {
-            transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smoother curve */
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* Premium Gold Button Effect */
-        .btn-gold-effect {
-            box-shadow: 0 8px 15px -5px rgba(218, 165, 32, 0.4);
+        /* Subtle glow on gold elements */
+        .btn-gold-glow {
+            box-shadow: 0 0 15px -3px rgba(255, 215, 0, 0.4);
         }
-        .btn-gold-effect:hover {
-            box-shadow: 0 12px 20px -7px rgba(218, 165, 32, 0.5);
-            transform: translateY(-2px);
-            filter: brightness(1.1);
+        .btn-gold-glow:hover {
+            box-shadow: 0 0 25px -5px rgba(255, 215, 0, 0.6);
+            transform: translateY(-1px);
         }
         
-        /* Premium Card Lift/Shadow */
+        /* Card hover lift (Dark theme adaptation) */
         .card-lift {
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
         .card-lift:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.35);
+        }
+
+        /* Ebook cover shadow for depth */
+        .ebook-cover {
+            box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.7);
         }
         
-        /* Section Separator Line - Central to the Minimalist Aesthetic */
-        .section-separator {
-            content: '';
-            display: block;
-            width: 100px;
-            height: 3px;
-            background: linear-gradient(to right, #DAA520, #B8860B);
-            margin: 0 auto 2.5rem auto; /* Centered with bottom margin */
-            border-radius: 2px;
+        /* Modal Backdrop */
+        .modal-backdrop {
+            background-color: rgba(0, 0, 0, 0.85);
         }
 
-        /* Responsive form for mobile/desktop alignment */
-        .form-responsive {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-        @media (min-width: 640px) {
-            .form-responsive {
-                flex-direction: row;
-            }
-            .form-responsive input {
-                flex-grow: 1;
-            }
-            .form-responsive button {
-                flex-shrink: 0;
-            }
-        }
     </style>
 </head>
-<body class="bg-ce-background text-ce-black font-sans min-h-screen antialiased">
+<body class="bg-ce-bg-dark text-ce-text-light font-sans min-h-screen">
 
-    <!-- Message Box Container (Notification system) -->
-    <div id="message-container" class="fixed bottom-4 right-4 z-50 space-y-2"></div>
+    <!-- Message Box Container (Replaces alert()) -->
+    <div id="message-container" class="fixed bottom-4 right-4 z-[100] space-y-2"></div>
 
-    <!-- HEADER: Fixed/Sticky, High Contrast, Minimalist -->
-    <header class="sticky top-0 z-50 bg-ce-white/98 backdrop-blur-md shadow-lg border-b border-gray-100">
+    <!-- HEADER: Floating, High Contrast Dark Header -->
+    <header class="sticky top-0 z-50 bg-ce-bg-dark/95 backdrop-blur-sm border-b border-gray-800 shadow-xl">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center py-4 md:py-5">
                 <!-- Logo & Brand Name -->
-                <a href="#" class="flex items-center space-x-2">
-                    <!-- FIX 2: Replaced local image path with a robust placeholder -->
+                <div class="flex items-center space-x-2">
                     <img 
-                        src="https://circulareagle.com/circular-eagle-logo.png" 
+                        src="circular-eagle-logo.png" 
+                        onerror="this.onerror=null; this.src='https://placehold.co/32x32/1A1A1A/FFD700?text=CE';"
                         alt="Circular Eagle Logo" 
-                        class="w-8 h-8 rounded-full object-cover border border-ce-gold-dark"
-                        onerror="this.onerror=null; this.src='https://placehold.co/32x32/DAA520/141414?text=CE'"
+                        class="w-8 h-8 rounded-full border-2 border-ce-gold-muted object-cover"
                     >
-                    <span class="text-xl font-extrabold tracking-tight text-ce-black">Circular<span class="text-ce-gold-dark">Eagle</span></span>
-                </a>
+                    <span class="text-2xl font-extrabold tracking-tight text-ce-text-light">Circular<span class="text-ce-gold-bright">Eagle</span></span>
+                </div>
 
-                <!-- Desktop Navigation -->
-                <nav class="hidden md:flex space-x-10">
-                    <a href="#ebooks" class="text-base font-medium text-ce-muted hover:text-ce-gold-dark transition-default">eBooks</a>
-                    <a href="#courses" class="text-base font-medium text-ce-muted hover:text-ce-gold-dark transition-default">Courses</a>
-                    <a href="#lead-magnet" class="text-base font-medium text-ce-muted hover:text-ce-gold-dark transition-default">Free Guide</a>
-                    <a href="#commitment" class="text-base font-medium text-ce-muted hover:text-ce-gold-dark transition-default">Commitment</a>
-                    <a href="#articles" class="text-base font-medium text-ce-muted hover:text-ce-gold-dark transition-default">Insights</a>
-                    <a href="#consultancy" class="text-base font-medium text-ce-muted hover:text-ce-gold-dark transition-default">Consultancy</a>
+                <!-- Desktop Navigation (Simplified for single page) -->
+                <nav class="hidden md:flex space-x-8">
+                    <!-- Only eBook Hub link remains -->
+                    <a href="#ebook-list" class="text-base font-semibold text-ce-gold-bright hover:text-ce-text-light transition-default border-b-2 border-transparent hover:border-ce-gold-bright">eBooks Hub</a>
                 </nav>
 
                 <!-- Mobile Menu Button -->
-                <button id="menu-button" class="md:hidden text-ce-black hover:text-ce-gold-dark transition-default p-2 rounded-lg" onclick="toggleMenu()" aria-label="Toggle navigation menu">
-                    <!-- Menu Icon (Hamburger) -->
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                <button id="menu-button" class="md:hidden text-ce-text-light hover:text-ce-gold-bright transition-default p-2 rounded-lg" onclick="toggleMenu()">
+                    <!-- Menu Icon (Hamburger) - Gold color -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-ce-gold-bright"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
                 </button>
             </div>
         </div>
 
         <!-- Mobile Menu (Hidden by default) -->
-        <div id="mobile-menu" class="hidden md:hidden bg-ce-white border-t border-gray-100 absolute w-full shadow-xl">
+        <div id="mobile-menu" class="hidden md:hidden bg-ce-card-dark border-t border-gray-800 absolute w-full shadow-lg">
             <div class="px-2 pt-2 pb-3 space-y-1">
-                <a href="#ebooks" onclick="toggleMenu()" class="block px-3 py-3 rounded-md text-base font-medium text-ce-black hover:bg-gray-50 hover:text-ce-gold-dark transition-default">eBooks</a>
-                <a href="#courses" onclick="toggleMenu()" class="block px-3 py-3 rounded-md text-base font-medium text-ce-black hover:bg-gray-50 hover:text-ce-gold-dark transition-default">Courses</a>
-                <a href="#lead-magnet" onclick="toggleMenu()" class="block px-3 py-3 rounded-md text-base font-medium text-ce-black hover:bg-gray-50 hover:text-ce-gold-dark transition-default">Free Guide</a>
-                <a href="#commitment" onclick="toggleMenu()" class="block px-3 py-3 rounded-md text-base font-medium text-ce-black hover:bg-gray-50 hover:text-ce-gold-dark transition-default">Commitment</a>
-                <a href="#articles" onclick="toggleMenu()" class="block px-3 py-3 rounded-md text-base font-medium text-ce-black hover:bg-gray-50 hover:text-ce-gold-dark transition-default">Insights</a>
-                <a href="#consultancy" onclick="toggleMenu()" class="block px-3 py-3 rounded-md text-base font-medium text-ce-black hover:bg-gray-50 hover:text-ce-gold-dark transition-default">Consultancy</a>
+                <!-- Only eBook Hub link remains -->
+                <a href="#ebook-list" onclick="toggleMenu()" class="block px-3 py-2 rounded-md text-base font-medium text-ce-text-light hover:bg-gray-800 hover:text-ce-gold-bright transition-default">eBooks Hub</a>
             </div>
         </div>
     </header>
 
-    <main>
+    <main class="max-w-7xl mx-auto">
+        <div class="px-4 sm:px-6 lg:px-8">
 
-        <!-- 1. HERO / VALUE PROPOSITION: High Impact -->
-        <section class="relative w-full overflow-hidden pt-20 pb-24 md:pt-32 md:pb-40 px-4 sm:px-6 lg:px-8 bg-ce-white border-b border-gray-200">
-            <!-- Subtle Gold Gradient for Background Texture -->
-            <div class="absolute inset-0 bg-gradient-to-br from-ce-background/50 to-ce-white/90 opacity-80 pointer-events-none"></div>
-
-            <div class="relative flex flex-col items-center justify-center mx-auto max-w-6xl">
-                <div class="md:max-w-4xl text-center">
-                    <!-- CRITICAL FIX: Closed the unclosed <span> tag inside the H1 -->
-                    <h1 class="font-serif text-5xl sm:text-7xl lg:text-8xl font-extrabold tracking-tighter mb-6 leading-none text-ce-black">
-                        Circular Eagle <span class="text-ce-gold-dark"> Achieve Definitive Mastery, Faster.</span>
-                    </h1>
-                    
-                    <!-- Sub-heading with strong focus -->
-                    <p class="text-xl sm:text-2xl text-ce-muted mb-10 max-w-3xl mx-auto">
-                        Circular Eagle provides <strong class="text-ce-black">precision-engineered blueprints</strong> for accelerating financial, professional and personal growth.
-                    </p>
-                    
-                    <div class="flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-6 justify-center">
-                        <!-- Primary CTA: Stronger Gold Button -->
-                        <a href="#ebooks" class="btn-gold-effect w-full md:w-auto inline-flex items-center justify-center px-10 py-4 text-lg font-bold rounded-xl text-ce-black bg-ce-gold hover:bg-ce-gold-dark hover:text-white transition-default">
-                            Start Your Mastery Path
-                        </a>
-                        <!-- Secondary CTA: High Contrast Outline -->
-                        <a href="#consultancy" class="w-full md:w-auto inline-flex items-center justify-center px-10 py-4 text-lg font-medium rounded-xl text-ce-black border-2 border-ce-muted hover:border-ce-black hover:text-ce-black transition-default">
-                            Book Consultancy &rarr;
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 2. THE CIRCULAR EAGLE ADVANTAGE: Value Pillars -->
-        <section class="bg-ce-background py-20 px-4 sm:px-6 lg:px-8">
-            <div class="max-w-7xl mx-auto">
-                <h2 class="font-serif text-4xl font-bold text-center mb-2 text-ce-black">
-                    The <span class="text-ce-gold-dark">Circular Eagle</span> Difference
-                </h2>
-                <div class="section-separator"></div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                    
-                    <!-- Pillar 1: Precision -->
-                    <div class="bg-ce-card-bg p-8 rounded-xl card-lift transition-default border-t-4 border-ce-gold-dark text-center">
-                        <!-- Icon with Gold Circle Background -->
-                        <div class="w-16 h-16 rounded-full bg-ce-gold/10 text-ce-gold-dark mx-auto mb-4 flex items-center justify-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 0 0 0 20M12 2v20"/><path d="M5.5 8.5L8.5 5.5M15.5 5.5L18.5 8.5M5.5 15.5L8.5 18.5M15.5 18.5L18.5 15.5"/></svg>
-                        </div>
-                        <h3 class="text-xl font-bold text-ce-black mb-2">Focused Precision</h3>
-                        <p class="text-sm text-ce-muted">Content is distilled to actionable steps, eliminating research fatigue and wasted time.</p>
-                    </div>
-
-                    <!-- Pillar 2: Currency -->
-                    <div class="bg-ce-card-bg p-8 rounded-xl card-lift transition-default border-t-4 border-ce-gold-dark text-center">
-                        <div class="w-16 h-16 rounded-full bg-ce-gold/10 text-ce-gold-dark mx-auto mb-4 flex items-center justify-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2C17.5 5 12 5 12 5V2L7 7l5 5V9c3.9 0 7.9 0 11.5 3"/></svg>
-                        </div>
-                        <h3 class="text-xl font-bold text-ce-black mb-2">Real-Time Currency</h3>
-                        <p class="text-sm text-ce-muted">All materials are continuously audited by experts to ensure they reflect current market dynamics.</p>
-                    </div>
-
-                    <!-- Pillar 3: Application -->
-                    <div class="bg-ce-card-bg p-8 rounded-xl card-lift transition-default border-t-4 border-ce-gold-dark text-center">
-                        <div class="w-16 h-16 rounded-full bg-ce-gold/10 text-ce-gold-dark mx-auto mb-4 flex items-center justify-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a63 63 0 0 1-5.46-5.59z"/><path d="M16 11l-3 3l-3 3l-3 3l-3 3l-3 3"/></svg>
-                        </div>
-                        <h3 class="text-xl font-bold text-ce-black mb-2">Actionable Blueprint</h3>
-                        <p class="text-sm text-ce-muted">From theory to practice: implementable frameworks designed for immediate, visible outcomes.</p>
-                    </div>
-
-                    <!-- Pillar 4: Outcomes -->
-                    <div class="bg-ce-card-bg p-8 rounded-xl card-lift transition-default border-t-4 border-ce-gold-dark text-center">
-                        <div class="w-16 h-16 rounded-full bg-ce-gold/10 text-ce-gold-dark mx-auto mb-4 flex items-center justify-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01L12 2z" fill="none"/></svg>
-                        </div>
-                        <h3 class="text-xl font-bold text-ce-black mb-2">Definitive Results</h3>
-                        <p class="text-sm text-ce-muted">Focus on long-term competence and skill transfer, leading to permanent professional elevation.</p>
-                    </div>
-            </div>
-        </section>
-
-
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-
-            <!-- 3. EBOOKS SECTION: Curated Library -->
-            <section id="ebooks" class="py-16">
-                <h2 class="font-serif text-4xl font-bold text-center mb-2">
-                    The <span class="text-ce-gold-dark">Curated</span> Ebook Library
-                </h2>
-                <div class="section-separator"></div>
-                <!-- Cleaned up bolding for semantic HTML -->
-                <p class="text-center text-ce-muted mb-16 max-w-2xl mx-auto">
-                    Download actionable, high-density guides on <strong>Online Business</strong>, <strong>Cognitive Resilience</strong>, and <strong>Peak Performance</strong>.
+            <!-- 1. HERO / CATEGORY HEADER (Dark & Striking) -->
+            <section class="w-full overflow-hidden pt-16 pb-20 md:pt-24 md:pb-32 text-center bg-ce-card-dark rounded-b-3xl shadow-2xl border-b-4 border-ce-gold-bright mt-4">
+                <p class="text-lg font-semibold text-ce-gold-muted mb-3 uppercase tracking-wider">Premium Ebook & Course Collection</p>
+                <h1 class="font-serif text-5xl sm:text-7xl lg:text-8xl font-extrabold tracking-tight mb-6 leading-tight text-ce-text-light">
+                    Financial <span class="text-ce-gold-bright">Strategy</span> & Growth
+                </h1>
+                <p class="text-xl sm:text-2xl text-ce-muted-gray max-w-4xl mx-auto">
+                    Deep-dive into advanced frameworks for business modeling, corporate finance, operational scaling and profitable market growth.
                 </p>
-
-                <!-- Ebook Trust Block - Simplified and stronger text -->
-                <div class="max-w-4xl mx-auto mb-20 p-6 md:p-8 bg-ce-gold/5 rounded-xl border border-ce-gold/30 shadow-inner">
-                    <h3 class="text-2xl font-bold text-center text-ce-black mb-6">Immediate Access. Proven Authority.</h3>
-                    <div class="flex flex-col sm:flex-row justify-around items-center space-y-6 sm:space-y-0 text-center">
-                        <div class="flex flex-col items-center">
-                            <span class="text-4xl font-extrabold text-ce-gold-dark">15,000+</span>
-                            <span class="text-sm text-ce-muted mt-1">Global Readers</span>
-                        </div>
-                        <div class="flex flex-col items-center">
-                            <span class="text-4xl font-extrabold text-ce-gold-dark">99%</span>
-                            <span class="text-sm text-ce-muted mt-1">Positive Feedback</span>
-                        </div>
-                        <div class="flex flex-col items-center">
-                            <span class="text-4xl font-extrabold text-ce-gold-dark">PDF / EPUB</span>
-                            <span class="text-sm text-ce-muted mt-1">Multi-Format Delivery</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Ebook Trust Block -->
-
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- Ebook Card 1: Business / Finance -->
-                    <article class="bg-ce-card-bg rounded-xl card-lift transition-default shadow-lg overflow-hidden border border-gray-100">
-                        <!-- FIX 2: Replaced local image path with a robust placeholder -->
-                        <img 
-                            src="https://circulareagle.com/finance-and-business-cover.jpg" 
-                            alt="Cover image representing financial growth and business strategy" 
-                            class="w-full h-48 object-cover rounded-t-xl"
-                            onerror="this.onerror=null; this.src='https://placehold.co/400x192/141414/DAA520?text=Financial+Strategy+Ebook'"
-                        >
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold text-ce-gold-dark mb-1">Financial Strategy & Business</h3>
-                            <p class="text-sm text-ce-muted mb-4">Master side-hustle scaling, capital allocation, and building profitable online assets.</p>
-                            <a class="inline-block py-2 px-4 text-sm font-semibold rounded-full bg-ce-black text-white hover:bg-ce-gold-dark transition-default" href="https://circulareagle.com/business-ebooks" onclick="showMessage('Navigating to Business Ebooks.')">
-                                Explore Titles
-                            </a>
-                        </div>
-                    </article>
-  <!-- Ebook Card 2: Personal Development -->
-                    <article class="bg-ce-card-bg rounded-xl card-lift transition-default shadow-lg overflow-hidden border border-gray-100">
-                        <!-- FIX 2: Replaced local image path with a robust placeholder -->
-                        <img 
-                            src="https://circulareagle.com/personal-development-cover.jpg" 
-                            alt="Personal Development cover" 
-                            class="w-full h-48 object-cover rounded-t-xl"
-                            onerror="this.onerror=null; this.src='https://placehold.co/400x192/B8860B/FFFFFF?text=Cognitive+Mastery+Ebook'"
-                        >
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold text-ce-gold-dark mb-1">Cognitive Self-Mastery</h3>
-                            <p class="text-sm text-ce-muted mb-4">Focused resources on resilience, deep focus techniques, and accelerating personal transformation.</p>
-                            <a class="inline-block py-2 px-4 text-sm font-semibold rounded-full bg-ce-black text-white hover:bg-ce-gold-dark transition-default" href="personal-development.html" onclick="showMessage('Navigating to Personal Development Ebooks.')">
-                                Explore Titles
-                            </a>
-                        </div>
-                    </article>
-
-                    <!-- Ebook Card 3: Health & Wellness -->
-                    <article class="bg-ce-card-bg rounded-xl card-lift transition-default shadow-lg overflow-hidden border border-gray-100">
-                        <!-- FIX 2: Replaced local image path with a robust placeholder -->
-                        <img 
-                            src="https://circulareagle.com/health-and-wellness-cover.jpg" 
-                            alt="Health & Wellness cover" 
-                            class="w-full h-48 object-cover rounded-t-xl"
-                            onerror="this.onerror=null; this.src='https://placehold.co/400x192/DAA520/141414?text=Bio-Optimization+Ebook'"
-                        >
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold text-ce-gold-dark mb-1">Bio-Optimization & Health</h3>
-                            <p class="text-sm text-ce-muted mb-4">Optimize nutrition, energy cycles, and daily routines for peak physical and mental output.</p>
-                            <a class="inline-block py-2 px-4 text-sm font-semibold rounded-full bg-ce-black text-white hover:bg-ce-gold-dark transition-default" href="health.html" onclick="showMessage('Navigating to Health Ebooks.')">
-                                Explore Titles
-                            </a>
-                        </div>
-                    </article>
-                </div>
             </section>
 
-            <!-- 4. COURSES SECTION: Immersive Training -->
-            <section id="courses" class="py-16 bg-ce-card-bg rounded-2xl shadow-xl my-20 p-8 md:p-12 border border-gray-200">
-                <h2 class="font-serif text-4xl font-bold text-center mb-2 text-ce-black">
-                    Immersive Training <span class="text-ce-gold-dark">Courses</span>
+            <!-- 2. EBOOK LISTING GRID (Dark Cards) -->
+            <section id="ebook-list" class="py-16 md:py-24">
+                <h2 class="font-serif text-4xl font-bold text-center mb-12 text-ce-text-light">
+                    Titles for <span class="text-ce-gold-bright">Discerning Leaders</span>
                 </h2>
-                <div class="section-separator"></div>
-                <p class="text-center text-ce-muted mb-16 max-w-2xl mx-auto">
-                    Project-based programs with video, code, and community feedback designed for <strong>immediate and proven</strong> skill acquisition.
-                </p>
 
-                <!-- Course Trust Block - Simplified Metrics -->
-                <div class="max-w-4xl mx-auto mb-20 p-6 md:p-8 bg-ce-gold/5 rounded-xl border border-ce-gold/30 shadow-inner">
-                    <h3 class="text-2xl font-bold text-center text-ce-black mb-6">Guaranteed Learning Quality</h3>
-                    <div class="flex flex-col sm:flex-row justify-around items-center space-y-6 sm:space-y-0 text-center">
-                        <div class="flex flex-col items-center">
-                             <!-- Star Icon -->
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-ce-gold-dark mb-2 fill-ce-gold-dark" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01L12 2z"/>
-                            </svg>
-                            <span class="text-3xl font-extrabold text-ce-gold-dark">4.9/5.0</span>
-                            <span class="text-sm text-ce-muted mt-1">Student Satisfaction</span>
-                        </div>
-                        <div class="flex flex-col items-center">
-                            <!-- Clock Icon -->
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-ce-gold-dark mb-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                            <span class="text-3xl font-extrabold text-ce-gold-dark">50+</span>
-                            <span class="text-sm text-ce-muted mt-1">Hours of Content</span>
-                        </div>
-                        <div class="flex flex-col items-center">
-                             <!-- Trophy Icon -->
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-ce-gold-dark mb-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 15h2l-2 5h-2l2-5zm-5 0l4 5h-4l-4-5zm12 0l-4 5h4l4-5z"/><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2z" fill="none"/></svg>
-                            <span class="text-3xl font-extrabold text-ce-gold-dark">Project</span>
-                            <span class="text-sm text-ce-muted mt-1">Portfolio Building</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Course Trust Block -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
 
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                    <!-- Course Card 1: Digital Skills Mastery (SEO Focus) -->
-                    <article class="bg-ce-background rounded-xl card-lift transition-default shadow-lg overflow-hidden border border-ce-gold/30">
-                        <!-- FIX 2: Replaced local image path with a robust placeholder -->
-                        <img 
-                            src="https://circulareagle.com/digital-marketing-course-cover.jpg" 
-                            alt="Digital Skills & Online Business course image" 
-                            class="w-full h-56 object-cover"
-                            onerror="this.onerror=null; this.src='https://placehold.co/700x224/B8860B/FFFFFF?text=Digital+Marketing+Course'"
-                        >
-                        <div class="p-8">
-                            <h3 class="text-3xl font-serif font-bold text-ce-black mb-1">Digital Skills Mastery</h3>
-                            <p class="text-base font-semibold text-ce-gold-dark mb-4">Digital Marketing & Business Scaling</p>
-                            <p class="text-ce-muted text-base mb-6">The comprehensive blueprint to build, monetize, and scale online businesses from scratch, mastering all core digital disciplines.</p>
-                            <a class="py-3 px-8 text-md font-bold rounded-xl bg-ce-gold btn-gold-effect text-ce-black hover:bg-ce-gold-dark hover:text-white transition-default" href="courses.html" onclick="showMessage('Navigating to Digital Skills Course.')">
-                                Enroll Now &rarr;
-                            </a>
+                    <!-- Ebook Card 1: Finding the Right Customers -->
+                    <article class="ebook-card bg-ce-card-dark rounded-2xl card-lift transition-default shadow-lg overflow-hidden flex flex-col border border-gray-800 hover:border-ce-gold-muted">
+                        <!-- Cover Image Placeholder -->
+                        <div class="flex-shrink-0 relative">
+                            <img src="finding-the-right-customers.jpg" onerror="this.onerror=null; this.src='https://placehold.co/600x400/252525/FFD700?text=Finding+Customers';" alt="Cover for Finding the Right Customers" class="w-full h-48 object-cover ebook-cover">
+                        </div>
+                        <div class="p-6 flex-grow flex flex-col">
+                            <span class="text-sm font-semibold text-ce-gold-muted uppercase mb-2 tracking-wide">Sales Strategy</span>
+                            <h3 class="text-2xl font-bold text-ce-text-light mb-3">FINDING THE RIGHT CUSTOMERS</h3>
+                            <p class="text-ce-muted-gray text-base flex-grow mb-4">A practical guide to help entrepreneurs and business owners <strong>identify, attract and retain</strong> the right customers who matter most.</p>
+                            <div class="flex justify-between items-center pt-4 border-t border-gray-700">
+                                <span class="text-3xl font-extrabold text-ce-gold-bright" id="price-1">$3.45</span>
+                                <button 
+                                    class="view-details-button py-2 px-6 text-sm font-bold rounded-full bg-ce-gold-bright text-ce-bg-dark hover:bg-ce-gold-muted transition-default btn-gold-glow" 
+                                    data-ebook-title="Finding the Right Customers: A Practical Guide for Online Business Owners"
+                                    data-ebook-price="$3.45"
+                                    data-ebook-desc="Finding the Right Customers: A Practical Guide for Online Business Owners by Qoleed Alli is a practical guide that helps entrepreneurs, digital marketers and business owners identify, attract and retain the right customers. Whether you are starting a new online business or looking to grow an existing one, the ebook provides clear and actionable strategies to focus your efforts on the customers who matter most."
+                                    data-partner-url="https://selar.com/rightcustomers"
+                                    data-image-url="finding-the-right-customers-preview.jpg"
+                                >
+                                    View Details
+                                </button>
+                            </div>
                         </div>
                     </article>
 
-                    <!-- Course Card 2: Technical Skills -->
-                    <article class="bg-ce-background rounded-xl card-lift transition-default shadow-lg overflow-hidden border border-ce-gold/30">
-                        <!-- FIX 2: Replaced local image path with a robust placeholder -->
-                        <img 
-                            src="https://circulareagle.com/technical-software-course-cover.jpg" 
-                            alt="Creative & Technical Skills course image" 
-                            class="w-full h-56 object-cover"
-                            onerror="this.onerror=null; this.src='https://placehold.co/700x224/141414/DAA520?text=Technical+Software+Course'"
-                        >
-                        <div class="p-8">
-                            <h3 class="text-3xl font-serif font-bold text-ce-black mb-1">Software & Creative Tech</h3>
-                            <p class="text-base font-semibold text-ce-gold-dark mb-4">Full-Stack Development & Advanced Design</p>
-                            <p class="text-ce-muted text-base mb-6">Master technical frameworks, modern software architecture, and advanced creative tools for next-level professional output.</p>
-                            <a class="py-3 px-8 text-md font-bold rounded-xl bg-ce-gold btn-gold-effect text-ce-black hover:bg-ce-gold-dark hover:text-white transition-default" href="tech-courses.html" onclick="showMessage('Navigating to Tech Skills Course.')">
-                                Enroll Now &rarr;
-                            </a>
+                    <!-- Ebook Card 2: Scaling Operations -->
+                    <article class="ebook-card bg-ce-card-dark rounded-2xl card-lift transition-default shadow-lg overflow-hidden flex flex-col border border-gray-800 hover:border-ce-gold-muted">
+                        <!-- Cover Image Placeholder -->
+                        <div class="flex-shrink-0 relative">
+                            <img src="simplified-online-survey--selar.co-6734340906682.jpg" alt="SIMPLIFIED ONLINE SURVEY GUIDE (GET PAID IN POUNDS)" class="w-full h-48 object-cover ebook-cover">
                         </div>
-                    </article>
-                </div>
-            </section>
-            
-            <!-- 4.5. LEAD MAGNET / NEWSLETTER SIGNUP SECTION (FIXED AJAX) -->
-            <section id="lead-magnet" class="py-24 my-20 bg-ce-black rounded-3xl p-8 md:p-16 text-center shadow-2xl border border-ce-gold-dark/50">
-                <div class="max-w-4xl mx-auto">
-                    <!-- Eagle Icon Placeholder for visual flair -->
-                    <div class="mb-4 text-ce-gold mx-auto">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 mx-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01L12 2z" fill="none"/><path d="M12 2L6 10l-4 3 6-4 4-8zM12 2L18 10l4 3-6-4-4-8z"/></svg>
-                    </div>
-                    
-                    <h2 class="font-serif text-5xl font-extrabold text-ce-white mb-4 leading-snug">
-                        The <span class="text-ce-gold">High-Leverage</span> Playbook.
-                    </h2>
-                    <p class="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
-                        Join our exclusive newsletter and immediately receive the <strong>"5-Step Blueprint for 10x Productivity."</strong>
-                    </p>
-                    
-                    <!-- FORM FIX: AJAX Submission configured below -->
-                    <form 
-                        id="newsletterForm"
-                        action="https://formsubmit.co/circulareagle@gmail.com" 
-                        method="POST" 
-                        class="max-w-xl mx-auto form-responsive" 
-                        aria-label="Newsletter Signup Form">
-                        
-                        <!-- FormSubmit Hidden Field: Subject -->
-                        <input type="hidden" name="_subject" value="New Circular Eagle Newsletter Subscription">
-                        <!-- FormSubmit Hidden Field: Email Reply-to -->
-                        <input type="hidden" name="_replyto" value="circulareagle@gmail.com"> 
-                        <!-- Disable Captcha (Optional, but often preferred for marketing forms) -->
-                        <input type="hidden" name="_captcha" value="false">
-
-                        <input id="newsletterEmail" type="email" name="email" class="w-full px-6 py-4 border-2 border-ce-gold/50 rounded-xl bg-gray-900 text-white placeholder-gray-500 focus:ring-ce-gold focus:border-ce-gold transition-default text-lg" required placeholder="Enter your high-leverage email" />
-                        
-                        <button type="submit" class="btn-gold-effect py-4 px-8 text-lg font-bold rounded-xl bg-ce-gold text-ce-black hover:bg-ce-gold-dark hover:text-white transition-default w-full sm:w-auto">
-                            Get Instant Access
-                        </button>
-                    </form>
-                    <div class="text-center mt-4 text-sm text-gray-500">Zero spam. Pure signal.</div>
-                </div>
-            </section>
-            <!-- END LEAD MAGNET SECTION -->
-
-
-            <!-- 5. OUR COMMITMENT SECTION: Building Trust Through Process & Authority -->
-            <section id="commitment" class="py-16 bg-ce-white rounded-2xl shadow-xl my-20 p-8 md:p-12 border border-gray-200">
-                <h2 class="font-serif text-4xl font-bold text-center mb-2">
-                    The <span class="text-ce-gold-dark">Commitment</span> to Precision
-                </h2>
-                <div class="section-separator"></div>
-                <p class="text-center text-ce-muted mb-16 max-w-2xl mx-auto">
-                    Our content is built on transparent, verifiable principles, ensuring you receive 
-                    <strong class="text-ce-black">maximum actionable value</strong> from day one.
-                </p>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- Pillar 1: Expert Authority -->
-                    <div class="bg-ce-background p-8 rounded-xl card-lift transition-default border-t-4 border-ce-gold-dark text-center">
-                        <div class="w-16 h-16 rounded-full bg-ce-gold/10 text-ce-gold-dark mx-auto mb-4 flex items-center justify-center">
-                            <!-- Vetting/Stamp Icon -->
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="15" x2="15" y2="15"/><line x1="10.5" y1="12" x2="13.5" y2="12"/></svg>
-                        </div>
-                        <h3 class="text-xl font-bold text-ce-black mb-2">Expert Vetted Content</h3>
-                        <p class="text-sm text-ce-muted">All courses and blueprints are authored or rigorously audited by our team of certified domain specialists.</p>
-                    </div>
-                    
-                    <!-- Pillar 2: Actionable Guarantee (Low Risk/High Value) -->
-                    <div class="bg-ce-background p-8 rounded-xl card-lift transition-default border-t-4 border-ce-gold-dark text-center">
-                        <div class="w-16 h-16 rounded-full bg-ce-gold/10 text-ce-gold-dark mx-auto mb-4 flex items-center justify-center">
-                            <!-- Action/Transfer Icon -->
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="12 19 12 5"/><polyline points="5 12 12 5 19 12"/></svg>
-                        </div>
-                        <h3 class="text-xl font-bold text-ce-black mb-2">Immediate Application Value</h3>
-                        <p class="text-sm text-ce-muted">Content is strictly project-based. If you execute the steps, you will see a measurable outcome within the first module.</p>
-                    </div>
-
-                    <!-- Pillar 3: Transparency & Updates -->
-                    <div class="bg-ce-background p-8 rounded-xl card-lift transition-default border-t-4 border-ce-gold-dark text-center">
-                        <div class="w-16 h-16 rounded-full bg-ce-gold/10 text-ce-gold-dark mx-auto mb-4 flex items-center justify-center">
-                            <!-- Update/Calendar Icon -->
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M9 14h6"/><path d="M12 11v6"/></svg>
-                        </div>
-                        <h3 class="text-xl font-bold text-ce-black mb-2">Continuous Currency Audit</h3>
-                        <p class="text-sm text-ce-muted">We actively update all modules every quarter to ensure strategies remain relevant to current market conditions.</p>
-                    </div>
-                </div>
-                <div class="mt-12 text-center">
-                    <p class="text-lg text-ce-black font-semibold mb-4">Ready to experience the Circular Eagle difference?</p>
-                    <a href="#courses" class="btn-gold-effect inline-flex items-center justify-center px-10 py-4 text-lg font-bold rounded-xl text-ce-black bg-ce-gold hover:bg-ce-gold-dark hover:text-white transition-default">
-                        Enroll in a Course &rarr;
-                    </a>
-                </div>
-            </section>
-            
-           
-
-            <!-- 6. ARTICLES / BLOG SECTION: Two prominent cards -->
-            <section id="articles" class="py-16">
-                <h2 class="font-serif text-4xl font-bold text-center mb-2">
-                    Cutting-Edge <span class="text-ce-gold-dark">Insights</span>
-                </h2>
-                <div class="section-separator"></div>
-                <p class="text-center text-ce-muted mb-16 max-w-2xl mx-auto">
-                    Short, evidence-backed articles designed to refine your mindset and inform your tactical approach to business and productivity.
-                </p>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                    <!-- Article 1 -->
-                    <article class="bg-ce-card-bg rounded-xl card-lift transition-default shadow-lg overflow-hidden border border-gray-100">
-                        <img src="https://placehold.co/700x350/141414/DAA520?text=The+Attention+Protocol" alt="Deep Focus article image" class="w-full h-56 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-2xl font-bold text-ce-black mb-2">The Attention Protocol</h3>
-                            <p class="text-ce-muted text-base mb-4">Engineering your environment and cognitive cycles to achieve deep, uninterrupted work states daily.</p>
-                            <a class="text-base font-semibold text-ce-gold-dark hover:text-ce-black transition-default flex items-center" href="articles.html" onclick="showMessage('Reading Article: The Attention Protocol.')">
-                                Read Article &rarr;
-                            </a>
+                        <div class="p-6 flex-grow flex flex-col">
+                            <span class="text-sm font-semibold text-ce-gold-muted uppercase mb-2 tracking-wide">Operational Growth</span>
+                            <h3 class="text-2xl font-bold text-ce-text-light mb-3">SIMPLIFIED ONLINE SURVEY GUIDE (GET PAID IN POUNDS)</h3>
+                            <p class="text-ce-muted-gray text-base flex-grow mb-4">Discover how to make passive income answering survey questions online, here is a simplest and easiest way to make daily income without referring or convincing people to buy your products before you make money</p>
+                            <div class="flex justify-between items-center pt-4 border-t border-gray-700">
+                                <span class="text-3xl font-extrabold text-ce-gold-bright" id="price-2">$6.90</span>
+                                <button 
+                                    class="view-details-button py-2 px-6 text-sm font-bold rounded-full bg-ce-gold-bright text-ce-bg-dark hover:bg-ce-gold-muted transition-default btn-gold-glow" 
+                                    data-ebook-title="SIMPLIFIED ONLINE SURVEY GUIDE (GET PAY IN POUNDS)"
+                                    data-ebook-price="$6.90"
+                                    data-ebook-desc="Discover how to make passive income answering survey questions online, here is a simplest and easiest way to make daily income without referring or convincing people to buy your products before you make money. The simplified earn in pounds training is a proven way to make passive income in pounds (GBP, £ ) and dollars ( USD, $) it was invented by the CEO/Moderator of CentralAfCo. the father of money making opportunities."
+                                    data-partner-url="https://selar.com/p/7210p5?affiliate=ihvm"
+                                    data-image-url="simplified-online-survey--selar.co-6734340906682.jpg"
+                                >
+                                    View Details
+                                </button>
+                            </div>
                         </div>
                     </article>
 
-                     <!-- Article 2 -->
-                    <article class="bg-ce-card-bg rounded-xl card-lift transition-default shadow-lg overflow-hidden border border-gray-100">
-                        <img src="https://placehold.co/700x350/DAA520/141414?text=Compound+Creativity" alt="Creative Routines article image" class="w-full h-56 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-2xl font-bold text-ce-black mb-2">Compound Creativity</h3>
-                            <p class="text-ce-muted text-base mb-4">How tiny, daily creative routines build spiritual clarity and unlock significant breakthroughs over time.</p>
-                            <a class="text-base font-semibold text-ce-gold-dark hover:text-ce-black transition-default flex items-center" href="articles.html" onclick="showMessage('Reading Article: Compound Creativity.')">
-                                Read Article &rarr;
-                            </a>
+                    <!-- Ebook Card 3: Amazon KDP -->
+                    <article class="ebook-card bg-ce-card-dark rounded-2xl card-lift transition-default shadow-lg overflow-hidden flex flex-col border border-gray-800 hover:border-ce-gold-muted">
+                        <!-- Cover Image Placeholder -->
+                        <div class="flex-shrink-0 relative">
+                            <img src="amazon-kdp-for-all-device-selar.co-62a29d0ed519f.jpeg" alt="Cover for B2B Sales Mastery" class="w-full h-48 object-cover ebook-cover">
+                        </div>
+                        <div class="p-6 flex-grow flex flex-col">
+                            <span class="text-sm font-semibold text-ce-gold-muted uppercase mb-2 tracking-wide">Product Development</span>
+                            <h3 class="text-2xl font-bold text-ce-text-light mb-3">Amazon KDP For All Devices</h3>
+                            <p class="text-ce-muted-gray text-base flex-grow mb-4"> This Amazon KDP course provides a simple, step-by-step guide to building a successful side business that earns in dollars. It is designed for everyone from busy parents to students, even if there is no prior experience with writing or online business.</p>
+                            <div class="flex justify-between items-center pt-4 border-t border-gray-700">
+                                <span class="text-3xl font-extrabold text-ce-gold-bright" id="price-3">$13.75</span>
+                                <button 
+                                    class="view-details-button py-2 px-6 text-sm font-bold rounded-full bg-ce-gold-bright text-ce-bg-dark hover:bg-ce-gold-muted transition-default btn-gold-glow" 
+                                    data-ebook-title="Amazon KDP For All Devices"
+                                    data-ebook-price="$13.75"
+                                    data-ebook-desc="This Amazon KDP course provides a simple, step-by-step guide to building a successful side business that earns in dollars. It is designed for everyone from busy parents to students, even if there is no prior experience with writing or online business. The lessons teach how to find profitable niches and create high-quality books using free tools and easy formatting tricks. Participants also receive lifetime mentorship and bonus marketing training to ensure every book is positioned for maximum sales."
+                                    data-partner-url="https://selar.com/p/hpik?affiliate=syb6"
+                                    data-image-url="amazon-kdp-for-all-device-selar.co-62a29d0ed519f.jpeg"
+                                >
+                                    View Details
+                                </button>
+                            </div>
                         </div>
                     </article>
-                </div>
-            </section>
 
-            <!-- 7. SERVICES / CONSULTANCY SECTION: Deep Luxury Dark Mode -->
-            <section id="consultancy" class="py-16 bg-ce-black rounded-3xl p-8 md:p-16 my-20 shadow-2xl">
-                <h2 class="font-serif text-4xl font-bold text-center mb-2 text-ce-white">
-                    Bespoke <span class="text-ce-gold">Consultancy</span>
-                </h2>
-                <div class="section-separator" style="background: linear-gradient(to right, #DAA520, #F8F8F8);"></div>
-                <p class="text-center text-gray-400 mb-16 max-w-3xl mx-auto">
-                    Access direct, one-on-one expert guidance, technical audits, and personalized strategy sessions tailored to your ultimate professional goals.
-                </p>
+                    <!-- Ebook Card 4: Forex Training -->
+                    <article class="ebook-card bg-ce-card-dark rounded-2xl card-lift transition-default shadow-lg overflow-hidden flex flex-col border border-gray-800 hover:border-ce-gold-muted">
+                        <!-- Cover Image Placeholder -->
+                        <div class="flex-shrink-0 relative">
+                            <img src="trade-like-tonysnip3r-1-0-selar.co-65850b557e3cd (1).jpeg" alt="Cover for Product-Market Fit Accelerator" class="w-full h-48 object-cover ebook-cover">
+                        </div>
+                        <div class="p-6 flex-grow flex flex-col">
+                            <span class="text-sm font-semibold text-ce-gold-muted uppercase mb-2 tracking-wide">Forex Training</span>
+                            <h3 class="text-2xl font-bold text-ce-text-light mb-3">TRADE LIKE TONYSNIP3R</h3>
+                            <p class="text-ce-muted-gray text-base flex-grow mb-4">Are you tired of endlessly chasing results in the Forex market? This course is the game-changer you’ve been waiting for. Designed from years of experience and market-tested strategies, it’ll help you bypass the common mistakes that keep traders stuck.</p>
+                            <div class="flex justify-between items-center pt-4 border-t border-gray-700">
+                                <span class="text-3xl font-extrabold text-ce-gold-bright" id="price-4">$103.14</span>
+                                <button 
+                                    class="view-details-button py-2 px-6 text-sm font-bold rounded-full bg-ce-gold-bright text-ce-bg-dark hover:bg-ce-gold-muted transition-default btn-gold-glow" 
+                                    data-ebook-title="TRADE LIKE TONYSNIP3R"
+                                    data-ebook-price="$103.14"
+                                    data-ebook-desc="Are you tired of endlessly chasing results in the Forex market? This course is the game-changer you’ve been waiting for. Designed from years of experience and market-tested strategies, it’ll help you bypass the common mistakes that keep traders stuck. In this course, you'll be taught the proven techniques that elevated me into the top 1% of successful Forex traders. From mastering fundamental analysis to navigating the complexities of macroeconomics, you’ll gain the clarity and confidence needed to thrive in any market condition..."
+                                    data-partner-url="https://selar.com/p/i02p3k?affiliate=qlsp"
+                                    data-image-url="trade-like-tonysnip3r-1-0-selar.co-65850b557e3cd (1).jpeg"
+                                >
+                                    View Details
+                                </button>
+                            </div>
+                        </div>
+                    </article>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-                    <!-- Service Card 1: Strategy -->
-                    <div class="bg-gray-900 rounded-xl p-8 text-center shadow-2xl transition-default border-t-4 border-ce-gold-dark hover:border-ce-gold">
-                        <div class="text-ce-gold mx-auto mb-4">
-                            <!-- Target Icon -->
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 mx-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12H19M12 5l-4 4M12 5l4 4"/></svg>
+                    <!-- Ebook Card 5: Video Editing -->
+                    <article class="ebook-card bg-ce-card-dark rounded-2xl card-lift transition-default shadow-lg overflow-hidden flex flex-col border border-gray-800 hover:border-ce-gold-muted">
+                        <!-- Cover Image Placeholder -->
+                        <div class="flex-shrink-0 relative">
+                            <img src="the-viral-video-editing-v-selar.com-68e4424aae004.jpg" alt="Cover for Mergers & Acquisitions for SMEs" class="w-full h-48 object-cover ebook-cover">
                         </div>
-                        <h3 class="text-xl font-bold text-ce-white mb-3">Strategic Roadmap</h3>
-                        <p class="text-gray-400 text-sm mb-6">Develop a precise, actionable 12-month blueprint for creative and financial acceleration.</p>
-                        <button class="px-8 py-3 text-md font-semibold rounded-xl bg-ce-gold btn-gold-effect text-ce-black hover:bg-ce-gold-dark hover:text-white transition-default" onclick="scrollToForm()">
-                            Inquire Now
-                        </button>
-                    </div>
-
-                     <!-- Service Card 2: Technical -->
-                    <div class="bg-gray-900 rounded-xl p-8 text-center shadow-2xl transition-default border-t-4 border-ce-gold-dark hover:border-ce-gold">
-                        <div class="text-ce-gold mx-auto mb-4">
-                            <!-- Code Icon -->
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 mx-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                        <div class="p-6 flex-grow flex flex-col">
+                            <span class="text-sm font-semibold text-ce-gold-muted uppercase mb-2 tracking-wide">Digital Skill</span>
+                            <h3 class="text-2xl font-bold text-ce-text-light mb-3">The Viral Video Editing Package (VEP)</h3>
+                            <p class="text-ce-muted-gray text-base flex-grow mb-4">Create Viral, Trending Premium-Looking Edits, Fast (with no stress). This is a complete vault of 20+ step-by-step trending video editing hacks that instantly take your videos from basic to premium.</p>
+                            <div class="flex justify-between items-center pt-4 border-t border-gray-700">
+                                <span class="text-3xl font-extrabold text-ce-gold-bright" id="price-5">$6.88</span>
+                                <button 
+                                    class="view-details-button py-2 px-6 text-sm font-bold rounded-full bg-ce-gold-bright text-ce-bg-dark hover:bg-ce-gold-muted transition-default btn-gold-glow" 
+                                    data-ebook-title="The Viral Video Editing Package (VEP)"
+                                    data-ebook-price="$6.88"
+                                    data-ebook-desc="Create Viral, Trending Premium-Looking Edits, Fast (with no stress). This is a complete vault of 20+ step-by-step trending video editing hacks that instantly take your videos from basic to premium. You’ll learn how to create,edit, and apply Premium level effects that takes your videos from amateur to professional level, even if you’re just a beginner video editor. COURSE OUTLINE: (Introduction to Smartphone Video Editing, Capcut Interface Tutorial for Beginners, Viral text effects and reveal animations, How to use Text and Captions like a Pro in different ways, How to use and master keyframes, How to do over 3 special viral text effects to spice up your videos, Secret color grading hacks for crisp video quality, How to steal color grading from professional movies and add to your videos, Layer and overlay tricks and effects, How to do the viral creed edit effect, Trending Vlog editing (e.g day in my life vlog, GRWM, Travel vlogs, fast camera intro) etc.., End of movie effect, Syncing your video to background music for perfect rhythm edits, Masking effects, Using transitions like a Pro, Shine effect, How to do the Highlight object effect, Creative zooms, rotations, and cut transitions, Glow and exposure pop tricks that make your clips stand out, Face, eye and body masking transitions, Sound design hacks that make your videos feel alive, Pro export settings to keep your edits crisp and clean....)."
+                                    data-partner-url="https://selar.com/p/sdvl?affiliate=ui6w"
+                                    data-image-url="the-viral-video-editing-v-selar.com-68e4424aae004.jpg"
+                                >
+                                    View Details
+                                </button>
+                            </div>
                         </div>
-                        <h3 class="text-xl font-bold text-ce-white mb-3">Technical Audit</h3>
-                        <p class="text-gray-400 text-sm mb-6">Expert technical review of your architecture, SEO, and digital stack for peak efficiency.</p>
-                        <button class="px-8 py-3 text-md font-semibold rounded-xl bg-ce-gold btn-gold-effect text-ce-black hover:bg-ce-gold-dark hover:text-white transition-default" onclick="scrollToForm()">
-                            Inquire Now
-                        </button>
-                    </div>
-
-                    <!-- Service Card 3: Coaching -->
-                    <div class="bg-gray-900 rounded-xl p-8 text-center shadow-2xl transition-default border-t-4 border-ce-gold-dark hover:border-ce-gold">
-                        <div class="text-ce-gold mx-auto mb-4">
-                            <!-- User Icon -->
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 mx-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                        </div>
-                        <h3 class="text-xl font-bold text-ce-white mb-3">Personal Breakthroughs</h3>
-                        <p class="text-gray-400 text-sm mb-6">Dedicated 1-on-1 sessions to eliminate mental blocks and refine your self-development curve.</p>
-                        <button class="px-8 py-3 text-md font-semibold rounded-xl bg-ce-gold btn-gold-effect text-ce-black hover:bg-ce-gold-dark hover:text-white transition-default" onclick="scrollToForm()">
-                            Inquire Now
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Contact Form (Embedded - FIXED AJAX) -->
-                <div class="mt-20 bg-gray-900 p-8 md:p-10 rounded-xl max-w-xl mx-auto border border-ce-gold/30" id="contactFormContainer">
-                    <h3 class="font-serif text-3xl font-bold text-ce-gold mb-6 text-center">Request a Discovery Call</h3>
-                    
-                    <form 
-                        id="consultancyForm"
-                        action="https://formsubmit.co/circulareagle@gmail.com" 
-                        method="POST" 
-                        aria-label="Consultancy Contact Form">
-                        
-                        <!-- FormSubmit Hidden Field: Subject -->
-                        <input type="hidden" name="_subject" value="Circular Eagle: New Consultancy Inquiry">
-                        <!-- FormSubmit Hidden Field: Email Reply-to -->
-                        <input type="hidden" name="_replyto" value="circulareagle@gmail.com"> 
-                        <!-- Disable Captcha (Optional) -->
-                        <input type="hidden" name="_captcha" value="false">
-
-                        <div class="mb-5">
-                            <label for="name" class="block text-sm font-medium text-gray-300 mb-2">Name</label>
-                            <input id="name" class="w-full px-4 py-3 border border-gray-700 rounded-lg bg-gray-800 text-white focus:ring-ce-gold focus:border-ce-gold transition-default" name="name" required placeholder="Your full name" />
-                        </div>
-                        <div class="mb-5">
-                            <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Email</label>
-                            <input id="email" type="email" class="w-full px-4 py-3 border border-gray-700 rounded-lg bg-gray-800 text-white focus:ring-ce-gold focus:border-ce-gold transition-default" name="email" required placeholder="you@example.com" />
-                        </div>
-                        <div class="mb-7">
-                            <label for="message" class="block text-sm font-medium text-gray-300 mb-2">Project Summary</label>
-                            <textarea id="message" class="w-full px-4 py-3 border border-gray-700 rounded-lg bg-gray-800 text-white focus:ring-ce-gold focus:border-ce-gold transition-default" name="message" required placeholder="Brief description of your needs and ultimate goals" rows="4"></textarea>
-                        </div>
-                        <button type="submit" class="w-full btn-gold-effect py-4 text-lg font-bold rounded-xl bg-ce-gold text-ce-black hover:bg-ce-gold-dark hover:text-white transition-default">
-                            Submit Inquiry
-                        </button>
-                    </form>
+                    </article>
                 </div>
             </section>
         </div>
     </main>
 
-    <!-- 8. FOOTER: Clean and Professional -->
-    <footer id="footer" class="bg-ce-white border-t border-gray-200 mt-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
+    <!-- NEW FOOTER SECTION -->
+    <footer class="bg-ce-bg-dark border-t border-gray-800 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
                 <!-- Brand Info -->
-                <div class="col-span-2 lg:col-span-2">
-                    <h3 class="text-2xl font-extrabold tracking-tight text-ce-black mb-3">Circular<span class="text-ce-gold-dark">Eagle</span></h3>
-                    <p class="text-sm text-ce-muted max-w-xs">Precision knowledge for the next generation of focused innovators and leaders.</p>
-                </div>
-
-                <!-- Links 1 -->
-                <div>
-                    <h4 class="text-lg font-semibold text-ce-black mb-4">Resources</h4>
-                    <ul class="space-y-3 text-base">
-                        <li><a href="#ebooks" class="text-ce-muted hover:text-ce-gold-dark transition-default">eBook Library</a></li>
-                        <li><a href="#courses" class="text-ce-muted hover:text-ce-gold-dark transition-default">Course Index</a></li>
-                        <li><a href="#lead-magnet" class="text-ce-muted hover:text-ce-gold-dark transition-default">Free Blueprint</a></li>
-                        <li><a href="#articles" class="text-ce-muted hover:text-ce-gold-dark transition-default">Latest Insights</a></li>
-                    </ul>
-                </div>
-
-                <!-- Links 2 -->
-                <div>
-                    <h4 class="text-lg font-semibold text-ce-black mb-4">Company</h4>
-                    <ul class="space-y-3 text-base">
-                        <li><a href="#" class="text-ce-muted hover:text-ce-gold-dark transition-default">About Us</a></li>
-                        <li><a href="#" class="text-ce-muted hover:text-ce-gold-dark transition-default">Terms & Policy</a></li>
-                        <li><a href="#" class="text-ce-muted hover:text-ce-gold-dark transition-default">Support</a></li>
-                    </ul>
-                </div>
-
-                <!-- Connect -->
-                <div class="col-span-2 md:col-span-1">
-                    <h4 class="text-lg font-semibold text-ce-black mb-4">Connect</h4>
-                    <p class="text-base text-ce-muted hover:text-ce-gold-dark mb-4">support@circulareagle.com</p>
-                    <div class="flex space-x-6">
-                        <a href="Business.html" aria-label="Twitter" class="text-ce-muted hover:text-ce-gold-dark transition-default">
-                             <!-- Twitter Icon -->
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.8 12.8 2 10.5c1.4 1.1 3.2 1.9 5.2 2.1l-.1-1.3c-2.7-.9-4.8-3.7-4.8-7.3 0-1.7.7-3.3 1.8-4.5C8 10 12 14 19 14h1c.6 0 1.2-.1 1.7-.3-1.6-1.5-2.7-3.5-3.1-5.6 1.7-.3 3.3-1 4.5-2"/></svg>
+                <div class="md:col-span-2">
+                    <div class="flex items-center space-x-2 mb-6">
+                        <img src="circular-eagle-logo.png" onerror="this.onerror=null; this.src='https://placehold.co/32x32/1A1A1A/FFD700?text=CE';" alt="Logo" class="w-8 h-8 rounded-full border border-ce-gold-muted">
+                        <span class="text-xl font-bold text-ce-text-light">Circular<span class="text-ce-gold-bright">Eagle</span></span>
+                    </div>
+                    <p class="text-ce-muted-gray leading-relaxed max-w-sm mb-6">
+                        Empowering the next generation of business leaders with high-level financial strategy, operational frameworks, and wealth-building insights. 
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-ce-muted-gray hover:text-ce-gold-bright transition-default">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
                         </a>
-                        <a href="#" aria-label="LinkedIn" class="text-ce-muted hover:text-ce-gold-dark transition-default">
-                             <!-- LinkedIn Icon -->
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-                        </a>
-                        <a href="#" aria-label="YouTube" class="text-ce-muted hover:text-ce-gold-dark transition-default">
-                            <!-- YouTube Icon -->
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 17.5l5-2.5 5 2.5 5-2.5 5 2.5V8.5L17 11l-5-2.5-5 2.5-5-2.5z"/><path d="M2.5 7.5L7.5 5l5 2.5 5-2.5 5 2.5"/></svg>
+                        <a href="#" class="text-ce-muted-gray hover:text-ce-gold-bright transition-default">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
                         </a>
                     </div>
                 </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-ce-gold-bright font-bold uppercase tracking-widest text-sm mb-6">Company</h4>
+                    <ul class="space-y-4">
+                        <li><a href="#" class="text-ce-muted-gray hover:text-ce-text-light transition-default">About Us</a></li>
+                        <li><a href="#ebook-list" class="text-ce-muted-gray hover:text-ce-text-light transition-default">Browse Catalog</a></li>
+                        <li><a href="#" class="text-ce-muted-gray hover:text-ce-text-light transition-default">Contact Support</a></li>
+                    </ul>
+                </div>
+
+                <!-- Legal Links -->
+                <div>
+                    <h4 class="text-ce-gold-bright font-bold uppercase tracking-widest text-sm mb-6">Legal</h4>
+                    <ul class="space-y-4">
+                        <li><a href="#" class="text-ce-muted-gray hover:text-ce-text-light transition-default">Privacy Policy</a></li>
+                        <li><a href="#" class="text-ce-muted-gray hover:text-ce-text-light transition-default">Terms of Service</a></li>
+                        <li><a href="#" class="text-ce-muted-gray hover:text-ce-text-light transition-default">Refund Policy</a></li>
+                    </ul>
+                </div>
             </div>
 
-            <div class="mt-10 pt-8 border-t border-gray-100 text-center">
-                <p class="text-sm text-ce-muted">
-                    &copy; 2025 Circular Eagle. All rights reserved. Precision is everything.
+            <!-- Bottom Copyright -->
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-ce-muted-gray text-xs mb-4 md:mb-0">
+                    &copy; <span id="year"></span> Circular Eagle. All rights reserved. 
                 </p>
+                <div class="flex items-center space-x-2 text-xs text-ce-muted-gray">
+                    <svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                    <span>Secure encrypted checkout powered by Selar.</span>
+                </div>
             </div>
         </div>
     </footer>
 
-    <script>
-        // --- GLOBAL UTILITIES ---
-        window.showMessage = function(message, bgColor = 'bg-ce-black') {
-            const container = document.getElementById('message-container');
-            const messageElement = document.createElement('div');
-            const id = 'msg-' + Date.now();
 
-            container.classList.remove('space-y-2');
-            container.classList.add('flex', 'flex-col', 'items-end', 'space-y-2');
-
-            messageElement.id = id;
-            messageElement.className = `${bgColor} text-white p-4 rounded-lg shadow-xl max-w-xs transition-all duration-300 opacity-0 relative w-full`; 
-            messageElement.style.opacity = '0';
-            messageElement.style.transform = 'translateY(20px)'; 
+    <!-- EBOOK DETAIL MODAL (DARK THEME) -->
+    <div id="ebook-modal" class="fixed inset-0 z-[60] hidden flex items-center justify-center modal-backdrop p-4 transition-opacity duration-300 opacity-0" onclick="closeModal(event)">
+        <div class="bg-ce-card-dark rounded-2xl shadow-2xl w-full max-w-lg md:max-w-xl lg:max-w-2xl overflow-hidden transform transition-transform duration-300 scale-95 border border-ce-gold-bright/30" onclick="event.stopPropagation()">
             
-            messageElement.innerHTML = `
-                <div class="flex items-center justify-between">
-                    <span class="text-sm font-medium">${message}</span>
-                    <button class="text-white ml-4 opacity-75 hover:opacity-100" onclick="document.getElementById('${id}').remove()" aria-label="Close notification">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                    </button>
+            <!-- Modal Header -->
+            <div class="flex justify-between items-center p-6 border-b border-gray-700 bg-ce-bg-dark">
+                <h2 id="modal-title" class="text-2xl font-bold text-ce-gold-bright font-serif">Ebook Title</h2>
+                <button onclick="closeModal()" class="text-ce-muted-gray hover:text-ce-text-light p-1 rounded-full transition-default">
+                    <!-- Close Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+
+            <div class="p-6">
+                <!-- Container for Image and Description -->
+                <div class="flex flex-col md:flex-row gap-6 mb-4">
+                    <div class="flex-shrink-0 w-full md:w-1/3">
+                        <img 
+                            id="modal-image" 
+                            src="" 
+                            onerror="this.onerror=null; this.src='https://placehold.co/400x400/252525/FFD700?text=Preview';"
+                            alt="Ebook Cover" 
+                            class="w-full h-auto max-h-48 object-cover rounded-lg ebook-cover mx-auto border border-gray-800"
+                        >
+                    </div>
+                    <div class="w-full md:w-2/3">
+                        <p id="modal-description" class="text-ce-muted-gray text-base leading-relaxed overflow-y-auto max-h-36 md:max-h-60">
+                            Description goes here.
+                        </p>
+                    </div>
                 </div>
-            `;
-            container.appendChild(messageElement);
-
-            // Animate in
-            setTimeout(() => {
-                messageElement.style.opacity = '1';
-                messageElement.style.transform = 'translateY(0)';
-            }, 10);
-
-            // Auto-remove after 4 seconds
-            setTimeout(() => {
-                // Animate out
-                messageElement.style.opacity = '0';
-                messageElement.style.transform = 'translateY(20px)';
                 
-                // Remove from DOM after transition
-                messageElement.addEventListener('transitionend', () => messageElement.remove());
-            }, 4000);
-        };
-        
-        window.scrollToForm = function () {
-            const formContainer = document.getElementById('contactFormContainer');
-            if (formContainer) {
-                formContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                // Focus on the name input after scrolling
-                setTimeout(() => document.getElementById('name').focus(), 700);
-            } else {
-                window.showMessage("The consultancy form is unavailable.", 'bg-red-600');
-            }
-        }
-        
-        window.toggleMenu = function () {
+                <div class="flex justify-between items-center py-4 border-y border-gray-700 my-4">
+                    <p class="text-xl font-semibold text-ce-text-light">Current Price:</p>
+                    <span id="modal-price" class="text-4xl font-extrabold text-ce-gold-bright"></span>
+                </div>
+
+                <button id="modal-purchase-link" class="w-full py-3 px-6 text-lg font-bold rounded-full bg-ce-gold-bright text-ce-bg-dark hover:bg-ce-gold-muted hover:text-ce-text-light transition-default btn-gold-glow">
+                    Purchase Securely &rarr;
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- NEWSLETTER POPUP MODAL -->
+    <div id="newsletter-modal" class="fixed inset-0 z-[70] hidden items-center justify-center modal-backdrop p-4 transition-opacity duration-300 opacity-0" onclick="hideNewsletterModal(event)">
+        <div class="bg-ce-card-dark rounded-xl shadow-2xl w-full max-w-sm overflow-hidden transform transition-transform duration-300 scale-95 border-b-4 border-ce-gold-bright" onclick="event.stopPropagation()">
+            <div class="flex justify-between items-center p-4 bg-ce-gold-bright text-ce-bg-dark">
+                <h3 class="text-xl font-bold font-serif">Exclusive Insights</h3>
+                <button onclick="hideNewsletterModal()" class="text-ce-bg-dark hover:text-ce-card-dark p-1 rounded-full transition-default">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+            <div class="p-6">
+                <p class="text-ce-text-light text-center mb-4">Get weekly premium financial strategy insights delivered directly to your inbox.</p>
+                <form id="newsletter-form" name="newsletter" method="POST" data-netlify="true" class="space-y-4">
+                    <input type="hidden" name="form-name" value="newsletter" />
+                    <input type="email" name="email" placeholder="Your professional email" required class="w-full p-3 border-2 border-gray-600 rounded-lg bg-ce-bg-dark text-ce-text-light focus:border-ce-gold-bright focus:ring-ce-gold-bright transition-default">
+                    <button type="submit" class="w-full py-3 px-6 text-base font-bold rounded-lg bg-ce-gold-bright text-ce-bg-dark hover:bg-ce-gold-muted hover:text-ce-text-light transition-default btn-gold-glow">Subscribe Now</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        function toggleMenu() {
             const menu = document.getElementById('mobile-menu');
             menu.classList.toggle('hidden');
         }
+        
+        function showMessage(message, bgColor = 'bg-ce-gold-bright text-ce-bg-dark') {
+            const container = document.getElementById('message-container');
+            const messageElement = document.createElement('div');
+            const id = 'msg-' + Date.now();
+            messageElement.id = id;
+            messageElement.className = `${bgColor} p-4 rounded-xl shadow-2xl max-w-xs transition-opacity duration-300 opacity-0 transform translate-y-2`;
+            messageElement.innerHTML = `<div class="flex items-center justify-between"><span class="text-sm font-medium">${message}</span><button class="ml-4 opacity-75 hover:opacity-100" onclick="document.getElementById('${id}').remove()"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button></div>`;
+            container.appendChild(messageElement);
+            setTimeout(() => { messageElement.classList.remove('opacity-0', 'translate-y-2'); }, 10);
+            setTimeout(() => {
+                messageElement.classList.add('opacity-0', 'translate-y-2');
+                messageElement.addEventListener('transitionend', () => messageElement.remove());
+            }, 4000);
+        }
 
+        function showEbookModal(title, description, price, url, imageUrl) {
+            const modal = document.getElementById('ebook-modal');
+            const modalContent = modal.querySelector('div:not(.modal-backdrop)');
+            document.getElementById('modal-title').textContent = title;
+            document.getElementById('modal-description').textContent = description;
+            document.getElementById('modal-price').textContent = price;
+            document.getElementById('modal-image').src = imageUrl;
+            const purchaseLink = document.getElementById('modal-purchase-link');
+            purchaseLink.onclick = () => {
+                showMessage(`Redirecting to secure checkout for: ${title}`);
+                window.open(url, '_blank'); 
+                closeModal(); 
+            };
+            modal.classList.remove('hidden');
+            document.body.classList.add('overflow-hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modalContent.classList.remove('scale-95');
+            }, 10);
+        }
 
-        /**
-         * FIX: Handles FormSubmit using AJAX (fetch) to prevent page redirection.
-         * This function is correctly implemented to override the default FormSubmit redirect.
-         */
-        async function handleFormSubmission(event) {
-            event.preventDefault(); // CRUCIAL: Stop default browser navigation/redirect
-            
-            const form = event.target;
-            const button = form.querySelector('button[type="submit"]');
-            
-            // Check if form or button is null before proceeding
-            if (!form || !button) {
-                console.error("Form or submit button not found.");
-                return;
+        function closeModal(event) {
+            const modal = document.getElementById('ebook-modal');
+            if (event && event.target !== modal) return;
+            const modalContent = modal.querySelector('div:not(.modal-backdrop)');
+            modal.classList.add('opacity-0');
+            modalContent.classList.add('scale-95');
+            document.body.classList.remove('overflow-hidden');
+            setTimeout(() => { modal.classList.add('hidden'); }, 300);
+        }
+
+        function showNewsletterModal() {
+            const modal = document.getElementById('newsletter-modal');
+            const modalContent = modal.querySelector('div:not(.modal-backdrop)');
+            if (sessionStorage.getItem('ce_newsletter_subscribed') === 'true') return;
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.classList.add('overflow-hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modalContent.classList.remove('scale-95');
+            }, 10);
+        }
+
+        function hideNewsletterModal(event) {
+            const modal = document.getElementById('newsletter-modal');
+            if (event && event.target !== modal) return;
+            const modalContent = modal.querySelector('div:not(.modal-backdrop)');
+            modal.classList.add('opacity-0');
+            modalContent.classList.add('scale-95');
+            document.body.classList.remove('overflow-hidden');
+            setTimeout(() => { modal.classList.add('hidden'); modal.classList.remove('flex'); }, 300);
+            if (sessionStorage.getItem('ce_newsletter_subscribed') !== 'true') {
+                 sessionStorage.setItem('ce_newsletter_subscribed', 'false'); 
             }
-
-            const originalButtonText = button.innerHTML;
-            // Use the form's aria-label for user-friendly feedback
-            const formName = form.getAttribute('aria-label') || 'Form'; 
-            
-            // Set loading state
-            button.disabled = true;
-            button.innerHTML = 'Sending...';
-
-            // Get form data
-            const formData = new FormData(form);
-            
-            try {
-                // Submit the form data asynchronously
-                const response = await fetch(form.action, {
-                    method: form.method,
-                    body: formData,
+        }
+        
+        function setupNewsletter() {
+            if (sessionStorage.getItem('ce_newsletter_subscribed') === null || sessionStorage.getItem('ce_newsletter_subscribed') === 'false') {
+                setTimeout(() => { showNewsletterModal(); }, 5000);
+            }
+            const form = document.getElementById('newsletter-form');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    showMessage("Subscription received! Thank you.");
+                    sessionStorage.setItem('ce_newsletter_subscribed', 'true');
+                    hideNewsletterModal();
                 });
-
-                // FormSubmit returns a 302 redirect for success, which fetch treats as a successful network response (status 200-299)
-                // If the fetch succeeds (even on a redirect), we treat it as successful submission.
-                if (response.ok || response.status === 200 || response.status === 302) { 
-                    button.innerHTML = 'Sent! &check;';
-                    form.reset();
-                    window.showMessage(`${formName} successful! Thank you.`, 'bg-ce-gold-dark');
-                } else {
-                    // Handle HTTP errors
-                    // Note: FormSubmit usually succeeds or fails silently, but this is good defensive code.
-                    const errorText = await response.text();
-                    throw new Error(`Server responded with status ${response.status}: ${errorText.substring(0, 50)}...`);
-                }
-            } catch (error) {
-                console.error(`Error during ${formName} submission:`, error);
-                button.innerHTML = 'Failed! Try again.';
-                // Provide a clearer message if the submission failed
-                window.showMessage(`Submission failed. Please verify your email and try again.`, 'bg-red-600');
-            } finally {
-                // Reset button after a delay
-                setTimeout(() => {
-                    button.innerHTML = originalButtonText;
-                    button.disabled = false;
-                }, 4000);
             }
         }
 
-        // --- EVENT LISTENERS (Run once DOM is loaded) ---
         document.addEventListener('DOMContentLoaded', () => {
-            const newsletterForm = document.getElementById('newsletterForm');
-            const consultancyForm = document.getElementById('consultancyForm');
-            
-            // 1. Attach listener to the Newsletter Form
-            if (newsletterForm) {
-                newsletterForm.addEventListener('submit', handleFormSubmission);
-            }
+            const buttons = document.querySelectorAll('.view-details-button');
+            buttons.forEach(button => {
+                button.addEventListener('click', (event) => {
+                    const target = event.currentTarget;
+                    showEbookModal(
+                        target.getAttribute('data-ebook-title'),
+                        target.getAttribute('data-ebook-desc'),
+                        target.getAttribute('data-ebook-price'),
+                        target.getAttribute('data-partner-url'),
+                        target.getAttribute('data-image-url')
+                    );
+                });
+            });
 
-            // 2. Attach listener to the Consultancy Form
-            if (consultancyForm) {
-                consultancyForm.addEventListener('submit', handleFormSubmission);
-            }
-            
-            console.log("Form listeners attached for AJAX submission.");
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    if (!document.getElementById('ebook-modal').classList.contains('hidden')) closeModal();
+                    if (!document.getElementById('newsletter-modal').classList.contains('hidden')) hideNewsletterModal();
+                }
+            });
+            setupNewsletter();
         });
     </script>
-    
 </body>
-                                </html>
+</html>
 
