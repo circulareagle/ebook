@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Circular Eagle - Financial Strategy & Business Growth</title>
+    <meta name="description" content="Learn about the mission, values, and the vision behind Circular Eagle. We empower the next generation of business leaders with elite financial frameworks." />
+    
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configure Tailwind for Dark Theme (Deep Charcoal & Bright Gold) -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'ce-bg-dark': '#1A1A1A', 
+                        'ce-card-dark': '#252525', 
+                        'ce-text-light': '#F0F0F0', 
+                        'ce-gold-bright': '#FFD700', 
+                        'ce-gold-muted': '#C0A04C', 
+                        'ce-muted-gray': '#A0A0A0', 
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        serif: ['Georgia', 'Merriweather', 'serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        .transition-default {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .gold-gradient-text {
+            background: linear-gradient(to right, #FFD700, #C0A04C);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: #FFD700;
+        }
+    </style>
+</head>
+<body class="bg-ce-bg-dark text-ce-text-light font-sans min-h-screen">
+
+    <!-- HEADER -->
+    <header class="sticky top-0 z-50 bg-ce-bg-dark/95 backdrop-blur-sm border-b border-gray-800 shadow-xl">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4 md:py-5">
+                <a href="index.html" class="flex items-center space-x-2">
+                    <img 
+                        src="circular-eagle-logo.png" 
+                        onerror="this.onerror=null; this.src='https://placehold.co/32x32/1A1A1A/FFD700?text=CE';"
+                        alt="Circular Eagle Logo" 
+                        class="w-8 h-8 rounded-full border-2 border-ce-gold-muted object-cover"
+                    >
+                    <span class="text-2xl font-extrabold tracking-tight text-ce-text-light">Circular<span class="text-ce-gold-bright">Eagle</span></span>
+                </a>
+
+                <nav class="hidden md:flex space-x-8">
+                    <a href="index.html#ebook-list" class="text-base font-semibold text-ce-muted-gray hover:text-ce-gold-bright transition-default">eBooks Hub</a>
+                    <a href="about.html" class="text-base font-semibold text-ce-gold-bright border-b-2 border-ce-gold-bright">About Us</a>
+                </nav>
+
+                <a href="index.html#ebook-list" class="hidden md:block py-2 px-6 text-sm font-bold rounded-full bg-ce-gold-bright text-ce-bg-dark hover:bg-ce-gold-muted transition-default">Get Started</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO SECTION -->
+        <section class="relative py-20 lg:py-32 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center">
+                    <h1 class="font-serif text-5xl md:text-7xl font-extrabold mb-6 leading-tight">
+                        Our Mission: <span class="gold-gradient-text">Architecting Wealth</span>
+                    </h1>
+                    <p class="text-xl md:text-2xl text-ce-muted-gray max-w-3xl mx-auto leading-relaxed">
+                        Circular Eagle was founded to bridge the gap between academic theory and the high-stakes reality of modern business strategy.
+                    </p>
+                </div>
+            </div>
+            <!-- Decorative Background Element -->
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full opacity-10 pointer-events-none">
+                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
+                    <path fill="#FFD700" d="M45.7,-77.2C58.9,-70.7,69.1,-58.3,76.4,-44.6C83.7,-30.9,88.1,-15.4,87.3,-0.5C86.5,14.5,80.5,28.9,71.8,41.4C63.1,53.8,51.8,64.2,38.7,71.7C25.7,79.2,12.8,83.7,-0.7,85C-14.3,86.3,-28.5,84.4,-41.7,77.5C-54.8,70.5,-66.9,58.6,-74.9,44.7C-82.9,30.8,-86.8,14.9,-86.3,0.3C-85.7,-14.3,-80.8,-27.6,-72.2,-39C-63.5,-50.3,-51.2,-59.8,-38.4,-66.6C-25.6,-73.4,-12.8,-77.6,1.4,-80C15.6,-82.4,32.4,-83.7,45.7,-77.2Z" transform="translate(100 100)" />
+                </svg>
+            </div>
+        </section>
+
+        <!-- VISION & STORY -->
+        <section class="py-16 bg-ce-card-dark">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    <div>
+                        <h2 class="font-serif text-3xl md:text-4xl font-bold mb-6 text-ce-gold-bright">The Circular Eagle Vision</h2>
+                        <div class="space-y-6 text-lg text-ce-muted-gray leading-relaxed">
+                            <p>
+                                We believe that true business success isn't just about hard work; it's about the <span class="text-ce-text-light font-bold">frameworks</span> you apply. In an era of rapid digital transformation, traditional models often fall short.
+                            </p>
+                            <p>
+                                Circular Eagle serves as a lighthouse for entrepreneurs and financial professionals, providing curated eBooks and intensive courses designed to scale operations, master B2B sales, and navigate the complexities of corporate finance.
+                            </p>
+                            <p>
+                                Our name, <span class="text-ce-text-light italic">Circular Eagle</span>, symbolizes the duality of our approach: the "Circular" represents the sustainable, compounding nature of wealth and systems, while the "Eagle" represents the high-level perspective required for strategic dominance.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <div class="aspect-square rounded-2xl overflow-hidden border-2 border-ce-gold-muted/30 shadow-2xl">
+                            <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80" alt="Executive Strategy" class="w-full h-full object-cover">
+                        </div>
+                        <!-- Overlay Card -->
+                        <div class="absolute -bottom-6 -left-6 bg-ce-gold-bright p-6 rounded-xl text-ce-bg-dark shadow-xl hidden md:block">
+                            <p class="text-3xl font-black italic">"Strategy is the art of closing doors."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CORE VALUES -->
+        <section class="py-24">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="font-serif text-4xl font-bold mb-4">Our Core <span class="text-ce-gold-bright">Principles</span></h2>
+                    <p class="text-ce-muted-gray">The values that drive every piece of content we produce.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="p-8 bg-ce-card-dark rounded-2xl border border-gray-800 stat-card transition-default">
+                        <div class="w-12 h-12 bg-ce-gold-bright/10 rounded-lg flex items-center justify-center mb-6">
+                            <svg class="w-6 h-6 text-ce-gold-bright" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Uncompromising Depth</h3>
+                        <p class="text-ce-muted-gray">We don't do "surface-level." Our resources are deep-dives into the mechanics of business, designed for those who want to truly master their craft.</p>
+                    </div>
+                    <div class="p-8 bg-ce-card-dark rounded-2xl border border-gray-800 stat-card transition-default">
+                        <div class="w-12 h-12 bg-ce-gold-bright/10 rounded-lg flex items-center justify-center mb-6">
+                            <svg class="w-6 h-6 text-ce-gold-bright" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Actionable Intelligence</h3>
+                        <p class="text-ce-muted-gray">Theory is useless without execution. Every framework and guide we offer is built for immediate implementation in the real world.</p>
+                    </div>
+                    <div class="p-8 bg-ce-card-dark rounded-2xl border border-gray-800 stat-card transition-default">
+                        <div class="w-12 h-12 bg-ce-gold-bright/10 rounded-lg flex items-center justify-center mb-6">
+                            <svg class="w-6 h-6 text-ce-gold-bright" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Wealth Integrity</h3>
+                        <p class="text-ce-muted-gray">We focus on sustainable growth. Our methods prioritize long-term brand equity and financial stability over short-term "hacks."</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CALL TO ACTION -->
+        <section class="py-20">
+            <div class="max-w-4xl mx-auto px-4 text-center">
+                <div class="bg-gradient-to-br from-ce-gold-muted/20 to-ce-bg-dark border border-ce-gold-bright/30 rounded-3xl p-12 shadow-2xl">
+                    <h2 class="text-3xl md:text-5xl font-serif font-bold mb-6">Ready to <span class="text-ce-gold-bright">Elevate</span>?</h2>
+                    <p class="text-lg text-ce-muted-gray mb-8">Join thousands of entrepreneurs who have transformed their business perspective with Circular Eagle.</p>
+                    <a href="index.html#ebook-list" class="inline-block py-4 px-10 text-lg font-bold rounded-full bg-ce-gold-bright text-ce-bg-dark hover:bg-ce-gold-muted hover:text-ce-text-light transition-default shadow-lg">Browse The Collection</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER (Matching index.html) -->
+    <footer class="bg-ce-bg-dark border-t border-gray-800 pt-16 pb-8 mt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="md:col-span-2">
+                    <div class="flex items-center space-x-2 mb-6">
+                        <img src="circular-eagle-logo.png" onerror="this.onerror=null; this.src='https://placehold.co/32x32/1A1A1A/FFD700?text=CE';" alt="Logo" class="w-8 h-8 rounded-full border border-ce-gold-muted">
+                        <span class="text-xl font-bold text-ce-text-light">Circular<span class="text-ce-gold-bright">Eagle</span></span>
+                    </div>
+                    <p class="text-ce-muted-gray leading-relaxed max-w-sm">
+                        Empowering the next generation of business leaders with high-level financial strategy and wealth-building insights. 
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-ce-gold-bright font-bold uppercase text-sm mb-6">Quick Links</h4>
+                    <ul class="space-y-4">
+                        <li><a href="index.html" class="text-ce-muted-gray hover:text-ce-text-light">Home</a></li>
+                        <li><a href="https://www.instagram.com/circulaeagle" class="text-ce-muted-gray hover:text-ce-text-light">Instagram</a></li>
+                        <li><a href="https://x.com/CircularEagle" class="text-ce-muted-gray hover:text-ce-text-light">X</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-ce-gold-bright font-bold uppercase text-sm mb-6">Legal</h4>
+                    <ul class="space-y-4">
+                        <li><a href="#" class="text-ce-muted-gray hover:text-ce-text-light">Privacy Policy</a></li>
+                        <li><a href="#" class="text-ce-muted-gray hover:text-ce-text-light">Terms</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 text-center text-xs text-ce-muted-gray">
+                &copy; <span id="year"></span> Circular Eagle. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
+
