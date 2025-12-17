@@ -312,7 +312,7 @@
                 <div>
                     <h4 class="text-ce-gold-bright font-bold uppercase tracking-widest text-sm mb-6">Company</h4>
                     <ul class="space-y-4">
-                        <li><a href="#" class="text-ce-muted-gray hover:text-ce-text-light transition-default">About Us</a></li>
+                        <li><a href="#" class="text-ce-muted-gray hover:text-ce-light transition-default">About Us</a></li>
                         <li><a href="#ebook-list" class="text-ce-muted-gray hover:text-ce-text-light transition-default">Browse Catalog</a></li>
                         <li><a href="#" class="text-ce-muted-gray hover:text-ce-text-light transition-default">Contact Support</a></li>
                     </ul>
@@ -399,10 +399,14 @@
             </div>
             <div class="p-6">
                 <p class="text-ce-text-light text-center mb-4">Get weekly premium financial strategy insights delivered directly to your inbox.</p>
-                <form id="newsletter-form" name="newsletter" method="POST" data-netlify="true" class="space-y-4">
-                    <input type="hidden" name="form-name" value="newsletter" />
-                    <input type="email" name="email" placeholder="Your professional email" required class="w-full p-3 border-2 border-gray-600 rounded-lg bg-ce-bg-dark text-ce-text-light focus:border-ce-gold-bright focus:ring-ce-gold-bright transition-default">
-                    <button type="submit" class="w-full py-3 px-6 text-base font-bold rounded-lg bg-ce-gold-bright text-ce-bg-dark hover:bg-ce-gold-muted hover:text-ce-text-light transition-default btn-gold-glow">Subscribe Now</button>
+                <form id="newsletter-form" action="https://formsubmit.co/ajax/circulareagle@gmail.com" method="POST" class="space-y-4">
+                    <!-- FormSubmit Configuration -->
+                    <input type="hidden" name="_subject" value="New Newsletter Subscription - Circular Eagle">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+                    
+                    <input type="email" name="email" id="newsletter-email" placeholder="Your professional email" required class="w-full p-3 border-2 border-gray-600 rounded-lg bg-ce-bg-dark text-ce-text-light focus:border-ce-gold-bright focus:ring-ce-gold-bright transition-default">
+                    <button type="submit" id="newsletter-submit-btn" class="w-full py-3 px-6 text-base font-bold rounded-lg bg-ce-gold-bright text-ce-bg-dark hover:bg-ce-gold-muted hover:text-ce-text-light transition-default btn-gold-glow">Subscribe Now</button>
                 </form>
             </div>
         </div>
@@ -497,9 +501,38 @@
             if (form) {
                 form.addEventListener('submit', function(e) {
                     e.preventDefault();
-                    showMessage("Subscription received! Thank you.");
-                    sessionStorage.setItem('ce_newsletter_subscribed', 'true');
-                    hideNewsletterModal();
+                    
+                    const submitBtn = document.getElementById('newsletter-submit-btn');
+                    const originalText = submitBtn.innerText;
+                    submitBtn.disabled = true;
+                    submitBtn.innerText = "Processing...";
+
+                    const formData = new FormData(form);
+                    const data = {};
+                    formData.forEach((value, key) => data[key] = value);
+
+                    fetch(form.action, {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                            "Accept": "application/json"
+                        },
+                        body: JSON.stringify(data)
+                    })
+                    .then(response => response.json())
+                    .then(result => {
+                        showMessage("Subscription successful! Welcome to the circle.");
+                        sessionStorage.setItem('ce_newsletter_subscribed', 'true');
+                        hideNewsletterModal();
+                    })
+                    .catch(error => {
+                        console.error("Newsletter Error:", error);
+                        showMessage("Something went wrong. Please try again later.", "bg-red-500 text-white");
+                    })
+                    .finally(() => {
+                        submitBtn.disabled = false;
+                        submitBtn.innerText = originalText;
+                    });
                 });
             }
         }
